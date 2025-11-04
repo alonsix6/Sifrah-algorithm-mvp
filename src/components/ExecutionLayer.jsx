@@ -5,10 +5,10 @@ import { LAYER_CONFIG, CHANNELS_CONFIG } from '../data/config';
 export default function ExecutionLayer() {
   // Calcular status color
   const getStatusColor = (status) => {
-    if (status === 'overperforming') return { bg: 'bg-green-50', border: 'border-green-200', text: 'text-green-700', badge: 'bg-green-100' };
-    if (status === 'performing') return { bg: 'bg-blue-50', border: 'border-blue-200', text: 'text-blue-700', badge: 'bg-blue-100' };
-    if (status === 'ontrack') return { bg: 'bg-yellow-50', border: 'border-yellow-200', text: 'text-yellow-700', badge: 'bg-yellow-100' };
-    return { bg: 'bg-red-50', border: 'border-red-200', text: 'text-red-700', badge: 'bg-red-100' };
+    if (status === 'overperforming') return { bg: 'bg-green-50', border: 'border-green-300', text: 'text-green-700', badge: 'bg-green-100' };
+    if (status === 'performing') return { bg: 'bg-blue-50', border: 'border-blue-300', text: 'text-blue-700', badge: 'bg-blue-100' };
+    if (status === 'ontrack') return { bg: 'bg-amber-50', border: 'border-amber-300', text: 'text-amber-700', badge: 'bg-amber-100' };
+    return { bg: 'bg-red-50', border: 'border-red-300', text: 'text-red-700', badge: 'bg-red-100' };
   };
 
   const getStatusIcon = (status) => {
@@ -140,7 +140,7 @@ export default function ExecutionLayer() {
                       className={`h-full ${
                         channel.status === 'overperforming' ? 'bg-green-500' :
                         channel.status === 'performing' ? 'bg-blue-500' :
-                        channel.status === 'ontrack' ? 'bg-yellow-500' : 'bg-red-500'
+                        channel.status === 'ontrack' ? 'bg-amber-500' : 'bg-red-500'
                       }`}
                       style={{ width: `${channel.percentage}%` }}
                     ></div>

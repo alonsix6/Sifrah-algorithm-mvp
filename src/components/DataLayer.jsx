@@ -253,10 +253,10 @@ export default function DataLayer() {
             // Definir colores por fuente
             const colorScheme =
               insight.source === 'Google Trends' ? { gradient: 'from-blue-500 to-blue-600', bg: 'bg-blue-50', text: 'text-blue-700', badge: 'bg-blue-100 text-blue-700' } :
-              insight.source === 'TikTok' ? { gradient: 'from-pink-500 to-purple-600', bg: 'bg-purple-50', text: 'text-purple-700', badge: 'bg-purple-100 text-purple-700' } :
-              insight.source === 'Meta' ? { gradient: 'from-blue-600 to-indigo-600', bg: 'bg-indigo-50', text: 'text-indigo-700', badge: 'bg-indigo-100 text-indigo-700' } :
-              insight.source === 'GA4' ? { gradient: 'from-green-500 to-emerald-600', bg: 'bg-green-50', text: 'text-green-700', badge: 'bg-green-100 text-green-700' } :
-              { gradient: 'from-orange-500 to-red-600', bg: 'bg-orange-50', text: 'text-orange-700', badge: 'bg-orange-100 text-orange-700' };
+              insight.source === 'TikTok' ? { gradient: 'from-gray-800 to-gray-900', bg: 'bg-gray-50', text: 'text-gray-700', badge: 'bg-gray-100 text-gray-700' } :
+              insight.source === 'Meta' ? { gradient: 'from-blue-600 to-blue-700', bg: 'bg-blue-50', text: 'text-blue-700', badge: 'bg-blue-100 text-blue-700' } :
+              insight.source === 'GA4' ? { gradient: 'from-green-500 to-green-600', bg: 'bg-green-50', text: 'text-green-700', badge: 'bg-green-100 text-green-700' } :
+              { gradient: 'from-gray-600 to-gray-700', bg: 'bg-gray-50', text: 'text-gray-700', badge: 'bg-gray-100 text-gray-700' };
 
             const sourceScore =
               insight.source === 'Google Trends' ? scores.search :
@@ -400,13 +400,13 @@ export default function DataLayer() {
       <div className="bg-white rounded-xl shadow-lg overflow-hidden">
         <button
           onClick={() => toggleSection('tiktok')}
-          className="w-full bg-gradient-to-r from-pink-500 to-purple-600 text-white p-4 flex items-center justify-between hover:from-pink-600 hover:to-purple-700 transition"
+          className="w-full bg-gradient-to-r from-gray-800 to-gray-900 text-white p-4 flex items-center justify-between hover:from-gray-900 hover:to-black transition"
         >
           <div className="flex items-center gap-3">
             <Video className="w-6 h-6" />
             <div className="text-left">
               <h3 className="text-base font-bold">TikTok Creative Center</h3>
-              <p className="text-xs text-pink-100">Hashtags automotrices virales • Score: {scores.trend}/10</p>
+              <p className="text-xs text-gray-300">Hashtags automotrices virales • Score: {scores.trend}/10</p>
             </div>
           </div>
           {expandedSections.tiktok ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
@@ -415,12 +415,12 @@ export default function DataLayer() {
         {expandedSections.tiktok && (
           <div className="p-6 space-y-4">
             {/* Disclaimer */}
-            <div className="bg-purple-50 border border-purple-200 rounded-lg p-4 flex gap-3">
-              <Info className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
-              <div className="text-sm text-purple-900">
+            <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 flex gap-3">
+              <Info className="w-5 h-5 text-gray-600 flex-shrink-0 mt-0.5" />
+              <div className="text-sm text-gray-900">
                 <p className="font-semibold mb-1">Cómo se calcula el score:</p>
                 <p>Promedio del "relevance score" (0-100) de los hashtags automotrices más virales. Score alto indica alto potencial de viralidad para contenido de RAV4 y SUVs.</p>
-                <p className="mt-2 text-xs text-purple-700">
+                <p className="mt-2 text-xs text-gray-700">
                   <strong>Fuente:</strong> TikTok Creative Center (datos públicos) • <strong>Actualización:</strong> Semanal • <strong>Región:</strong> Peru + Global
                 </p>
               </div>
@@ -444,7 +444,7 @@ export default function DataLayer() {
                     <tr key={idx} className="hover:bg-gray-50 transition">
                       <td className="px-4 py-3 text-sm font-medium text-gray-900">{tag.hashtag}</td>
                       <td className="px-4 py-3 text-center">
-                        <span className="text-sm font-bold text-purple-600">{tag.views}</span>
+                        <span className="text-sm font-bold text-gray-700">{tag.views}</span>
                       </td>
                       <td className="px-4 py-3 text-center">
                         <span className="text-sm text-gray-600">{tag.posts}</span>
@@ -457,7 +457,7 @@ export default function DataLayer() {
                       </td>
                       <td className="px-4 py-3 text-center">
                         <span className={`px-2 py-1 text-xs font-semibold rounded-full ${
-                          tag.region === 'Peru' ? 'bg-red-100 text-red-700' : 'bg-gray-100 text-gray-700'
+                          tag.region === 'Peru' ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-700'
                         }`}>
                           {tag.region}
                         </span>
@@ -475,7 +475,7 @@ export default function DataLayer() {
       <div className="bg-white rounded-xl shadow-lg overflow-hidden">
         <button
           onClick={() => toggleSection('meta')}
-          className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-4 flex items-center justify-between hover:from-blue-700 hover:to-indigo-700 transition"
+          className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white p-4 flex items-center justify-between hover:from-blue-700 hover:to-blue-800 transition"
         >
           <div className="flex items-center gap-3">
             <Share2 className="w-6 h-6" />
@@ -490,12 +490,12 @@ export default function DataLayer() {
         {expandedSections.meta && (
           <div className="p-6 space-y-4">
             {/* Disclaimer */}
-            <div className="bg-indigo-50 border border-indigo-200 rounded-lg p-4 flex gap-3">
-              <Info className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" />
-              <div className="text-sm text-indigo-900">
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 flex gap-3">
+              <Info className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+              <div className="text-sm text-blue-900">
                 <p className="font-semibold mb-1">Cómo se calcula el score:</p>
                 <p>Promedio del "engagement score" (0-10) de los temas automotrices más discutidos en Facebook e Instagram. Score alto indica fuerte conversación social sobre RAV4.</p>
-                <p className="mt-2 text-xs text-indigo-700">
+                <p className="mt-2 text-xs text-blue-700">
                   <strong>Fuente:</strong> Páginas públicas verificadas (Toyota Perú 450K likes, Derco Perú 285K, etc.) • <strong>Actualización:</strong> Semanal • <strong>Método:</strong> Análisis manual de engagement público
                 </p>
               </div>
@@ -519,7 +519,7 @@ export default function DataLayer() {
                     <tr key={idx} className="hover:bg-gray-50 transition">
                       <td className="px-4 py-3 text-sm font-medium text-gray-900">{topic.topic}</td>
                       <td className="px-4 py-3 text-center">
-                        <span className="text-sm font-bold text-indigo-600">{topic.mentions?.toLocaleString()}</span>
+                        <span className="text-sm font-bold text-blue-600">{topic.mentions?.toLocaleString()}</span>
                       </td>
                       <td className="px-4 py-3 text-center">
                         <span className="text-sm font-bold text-gray-700">{topic.engagement_score}/10</span>
@@ -554,7 +554,7 @@ export default function DataLayer() {
       <div className="bg-white rounded-xl shadow-lg overflow-hidden">
         <button
           onClick={() => toggleSection('ga4')}
-          className="w-full bg-gradient-to-r from-green-500 to-emerald-600 text-white p-4 flex items-center justify-between hover:from-green-600 hover:to-emerald-700 transition"
+          className="w-full bg-gradient-to-r from-green-500 to-green-600 text-white p-4 flex items-center justify-between hover:from-green-600 hover:to-green-700 transition"
         >
           <div className="flex items-center gap-3">
             <BarChart3 className="w-6 h-6" />

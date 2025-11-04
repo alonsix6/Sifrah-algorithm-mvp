@@ -17,11 +17,11 @@ export default function OptimizationLayer() {
 
   // Channel performance distribution
   const channelData = [
-    { name: 'Google Search', value: 35, leads: 425, color: '#4285F4' },
-    { name: 'Meta Ads', value: 30, leads: 364, color: '#1877F2' },
-    { name: 'YouTube', value: 20, leads: 242, color: '#FF0000' },
-    { name: 'Display', value: 10, leads: 121, color: '#34A853' },
-    { name: 'TikTok', value: 5, leads: 95, color: '#000000' }
+    { name: 'Google Search', value: 35, leads: 425, color: '#3B82F6' }, // Azul consistente
+    { name: 'Meta Ads', value: 30, leads: 364, color: '#1D4ED8' }, // Azul más oscuro para diferenciar
+    { name: 'YouTube', value: 20, leads: 242, color: '#EF4444' }, // Rojo
+    { name: 'Display', value: 10, leads: 121, color: '#10B981' }, // Verde
+    { name: 'TikTok', value: 5, leads: 95, color: '#374151' } // Gris oscuro
   ];
 
   // Funnel de conversión
@@ -239,9 +239,9 @@ export default function OptimizationLayer() {
                   <div
                     className={`h-full ${
                       idx === 0 ? 'bg-blue-500' :
-                      idx === 1 ? 'bg-green-500' :
-                      idx === 2 ? 'bg-yellow-500' :
-                      idx === 3 ? 'bg-orange-500' : 'bg-toyota-red'
+                      idx === 1 ? 'bg-blue-600' :
+                      idx === 2 ? 'bg-green-500' :
+                      idx === 3 ? 'bg-green-600' : 'bg-toyota-red'
                     }`}
                     style={{ width: `${stage.percentage}%` }}
                   ></div>
