@@ -126,7 +126,7 @@ export default function ExecutionLayer() {
                     <div className="mb-2">
                       <span className="text-4xl font-bold text-gray-900">{channel.percentage}%</span>
                     </div>
-                    <div className="text-2xl font-bold text-toyota-red mb-1">
+                    <div className="text-2xl font-bold text-gray-800 mb-1">
                       ${channel.amount.toLocaleString()}
                     </div>
                     <p className="text-xs text-gray-500">del presupuesto total</p>
@@ -190,7 +190,7 @@ export default function ExecutionLayer() {
                 {rec.from && rec.to && (
                   <div className="text-right">
                     <span className="text-xs text-gray-500">Cambio</span>
-                    <p className="font-bold text-toyota-red">{rec.from}% → {rec.to}%</p>
+                    <p className="font-bold text-gray-900">{rec.from}% → {rec.to}%</p>
                   </div>
                 )}
               </div>
@@ -251,7 +251,7 @@ export default function ExecutionLayer() {
                 <div className="pt-3 border-t border-gray-300">
                   <div className="flex justify-between items-center">
                     <span className="text-xs text-gray-500">Budget Recomendado</span>
-                    <span className="text-xl font-bold text-toyota-red">{(pillar.recommended_budget * 100).toFixed(0)}%</span>
+                    <span className="text-xl font-bold text-gray-900">{(pillar.recommended_budget * 100).toFixed(0)}%</span>
                   </div>
                 </div>
 

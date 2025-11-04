@@ -216,7 +216,7 @@ export default function OptimizationLayer() {
                   <div className="w-3 h-3 rounded-full" style={{ backgroundColor: channel.color }}></div>
                   <span className="text-sm font-medium">{channel.name}</span>
                 </div>
-                <span className="text-sm font-bold text-toyota-red">{channel.leads}</span>
+                <span className="text-sm font-bold text-gray-800">{channel.leads}</span>
               </div>
             ))}
           </div>
@@ -308,7 +308,7 @@ export default function OptimizationLayer() {
                   <div className="p-2 bg-white rounded">
                     <p className="text-xs text-gray-500 mb-1">Variante A</p>
                     <p className="text-xs font-semibold">{test.variant_a.name}</p>
-                    <p className="text-lg font-bold text-toyota-red">{test.variant_a.ctr || test.variant_a.view_rate}%</p>
+                    <p className="text-lg font-bold text-gray-900">{test.variant_a.ctr || test.variant_a.view_rate}%</p>
                   </div>
                   <div className="p-2 bg-white rounded">
                     <p className="text-xs text-gray-500 mb-1">Variante B</p>

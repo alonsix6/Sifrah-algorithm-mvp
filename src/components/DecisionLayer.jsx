@@ -219,7 +219,7 @@ export default function DecisionLayer() {
                 </div>
                 <div className="text-right">
                   <p className="text-xs text-gray-500">Confianza</p>
-                  <p className="text-lg font-bold text-toyota-red">{rec.confidence}%</p>
+                  <p className="text-lg font-bold text-gray-900">{rec.confidence}%</p>
                 </div>
               </div>
 
@@ -275,7 +275,7 @@ export default function DecisionLayer() {
 
               <div className="mt-4 p-3 bg-white rounded-lg">
                 <p className="text-xs text-gray-500 mb-1">Mensaje recomendado:</p>
-                <p className="text-sm font-semibold text-toyota-red">{aud.message}</p>
+                <p className="text-sm font-semibold text-gray-800">{aud.message}</p>
               </div>
             </div>
           ))}

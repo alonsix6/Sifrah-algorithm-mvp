@@ -1,144 +1,232 @@
 {
   "timestamp": "2025-01-30T15:30:00Z",
   "source": "Google Ads (Mock)",
-  "account": "Aruma Peru",
+  "account": "Toyota Perú - RAV4 Launch",
   "dateRange": {
     "start": "2025-01-01",
     "end": "2025-01-30"
   },
   "performance": {
-    "impressions": 285000,
-    "clicks": 14250,
-    "ctr": 0.05,
-    "cost": 12800,
-    "conversions": 856,
-    "conversionRate": 0.06,
-    "costPerConversion": 14.95,
-    "roas": 3.2
+    "impressions": 3500000,
+    "clicks": 105000,
+    "ctr": 0.03,
+    "cost": 43750,
+    "conversions": 1247,
+    "conversionRate": 0.0119,
+    "costPerConversion": 35.08,
+    "roas": 4.8
   },
   "campaigns": [
     {
-      "name": "Beauty - Skincare Search",
+      "name": "RAV4 - Search Brand",
       "status": "active",
-      "impressions": 95000,
-      "clicks": 5700,
-      "ctr": 0.06,
-      "cost": 5200,
-      "conversions": 380,
-      "conversionRate": 0.067,
-      "cpc": 0.91,
-      "roas": 3.8,
+      "impressions": 850000,
+      "clicks": 42500,
+      "ctr": 0.05,
+      "cost": 17000,
+      "conversions": 485,
+      "conversionRate": 0.0114,
+      "cpc": 0.40,
+      "roas": 5.8,
       "topKeywords": [
         {
-          "keyword": "cerave serum",
-          "impressions": 12500,
-          "clicks": 825,
-          "ctr": 0.066,
-          "cost": 742,
-          "conversions": 58,
-          "qualityScore": 8
+          "keyword": "toyota rav4 precio",
+          "impressions": 125000,
+          "clicks": 7500,
+          "ctr": 0.06,
+          "cost": 3000,
+          "conversions": 95,
+          "qualityScore": 9
         },
         {
-          "keyword": "protector solar facial",
-          "impressions": 18200,
-          "clicks": 1150,
-          "ctr": 0.063,
-          "cost": 1035,
+          "keyword": "rav4 hibrida peru",
+          "impressions": 98000,
+          "clicks": 5880,
+          "ctr": 0.06,
+          "cost": 2352,
           "conversions": 78,
           "qualityScore": 9
         },
         {
-          "keyword": "serum niacinamide",
-          "impressions": 9800,
-          "clicks": 680,
-          "ctr": 0.069,
-          "cost": 612,
-          "conversions": 52,
+          "keyword": "toyota rav4 2025",
+          "impressions": 87000,
+          "clicks": 5220,
+          "ctr": 0.06,
+          "cost": 2088,
+          "conversions": 68,
           "qualityScore": 8
         }
       ]
     },
     {
-      "name": "Beauty - Display Network",
+      "name": "RAV4 - Search Generic SUV",
       "status": "active",
-      "impressions": 125000,
-      "clicks": 5000,
-      "ctr": 0.04,
-      "cost": 3800,
-      "conversions": 280,
-      "conversionRate": 0.056,
-      "cpc": 0.76,
-      "roas": 2.9
+      "impressions": 1200000,
+      "clicks": 36000,
+      "ctr": 0.03,
+      "cost": 14400,
+      "conversions": 380,
+      "conversionRate": 0.0106,
+      "cpc": 0.40,
+      "roas": 4.5,
+      "topKeywords": [
+        {
+          "keyword": "suv hibrida peru",
+          "impressions": 185000,
+          "clicks": 6660,
+          "ctr": 0.036,
+          "cost": 2664,
+          "conversions": 82,
+          "qualityScore": 8
+        },
+        {
+          "keyword": "mejor suv familiar",
+          "impressions": 142000,
+          "clicks": 4970,
+          "ctr": 0.035,
+          "cost": 1988,
+          "conversions": 65,
+          "qualityScore": 7
+        },
+        {
+          "keyword": "suv ahorro combustible",
+          "impressions": 128000,
+          "clicks": 4480,
+          "ctr": 0.035,
+          "cost": 1792,
+          "conversions": 58,
+          "qualityScore": 8
+        }
+      ]
     },
     {
-      "name": "Beauty - PMax Skincare",
+      "name": "RAV4 - Display Network",
       "status": "active",
-      "impressions": 65000,
-      "clicks": 3550,
-      "ctr": 0.055,
-      "cost": 3800,
-      "conversions": 196,
-      "conversionRate": 0.055,
-      "cpc": 1.07,
-      "roas": 3.4
+      "impressions": 950000,
+      "clicks": 14250,
+      "ctr": 0.015,
+      "cost": 7125,
+      "conversions": 205,
+      "conversionRate": 0.0144,
+      "cpc": 0.50,
+      "roas": 3.8
+    },
+    {
+      "name": "RAV4 - YouTube Video",
+      "status": "active",
+      "impressions": 500000,
+      "clicks": 12250,
+      "ctr": 0.0245,
+      "cost": 5125,
+      "conversions": 177,
+      "conversionRate": 0.0145,
+      "cpc": 0.42,
+      "roas": 4.2
     }
   ],
   "audienceInsights": {
     "demographics": {
-      "18-24": {
-        "impressions": 79800,
-        "conversions": 240,
-        "conversionRate": 0.058
-      },
       "25-34": {
-        "impressions": 125400,
-        "conversions": 420,
-        "conversionRate": 0.068
+        "impressions": 1050000,
+        "conversions": 324,
+        "conversionRate": 0.0115
       },
       "35-44": {
-        "impressions": 65550,
-        "conversions": 152,
-        "conversionRate": 0.052
+        "impressions": 1400000,
+        "conversions": 486,
+        "conversionRate": 0.0128
+      },
+      "45-54": {
+        "impressions": 875000,
+        "conversions": 312,
+        "conversionRate": 0.0118
+      },
+      "55-64": {
+        "impressions": 175000,
+        "conversions": 125,
+        "conversionRate": 0.0109
       }
     },
     "devices": {
       "mobile": {
-        "impressions": 193800,
-        "conversions": 582,
-        "conversionRate": 0.062
+        "impressions": 2030000,
+        "conversions": 673,
+        "conversionRate": 0.0108
       },
       "desktop": {
-        "impressions": 68400,
-        "conversions": 205,
-        "conversionRate": 0.055
+        "impressions": 1225000,
+        "conversions": 486,
+        "conversionRate": 0.0132
       },
       "tablet": {
-        "impressions": 22800,
-        "conversions": 69,
-        "conversionRate": 0.048
+        "impressions": 245000,
+        "conversions": 88,
+        "conversionRate": 0.0095
       }
+    }
+  },
+  "geoPerformance": {
+    "Lima": {
+      "impressions": 2170000,
+      "clicks": 65100,
+      "conversions": 773,
+      "cost": 27125,
+      "roas": 5.1
+    },
+    "Arequipa": {
+      "impressions": 385000,
+      "clicks": 11550,
+      "conversions": 137,
+      "cost": 4813,
+      "roas": 4.6
+    },
+    "Trujillo": {
+      "impressions": 280000,
+      "clicks": 8400,
+      "conversions": 100,
+      "cost": 3500,
+      "roas": 4.3
+    },
+    "Cusco": {
+      "impressions": 210000,
+      "clicks": 6300,
+      "conversions": 75,
+      "cost": 2625,
+      "roas": 4.4
+    },
+    "Other": {
+      "impressions": 455000,
+      "clicks": 13650,
+      "conversions": 162,
+      "cost": 5687,
+      "roas": 4.5
     }
   },
   "recommendations": [
     {
       "type": "keyword_expansion",
       "priority": "high",
-      "suggestion": "Add 'serum vitamina c' and 'limpiador cerave' - high search volume, low competition"
+      "suggestion": "Agregar 'auto hibrido familiar' y 'suv electrica' - alto volumen de búsqueda, baja competencia"
     },
     {
       "type": "budget_allocation",
-      "priority": "medium",
-      "suggestion": "Increase budget on 'Skincare Search' campaign (+20%) based on ROAS performance"
+      "priority": "high",
+      "suggestion": "Incrementar presupuesto en 'RAV4 - Search Brand' (+25%) basado en ROAS superior (5.8x)"
     },
     {
       "type": "audience_optimization",
-      "priority": "high",
-      "suggestion": "Focus on 25-34 female demographic - highest conversion rate (6.8%)"
+      "priority": "medium",
+      "suggestion": "Enfocar en demografía 35-44 años - mayor tasa de conversión (1.28%)"
+    },
+    {
+      "type": "geo_targeting",
+      "priority": "medium",
+      "suggestion": "Expandir presupuesto en Lima (+15%) - ROAS más alto (5.1x) y 62% del total de conversiones"
     }
   ],
   "metadata": {
     "note": "Mock data for MVP demonstration",
-    "actualIntegration": "Requires Aruma Google Ads API access",
+    "actualIntegration": "Requires Toyota Peru Google Ads API access",
     "updateFrequency": "Daily automatic once integrated"
   }
 }
