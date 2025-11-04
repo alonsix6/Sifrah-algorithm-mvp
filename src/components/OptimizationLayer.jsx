@@ -1,82 +1,36 @@
-import { TrendingUp, BarChart3, RefreshCw, Award } from 'lucide-react';
-import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-
-// Tasa de conversión PEN a USD para cálculos de ROI
-const PEN_TO_USD = 3.5;
+import { TrendingUp, BarChart3, RefreshCw, Award, Target, Users, Heart, Zap, AlertCircle } from 'lucide-react';
+import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
+import { PERFORMANCE_KPIS, ALERTS, AB_TESTS, COMPETITOR_INSIGHTS } from '../data/mockData';
+import { LAYER_CONFIG, METRIC_CARDS_CONFIG } from '../data/config';
 
 export default function OptimizationLayer() {
-  // Performance últimos 7 días con fechas reales y datos más aterrizados
+  // Performance últimos 7 días - Toyota RAV4
   const performanceData = [
-    { date: '25 Oct', roas: 2.1, conversions: 38, spent: 1620 },
-    { date: '26 Oct', roas: 1.9, conversions: 42, spent: 1850 },
-    { date: '27 Oct', roas: 2.3, conversions: 45, spent: 1720 },
-    { date: '28 Oct', roas: 2.6, conversions: 51, spent: 1680 },
-    { date: '29 Oct', roas: 2.4, conversions: 48, spent: 1790 },
-    { date: '30 Oct', roas: 2.8, conversions: 54, spent: 1650 },
-    { date: '31 Oct', roas: 2.5, conversions: 49, spent: 1740 }
+    { date: '28 Oct', leads: 156, reach: 420000, engagement: 11200, spent: 2100 },
+    { date: '29 Oct', leads: 168, reach: 435000, engagement: 12500, spent: 2250 },
+    { date: '30 Oct', leads: 174, reach: 468000, engagement: 13800, spent: 2180 },
+    { date: '31 Oct', leads: 182, reach: 492000, engagement: 14200, spent: 2320 },
+    { date: '01 Nov', leads: 195, reach: 515000, engagement: 15100, spent: 2280 },
+    { date: '02 Nov', leads: 189, reach: 498000, engagement: 14700, spent: 2350 },
+    { date: '03 Nov', leads: 203, reach: 528000, engagement: 16200, spent: 2290 }
   ];
 
-  // Cálculo de ROI como multiplicador (no porcentaje)
-  // ROI = Revenue / Investment
-  // Ejemplo: Investment $12,000, Revenue $32,400 USD → ROI = 2.7x
-  const calculateROI = (revenuePEN, investmentUSD) => {
-    const revenueUSD = revenuePEN / PEN_TO_USD;
-    const roi = revenueUSD / investmentUSD;
-    return roi;
-  };
-
-  // ROI de 2.7x: Investment $12,000 → Revenue debe ser $32,400 USD = S/ 113,400
-  const exampleRevenuePEN = 113400;
-  const exampleInvestmentUSD = 12000;
-  const calculatedROI = calculateROI(exampleRevenuePEN, exampleInvestmentUSD);
-
-  const signalScore = {
-    current: 7.2,
-    previous: 6.8,
-    components: [
-      { name: 'ROI', score: parseFloat(calculatedROI.toFixed(1)), weight: 0.35, trend: 'up', format: 'x' },
-      { name: 'CTR', score: 7.1, weight: 0.25, trend: 'up', format: '%' },
-      { name: 'Engagement Rate', score: 7.5, weight: 0.25, trend: 'stable', format: '%' },
-      { name: 'Tiempo Activo', score: 6.9, weight: 0.15, trend: 'up', format: '/10' }
-    ]
-  };
-
-  const budgetReallocation = [
-    {
-      from: 'Display Network',
-      to: 'Search Skincare',
-      amount: 850,
-      reason: 'ROAS bajo (2.9) vs alto performance (3.8)',
-      impact: '+S/ 3,200 revenue proyectado'
-    },
-    {
-      from: 'Generic Keywords',
-      to: 'High-intent Keywords',
-      amount: 450,
-      reason: 'CTR bajo (2.1%) vs engagement alto (6.2%)',
-      impact: '+180 conversiones proyectadas'
-    }
+  // Channel performance distribution
+  const channelData = [
+    { name: 'Google Search', value: 35, leads: 425, color: '#4285F4' },
+    { name: 'Meta Ads', value: 30, leads: 364, color: '#1877F2' },
+    { name: 'YouTube', value: 20, leads: 242, color: '#FF0000' },
+    { name: 'Display', value: 10, leads: 121, color: '#34A853' },
+    { name: 'TikTok', value: 5, leads: 95, color: '#000000' }
   ];
 
-  const learnings = [
-    {
-      insight: 'Los posts con UGC tienen 2.3x más engagement que contenido de marca',
-      action: 'Priorizar creativos con testimoniales reales',
-      category: 'Creatividad',
-      confidence: 94
-    },
-    {
-      insight: 'Horario óptimo: 7-9pm obtiene 45% más conversiones',
-      action: 'Redistribuir 30% del presupuesto a esas horas',
-      category: 'Timing',
-      confidence: 91
-    },
-    {
-      insight: 'Mobile genera 68% de conversiones con AOV 15% mayor',
-      action: 'Optimizar experiencia mobile y aumentar pujas +25%',
-      category: 'Dispositivo',
-      confidence: 88
-    }
+  // Funnel de conversión
+  const funnelData = [
+    { stage: 'Impresiones', value: 3500000, percentage: 100 },
+    { stage: 'Clics', value: 105000, percentage: 3.0 },
+    { stage: 'Landing Page', value: 89250, percentage: 85 },
+    { stage: 'Formularios', value: 1247, percentage: 1.4 },
+    { stage: 'Test Drives', value: 342, percentage: 27.4 }
   ];
 
   return (
@@ -86,241 +40,356 @@ export default function OptimizationLayer() {
         <div className="flex items-start justify-between">
           <div>
             <h2 className="text-2xl font-bold text-gray-900 mb-2">
-              Capa de Optimización - Aprendizaje Continuo
+              {LAYER_CONFIG.optimization.name}
             </h2>
             <p className="text-gray-600">
-              Evalúa resultados, redistribuye inversión y mejora el Signal Score automáticamente
+              {LAYER_CONFIG.optimization.subtitle}
             </p>
           </div>
-          <div className="flex items-center gap-2">
-            <RefreshCw className="w-5 h-5 text-blue-600 animate-spin" />
-            <span className="text-sm font-medium text-blue-600">Optimizando...</span>
+          <div className="flex gap-2">
+            <span className="px-3 py-1 bg-toyota-green text-white rounded-full text-sm font-medium flex items-center gap-1">
+              <RefreshCw className="w-4 h-4" />
+              Auto-optimización activa
+            </span>
           </div>
         </div>
       </div>
 
-      {/* Signal Score Evolution */}
-      <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
-        <div className="flex items-center gap-3 mb-6">
-          <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center">
-            <BarChart3 className="w-6 h-6 text-white" />
+      {/* KPIs Principales */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Leads */}
+        <div className="bg-gradient-to-br from-toyota-red to-toyota-darkRed text-white rounded-2xl p-6 shadow-toyota-lg">
+          <div className="flex items-center justify-between mb-3">
+            <Target className="w-8 h-8" />
+            <span className={`px-3 py-1 rounded-full text-xs font-bold ${
+              PERFORMANCE_KPIS.leads.trend_value > 0 ? 'bg-green-400' : 'bg-red-400'
+            }`}>
+              {PERFORMANCE_KPIS.leads.trend}
+            </span>
           </div>
-          <div>
-            <h3 className="text-xl font-bold text-gray-900">Signal Score - Evolución</h3>
-            <p className="text-sm text-gray-600">Índice consolidado de performance</p>
+          <h3 className="text-sm font-medium text-white/80 mb-1">Leads Calificados</h3>
+          <p className="text-4xl font-bold mb-2">{PERFORMANCE_KPIS.leads.qualified.toLocaleString()}</p>
+          <div className="flex items-baseline gap-2">
+            <span className="text-sm text-white/70">de {PERFORMANCE_KPIS.leads.total.toLocaleString()} total</span>
+            <span className="text-xs bg-white/20 px-2 py-1 rounded">{PERFORMANCE_KPIS.leads.qualification_rate}%</span>
+          </div>
+          <div className="mt-3 pt-3 border-t border-white/20">
+            <div className="flex justify-between text-xs">
+              <span className="text-white/70">CPL</span>
+              <span className="font-bold">${PERFORMANCE_KPIS.leads.cost_per_lead}</span>
+            </div>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-          <div className="p-6 bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl border-2 border-blue-200">
-            <p className="text-sm text-gray-600 mb-2">Signal Score Actual</p>
-            <div className="flex items-end gap-4">
-              <p className="text-4xl sm:text-5xl font-bold text-blue-600">{signalScore.current}</p>
-              <div className="pb-2">
-                <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-bold">
-                  +{(signalScore.current - signalScore.previous).toFixed(1)} ↑
+        {/* Alcance */}
+        <div className="bg-gradient-to-br from-toyota-gray to-toyota-black text-white rounded-2xl p-6 shadow-lg">
+          <div className="flex items-center justify-between mb-3">
+            <Users className="w-8 h-8" />
+            <span className={`px-3 py-1 rounded-full text-xs font-bold ${
+              PERFORMANCE_KPIS.reach.trend_value > 0 ? 'bg-green-400' : 'bg-red-400'
+            }`}>
+              {PERFORMANCE_KPIS.reach.trend}
+            </span>
+          </div>
+          <h3 className="text-sm font-medium text-white/80 mb-1">Alcance Único</h3>
+          <p className="text-4xl font-bold mb-2">{(PERFORMANCE_KPIS.reach.unique_reach / 1000000).toFixed(1)}M</p>
+          <div className="flex items-baseline gap-2">
+            <span className="text-sm text-white/70">Impresiones: {(PERFORMANCE_KPIS.reach.impressions / 1000000).toFixed(1)}M</span>
+          </div>
+          <div className="mt-3 pt-3 border-t border-white/20">
+            <div className="flex justify-between text-xs">
+              <span className="text-white/70">Frecuencia</span>
+              <span className="font-bold">{PERFORMANCE_KPIS.reach.frequency}</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Engagement */}
+        <div className="bg-gradient-to-br from-toyota-green to-success text-white rounded-2xl p-6 shadow-lg">
+          <div className="flex items-center justify-between mb-3">
+            <Heart className="w-8 h-8" />
+            <span className={`px-3 py-1 rounded-full text-xs font-bold ${
+              PERFORMANCE_KPIS.engagement.trend_value > 0 ? 'bg-green-400' : 'bg-red-400'
+            }`}>
+              {PERFORMANCE_KPIS.engagement.trend}
+            </span>
+          </div>
+          <h3 className="text-sm font-medium text-white/80 mb-1">Interacciones Totales</h3>
+          <p className="text-4xl font-bold mb-2">{(PERFORMANCE_KPIS.engagement.total_interactions / 1000).toFixed(1)}K</p>
+          <div className="flex items-baseline gap-2">
+            <span className="text-sm text-white/70">Engagement Rate</span>
+            <span className="text-xs bg-white/20 px-2 py-1 rounded">{PERFORMANCE_KPIS.engagement.engagement_rate}%</span>
+          </div>
+          <div className="mt-3 pt-3 border-t border-white/20">
+            <div className="flex justify-between text-xs">
+              <span className="text-white/70">Shares</span>
+              <span className="font-bold">{(PERFORMANCE_KPIS.engagement.shares / 1000).toFixed(1)}K</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Budget */}
+        <div className="bg-gradient-to-br from-blue-600 to-blue-700 text-white rounded-2xl p-6 shadow-lg">
+          <div className="flex items-center justify-between mb-3">
+            <Award className="w-8 h-8" />
+            <span className="px-3 py-1 rounded-full text-xs font-bold bg-green-400">
+              {PERFORMANCE_KPIS.budget.spent_percentage.toFixed(0)}%
+            </span>
+          </div>
+          <h3 className="text-sm font-medium text-white/80 mb-1">Presupuesto Ejecutado</h3>
+          <p className="text-4xl font-bold mb-2">${(PERFORMANCE_KPIS.budget.total_spent / 1000).toFixed(1)}K</p>
+          <div className="flex items-baseline gap-2">
+            <span className="text-sm text-white/70">de ${(PERFORMANCE_KPIS.budget.total_budget / 1000).toFixed(0)}K total</span>
+          </div>
+          <div className="mt-3 pt-3 border-t border-white/20">
+            <div className="flex justify-between text-xs">
+              <span className="text-white/70">CPC</span>
+              <span className="font-bold">${PERFORMANCE_KPIS.budget.cost_per_click}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Performance Trends */}
+      <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
+        <div className="flex items-center justify-between mb-6">
+          <div>
+            <h3 className="text-xl font-bold text-gray-900">Performance Últimos 7 Días</h3>
+            <p className="text-sm text-gray-600">Evolución de métricas clave</p>
+          </div>
+          <div className="flex gap-4 text-sm">
+            <div className="flex items-center gap-2">
+              <div className="w-3 h-3 rounded-full bg-toyota-red"></div>
+              <span>Leads</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-3 h-3 rounded-full bg-toyota-green"></div>
+              <span>Engagement (K)</span>
+            </div>
+          </div>
+        </div>
+
+        <ResponsiveContainer width="100%" height={300}>
+          <LineChart data={performanceData}>
+            <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+            <XAxis dataKey="date" stroke="#6b7280" style={{ fontSize: '12px' }} />
+            <YAxis yAxisId="left" stroke="#6b7280" style={{ fontSize: '12px' }} />
+            <YAxis yAxisId="right" orientation="right" stroke="#6b7280" style={{ fontSize: '12px' }} />
+            <Tooltip
+              contentStyle={{ backgroundColor: '#fff', border: '1px solid #e5e7eb', borderRadius: '8px' }}
+              labelStyle={{ fontWeight: 'bold', marginBottom: '8px' }}
+            />
+            <Line yAxisId="left" type="monotone" dataKey="leads" stroke="#EB0A1E" strokeWidth={3} dot={{ r: 5 }} />
+            <Line yAxisId="right" type="monotone" dataKey="engagement" stroke="#00A650" strokeWidth={3} dot={{ r: 5 }} />
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
+
+      {/* Channel Performance & Funnel */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* Channel Distribution */}
+        <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
+          <h3 className="text-xl font-bold text-gray-900 mb-4">Distribución de Leads por Canal</h3>
+          <ResponsiveContainer width="100%" height={250}>
+            <PieChart>
+              <Pie
+                data={channelData}
+                cx="50%"
+                cy="50%"
+                labelLine={false}
+                label={(entry) => `${entry.name}: ${entry.value}%`}
+                outerRadius={80}
+                fill="#8884d8"
+                dataKey="value"
+              >
+                {channelData.map((entry, index) => (
+                  <Cell key={`cell-${index}`} fill={entry.color} />
+                ))}
+              </Pie>
+              <Tooltip />
+            </PieChart>
+          </ResponsiveContainer>
+          <div className="mt-4 grid grid-cols-2 gap-3">
+            {channelData.map((channel, idx) => (
+              <div key={idx} className="flex items-center justify-between p-2 bg-gray-50 rounded">
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full" style={{ backgroundColor: channel.color }}></div>
+                  <span className="text-sm font-medium">{channel.name}</span>
+                </div>
+                <span className="text-sm font-bold text-toyota-red">{channel.leads}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Funnel de Conversión */}
+        <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
+          <h3 className="text-xl font-bold text-gray-900 mb-4">Funnel de Conversión</h3>
+          <div className="space-y-3">
+            {funnelData.map((stage, idx) => (
+              <div key={idx}>
+                <div className="flex justify-between items-center mb-1">
+                  <span className="text-sm font-medium text-gray-700">{stage.stage}</span>
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm font-bold text-gray-900">{stage.value.toLocaleString()}</span>
+                    <span className="text-xs text-gray-500">({stage.percentage.toFixed(1)}%)</span>
+                  </div>
+                </div>
+                <div className="w-full h-3 bg-gray-200 rounded-full overflow-hidden">
+                  <div
+                    className={`h-full ${
+                      idx === 0 ? 'bg-blue-500' :
+                      idx === 1 ? 'bg-green-500' :
+                      idx === 2 ? 'bg-yellow-500' :
+                      idx === 3 ? 'bg-orange-500' : 'bg-toyota-red'
+                    }`}
+                    style={{ width: `${stage.percentage}%` }}
+                  ></div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Alertas y A/B Tests */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* Alertas Automáticas */}
+        <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
+          <div className="flex items-center gap-3 mb-4">
+            <AlertCircle className="w-6 h-6 text-toyota-red" />
+            <h3 className="text-xl font-bold text-gray-900">Alertas Automáticas</h3>
+          </div>
+          <div className="space-y-3">
+            {ALERTS.slice(0, 3).map((alert) => (
+              <div key={alert.id} className={`p-4 rounded-lg border-l-4 ${
+                alert.severity === 'high' ? 'bg-red-50 border-red-500' :
+                alert.severity === 'medium' ? 'bg-yellow-50 border-yellow-500' :
+                'bg-blue-50 border-blue-500'
+              }`}>
+                <div className="flex items-start justify-between mb-2">
+                  <h4 className="font-bold text-gray-900 text-sm">{alert.title}</h4>
+                  <span className={`px-2 py-1 rounded text-xs font-bold ${
+                    alert.severity === 'high' ? 'bg-red-200 text-red-800' :
+                    alert.severity === 'medium' ? 'bg-yellow-200 text-yellow-800' :
+                    'bg-blue-200 text-blue-800'
+                  }`}>
+                    {alert.severity.toUpperCase()}
+                  </span>
+                </div>
+                <p className="text-xs text-gray-700 mb-2">{alert.message}</p>
+                <p className="text-xs font-semibold text-toyota-green">
+                  Acción: {alert.action}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* A/B Tests */}
+        <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
+          <div className="flex items-center gap-3 mb-4">
+            <BarChart3 className="w-6 h-6 text-toyota-green" />
+            <h3 className="text-xl font-bold text-gray-900">A/B Tests Activos</h3>
+          </div>
+          <div className="space-y-4">
+            {AB_TESTS.map((test) => (
+              <div key={test.id} className="p-4 bg-gray-50 rounded-lg">
+                <div className="flex items-center justify-between mb-3">
+                  <h4 className="font-bold text-gray-900 text-sm">{test.name}</h4>
+                  <span className={`px-2 py-1 rounded text-xs font-bold ${
+                    test.status === 'completed' ? 'bg-green-100 text-green-700' : 'bg-blue-100 text-blue-700'
+                  }`}>
+                    {test.status === 'completed' ? 'COMPLETADO' : 'EN CURSO'}
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-2 gap-3 mb-3">
+                  <div className="p-2 bg-white rounded">
+                    <p className="text-xs text-gray-500 mb-1">Variante A</p>
+                    <p className="text-xs font-semibold">{test.variant_a.name}</p>
+                    <p className="text-lg font-bold text-toyota-red">{test.variant_a.ctr || test.variant_a.view_rate}%</p>
+                  </div>
+                  <div className="p-2 bg-white rounded">
+                    <p className="text-xs text-gray-500 mb-1">Variante B</p>
+                    <p className="text-xs font-semibold">{test.variant_b.name}</p>
+                    <p className="text-lg font-bold text-gray-900">{test.variant_b.ctr || test.variant_b.view_rate}%</p>
+                  </div>
+                </div>
+
+                {test.recommendation && (
+                  <p className="text-xs font-semibold text-toyota-green bg-green-50 p-2 rounded">
+                    ✓ {test.recommendation}
+                  </p>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Competitor Analysis */}
+      <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
+        <h3 className="text-xl font-bold text-gray-900 mb-4">Análisis de Competencia</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {COMPETITOR_INSIGHTS.filter(c => c.brand !== 'Toyota RAV4').map((comp, idx) => (
+            <div key={idx} className="p-4 border-2 border-gray-200 rounded-lg hover:border-toyota-red transition-colors">
+              <div className="flex items-center justify-between mb-3">
+                <h4 className="font-bold text-gray-900">{comp.brand}</h4>
+                <span className={`px-2 py-1 rounded text-xs font-bold ${
+                  comp.threat_level === 'high' ? 'bg-red-100 text-red-700' : 'bg-yellow-100 text-yellow-700'
+                }`}>
+                  {comp.threat_level === 'high' ? 'Alta amenaza' : 'Media amenaza'}
                 </span>
               </div>
-            </div>
-            <p className="text-xs text-gray-500 mt-2">vs {signalScore.previous} período anterior</p>
-          </div>
 
-          <div className="p-6 bg-gray-50 rounded-xl">
-            <p className="text-sm text-gray-600 mb-4">Componentes del Score</p>
-            <div className="space-y-3">
-              {signalScore.components.map((comp, idx) => (
-                <div key={idx} className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <span className="text-sm font-medium text-gray-700">{comp.name}</span>
-                    <span className="text-xs text-gray-500">({(comp.weight * 100).toFixed(0)}%)</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="font-bold text-gray-900">{comp.score}{comp.format || ''}</span>
-                    <span className={`text-xs ${
-                      comp.trend === 'up' ? 'text-green-600' : 'text-gray-400'
-                    }`}>
-                      {comp.trend === 'up' ? '↑' : '→'}
+              <div className="grid grid-cols-2 gap-3 mb-3">
+                <div>
+                  <p className="text-xs text-gray-500">Share of Voice</p>
+                  <p className="text-xl font-bold text-gray-900">{comp.share_of_voice}%</p>
+                </div>
+                <div>
+                  <p className="text-xs text-gray-500">Sentimiento</p>
+                  <p className="text-xl font-bold text-toyota-green">{comp.sentiment}%</p>
+                </div>
+              </div>
+
+              <div>
+                <p className="text-xs text-gray-500 mb-1">Temas Trending</p>
+                <div className="flex flex-wrap gap-1">
+                  {comp.trending_topics.map((topic, idx) => (
+                    <span key={idx} className="px-2 py-1 bg-gray-100 rounded text-xs">
+                      {topic}
                     </span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Performance Chart */}
-        <div className="mt-6">
-          <p className="text-sm font-semibold text-gray-700 mb-4">Performance Últimos 7 Días</p>
-          <ResponsiveContainer width="100%" height={250}>
-            <LineChart data={performanceData}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-              <XAxis dataKey="date" stroke="#9ca3af" />
-              <YAxis stroke="#9ca3af" />
-              <Tooltip 
-                contentStyle={{ backgroundColor: '#fff', border: '1px solid #e5e7eb', borderRadius: '8px' }}
-              />
-              <Line 
-                type="monotone" 
-                dataKey="roas" 
-                stroke="#3b82f6" 
-                strokeWidth={3}
-                dot={{ fill: '#3b82f6', r: 5 }}
-              />
-            </LineChart>
-          </ResponsiveContainer>
-        </div>
-      </div>
-
-      {/* ROI Calculation Explanation */}
-      <div className="bg-gradient-to-br from-blue-500 to-purple-600 text-white rounded-2xl shadow-lg p-6">
-        <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-          <Award className="w-6 h-6" />
-          Cálculo de ROI - Inversión en USD, Revenue en PEN
-        </h3>
-
-        <div className="bg-white/10 backdrop-blur-sm rounded-xl p-5 mb-4">
-          <p className="text-white/90 text-sm mb-3">
-            📊 <strong>Fórmula:</strong> ROI = (Revenue en S/ ÷ {PEN_TO_USD}) ÷ Inversión en $
-          </p>
-          <p className="text-white/80 text-xs mb-3">
-            Se expresa como multiplicador (ej: 2.7x significa que por cada $1 invertido, obtienes $2.7 de retorno)
-          </p>
-
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4">
-            <div className="bg-white/10 rounded-lg p-3">
-              <p className="text-white/70 text-xs mb-1">Inversión</p>
-              <p className="text-xl sm:text-2xl font-bold">$ {exampleInvestmentUSD.toLocaleString()}</p>
-            </div>
-            <div className="bg-white/10 rounded-lg p-3">
-              <p className="text-white/70 text-xs mb-1">Revenue</p>
-              <p className="text-xl sm:text-2xl font-bold">S/ {exampleRevenuePEN.toLocaleString()}</p>
-            </div>
-            <div className="bg-white/10 rounded-lg p-3">
-              <p className="text-white/70 text-xs mb-1">ROI</p>
-              <p className="text-xl sm:text-2xl font-bold text-green-300">{calculatedROI.toFixed(1)}x</p>
-            </div>
-          </div>
-
-          <div className="mt-4 pt-4 border-t border-white/20">
-            <p className="text-white/80 text-xs">
-              💱 Tasa de conversión: S/ {PEN_TO_USD} = $ 1.00 USD
-            </p>
-            <p className="text-white/80 text-xs mt-1">
-              💰 Revenue en USD: $ {(exampleRevenuePEN / PEN_TO_USD).toLocaleString('en-US', { maximumFractionDigits: 0 })}
-            </p>
-            <p className="text-white/80 text-xs mt-1">
-              ✅ Ganancia neta: $ {((exampleRevenuePEN / PEN_TO_USD) - exampleInvestmentUSD).toLocaleString('en-US', { maximumFractionDigits: 0 })}
-            </p>
-          </div>
-        </div>
-
-        <p className="text-white/80 text-sm">
-          Este cálculo asegura que comparamos manzanas con manzanas: convertimos los ingresos en soles a dólares
-          antes de calcular el ROI, permitiendo una evaluación precisa del retorno de inversión.
-        </p>
-      </div>
-
-      {/* Budget Reallocation */}
-      <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
-        <div className="flex items-center gap-3 mb-6">
-          <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center">
-            <RefreshCw className="w-6 h-6 text-white" />
-          </div>
-          <div>
-            <h3 className="text-xl font-bold text-gray-900">Redistribución de Inversión</h3>
-            <p className="text-sm text-gray-600">Movimientos automáticos basados en performance</p>
-          </div>
-        </div>
-
-        <div className="space-y-4">
-          {budgetReallocation.map((move, idx) => (
-            <div key={idx} className="p-5 bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl border border-purple-200">
-              <div className="flex items-center justify-between mb-3">
-                <div className="flex-1">
-                  <div className="flex items-center gap-4 mb-2">
-                    <span className="text-sm text-gray-600 font-medium">{move.from}</span>
-                    <span className="text-purple-600 font-bold">→</span>
-                    <span className="text-sm text-purple-700 font-bold">{move.to}</span>
-                  </div>
-                  <p className="text-xs text-gray-600">{move.reason}</p>
-                </div>
-                <div className="text-right">
-                  <p className="text-2xl font-bold text-purple-600">$ {move.amount}</p>
-                  <p className="text-xs text-gray-500">redistribuido</p>
-                </div>
-              </div>
-              <div className="pt-3 border-t border-purple-200">
-                <p className="text-sm text-green-700 font-semibold">📊 {move.impact}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Learnings & Insights */}
-      <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
-        <div className="flex items-center gap-3 mb-6">
-          <div className="w-12 h-12 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-xl flex items-center justify-center">
-            <Award className="w-6 h-6 text-white" />
-          </div>
-          <div>
-            <h3 className="text-xl font-bold text-gray-900">Aprendizajes Clave</h3>
-            <p className="text-sm text-gray-600">Insights automáticos para optimización futura</p>
-          </div>
-        </div>
-
-        <div className="space-y-4">
-          {learnings.map((learning, idx) => (
-            <div key={idx} className="p-5 bg-gradient-to-r from-yellow-50 to-orange-50 rounded-xl border border-yellow-200">
-              <div className="flex items-start justify-between mb-3">
-                <div className="flex-1">
-                  <span className="px-2 py-1 bg-yellow-200 text-yellow-800 rounded-full text-xs font-bold">
-                    {learning.category}
-                  </span>
-                  <h4 className="font-bold text-gray-900 mt-2 mb-1">{learning.insight}</h4>
-                  <p className="text-sm text-orange-700 font-medium">→ {learning.action}</p>
-                </div>
-                <div className="ml-4">
-                  <div className="w-16 h-16 bg-gradient-to-br from-yellow-100 to-orange-100 rounded-full flex items-center justify-center border-4 border-white">
-                    <span className="text-lg font-bold text-orange-600">{learning.confidence}</span>
-                  </div>
-                  <p className="text-xs text-center text-gray-500 mt-1">confianza</p>
+                  ))}
                 </div>
               </div>
             </div>
           ))}
         </div>
-      </div>
 
-      {/* Optimization Summary */}
-      <div className="bg-gradient-to-br from-green-500 to-green-600 text-white rounded-2xl shadow-lg p-8">
-        <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
-          <TrendingUp className="w-8 h-8" />
-          Impacto de la Optimización
-        </h3>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
-            <p className="text-white/80 text-sm mb-2">Mejora en ROAS</p>
-            <p className="text-3xl sm:text-4xl font-bold">+32%</p>
-            <p className="text-green-200 text-sm mt-2">vs período inicial</p>
+        {/* Toyota Comparison */}
+        <div className="mt-4 p-5 bg-gradient-to-br from-toyota-red to-toyota-darkRed text-white rounded-xl">
+          <div className="flex items-center justify-between">
+            <div>
+              <h4 className="font-bold text-lg mb-1">Toyota RAV4</h4>
+              <div className="flex gap-6">
+                <div>
+                  <p className="text-xs text-white/70">Share of Voice</p>
+                  <p className="text-2xl font-bold">17%</p>
+                </div>
+                <div>
+                  <p className="text-xs text-white/70">Sentimiento</p>
+                  <p className="text-2xl font-bold">85%</p>
+                </div>
+              </div>
+            </div>
+            <div className="text-right">
+              <span className="px-3 py-2 bg-white/20 rounded-lg text-sm font-bold">
+                🏆 Líder en Sentimiento
+              </span>
+            </div>
           </div>
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
-            <p className="text-white/80 text-sm mb-2">Ahorro en CPA</p>
-            <p className="text-3xl sm:text-4xl font-bold">-18%</p>
-            <p className="text-green-200 text-sm mt-2">$ 2.8K ahorrados</p>
-          </div>
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
-            <p className="text-white/80 text-sm mb-2">Conversiones Extra</p>
-            <p className="text-3xl sm:text-4xl font-bold">+245</p>
-            <p className="text-green-200 text-sm mt-2">por optimización</p>
-          </div>
-        </div>
-
-        <div className="mt-8 p-4 bg-white/10 backdrop-blur-sm rounded-xl">
-          <p className="text-sm text-white/80">
-            🎯 <span className="font-semibold">Próxima optimización automática</span> en 45 minutos
-          </p>
         </div>
       </div>
     </div>

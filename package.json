@@ -1,8 +1,8 @@
 {
-  "name": "aruma-algorithm-mvp",
+  "name": "toyota-algorithm",
   "version": "1.0.0",
   "type": "module",
-  "description": "Aruma Algorithm - Data-driven beauty marketing platform",
+  "description": "Toyota Algorithm - Social Intelligence para RAV4 Híbrida en Perú",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

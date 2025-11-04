@@ -1,84 +1,22 @@
-import { Zap, PlayCircle, DollarSign, Activity } from 'lucide-react';
+import { DollarSign, TrendingUp, Target, Zap, Calendar, PlayCircle, AlertTriangle } from 'lucide-react';
+import { BUDGET_ALLOCATION, CONTENT_PILLARS } from '../data/mockData';
+import { LAYER_CONFIG, CHANNELS_CONFIG } from '../data/config';
 
 export default function ExecutionLayer() {
-  const campaigns = [
-    {
-      name: 'Skincare Search - Alto ROI',
-      status: 'running',
-      platform: 'Google Ads',
-      budget: 6500,
-      spent: 6200,
-      impressions: 128000,
-      clicks: 7680,
-      conversions: 485,
-      roas: 3.8,
-      ctr: 6.0,
-      cpc: 0.81
-    },
-    {
-      name: 'TikTok - Video Dermo',
-      status: 'running',
-      platform: 'TikTok Ads',
-      budget: 4800,
-      spent: 4500,
-      impressions: 185000,
-      clicks: 6660,
-      conversions: 245,
-      roas: 2.9,
-      ctr: 3.6,
-      cpc: 0.68
-    },
-    {
-      name: 'Performance Max - Skincare',
-      status: 'running',
-      platform: 'Google PMax',
-      budget: 4500,
-      spent: 4350,
-      impressions: 95000,
-      clicks: 4275,
-      conversions: 235,
-      roas: 3.2,
-      ctr: 4.5,
-      cpc: 1.02
-    },
-    {
-      name: 'Display Banner - Genérico',
-      status: 'paused',
-      platform: 'Display Network',
-      budget: 950,
-      spent: 890,
-      impressions: 152000,
-      clicks: 456,
-      conversions: 8,
-      roas: 0.1,
-      ctr: 0.3,
-      cpc: 1.95
-    }
-  ];
+  // Calcular status color
+  const getStatusColor = (status) => {
+    if (status === 'overperforming') return { bg: 'bg-green-50', border: 'border-green-200', text: 'text-green-700', badge: 'bg-green-100' };
+    if (status === 'performing') return { bg: 'bg-blue-50', border: 'border-blue-200', text: 'text-blue-700', badge: 'bg-blue-100' };
+    if (status === 'ontrack') return { bg: 'bg-yellow-50', border: 'border-yellow-200', text: 'text-yellow-700', badge: 'bg-yellow-100' };
+    return { bg: 'bg-red-50', border: 'border-red-200', text: 'text-red-700', badge: 'bg-red-100' };
+  };
 
-  const autoRules = [
-    {
-      rule: 'Si ROAS > 2.5',
-      action: 'Incrementar presupuesto +15%',
-      status: 'active',
-      triggered: 12,
-      lastTrigger: '2h ago'
-    },
-    {
-      rule: 'Si CPM sube +30%',
-      action: 'Reducir inversión -10%',
-      status: 'active',
-      triggered: 3,
-      lastTrigger: '1d ago'
-    },
-    {
-      rule: 'Si CTR < 1.5%',
-      action: 'Pausar grupo de anuncios',
-      status: 'active',
-      triggered: 5,
-      lastTrigger: '8h ago'
-    }
-  ];
+  const getStatusIcon = (status) => {
+    if (status === 'overperforming') return '🚀';
+    if (status === 'performing') return '✓';
+    if (status === 'ontrack') return '→';
+    return '⚠';
+  };
 
   return (
     <div className="space-y-8">
@@ -87,181 +25,296 @@ export default function ExecutionLayer() {
         <div className="flex items-start justify-between">
           <div>
             <h2 className="text-2xl font-bold text-gray-900 mb-2">
-              Capa de Ejecución - Implementación en Tiempo Real
+              {LAYER_CONFIG.execution.name}
             </h2>
             <p className="text-gray-600">
-              Ajuste dinámico de campañas según intención y contexto de las usuarias
+              {LAYER_CONFIG.execution.subtitle}
             </p>
           </div>
-          <div className="flex items-center gap-2">
-            <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-            <span className="text-sm font-medium text-green-600">En vivo</span>
+          <div className="flex gap-2">
+            <span className="px-3 py-1 bg-toyota-green text-white rounded-full text-sm font-medium flex items-center gap-1">
+              <PlayCircle className="w-4 h-4" />
+              Live
+            </span>
           </div>
         </div>
       </div>
 
-      {/* Campañas Activas */}
-      <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
-        <div className="flex items-center justify-between mb-6">
-          <div className="flex items-center gap-3">
-            <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center">
-              <PlayCircle className="w-6 h-6 text-white" />
+      {/* Budget Overview */}
+      <div className="bg-gradient-to-br from-toyota-red to-toyota-darkRed text-white rounded-2xl shadow-toyota-lg p-8">
+        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 mb-8">
+          <div className="flex items-center gap-4">
+            <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center">
+              <DollarSign className="w-10 h-10" />
             </div>
             <div>
-              <h3 className="text-xl font-bold text-gray-900">Campañas en Ejecución</h3>
-              <p className="text-sm text-gray-600">{campaigns.length} campañas activas multi-plataforma</p>
+              <h3 className="text-3xl font-bold">Presupuesto Mensual</h3>
+              <p className="text-white/90 mt-1">Distribución inteligente por canal</p>
             </div>
           </div>
-          <div className="flex gap-2">
-            <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-medium">
-              💰 Inversión: USD
+
+          <div className="text-center lg:text-right">
+            <div className="flex items-baseline gap-2">
+              <span className="text-2xl text-white/80">USD</span>
+              <span className="text-6xl font-bold">${(BUDGET_ALLOCATION.total_budget / 1000).toFixed(0)}K</span>
+            </div>
+            <p className="text-white/80 mt-2">Total presupuesto mensual</p>
+          </div>
+        </div>
+
+        {/* Budget Progress */}
+        <div className="bg-white/10 backdrop-blur-sm rounded-xl p-5">
+          <div className="flex justify-between items-center mb-3">
+            <span className="text-sm font-medium">Ejecución del mes</span>
+            <span className="text-2xl font-bold">
+              ${(Object.values(BUDGET_ALLOCATION.distribution).reduce((sum, ch) => sum + ch.amount, 0)).toLocaleString()}
             </span>
-            <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">
-              💵 Revenue: PEN
-            </span>
+          </div>
+          <div className="w-full h-3 bg-white/20 rounded-full overflow-hidden">
+            <div className="h-full bg-white rounded-full" style={{ width: '100%' }}></div>
+          </div>
+          <p className="text-xs text-white/70 mt-2">100% del presupuesto asignado</p>
+        </div>
+      </div>
+
+      {/* Budget Allocation by Channel */}
+      <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
+        <div className="flex items-center gap-3 mb-6">
+          <div className="w-12 h-12 bg-gradient-to-br from-toyota-green to-success rounded-xl flex items-center justify-center">
+            <Target className="w-6 h-6 text-white" />
+          </div>
+          <div>
+            <h3 className="text-xl font-bold text-gray-900">Distribución por Canal</h3>
+            <p className="text-sm text-gray-600">Performance y asignación actual</p>
+          </div>
+        </div>
+
+        <div className="grid gap-4">
+          {Object.entries(BUDGET_ALLOCATION.distribution).map(([key, channel]) => {
+            const colors = getStatusColor(channel.status);
+            return (
+              <div key={key} className={`p-5 rounded-xl border-2 ${colors.bg} ${colors.border}`}>
+                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-3 mb-2">
+                      <h4 className="font-bold text-gray-900 text-lg">
+                        {key === 'google_search' ? 'Google Search' :
+                         key === 'social_media' ? 'Meta Ads (FB + IG)' :
+                         key === 'youtube' ? 'YouTube Ads' :
+                         key === 'display' ? 'Display Network' : 'TikTok Ads'}
+                      </h4>
+                      <span className={`px-3 py-1 rounded-full text-xs font-bold ${colors.badge} ${colors.text}`}>
+                        {getStatusIcon(channel.status)} {channel.status.toUpperCase()}
+                      </span>
+                    </div>
+                    <p className="text-sm text-gray-600 mb-3">
+                      <strong>KPI Principal:</strong> {channel.kpi}
+                    </p>
+                    <div className="grid grid-cols-2 gap-3 text-sm">
+                      <div>
+                        <p className="text-gray-500">Target</p>
+                        <p className="font-semibold text-gray-900">{channel.target}</p>
+                      </div>
+                      <div>
+                        <p className="text-gray-500">Performance Actual</p>
+                        <p className={`font-semibold ${colors.text}`}>{channel.current_performance}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="text-center lg:text-right lg:min-w-[200px]">
+                    <div className="mb-2">
+                      <span className="text-4xl font-bold text-gray-900">{channel.percentage}%</span>
+                    </div>
+                    <div className="text-2xl font-bold text-toyota-red mb-1">
+                      ${channel.amount.toLocaleString()}
+                    </div>
+                    <p className="text-xs text-gray-500">del presupuesto total</p>
+                  </div>
+                </div>
+
+                {/* Progress bar */}
+                <div className="mt-4">
+                  <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+                    <div
+                      className={`h-full ${
+                        channel.status === 'overperforming' ? 'bg-green-500' :
+                        channel.status === 'performing' ? 'bg-blue-500' :
+                        channel.status === 'ontrack' ? 'bg-yellow-500' : 'bg-red-500'
+                      }`}
+                      style={{ width: `${channel.percentage}%` }}
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Recomendaciones de Redistribución */}
+      <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
+        <div className="flex items-center gap-3 mb-6">
+          <div className="w-12 h-12 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-xl flex items-center justify-center">
+            <AlertTriangle className="w-6 h-6 text-white" />
+          </div>
+          <div>
+            <h3 className="text-xl font-bold text-gray-900">Recomendaciones de Optimización</h3>
+            <p className="text-sm text-gray-600">Ajustes sugeridos basados en performance</p>
           </div>
         </div>
 
         <div className="space-y-4">
-          {campaigns.map((camp, idx) => (
-            <div key={idx} className={`border-2 rounded-xl p-5 transition ${
-              camp.status === 'paused'
-                ? 'border-red-300 bg-red-50 hover:border-red-400'
-                : 'border-gray-200 hover:border-green-300'
+          {BUDGET_ALLOCATION.recommendations.map((rec, idx) => (
+            <div key={idx} className={`p-5 rounded-xl border-2 ${
+              rec.type === 'increase' ? 'bg-green-50 border-green-200' :
+              rec.type === 'decrease' ? 'bg-red-50 border-red-200' :
+              'bg-blue-50 border-blue-200'
             }`}>
-              <div className="flex items-start justify-between mb-4">
-                <div>
-                  <div className="flex items-center gap-3 mb-2">
-                    <h4 className="font-bold text-gray-900 text-lg">{camp.name}</h4>
-                    <span className={`px-2 py-1 rounded-full text-xs font-bold ${
-                      camp.status === 'paused'
-                        ? 'bg-red-200 text-red-800'
-                        : 'bg-green-100 text-green-700'
-                    }`}>
-                      {camp.status.toUpperCase()}
-                    </span>
-                  </div>
-                  <p className="text-sm text-gray-500">{camp.platform}</p>
-                </div>
-
-                <div className="text-right">
-                  <p className="text-xs text-gray-500">ROAS</p>
-                  <p className={`text-3xl font-bold ${
-                    camp.roas < 1 ? 'text-red-600' : 'text-green-600'
-                  }`}>{camp.roas}x</p>
-                </div>
-              </div>
-
-              {/* Budget Bar */}
-              <div className="mb-4">
-                <div className="flex justify-between text-xs text-gray-600 mb-1">
-                  <span>Presupuesto gastado</span>
-                  <span className="font-semibold">
-                    $ {camp.spent.toLocaleString()} / $ {camp.budget.toLocaleString()}
+              <div className="flex items-start justify-between mb-3">
+                <div className="flex items-center gap-3">
+                  <span className={`px-3 py-1 rounded-full text-xs font-bold ${
+                    rec.type === 'increase' ? 'bg-green-200 text-green-800' :
+                    rec.type === 'decrease' ? 'bg-red-200 text-red-800' :
+                    'bg-blue-200 text-blue-800'
+                  }`}>
+                    {rec.type === 'increase' ? '↑ AUMENTAR' :
+                     rec.type === 'decrease' ? '↓ REDUCIR' : '→ MANTENER'}
+                  </span>
+                  <span className="text-sm font-semibold text-gray-900 uppercase">
+                    {rec.channel === 'google_search' ? 'Google Search' :
+                     rec.channel === 'social_media' ? 'Meta Ads' :
+                     rec.channel === 'youtube' ? 'YouTube' : rec.channel}
                   </span>
                 </div>
-                <div className="w-full bg-gray-200 rounded-full h-3">
-                  <div 
-                    className="bg-gradient-to-r from-green-500 to-green-600 h-3 rounded-full transition-all"
-                    style={{ width: `${(camp.spent / camp.budget) * 100}%` }}
-                  ></div>
-                </div>
+                {rec.from && rec.to && (
+                  <div className="text-right">
+                    <span className="text-xs text-gray-500">Cambio</span>
+                    <p className="font-bold text-toyota-red">{rec.from}% → {rec.to}%</p>
+                  </div>
+                )}
               </div>
 
-              {/* Métricas */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 pt-4 border-t border-gray-200">
-                <div>
-                  <p className="text-xs text-gray-500">Impresiones</p>
-                  <p className="font-bold text-gray-900 text-sm sm:text-base">{(camp.impressions / 1000).toFixed(0)}K</p>
-                </div>
-                <div>
-                  <p className="text-xs text-gray-500">Clicks</p>
-                  <p className="font-bold text-gray-900 text-sm sm:text-base">{camp.clicks.toLocaleString()}</p>
-                </div>
-                <div>
-                  <p className="text-xs text-gray-500">CTR</p>
-                  <p className="font-bold text-blue-600 text-sm sm:text-base">{camp.ctr}%</p>
-                </div>
-                <div>
-                  <p className="text-xs text-gray-500">CPC</p>
-                  <p className="font-bold text-gray-900 text-sm sm:text-base">$ {camp.cpc}</p>
-                </div>
-                <div>
-                  <p className="text-xs text-gray-500">Conversiones</p>
-                  <p className="font-bold text-green-600 text-sm sm:text-base">{camp.conversions}</p>
-                </div>
-              </div>
+              <p className="text-gray-900 font-medium mb-2">{rec.reason}</p>
+              {rec.impact && (
+                <p className="text-sm text-green-700 font-semibold flex items-center gap-1">
+                  <TrendingUp className="w-4 h-4" />
+                  Impacto: {rec.impact}
+                </p>
+              )}
             </div>
           ))}
         </div>
       </div>
 
-      {/* Reglas Automáticas */}
+      {/* Content Pillars */}
       <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center">
+          <div className="w-12 h-12 bg-gradient-to-br from-toyota-gray to-toyota-black rounded-xl flex items-center justify-center">
             <Zap className="w-6 h-6 text-white" />
           </div>
           <div>
-            <h3 className="text-xl font-bold text-gray-900">Reglas Automáticas</h3>
-            <p className="text-sm text-gray-600">Optimización continua sin intervención manual</p>
+            <h3 className="text-xl font-bold text-gray-900">Pilares de Contenido RAV4</h3>
+            <p className="text-sm text-gray-600">Performance y distribución recomendada</p>
           </div>
         </div>
 
-        <div className="space-y-3">
-          {autoRules.map((rule, idx) => (
-            <div key={idx} className="p-4 bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl border border-purple-200">
-              <div className="flex items-center justify-between mb-2">
-                <div className="flex items-center gap-3">
-                  <Activity className="w-5 h-5 text-purple-600" />
-                  <p className="font-semibold text-gray-900">{rule.rule}</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {CONTENT_PILLARS.map((pillar, idx) => {
+            const colors = getStatusColor(pillar.status);
+            return (
+              <div key={pillar.id} className={`p-5 rounded-xl border-2 ${colors.bg} ${colors.border}`}>
+                <div className="flex items-center justify-between mb-3">
+                  <h4 className="font-bold text-gray-900 text-lg">{pillar.title}</h4>
+                  <span className={`px-3 py-1 rounded-full text-xs font-bold ${colors.badge} ${colors.text}`}>
+                    {getStatusIcon(pillar.status)}
+                  </span>
                 </div>
-                <span className="px-2 py-1 bg-green-100 text-green-700 rounded-full text-xs font-bold">
-                  ACTIVA
-                </span>
+
+                <p className="text-sm text-gray-600 mb-4">{pillar.description}</p>
+
+                <div className="space-y-3 mb-4">
+                  <div className="flex justify-between text-sm">
+                    <span className="text-gray-500">Engagement Rate</span>
+                    <span className="font-semibold text-gray-900">{pillar.performance.engagement_rate}%</span>
+                  </div>
+                  <div className="flex justify-between text-sm">
+                    <span className="text-gray-500">Alcance</span>
+                    <span className="font-semibold text-gray-900">{(pillar.performance.reach / 1000).toFixed(0)}K</span>
+                  </div>
+                  <div className="flex justify-between text-sm">
+                    <span className="text-gray-500">Conversiones</span>
+                    <span className="font-semibold text-toyota-green">{pillar.performance.conversions}</span>
+                  </div>
+                </div>
+
+                <div className="pt-3 border-t border-gray-300">
+                  <div className="flex justify-between items-center">
+                    <span className="text-xs text-gray-500">Budget Recomendado</span>
+                    <span className="text-xl font-bold text-toyota-red">{(pillar.recommended_budget * 100).toFixed(0)}%</span>
+                  </div>
+                </div>
+
+                <div className="mt-3">
+                  <p className="text-xs text-gray-500 mb-1">Formatos:</p>
+                  <div className="flex flex-wrap gap-1">
+                    {pillar.formats.map((format, idx) => (
+                      <span key={idx} className="px-2 py-1 bg-white rounded text-xs font-medium text-gray-700">
+                        {format}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               </div>
-              
-              <p className="text-sm text-purple-700 font-medium ml-8">→ {rule.action}</p>
-              
-              <div className="flex gap-4 mt-3 ml-8 text-xs text-gray-600">
-                <span>Ejecutada: {rule.triggered}x</span>
-                <span>Última vez: {rule.lastTrigger}</span>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 
-      {/* Real-Time Stats */}
-      <div className="bg-gradient-to-br from-green-500 to-green-600 text-white rounded-2xl shadow-lg p-8">
-        <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
-          <DollarSign className="w-8 h-8" />
-          Performance en Tiempo Real
-        </h3>
+      {/* Timing Recommendations */}
+      <div className="bg-gradient-to-br from-toyota-green to-success text-white rounded-2xl shadow-lg p-8">
+        <div className="flex items-center gap-3 mb-6">
+          <Calendar className="w-8 h-8" />
+          <h3 className="text-2xl font-bold">Timing Óptimo de Pauta</h3>
+        </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="bg-white/10 backdrop-blur-sm rounded-xl p-5">
-            <p className="text-white/80 text-sm mb-1">Inversión Total Hoy 💰</p>
-            <p className="text-3xl sm:text-4xl font-bold">$ 12K</p>
-            <p className="text-green-200 text-sm mt-2">+12% vs ayer</p>
-            <p className="text-white/60 text-xs mt-1">USD</p>
+            <h4 className="font-bold text-lg mb-3">Mejores horarios del día</h4>
+            <div className="space-y-2">
+              <div className="flex justify-between items-center">
+                <span className="text-white/90">7:00 - 9:00 AM</span>
+                <span className="px-2 py-1 bg-white/20 rounded text-sm font-bold">+20%</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-white/90">6:00 - 9:00 PM</span>
+                <span className="px-2 py-1 bg-white/20 rounded text-sm font-bold">+30%</span>
+              </div>
+            </div>
           </div>
+
           <div className="bg-white/10 backdrop-blur-sm rounded-xl p-5">
-            <p className="text-white/80 text-sm mb-1">Conversiones</p>
-            <p className="text-3xl sm:text-4xl font-bold">968</p>
-            <p className="text-green-200 text-sm mt-2">+18% vs ayer</p>
+            <h4 className="font-bold text-lg mb-3">Mejores días de la semana</h4>
+            <div className="space-y-2">
+              <div className="flex justify-between items-center">
+                <span className="text-white/90">Lunes</span>
+                <span className="px-2 py-1 bg-green-500 rounded text-sm font-bold">Alta</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-white/90">Miércoles</span>
+                <span className="px-2 py-1 bg-green-500 rounded text-sm font-bold">Alta</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-white/90">Jueves</span>
+                <span className="px-2 py-1 bg-green-500 rounded text-sm font-bold">Alta</span>
+              </div>
+            </div>
           </div>
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-5">
-            <p className="text-white/80 text-sm mb-1">ROAS Promedio</p>
-            <p className="text-3xl sm:text-4xl font-bold">2.7x</p>
-            <p className="text-green-200 text-sm mt-2">+0.2 vs objetivo</p>
-          </div>
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-5">
-            <p className="text-white/80 text-sm mb-1">Revenue 💵</p>
-            <p className="text-3xl sm:text-4xl font-bold">S/ 113K</p>
-            <p className="text-green-200 text-sm mt-2">+22% vs ayer</p>
-            <p className="text-white/60 text-xs mt-1">PEN</p>
-          </div>
+        </div>
+
+        <div className="mt-6 p-4 bg-white/20 backdrop-blur-sm rounded-xl">
+          <p className="text-sm font-semibold mb-2">💡 Eventos clave:</p>
+          <p className="text-sm">Fines de semana largos, Temporada de bonos (Jul-Dic), Fiestas Patrias</p>
         </div>
       </div>
     </div>

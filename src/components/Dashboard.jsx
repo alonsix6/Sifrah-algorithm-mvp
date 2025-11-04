@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
-import { TrendingUp, Search, Target, Heart, Zap, BarChart3, Calendar } from 'lucide-react';
+import { TrendingUp, Search, Target, Heart, Zap, BarChart3, Calendar, Car } from 'lucide-react';
 import DataLayer from './DataLayer';
 import DecisionLayer from './DecisionLayer';
 import ExecutionLayer from './ExecutionLayer';
 import OptimizationLayer from './OptimizationLayer';
+import { BRAND_CONFIG, LAYER_CONFIG, UI_TEXT } from '../data/config';
 
 export default function Dashboard() {
   const [activeLayer, setActiveLayer] = useState('data');
@@ -22,43 +23,50 @@ export default function Dashboard() {
     return () => clearInterval(interval);
   }, []);
 
+  const iconMap = {
+    Search,
+    Target,
+    Zap,
+    TrendingUp,
+  };
+
   const layers = [
     {
       id: 'data',
-      name: 'Capa de Data',
-      icon: Search,
-      description: 'Búsqueda, Tendencia, Intención, Emoción',
-      color: 'from-aruma-pink to-aruma-magenta'
+      name: LAYER_CONFIG.data.name,
+      icon: iconMap[LAYER_CONFIG.data.icon],
+      description: LAYER_CONFIG.data.description,
+      color: LAYER_CONFIG.data.color
     },
     {
       id: 'decision',
-      name: 'Capa de Decisión',
-      icon: Target,
-      description: 'Análisis y definición de estrategia',
-      color: 'from-aruma-magenta to-aruma-purple'
+      name: LAYER_CONFIG.decision.name,
+      icon: iconMap[LAYER_CONFIG.decision.icon],
+      description: LAYER_CONFIG.decision.description,
+      color: LAYER_CONFIG.decision.color
     },
     {
       id: 'execution',
-      name: 'Capa de Ejecución',
-      icon: Zap,
-      description: 'Implementación en tiempo real',
-      color: 'from-aruma-purple to-aruma-blue'
+      name: LAYER_CONFIG.execution.name,
+      icon: iconMap[LAYER_CONFIG.execution.icon],
+      description: LAYER_CONFIG.execution.description,
+      color: LAYER_CONFIG.execution.color
     },
     {
       id: 'optimization',
-      name: 'Capa de Optimización',
-      icon: TrendingUp,
-      description: 'Evaluación y redistribución',
-      color: 'from-aruma-blue to-aruma-magenta'
+      name: LAYER_CONFIG.optimization.name,
+      icon: iconMap[LAYER_CONFIG.optimization.icon],
+      description: LAYER_CONFIG.optimization.description,
+      color: LAYER_CONFIG.optimization.color
     }
   ];
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-aruma flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-toyota flex items-center justify-center">
         <div className="text-center">
           <div className="w-16 h-16 border-4 border-white border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-white text-lg font-medium">Cargando Aruma Algorithm...</p>
+          <p className="text-white text-lg font-medium">{UI_TEXT.loading}</p>
         </div>
       </div>
     );
@@ -67,17 +75,17 @@ export default function Dashboard() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
       {/* Header */}
-      <header className="bg-gradient-aruma text-white shadow-aruma-lg">
+      <header className="bg-gradient-toyota text-white shadow-toyota-lg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div className="flex items-center gap-3 sm:gap-4">
               <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
-                <BarChart3 className="w-7 h-7 sm:w-8 sm:h-8 text-aruma-pink" />
+                <Car className="w-7 h-7 sm:w-8 sm:h-8 text-toyota-red" />
               </div>
               <div className="min-w-0">
-                <h1 className="text-2xl sm:text-3xl font-bold truncate">Aruma Algorithm</h1>
+                <h1 className="text-2xl sm:text-3xl font-bold truncate">{BRAND_CONFIG.name}</h1>
                 <p className="text-white/90 text-xs sm:text-sm mt-1">
-                  Data-driven beauty marketing intelligence
+                  {BRAND_CONFIG.tagline}
                 </p>
               </div>
             </div>
@@ -86,7 +94,7 @@ export default function Dashboard() {
               <div className="text-right">
                 <p className="text-xs text-white/70 flex items-center justify-end gap-1.5">
                   <Calendar className="w-3.5 h-3.5" />
-                  <span className="hidden sm:inline">Última actualización</span>
+                  <span className="hidden sm:inline">{UI_TEXT.lastUpdate}</span>
                   <span className="sm:hidden">Actualizado</span>
                 </p>
                 <p className="text-xs sm:text-sm font-medium whitespace-nowrap">
@@ -99,7 +107,7 @@ export default function Dashboard() {
                 </p>
               </div>
               <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm flex-shrink-0 hover:bg-white/30 transition-colors">
-                <Heart className="w-5 h-5 text-white" fill="currentColor" />
+                <Zap className="w-5 h-5 text-white" fill="currentColor" />
               </div>
             </div>
           </div>
@@ -155,14 +163,14 @@ export default function Dashboard() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-gray-600">
             <p className="text-xs sm:text-sm text-center sm:text-left">
-              © 2025 Aruma Algorithm MVP - Powered by Reset
+              {UI_TEXT.footer.copyright}
             </p>
             <div className="flex items-center gap-3 sm:gap-4">
               <span className="flex items-center gap-2 text-xs sm:text-sm">
-                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                Sistema activo
+                <div className="w-2 h-2 bg-toyota-green rounded-full animate-pulse"></div>
+                {UI_TEXT.systemActive}
               </span>
-              <span className="text-aruma-pink font-semibold text-xs sm:text-sm">v1.0.0</span>
+              <span className="text-toyota-red font-semibold text-xs sm:text-sm">{UI_TEXT.footer.version}</span>
             </div>
           </div>
         </div>

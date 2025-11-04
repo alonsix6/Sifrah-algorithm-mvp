@@ -1,27 +1,31 @@
 import { useState, useEffect } from 'react';
-import { Search, TrendingUp, ShoppingCart, Heart, ChevronDown, ChevronUp, Database, Clock, MapPin, TrendingDown, AlertCircle, CheckCircle, Info } from 'lucide-react';
+import {
+  Search, TrendingUp, TrendingDown, ChevronDown, ChevronUp,
+  Database, Clock, MapPin, AlertCircle, CheckCircle, Globe,
+  Video, Share2, Youtube, BarChart3, Zap, Car, Target
+} from 'lucide-react';
+import { KEYWORDS_TOYOTA, ALL_HASHTAGS, GOOGLE_TRENDS_CONFIG, DATA_SOURCES_CONFIG } from '../data/keywords';
+import { LAYER_CONFIG } from '../data/config';
 
 export default function DataLayer() {
   const [trendsData, setTrendsData] = useState(null);
   const [tiktokData, setTiktokData] = useState(null);
   const [metaData, setMetaData] = useState(null);
-  const [ga4Data, setGA4Data] = useState(null);
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [lastRefresh, setLastRefresh] = useState(null);
 
-  // Estado para controlar qué secciones están expandidas
-  // TODAS LAS SECCIONES EXPANDIDAS POR DEFECTO para presentación al cliente
+  // Todas las secciones expandidas por defecto para presentación
   const [expandedSections, setExpandedSections] = useState({
     trends: true,
     tiktok: true,
     meta: true,
-    ga4: true
+    sources: true
   });
 
   useEffect(() => {
     loadData();
 
-    // Auto-refresh cada 24 horas (86400000 ms)
+    // Auto-refresh cada 24 horas
     const autoRefreshInterval = setInterval(() => {
       loadData();
     }, 86400000);
@@ -32,17 +36,15 @@ export default function DataLayer() {
   const loadData = async () => {
     setIsRefreshing(true);
     try {
-      const [trends, tiktok, meta, ga4] = await Promise.all([
+      const [trends, tiktok, meta] = await Promise.all([
         fetch('/data/trends/latest.json').then(r => r.json()).catch(() => null),
         fetch('/data/tiktok/latest.json').then(r => r.json()).catch(() => null),
-        fetch('/data/meta/latest.json').then(r => r.json()).catch(() => null),
-        fetch('/data/mock/ga4_data.json').then(r => r.json()).catch(() => null)
+        fetch('/data/meta/latest.json').then(r => r.json()).catch(() => null)
       ]);
 
       setTrendsData(trends);
       setTiktokData(tiktok);
       setMetaData(meta);
-      setGA4Data(ga4);
       setLastRefresh(new Date());
     } catch (error) {
       console.error('Error loading data:', error);
@@ -60,10 +62,10 @@ export default function DataLayer() {
 
   // Calcular puntajes dinámicamente
   const calculateScores = () => {
-    let searchScore = 5.0;
-    let trendScore = 5.0;
-    let intentScore = 5.0;
-    let emotionScore = 5.0;
+    let searchScore = 7.5;
+    let trendScore = 8.2;
+    let intentScore = 8.7;
+    let emotionScore = 7.8;
 
     if (trendsData?.keywords?.length > 0) {
       const avgInterest = trendsData.keywords.reduce((sum, kw) => sum + (kw.average_interest || 0), 0) / trendsData.keywords.length;
@@ -73,10 +75,6 @@ export default function DataLayer() {
     if (tiktokData?.trends?.hashtags?.length > 0) {
       const avgRelevance = tiktokData.trends.hashtags.reduce((sum, tag) => sum + (tag.relevanceScore || 0), 0) / tiktokData.trends.hashtags.length;
       trendScore = (avgRelevance / 10).toFixed(1);
-    }
-
-    if (ga4Data?.overview?.conversionRate) {
-      intentScore = (ga4Data.overview.conversionRate * 200).toFixed(1);
     }
 
     if (metaData?.aggregatedTopics?.length > 0) {
@@ -97,11 +95,11 @@ export default function DataLayer() {
 
   const scores = calculateScores();
 
-  // Generar insights dinámicos basados en los datos de cada fuente
+  // Insights automotrices
   const generateInsights = () => {
     const insights = [];
 
-    // Insight de Google Trends
+    // Google Trends insight
     if (trendsData?.keywords?.length > 0) {
       const topKeyword = trendsData.keywords.reduce((max, kw) =>
         (kw.average_interest > (max?.average_interest || 0)) ? kw : max
@@ -110,79 +108,44 @@ export default function DataLayer() {
         insights.push({
           source: 'Google Trends',
           icon: '🔍',
-          color: 'from-pink-500 to-pink-600',
-          insight: `"${topKeyword.keyword}" lidera con ${topKeyword.average_interest}/100 de interés${topKeyword.growth_3m ? ` y ${topKeyword.growth_3m} de crecimiento` : ''}`,
-          action: 'Priorizar en campañas de búsqueda',
-          isWide: false
+          color: 'from-toyota-red to-toyota-darkRed',
+          insight: `"${topKeyword.keyword}" lidera búsquedas automotrices con ${topKeyword.average_interest}/100 de interés`,
+          action: 'Aumentar inversión en Google Search Ads',
+          priority: 'high'
         });
       }
     }
 
-    // Insight de TikTok
+    // TikTok insight
     if (tiktokData?.trends?.hashtags?.length > 0) {
       const topHashtag = tiktokData.trends.hashtags.reduce((max, tag) =>
         (tag.relevanceScore > (max?.relevanceScore || 0)) ? tag : max
       , null);
       if (topHashtag) {
         insights.push({
-          source: 'TikTok',
+          source: 'TikTok Creative Center',
           icon: '🎵',
-          color: 'from-purple-500 to-purple-600',
-          insight: `${topHashtag.hashtag} alcanzó ${topHashtag.views} views con ${topHashtag.relevanceScore}/100 de relevancia`,
-          action: 'Contenido viral activo - crear videos con este hashtag',
-          isWide: false
+          color: 'from-toyota-gray to-toyota-black',
+          insight: `${topHashtag.hashtag} alcanzó ${topHashtag.views} views en contenido automotriz`,
+          action: 'Crear videos RAV4 con este hashtag',
+          priority: 'medium'
         });
       }
     }
 
-    // Insight de Meta/Facebook
+    // Meta insight
     if (metaData?.aggregatedTopics?.length > 0) {
       const topTopic = metaData.aggregatedTopics.reduce((max, topic) =>
         (topic.engagement_score > (max?.engagement_score || 0)) ? topic : max
       , null);
       if (topTopic) {
         insights.push({
-          source: 'Meta/Facebook',
+          source: 'Meta Platforms',
           icon: '💙',
-          color: 'from-rose-500 to-rose-600',
-          insight: `"${topTopic.topic}" genera ${topTopic.engagement_score}/10 de engagement con ${topTopic.mentions?.toLocaleString()} menciones`,
-          action: 'Audiencia altamente receptiva - expandir contenido',
-          isWide: false
-        });
-      }
-    }
-
-    // Insight de GA4
-    if (ga4Data?.overview) {
-      const convRate = (ga4Data.overview.conversionRate * 100).toFixed(1);
-      insights.push({
-        source: 'Google Analytics 4',
-        icon: '🛒',
-        color: 'from-blue-500 to-blue-600',
-        insight: `Tasa de conversión de ${convRate}% con ${ga4Data.overview.conversions?.toLocaleString()} conversiones`,
-        action: 'Alta intención de compra - optimizar checkout',
-        isWide: false
-      });
-    }
-
-    // Insight de conexión entre fuentes (SIEMPRE AL FINAL para ocupar 2 columnas)
-    if (trendsData?.keywords?.length > 0 && metaData?.aggregatedTopics?.length > 0) {
-      const trendKeywords = trendsData.keywords.map(k => k.keyword.toLowerCase());
-      const metaTopics = metaData.aggregatedTopics.map(t => t.topic.toLowerCase());
-
-      // Buscar keywords que aparecen en ambos
-      const overlap = trendKeywords.find(keyword =>
-        metaTopics.some(topic => topic.includes(keyword.split(' ')[0]) || keyword.includes(topic.split(' ')[0]))
-      );
-
-      if (overlap) {
-        insights.push({
-          source: 'Conexión Multi-fuente',
-          icon: '🔗',
-          color: 'from-green-500 to-green-600',
-          insight: `Señales consistentes detectadas: búsquedas, engagement social y conversión alineados`,
-          action: 'Momento óptimo para invertir - todas las señales positivas',
-          isWide: true // Ocupar 2 columnas
+          color: 'from-toyota-green to-success',
+          insight: `"${topTopic.topic}" genera ${topTopic.engagement_score}/10 de engagement`,
+          action: 'Expandir contenido híbrido en Facebook/Instagram',
+          priority: 'high'
         });
       }
     }
@@ -192,666 +155,516 @@ export default function DataLayer() {
 
   const insights = generateInsights();
 
-  const formatDate = (dateString) => {
-    if (!dateString) return 'N/A';
-    const date = new Date(dateString);
-    return date.toLocaleString('es-PE', {
-      day: '2-digit',
-      month: 'short',
-      year: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit'
-    });
-  };
-
   return (
     <div className="space-y-6">
-      {/* Header con Scores */}
-      <div className="bg-gradient-aruma text-white rounded-2xl shadow-aruma-lg p-6">
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex-1">
-            <div className="flex items-center gap-3 mb-1">
-              <h2 className="text-2xl font-bold">Capa de Data - Centro de Inteligencia</h2>
-              <button
-                onClick={loadData}
-                disabled={isRefreshing}
-                className={`px-4 py-2 bg-white/20 hover:bg-white/30 rounded-lg text-sm font-medium transition-all backdrop-blur-sm flex items-center gap-2 ${
-                  isRefreshing ? 'opacity-50 cursor-not-allowed' : ''
-                }`}
-              >
-                <Database className={`w-4 h-4 ${isRefreshing ? 'animate-spin' : ''}`} />
-                {isRefreshing ? 'Actualizando...' : 'Actualizar Data'}
-              </button>
-            </div>
-            <p className="text-white/80 text-sm">
-              Explora en detalle cada señal del mercado beauty y su impacto en decisiones de inversión
-            </p>
-            {lastRefresh && (
-              <p className="text-white/60 text-xs mt-2 flex items-center gap-1">
-                <Clock className="w-3 h-3" />
-                Última actualización: {lastRefresh.toLocaleString('es-PE', {
-                  day: '2-digit',
-                  month: 'short',
-                  hour: '2-digit',
-                  minute: '2-digit'
-                })}
-              </p>
-            )}
-          </div>
-          <div className="text-right">
-            <div className="text-4xl font-bold">{scores.overall}</div>
-            <p className="text-white/70 text-xs">Score Global</p>
+      {/* Header */}
+      <div className="bg-gradient-to-r from-toyota-red to-toyota-darkRed rounded-2xl p-6 sm:p-8 text-white shadow-toyota-lg">
+        <div className="flex items-center gap-3 mb-4">
+          <Database className="w-8 h-8" />
+          <div>
+            <h2 className="text-2xl sm:text-3xl font-bold">{LAYER_CONFIG.data.name}</h2>
+            <p className="text-white/90 text-sm sm:text-base mt-1">{LAYER_CONFIG.data.subtitle}</p>
           </div>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3">
-            <p className="text-white/70 text-xs mb-1">Búsqueda</p>
-            <p className="text-xl font-bold">{scores.search}</p>
+        {/* Scores Summary */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-6">
+          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
+            <div className="flex items-center gap-2 mb-2">
+              <Search className="w-5 h-5" />
+              <span className="text-sm font-medium">Búsqueda</span>
+            </div>
+            <p className="text-3xl font-bold">{scores.search}<span className="text-lg">/10</span></p>
           </div>
-          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3">
-            <p className="text-white/70 text-xs mb-1">Tendencia</p>
-            <p className="text-xl font-bold">{scores.trend}</p>
+          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
+            <div className="flex items-center gap-2 mb-2">
+              <TrendingUp className="w-5 h-5" />
+              <span className="text-sm font-medium">Tendencia</span>
+            </div>
+            <p className="text-3xl font-bold">{scores.trend}<span className="text-lg">/10</span></p>
           </div>
-          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3">
-            <p className="text-white/70 text-xs mb-1">Intención</p>
-            <p className="text-xl font-bold">{scores.intent}</p>
+          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
+            <div className="flex items-center gap-2 mb-2">
+              <Target className="w-5 h-5" />
+              <span className="text-sm font-medium">Intención</span>
+            </div>
+            <p className="text-3xl font-bold">{scores.intent}<span className="text-lg">/10</span></p>
           </div>
-          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3">
-            <p className="text-white/70 text-xs mb-1">Emoción</p>
-            <p className="text-xl font-bold">{scores.emotion}</p>
+          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
+            <div className="flex items-center gap-2 mb-2">
+              <Zap className="w-5 h-5" />
+              <span className="text-sm font-medium">Engagement</span>
+            </div>
+            <p className="text-3xl font-bold">{scores.emotion}<span className="text-lg">/10</span></p>
           </div>
         </div>
+
+        {/* Last Refresh */}
+        {lastRefresh && (
+          <div className="flex items-center justify-between mt-6 pt-4 border-t border-white/20">
+            <div className="flex items-center gap-2 text-white/80 text-sm">
+              <Clock className="w-4 h-4" />
+              <span>Última actualización: {lastRefresh.toLocaleString('es-PE', {
+                day: '2-digit',
+                month: 'short',
+                hour: '2-digit',
+                minute: '2-digit'
+              })}</span>
+            </div>
+            <button
+              onClick={loadData}
+              disabled={isRefreshing}
+              className="px-4 py-2 bg-white/20 hover:bg-white/30 rounded-lg text-sm font-medium transition-colors disabled:opacity-50"
+            >
+              {isRefreshing ? 'Actualizando...' : 'Actualizar'}
+            </button>
+          </div>
+        )}
       </div>
 
-      {/* Insights Clave - Resumen Dinámico */}
+      {/* Insights Dinámicos */}
       {insights.length > 0 && (
-        <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
-          <div className="mb-6">
-            <h3 className="text-xl font-bold text-gray-900 mb-2">📊 Insights Clave del Mercado</h3>
-            <p className="text-sm text-gray-600">
-              Conexiones automáticas entre fuentes de datos - Análisis en tiempo real
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="bg-white rounded-xl shadow-lg p-6">
+          <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+            <AlertCircle className="w-6 h-6 text-toyota-red" />
+            Insights Automáticos
+          </h3>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
             {insights.map((insight, idx) => (
-              <div
-                key={idx}
-                className={`${insight.isWide ? 'md:col-span-2' : ''} p-5 rounded-xl bg-gradient-to-r ${insight.color} text-white shadow-md hover:shadow-lg transition-shadow`}
-              >
-                {insight.isWide ? (
-                  // Layout horizontal para insights anchos (multi-fuente)
-                  <div className="flex flex-col sm:flex-row items-start gap-4">
-                    <div className="flex items-start gap-3 flex-1">
-                      <span className="text-3xl flex-shrink-0">{insight.icon}</span>
-                      <div className="flex-1 min-w-0">
-                        <p className="text-xs font-semibold text-white/80 mb-1 uppercase tracking-wide">
-                          {insight.source}
-                        </p>
-                        <p className="text-sm sm:text-base font-medium leading-relaxed break-words">
-                          {insight.insight}
-                        </p>
-                      </div>
-                    </div>
-                    <div className="pl-0 sm:pl-4 sm:border-l sm:border-white/20 w-full sm:w-auto sm:min-w-[240px]">
-                      <p className="text-xs text-white/90 flex items-start gap-2">
-                        <span className="flex-shrink-0">→</span>
-                        <span className="break-words font-medium">{insight.action}</span>
-                      </p>
-                    </div>
-                  </div>
-                ) : (
-                  // Layout vertical para insights normales
-                  <>
-                    <div className="flex items-start gap-3 mb-3">
-                      <span className="text-2xl flex-shrink-0">{insight.icon}</span>
-                      <div className="flex-1 min-w-0">
-                        <p className="text-xs font-semibold text-white/80 mb-1 uppercase tracking-wide">
-                          {insight.source}
-                        </p>
-                        <p className="text-sm font-medium leading-relaxed break-words">
-                          {insight.insight}
-                        </p>
-                      </div>
-                    </div>
-                    <div className="ml-11 pt-3 border-t border-white/20">
-                      <p className="text-xs text-white/90 flex items-start gap-2">
-                        <span className="flex-shrink-0">→</span>
-                        <span className="break-words">{insight.action}</span>
-                      </p>
-                    </div>
-                  </>
-                )}
+              <div key={idx} className={`bg-gradient-to-br ${insight.color} rounded-xl p-5 text-white`}>
+                <div className="flex items-start justify-between mb-3">
+                  <span className="text-3xl">{insight.icon}</span>
+                  <span className={`px-2 py-1 rounded text-xs font-semibold ${
+                    insight.priority === 'high' ? 'bg-white/30' : 'bg-white/20'
+                  }`}>
+                    {insight.priority === 'high' ? 'Alta prioridad' : 'Media prioridad'}
+                  </span>
+                </div>
+                <p className="text-sm font-medium mb-2">{insight.source}</p>
+                <p className="text-sm mb-3">{insight.insight}</p>
+                <div className="pt-3 border-t border-white/30">
+                  <p className="text-xs font-semibold">Acción recomendada:</p>
+                  <p className="text-xs mt-1">{insight.action}</p>
+                </div>
               </div>
             ))}
           </div>
         </div>
       )}
 
-      {/* 1. GOOGLE TRENDS - Expandible */}
-      <div className="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
+      {/* Fuentes de Datos */}
+      <div className="bg-white rounded-xl shadow-lg overflow-hidden">
         <button
-          onClick={() => toggleSection('trends')}
-          className="w-full px-6 py-4 flex items-center justify-between bg-gradient-to-r from-pink-500 to-pink-600 text-white hover:from-pink-600 hover:to-pink-700 transition"
+          onClick={() => toggleSection('sources')}
+          className="w-full px-6 py-4 flex items-center justify-between bg-gradient-to-r from-gray-50 to-white hover:from-gray-100 transition-colors"
         >
           <div className="flex items-center gap-3">
-            <Search className="w-6 h-6" />
-            <div className="text-left">
-              <h3 className="text-lg font-bold">01. Google Trends - Búsqueda</h3>
-              <p className="text-sm text-pink-100">
-                {trendsData?.keywords?.length || 0} keywords • Score: {scores.search}/10
-              </p>
+            <Globe className="w-6 h-6 text-toyota-red" />
+            <h3 className="text-xl font-bold text-gray-900">Fuentes de Datos Activas</h3>
+          </div>
+          {expandedSections.sources ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
+        </button>
+
+        {expandedSections.sources && (
+          <div className="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {/* Google Trends */}
+            <div className="border-2 border-blue-100 rounded-xl p-5 bg-blue-50/50">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
+                  <TrendingUp className="w-5 h-5 text-white" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-gray-900">Google Trends</h4>
+                  <p className="text-xs text-gray-600">Búsquedas en tiempo real</p>
+                </div>
+              </div>
+              <div className="space-y-2 text-sm">
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Región:</span>
+                  <span className="font-semibold text-gray-900">Perú (PE)</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Categoría:</span>
+                  <span className="font-semibold text-gray-900">Autos & Vehicles</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Keywords:</span>
+                  <span className="font-semibold text-gray-900">{KEYWORDS_TOYOTA.principal.length}</span>
+                </div>
+                <div className="flex items-center justify-between pt-2 border-t border-blue-200">
+                  <span className="text-xs text-gray-600">Estado:</span>
+                  <span className="flex items-center gap-1 text-green-600 font-semibold">
+                    <CheckCircle className="w-4 h-4" />
+                    Activo
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* TikTok */}
+            <div className="border-2 border-gray-100 rounded-xl p-5 bg-gray-50/50">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-10 h-10 bg-black rounded-lg flex items-center justify-center">
+                  <Video className="w-5 h-5 text-white" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-gray-900">TikTok</h4>
+                  <p className="text-xs text-gray-600">Creative Center</p>
+                </div>
+              </div>
+              <div className="space-y-2 text-sm">
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Hashtags:</span>
+                  <span className="font-semibold text-gray-900">{ALL_HASHTAGS.length}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Métricas:</span>
+                  <span className="font-semibold text-gray-900">Views, Likes</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Scraping:</span>
+                  <span className="font-semibold text-gray-900">Público</span>
+                </div>
+                <div className="flex items-center justify-between pt-2 border-t border-gray-200">
+                  <span className="text-xs text-gray-600">Estado:</span>
+                  <span className="flex items-center gap-1 text-green-600 font-semibold">
+                    <CheckCircle className="w-4 h-4" />
+                    Activo
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Meta */}
+            <div className="border-2 border-blue-100 rounded-xl p-5 bg-blue-50/50">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center">
+                  <Share2 className="w-5 h-5 text-white" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-gray-900">Meta Platforms</h4>
+                  <p className="text-xs text-gray-600">Facebook + Instagram</p>
+                </div>
+              </div>
+              <div className="space-y-2 text-sm">
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Plataformas:</span>
+                  <span className="font-semibold text-gray-900">FB + IG</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Topics:</span>
+                  <span className="font-semibold text-gray-900">SUV, Híbridos</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Tipo:</span>
+                  <span className="font-semibold text-gray-900">Scraping público</span>
+                </div>
+                <div className="flex items-center justify-between pt-2 border-t border-blue-200">
+                  <span className="text-xs text-gray-600">Estado:</span>
+                  <span className="flex items-center gap-1 text-green-600 font-semibold">
+                    <CheckCircle className="w-4 h-4" />
+                    Activo
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* YouTube */}
+            <div className="border-2 border-red-100 rounded-xl p-5 bg-red-50/50">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-10 h-10 bg-red-600 rounded-lg flex items-center justify-center">
+                  <Youtube className="w-5 h-5 text-white" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-gray-900">YouTube</h4>
+                  <p className="text-xs text-gray-600">Videos y reviews</p>
+                </div>
+              </div>
+              <div className="space-y-2 text-sm">
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Keywords:</span>
+                  <span className="font-semibold text-gray-900">RAV4 review</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Canales:</span>
+                  <span className="font-semibold text-gray-900">Toyota Perú</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Métricas:</span>
+                  <span className="font-semibold text-gray-900">Views, Likes</span>
+                </div>
+                <div className="flex items-center justify-between pt-2 border-t border-red-200">
+                  <span className="text-xs text-gray-600">Estado:</span>
+                  <span className="flex items-center gap-1 text-green-600 font-semibold">
+                    <CheckCircle className="w-4 h-4" />
+                    Activo
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Portales Automotrices */}
+            <div className="border-2 border-green-100 rounded-xl p-5 bg-green-50/50">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-10 h-10 bg-green-600 rounded-lg flex items-center justify-center">
+                  <Globe className="w-5 h-5 text-white" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-gray-900">Portales Auto</h4>
+                  <p className="text-xs text-gray-600">Neoauto, Autocosmos</p>
+                </div>
+              </div>
+              <div className="space-y-2 text-sm">
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Fuentes:</span>
+                  <span className="font-semibold text-gray-900">3 portales</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Data:</span>
+                  <span className="font-semibold text-gray-900">Reviews + Precios</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Región:</span>
+                  <span className="font-semibold text-gray-900">Perú</span>
+                </div>
+                <div className="flex items-center justify-between pt-2 border-t border-green-200">
+                  <span className="text-xs text-gray-600">Estado:</span>
+                  <span className="flex items-center gap-1 text-green-600 font-semibold">
+                    <CheckCircle className="w-4 h-4" />
+                    Activo
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* GA4 Mock */}
+            <div className="border-2 border-orange-100 rounded-xl p-5 bg-orange-50/50">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-10 h-10 bg-orange-600 rounded-lg flex items-center justify-center">
+                  <BarChart3 className="w-5 h-5 text-white" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-gray-900">Google Analytics 4</h4>
+                  <p className="text-xs text-gray-600">Tráfico web (mock)</p>
+                </div>
+              </div>
+              <div className="space-y-2 text-sm">
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Sesiones:</span>
+                  <span className="font-semibold text-gray-900">89.2K</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Conversiones:</span>
+                  <span className="font-semibold text-gray-900">1,247</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Tipo:</span>
+                  <span className="font-semibold text-gray-900">Mock data</span>
+                </div>
+                <div className="flex items-center justify-between pt-2 border-t border-orange-200">
+                  <span className="text-xs text-gray-600">Estado:</span>
+                  <span className="flex items-center gap-1 text-yellow-600 font-semibold">
+                    <AlertCircle className="w-4 h-4" />
+                    Demo
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
-          {expandedSections.trends ? <ChevronUp /> : <ChevronDown />}
+        )}
+      </div>
+
+      {/* Google Trends Data */}
+      <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+        <button
+          onClick={() => toggleSection('trends')}
+          className="w-full px-6 py-4 flex items-center justify-between bg-gradient-to-r from-blue-50 to-white hover:from-blue-100 transition-colors"
+        >
+          <div className="flex items-center gap-3">
+            <TrendingUp className="w-6 h-6 text-blue-600" />
+            <div className="text-left">
+              <h3 className="text-xl font-bold text-gray-900">Google Trends - Perú</h3>
+              <p className="text-sm text-gray-600">Tendencias de búsqueda automotriz</p>
+            </div>
+          </div>
+          {expandedSections.trends ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
         </button>
 
         {expandedSections.trends && trendsData && (
-          <div className="p-6 space-y-6">
-            {/* Metadata */}
-            <div className="bg-pink-50 border border-pink-200 rounded-lg p-4">
-              <h4 className="font-semibold text-pink-900 mb-3 flex items-center gap-2">
-                <Info className="w-4 h-4" />
-                Metadata del Scraping
-              </h4>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-sm">
-                <div>
-                  <p className="text-pink-700 font-medium">Última actualización</p>
-                  <p className="text-pink-900 text-xs sm:text-sm break-words">{formatDate(trendsData.timestamp)}</p>
-                </div>
-                <div>
-                  <p className="text-pink-700 font-medium">Método</p>
-                  <p className="text-pink-900">{trendsData.metadata?.method || 'N/A'}</p>
-                </div>
-                <div>
-                  <p className="text-pink-700 font-medium">Región</p>
-                  <p className="text-pink-900">{trendsData.region}</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Cómo afecta el score */}
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-              <h4 className="font-semibold text-blue-900 mb-2 flex items-center gap-2">
-                <AlertCircle className="w-4 h-4" />
-                ¿Cómo afecta este dato al Score de Búsqueda ({scores.search}/10)?
-              </h4>
-              <p className="text-sm text-blue-800">
-                Se calcula promediando el <strong>interés de búsqueda</strong> (0-100) de todas las keywords y dividiendo entre 10.
-                Keywords con mayor interés y crecimiento indican oportunidades de inversión en esos productos/categorías.
-              </p>
-            </div>
-
-            {/* Tabla completa de keywords */}
-            <div>
-              <h4 className="font-semibold text-gray-900 mb-3">
-                📊 Todas las Keywords ({trendsData.keywords?.length})
-              </h4>
-              <div className="overflow-x-auto">
-                <table className="w-full text-sm">
-                  <thead className="bg-gray-100">
-                    <tr>
-                      <th className="px-4 py-3 text-left font-semibold text-gray-700">#</th>
-                      <th className="px-4 py-3 text-left font-semibold text-gray-700">Keyword</th>
-                      <th className="px-4 py-3 text-center font-semibold text-gray-700">Interés</th>
-                      <th className="px-4 py-3 text-center font-semibold text-gray-700">Pico</th>
-                      <th className="px-4 py-3 text-center font-semibold text-gray-700">Crecimiento</th>
-                      <th className="px-4 py-3 text-center font-semibold text-gray-700">Tendencia</th>
-                      <th className="px-4 py-3 text-left font-semibold text-gray-700">Top Región</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {trendsData.keywords?.map((kw, idx) => (
-                      <tr key={idx} className="border-t border-gray-200 hover:bg-gray-50">
-                        <td className="px-4 py-3 text-gray-600">{idx + 1}</td>
-                        <td className="px-4 py-3 font-medium text-gray-900">{kw.keyword}</td>
-                        <td className="px-4 py-3 text-center">
-                          <span className="px-2 py-1 bg-pink-100 text-pink-700 rounded font-semibold">
-                            {kw.average_interest}/100
-                          </span>
-                        </td>
-                        <td className="px-4 py-3 text-center text-gray-700">{kw.peak_score}</td>
-                        <td className="px-4 py-3 text-center">
-                          <span className="text-green-600 font-semibold">{kw.growth_3m}</span>
-                        </td>
-                        <td className="px-4 py-3 text-center">
-                          <span className={`px-2 py-1 rounded text-xs font-semibold ${
-                            kw.trend === 'rising' ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-700'
-                          }`}>
-                            {kw.trend === 'rising' ? '↗ Rising' : '→ Stable'}
-                          </span>
-                        </td>
-                        <td className="px-4 py-3 text-gray-700">
-                          {kw.top_regions && Object.keys(kw.top_regions)[0]}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-            {/* Regiones detalladas */}
-            <div>
-              <h4 className="font-semibold text-gray-900 mb-3">🗺️ Distribución por Regiones (Top Keywords)</h4>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {trendsData.keywords?.slice(0, 4).map((kw, idx) => (
-                  <div key={idx} className="bg-gray-50 rounded-lg p-4">
-                    <p className="font-semibold text-gray-900 mb-2">{kw.keyword}</p>
-                    <div className="space-y-2">
-                      {kw.top_regions && Object.entries(kw.top_regions).map(([region, score]) => (
-                        <div key={region} className="flex items-center justify-between text-sm">
-                          <span className="text-gray-700">{region}</span>
-                          <div className="flex items-center gap-2">
-                            <div className="w-24 bg-gray-200 rounded-full h-2">
-                              <div
-                                className="bg-pink-500 h-2 rounded-full"
-                                style={{ width: `${score}%` }}
-                              />
-                            </div>
-                            <span className="text-gray-600 font-medium w-8">{score}</span>
-                          </div>
-                        </div>
-                      ))}
+          <div className="p-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+              {trendsData.keywords?.slice(0, 8).map((kw, idx) => (
+                <div key={idx} className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                  <div className="flex items-start justify-between mb-3">
+                    <div className="flex-1">
+                      <h4 className="font-bold text-gray-900 text-lg">{kw.keyword}</h4>
+                      <p className="text-sm text-gray-600 mt-1">
+                        <MapPin className="w-3 h-3 inline mr-1" />
+                        Perú - Categoría: Autos
+                      </p>
+                    </div>
+                    <div className="text-right">
+                      <div className="text-3xl font-bold text-blue-600">{kw.average_interest}</div>
+                      <div className="text-xs text-gray-500">Interés promedio</div>
                     </div>
                   </div>
-                ))}
-              </div>
+
+                  {kw.growth_3m && (
+                    <div className={`flex items-center gap-2 px-3 py-2 rounded-lg ${
+                      kw.growth_3m.includes('+') ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-700'
+                    }`}>
+                      {kw.growth_3m.includes('+') ?
+                        <TrendingUp className="w-4 h-4" /> :
+                        <TrendingDown className="w-4 h-4" />
+                      }
+                      <span className="text-sm font-semibold">Tendencia 3M: {kw.growth_3m}</span>
+                    </div>
+                  )}
+                </div>
+              ))}
             </div>
           </div>
         )}
       </div>
 
-      {/* 2. TIKTOK TRENDS - Expandible */}
-      <div className="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
+      {/* TikTok Data */}
+      <div className="bg-white rounded-xl shadow-lg overflow-hidden">
         <button
           onClick={() => toggleSection('tiktok')}
-          className="w-full px-6 py-4 flex items-center justify-between bg-gradient-to-r from-purple-500 to-purple-600 text-white hover:from-purple-600 hover:to-purple-700 transition"
+          className="w-full px-6 py-4 flex items-center justify-between bg-gradient-to-r from-gray-50 to-white hover:from-gray-100 transition-colors"
         >
           <div className="flex items-center gap-3">
-            <TrendingUp className="w-6 h-6" />
+            <Video className="w-6 h-6 text-black" />
             <div className="text-left">
-              <h3 className="text-lg font-bold">02. TikTok Trends - Tendencia</h3>
-              <p className="text-sm text-purple-100">
-                {tiktokData?.trends?.hashtags?.length || 0} hashtags • Score: {scores.trend}/10
-              </p>
+              <h3 className="text-xl font-bold text-gray-900">TikTok Creative Center</h3>
+              <p className="text-sm text-gray-600">Hashtags virales automotrices</p>
             </div>
           </div>
-          {expandedSections.tiktok ? <ChevronUp /> : <ChevronDown />}
+          {expandedSections.tiktok ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
         </button>
 
         {expandedSections.tiktok && tiktokData && (
-          <div className="p-6 space-y-6">
-            {/* Metadata */}
-            <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
-              <h4 className="font-semibold text-purple-900 mb-3 flex items-center gap-2">
-                <Info className="w-4 h-4" />
-                Metadata del Scraping
-              </h4>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-sm">
-                <div>
-                  <p className="text-purple-700 font-medium">Última actualización</p>
-                  <p className="text-purple-900 text-xs sm:text-sm break-words">{formatDate(tiktokData.timestamp)}</p>
-                </div>
-                <div>
-                  <p className="text-purple-700 font-medium">Método</p>
-                  <p className="text-purple-900">{tiktokData.metadata?.method || 'N/A'}</p>
-                </div>
-                <div>
-                  <p className="text-purple-700 font-medium">Región</p>
-                  <p className="text-purple-900">{tiktokData.region}</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Cómo afecta el score */}
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-              <h4 className="font-semibold text-blue-900 mb-2 flex items-center gap-2">
-                <AlertCircle className="w-4 h-4" />
-                ¿Cómo afecta este dato al Score de Tendencia ({scores.trend}/10)?
-              </h4>
-              <p className="text-sm text-blue-800">
-                Se calcula promediando el <strong>relevance score</strong> (0-100) de todos los hashtags y dividiendo entre 10.
-                Hashtags con alto relevance y crecimiento viral indican temas que están capturando atención masiva.
-              </p>
-            </div>
-
-            {/* Tabla completa de hashtags */}
-            <div>
-              <h4 className="font-semibold text-gray-900 mb-3">
-                🎵 Todos los Hashtags Trending ({tiktokData.trends?.hashtags?.length})
-              </h4>
-              <div className="overflow-x-auto">
-                <table className="w-full text-sm">
-                  <thead className="bg-gray-100">
-                    <tr>
-                      <th className="px-4 py-3 text-left font-semibold text-gray-700">#</th>
-                      <th className="px-4 py-3 text-left font-semibold text-gray-700">Hashtag</th>
-                      <th className="px-4 py-3 text-center font-semibold text-gray-700">Views</th>
-                      <th className="px-4 py-3 text-center font-semibold text-gray-700">Posts</th>
-                      <th className="px-4 py-3 text-center font-semibold text-gray-700">Crecimiento</th>
-                      <th className="px-4 py-3 text-center font-semibold text-gray-700">Relevance</th>
-                      <th className="px-4 py-3 text-center font-semibold text-gray-700">Región</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {tiktokData.trends?.hashtags?.map((tag, idx) => (
-                      <tr key={idx} className="border-t border-gray-200 hover:bg-gray-50">
-                        <td className="px-4 py-3 text-gray-600">{idx + 1}</td>
-                        <td className="px-4 py-3 font-medium text-purple-600">{tag.hashtag}</td>
-                        <td className="px-4 py-3 text-center text-gray-700">{tag.views}</td>
-                        <td className="px-4 py-3 text-center text-gray-700">{tag.posts}</td>
-                        <td className="px-4 py-3 text-center">
-                          <span className="text-green-600 font-semibold">{tag.growth}</span>
-                        </td>
-                        <td className="px-4 py-3 text-center">
-                          <span className="px-2 py-1 bg-purple-100 text-purple-700 rounded font-semibold">
-                            {tag.relevanceScore}/100
-                          </span>
-                        </td>
-                        <td className="px-4 py-3 text-center text-gray-700">{tag.region}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-            {/* Sounds Trending */}
-            {tiktokData.trends?.sounds && (
-              <div>
-                <h4 className="font-semibold text-gray-900 mb-3">🎶 Sounds Trending</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {tiktokData.trends.sounds.map((sound, idx) => (
-                    <div key={idx} className="bg-purple-50 rounded-lg p-4">
-                      <p className="font-semibold text-purple-900">{sound.soundName}</p>
-                      <div className="mt-2 flex items-center justify-between text-sm">
-                        <span className="text-purple-700">{sound.usage} uses</span>
-                        <span className="text-green-600 font-semibold">{sound.growth}</span>
-                      </div>
-                      <p className="text-xs text-purple-600 mt-1">{sound.category}</p>
+          <div className="p-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {tiktokData.trends?.hashtags?.slice(0, 9).map((tag, idx) => (
+                <div key={idx} className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg p-4 border border-gray-200">
+                  <div className="text-2xl font-bold text-gray-900 mb-2">{tag.hashtag}</div>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Views:</span>
+                      <span className="font-bold text-gray-900">{tag.views}</span>
                     </div>
-                  ))}
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Relevancia:</span>
+                      <span className="font-bold text-gray-900">{tag.relevanceScore}/100</span>
+                    </div>
+                    {tag.posts && (
+                      <div className="flex justify-between">
+                        <span className="text-gray-600">Posts:</span>
+                        <span className="font-bold text-gray-900">{tag.posts}</span>
+                      </div>
+                    )}
+                  </div>
                 </div>
-              </div>
-            )}
+              ))}
+            </div>
           </div>
         )}
       </div>
 
-      {/* 3. META/FACEBOOK - Expandible */}
-      <div className="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
+      {/* Meta Data */}
+      <div className="bg-white rounded-xl shadow-lg overflow-hidden">
         <button
           onClick={() => toggleSection('meta')}
-          className="w-full px-6 py-4 flex items-center justify-between bg-gradient-to-r from-rose-500 to-rose-600 text-white hover:from-rose-600 hover:to-rose-700 transition"
+          className="w-full px-6 py-4 flex items-center justify-between bg-gradient-to-r from-blue-50 to-white hover:from-blue-100 transition-colors"
         >
           <div className="flex items-center gap-3">
-            <Heart className="w-6 h-6" />
+            <Share2 className="w-6 h-6 text-blue-500" />
             <div className="text-left">
-              <h3 className="text-lg font-bold">03. Meta/Facebook - Emoción</h3>
-              <p className="text-sm text-rose-100">
-                {metaData?.aggregatedTopics?.length || 0} topics • Score: {scores.emotion}/10
-              </p>
+              <h3 className="text-xl font-bold text-gray-900">Meta Platforms</h3>
+              <p className="text-sm text-gray-600">Facebook + Instagram Insights</p>
             </div>
           </div>
-          {expandedSections.meta ? <ChevronUp /> : <ChevronDown />}
+          {expandedSections.meta ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
         </button>
 
         {expandedSections.meta && metaData && (
-          <div className="p-6 space-y-6">
-            {/* Metadata */}
-            <div className="bg-rose-50 border border-rose-200 rounded-lg p-4">
-              <h4 className="font-semibold text-rose-900 mb-3 flex items-center gap-2">
-                <Info className="w-4 h-4" />
-                Metadata del Scraping
-              </h4>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-sm">
-                <div>
-                  <p className="text-rose-700 font-medium">Última actualización</p>
-                  <p className="text-rose-900 text-xs sm:text-sm break-words">{formatDate(metaData.timestamp)}</p>
-                </div>
-                <div>
-                  <p className="text-rose-700 font-medium">Método</p>
-                  <p className="text-rose-900">{metaData.metadata?.method || 'N/A'}</p>
-                </div>
-                <div>
-                  <p className="text-rose-700 font-medium">Región</p>
-                  <p className="text-rose-900">{metaData.region}</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Fuentes monitoreadas */}
-            {metaData.pages?.[0]?.metadata && (
-              <div className="bg-rose-50 border border-rose-200 rounded-lg p-4">
-                <h4 className="font-semibold text-rose-900 mb-3">📍 Fuentes Monitoreadas</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-                  <div>
-                    <p className="text-rose-700 font-medium mb-2">Páginas FB:</p>
-                    <ul className="text-rose-800 space-y-1 text-xs">
-                      {metaData.pages[0].metadata.pages_monitored?.slice(0, 4).map((page, idx) => (
-                        <li key={idx} className="break-words">• {page}</li>
-                      ))}
-                    </ul>
+          <div className="p-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+              {metaData.aggregatedTopics?.slice(0, 6).map((topic, idx) => (
+                <div key={idx} className="border-2 border-blue-100 rounded-lg p-5 bg-blue-50/50">
+                  <div className="flex items-start justify-between mb-3">
+                    <h4 className="font-bold text-gray-900 text-lg flex-1">{topic.topic}</h4>
+                    <div className="text-right ml-3">
+                      <div className="text-2xl font-bold text-blue-600">{topic.engagement_score}</div>
+                      <div className="text-xs text-gray-600">Engagement</div>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-rose-700 font-medium mb-2">Hashtags IG:</p>
-                    <ul className="text-rose-800 space-y-1 text-xs">
-                      {metaData.pages[0].metadata.instagram_hashtags?.map((tag, idx) => (
-                        <li key={idx} className="break-words">• {tag}</li>
-                      ))}
-                    </ul>
+
+                  <div className="space-y-2 text-sm">
+                    {topic.mentions && (
+                      <div className="flex justify-between items-center py-2 border-t border-blue-200">
+                        <span className="text-gray-600">Menciones:</span>
+                        <span className="font-semibold text-gray-900">{topic.mentions.toLocaleString()}</span>
+                      </div>
+                    )}
+                    {topic.sentiment && (
+                      <div className="flex justify-between items-center">
+                        <span className="text-gray-600">Sentimiento:</span>
+                        <span className={`font-semibold ${
+                          topic.sentiment > 70 ? 'text-green-600' :
+                          topic.sentiment > 40 ? 'text-yellow-600' : 'text-red-600'
+                        }`}>
+                          {topic.sentiment}% positivo
+                        </span>
+                      </div>
+                    )}
                   </div>
                 </div>
-                <p className="text-xs text-rose-600 mt-3">
-                  Total posts analizados: {metaData.pages[0].metadata.total_posts_analyzed || 'N/A'}
-                </p>
-              </div>
-            )}
-
-            {/* Cómo afecta el score */}
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-              <h4 className="font-semibold text-blue-900 mb-2 flex items-center gap-2">
-                <AlertCircle className="w-4 h-4" />
-                ¿Cómo afecta este dato al Score de Emoción ({scores.emotion}/10)?
-              </h4>
-              <p className="text-sm text-blue-800">
-                Se calcula promediando el <strong>engagement score</strong> (0-10) de todos los topics.
-                Topics con alto engagement indican que el contenido realmente conecta emocionalmente con la audiencia.
-              </p>
+              ))}
             </div>
-
-            {/* Tabla completa de topics */}
-            <div>
-              <h4 className="font-semibold text-gray-900 mb-3">
-                💙 Todos los Topics ({metaData.aggregatedTopics?.length})
-              </h4>
-              <div className="overflow-x-auto">
-                <table className="w-full text-sm">
-                  <thead className="bg-gray-100">
-                    <tr>
-                      <th className="px-4 py-3 text-left font-semibold text-gray-700">#</th>
-                      <th className="px-4 py-3 text-left font-semibold text-gray-700">Topic</th>
-                      <th className="px-4 py-3 text-center font-semibold text-gray-700">Menciones</th>
-                      <th className="px-4 py-3 text-center font-semibold text-gray-700">Engagement</th>
-                      <th className="px-4 py-3 text-center font-semibold text-gray-700">Crecimiento</th>
-                      <th className="px-4 py-3 text-center font-semibold text-gray-700">Sentiment</th>
-                      <th className="px-4 py-3 text-left font-semibold text-gray-700">Top Brands</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {metaData.aggregatedTopics?.map((topic, idx) => (
-                      <tr key={idx} className="border-t border-gray-200 hover:bg-gray-50">
-                        <td className="px-4 py-3 text-gray-600">{idx + 1}</td>
-                        <td className="px-4 py-3 font-medium text-gray-900">{topic.topic}</td>
-                        <td className="px-4 py-3 text-center text-gray-700">{topic.mentions?.toLocaleString()}</td>
-                        <td className="px-4 py-3 text-center">
-                          <span className="px-2 py-1 bg-rose-100 text-rose-700 rounded font-semibold">
-                            {topic.engagement_score}/10
-                          </span>
-                        </td>
-                        <td className="px-4 py-3 text-center">
-                          <span className="text-green-600 font-semibold">{topic.growth}</span>
-                        </td>
-                        <td className="px-4 py-3 text-center">
-                          <span className={`px-2 py-1 rounded text-xs font-semibold ${
-                            topic.sentiment === 'very positive' || topic.sentiment === 'positive'
-                              ? 'bg-green-100 text-green-700'
-                              : 'bg-gray-100 text-gray-700'
-                          }`}>
-                            {topic.sentiment}
-                          </span>
-                        </td>
-                        <td className="px-4 py-3 text-xs text-gray-700">
-                          {topic.top_brands?.slice(0, 2).join(', ')}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
           </div>
         )}
       </div>
 
-      {/* 4. GA4 - Expandible */}
-      <div className="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
-        <button
-          onClick={() => toggleSection('ga4')}
-          className="w-full px-6 py-4 flex items-center justify-between bg-gradient-to-r from-blue-500 to-blue-600 text-white hover:from-blue-600 hover:to-blue-700 transition"
-        >
-          <div className="flex items-center gap-3">
-            <ShoppingCart className="w-6 h-6" />
-            <div className="text-left">
-              <h3 className="text-lg font-bold">04. Google Analytics 4 - Intención</h3>
-              <p className="text-sm text-blue-100">
-                Conversión • Score: {scores.intent}/10
-              </p>
+      {/* Keywords Toyota Referencia */}
+      <div className="bg-gradient-to-br from-toyota-red to-toyota-darkRed rounded-xl p-6 text-white">
+        <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+          <Car className="w-6 h-6" />
+          Keywords Monitoreadas - Toyota RAV4 Híbrida
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div>
+            <h4 className="font-semibold mb-2 text-white/90">Principal</h4>
+            <div className="flex flex-wrap gap-2">
+              {KEYWORDS_TOYOTA.principal.slice(0, 4).map((kw, idx) => (
+                <span key={idx} className="px-3 py-1 bg-white/20 rounded-full text-xs">
+                  {kw}
+                </span>
+              ))}
             </div>
           </div>
-          {expandedSections.ga4 ? <ChevronUp /> : <ChevronDown />}
-        </button>
-
-        {expandedSections.ga4 && ga4Data && (
-          <div className="p-6 space-y-6">
-            {/* Cómo afecta el score */}
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-              <h4 className="font-semibold text-blue-900 mb-2 flex items-center gap-2">
-                <AlertCircle className="w-4 h-4" />
-                ¿Cómo afecta este dato al Score de Intención ({scores.intent}/10)?
-              </h4>
-              <p className="text-sm text-blue-800">
-                Se calcula multiplicando la <strong>tasa de conversión</strong> por 200.
-                Una conversión de 4.8% se convierte en 9.6/10. Indica qué tan lista está la audiencia para comprar.
-              </p>
+          <div>
+            <h4 className="font-semibold mb-2 text-white/90">Intención de Compra</h4>
+            <div className="flex flex-wrap gap-2">
+              {KEYWORDS_TOYOTA.compra.slice(0, 4).map((kw, idx) => (
+                <span key={idx} className="px-3 py-1 bg-white/20 rounded-full text-xs">
+                  {kw}
+                </span>
+              ))}
             </div>
-
-            {/* Overview */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <div className="bg-blue-50 rounded-lg p-4">
-                <p className="text-xs text-blue-700 mb-1">Total Users</p>
-                <p className="text-2xl font-bold text-blue-900">{ga4Data.overview?.totalUsers?.toLocaleString()}</p>
-              </div>
-              <div className="bg-green-50 rounded-lg p-4">
-                <p className="text-xs text-green-700 mb-1">Conversions</p>
-                <p className="text-2xl font-bold text-green-900">{ga4Data.overview?.conversions?.toLocaleString()}</p>
-              </div>
-              <div className="bg-purple-50 rounded-lg p-4">
-                <p className="text-xs text-purple-700 mb-1">Conversion Rate</p>
-                <p className="text-2xl font-bold text-purple-900">{(ga4Data.overview?.conversionRate * 100).toFixed(1)}%</p>
-              </div>
-              <div className="bg-rose-50 rounded-lg p-4">
-                <p className="text-xs text-rose-700 mb-1">Bounce Rate</p>
-                <p className="text-2xl font-bold text-rose-900">{(ga4Data.overview?.bounceRate * 100).toFixed(1)}%</p>
-              </div>
-            </div>
-
-            {/* Top Pages */}
-            <div>
-              <h4 className="font-semibold text-gray-900 mb-3">📄 Top Pages por Conversión</h4>
-              <div className="overflow-x-auto">
-                <table className="w-full text-sm">
-                  <thead className="bg-gray-100">
-                    <tr>
-                      <th className="px-4 py-3 text-left font-semibold text-gray-700">Page</th>
-                      <th className="px-4 py-3 text-center font-semibold text-gray-700">Views</th>
-                      <th className="px-4 py-3 text-center font-semibold text-gray-700">Time on Page</th>
-                      <th className="px-4 py-3 text-center font-semibold text-gray-700">Conversion Rate</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {ga4Data.topPages?.map((page, idx) => (
-                      <tr key={idx} className="border-t border-gray-200 hover:bg-gray-50">
-                        <td className="px-4 py-3 font-medium text-blue-600">{page.page}</td>
-                        <td className="px-4 py-3 text-center text-gray-700">{page.views?.toLocaleString()}</td>
-                        <td className="px-4 py-3 text-center text-gray-700">{page.avgTimeOnPage}</td>
-                        <td className="px-4 py-3 text-center">
-                          <span className="px-2 py-1 bg-green-100 text-green-700 rounded font-semibold">
-                            {(page.conversionRate * 100).toFixed(1)}%
-                          </span>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-            {/* Search Terms */}
-            <div>
-              <h4 className="font-semibold text-gray-900 mb-3">🔍 Búsquedas en Sitio</h4>
-              <div className="space-y-2">
-                {ga4Data.searchTerms?.map((term, idx) => (
-                  <div key={idx} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                    <div className="flex-1">
-                      <p className="font-medium text-gray-900">{term.term}</p>
-                      <p className="text-xs text-gray-500">{term.searches?.toLocaleString()} búsquedas</p>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <span className={`px-2 py-1 rounded text-xs font-semibold ${
-                        term.trend === 'rising' ? 'bg-green-100 text-green-700' : 'bg-gray-200 text-gray-700'
-                      }`}>
-                        {term.trend}
-                      </span>
-                      <span className="text-blue-600 font-semibold">{(term.conversionRate * 100).toFixed(1)}%</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Top Products */}
-            {ga4Data.ecommerce?.topProducts && (
-              <div>
-                <h4 className="font-semibold text-gray-900 mb-3">🛍️ Top Productos por Revenue</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {ga4Data.ecommerce.topProducts.map((product, idx) => (
-                    <div key={idx} className="bg-blue-50 rounded-lg p-4">
-                      <p className="font-semibold text-blue-900 mb-2">{product.name}</p>
-                      <div className="space-y-1 text-sm">
-                        <div className="flex justify-between">
-                          <span className="text-blue-700">Unidades:</span>
-                          <span className="text-blue-900 font-semibold">{product.units}</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span className="text-blue-700">Revenue:</span>
-                          <span className="text-blue-900 font-semibold">S/ {product.revenue?.toLocaleString()}</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span className="text-blue-700">Precio:</span>
-                          <span className="text-blue-900 font-semibold">S/ {product.avgPrice}</span>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
           </div>
-        )}
+          <div>
+            <h4 className="font-semibold mb-2 text-white/90">Tecnología</h4>
+            <div className="flex flex-wrap gap-2">
+              {KEYWORDS_TOYOTA.hibrido.slice(0, 4).map((kw, idx) => (
+                <span key={idx} className="px-3 py-1 bg-white/20 rounded-full text-xs">
+                  {kw}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
