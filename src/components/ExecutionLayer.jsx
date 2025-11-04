@@ -24,7 +24,7 @@ export default function ExecutionLayer() {
       <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
         <div className="flex items-start justify-between">
           <div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">
+            <h2 className="text-lg font-bold text-gray-900 mb-2">
               {LAYER_CONFIG.execution.name}
             </h2>
             <p className="text-gray-600">
@@ -48,15 +48,15 @@ export default function ExecutionLayer() {
               <DollarSign className="w-10 h-10" />
             </div>
             <div>
-              <h3 className="text-3xl font-bold">Presupuesto Mensual</h3>
-              <p className="text-white/90 mt-1">Distribución inteligente por canal</p>
+              <h3 className="text-xl font-bold">Presupuesto Mensual</h3>
+              <p className="text-white/90 mt-1 text-sm">Distribución inteligente por canal</p>
             </div>
           </div>
 
           <div className="text-center lg:text-right">
             <div className="flex items-baseline gap-2">
-              <span className="text-2xl text-white/80">USD</span>
-              <span className="text-6xl font-bold">${(BUDGET_ALLOCATION.total_budget / 1000).toFixed(0)}K</span>
+              <span className="text-xl text-white/80">USD</span>
+              <span className="text-4xl font-bold">${(BUDGET_ALLOCATION.total_budget / 1000).toFixed(0)}K</span>
             </div>
             <p className="text-white/80 mt-2">Total presupuesto mensual</p>
           </div>
@@ -66,7 +66,7 @@ export default function ExecutionLayer() {
         <div className="bg-white/10 backdrop-blur-sm rounded-xl p-5">
           <div className="flex justify-between items-center mb-3">
             <span className="text-sm font-medium">Ejecución del mes</span>
-            <span className="text-2xl font-bold">
+            <span className="text-xl font-bold">
               ${(Object.values(BUDGET_ALLOCATION.distribution).reduce((sum, ch) => sum + ch.amount, 0)).toLocaleString()}
             </span>
           </div>
@@ -84,7 +84,7 @@ export default function ExecutionLayer() {
             <Target className="w-6 h-6 text-white" />
           </div>
           <div>
-            <h3 className="text-xl font-bold text-gray-900">Distribución por Canal</h3>
+            <h3 className="text-base font-bold text-gray-900">Distribución por Canal</h3>
             <p className="text-sm text-gray-600">Performance y asignación actual</p>
           </div>
         </div>
@@ -97,7 +97,7 @@ export default function ExecutionLayer() {
                 <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-2">
-                      <h4 className="font-bold text-gray-900 text-lg">
+                      <h4 className="font-bold text-gray-900 text-base">
                         {key === 'google_search' ? 'Google Search' :
                          key === 'social_media' ? 'Meta Ads (FB + IG)' :
                          key === 'youtube' ? 'YouTube Ads' :
@@ -124,9 +124,9 @@ export default function ExecutionLayer() {
 
                   <div className="text-center lg:text-right lg:min-w-[200px]">
                     <div className="mb-2">
-                      <span className="text-4xl font-bold text-gray-900">{channel.percentage}%</span>
+                      <span className="text-2xl font-bold text-gray-900">{channel.percentage}%</span>
                     </div>
-                    <div className="text-2xl font-bold text-gray-800 mb-1">
+                    <div className="text-xl font-bold text-gray-800 mb-1">
                       ${channel.amount.toLocaleString()}
                     </div>
                     <p className="text-xs text-gray-500">del presupuesto total</p>
@@ -159,7 +159,7 @@ export default function ExecutionLayer() {
             <AlertTriangle className="w-6 h-6 text-white" />
           </div>
           <div>
-            <h3 className="text-xl font-bold text-gray-900">Recomendaciones de Optimización</h3>
+            <h3 className="text-base font-bold text-gray-900">Recomendaciones de Optimización</h3>
             <p className="text-sm text-gray-600">Ajustes sugeridos basados en performance</p>
           </div>
         </div>
@@ -214,7 +214,7 @@ export default function ExecutionLayer() {
             <Zap className="w-6 h-6 text-white" />
           </div>
           <div>
-            <h3 className="text-xl font-bold text-gray-900">Pilares de Contenido RAV4</h3>
+            <h3 className="text-base font-bold text-gray-900">Pilares de Contenido RAV4</h3>
             <p className="text-sm text-gray-600">Performance y distribución recomendada</p>
           </div>
         </div>
@@ -225,7 +225,7 @@ export default function ExecutionLayer() {
             return (
               <div key={pillar.id} className={`p-5 rounded-xl border-2 ${colors.bg} ${colors.border}`}>
                 <div className="flex items-center justify-between mb-3">
-                  <h4 className="font-bold text-gray-900 text-lg">{pillar.title}</h4>
+                  <h4 className="font-bold text-gray-900 text-base">{pillar.title}</h4>
                   <span className={`px-3 py-1 rounded-full text-xs font-bold ${colors.badge} ${colors.text}`}>
                     {getStatusIcon(pillar.status)}
                   </span>
@@ -251,7 +251,7 @@ export default function ExecutionLayer() {
                 <div className="pt-3 border-t border-gray-300">
                   <div className="flex justify-between items-center">
                     <span className="text-xs text-gray-500">Budget Recomendado</span>
-                    <span className="text-xl font-bold text-gray-900">{(pillar.recommended_budget * 100).toFixed(0)}%</span>
+                    <span className="text-base font-bold text-gray-900">{(pillar.recommended_budget * 100).toFixed(0)}%</span>
                   </div>
                 </div>
 
@@ -275,12 +275,12 @@ export default function ExecutionLayer() {
       <div className="bg-gradient-to-br from-toyota-green to-success text-white rounded-2xl shadow-lg p-8">
         <div className="flex items-center gap-3 mb-6">
           <Calendar className="w-8 h-8" />
-          <h3 className="text-2xl font-bold">Timing Óptimo de Pauta</h3>
+          <h3 className="text-lg font-bold">Timing Óptimo de Pauta</h3>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="bg-white/10 backdrop-blur-sm rounded-xl p-5">
-            <h4 className="font-bold text-lg mb-3">Mejores horarios del día</h4>
+            <h4 className="font-bold text-base mb-3">Mejores horarios del día</h4>
             <div className="space-y-2">
               <div className="flex justify-between items-center">
                 <span className="text-white/90">7:00 - 9:00 AM</span>
@@ -294,7 +294,7 @@ export default function ExecutionLayer() {
           </div>
 
           <div className="bg-white/10 backdrop-blur-sm rounded-xl p-5">
-            <h4 className="font-bold text-lg mb-3">Mejores días de la semana</h4>
+            <h4 className="font-bold text-base mb-3">Mejores días de la semana</h4>
             <div className="space-y-2">
               <div className="flex justify-between items-center">
                 <span className="text-white/90">Lunes</span>

@@ -185,17 +185,17 @@ export default function DataLayer() {
       <div className="bg-gradient-to-br from-toyota-red to-toyota-darkRed rounded-2xl shadow-toyota-lg p-8 text-white">
         <div className="flex items-start justify-between mb-6">
           <div className="flex-1">
-            <h2 className="text-3xl font-bold mb-2">
+            <h2 className="text-xl font-bold mb-2">
               Capa de Data - Captura de Señales
             </h2>
-            <p className="text-white/80 text-lg">
+            <p className="text-white/80 text-base">
               Monitoreo en tiempo real del ecosistema digital automotriz en Perú
             </p>
           </div>
           <div className="flex items-center gap-4">
             <div className="text-right">
               <p className="text-white/70 text-xs uppercase font-semibold mb-1">Score Global</p>
-              <p className="text-5xl font-bold">{scores.overall}</p>
+              <p className="text-3xl font-bold">{scores.overall}</p>
               <p className="text-xs text-white/60">de 10.0</p>
             </div>
             <button
@@ -244,7 +244,7 @@ export default function DataLayer() {
             <span className="text-2xl">📊</span>
           </div>
           <div>
-            <h3 className="text-2xl font-bold text-gray-900">Insights Clave del Mercado</h3>
+            <h3 className="text-lg font-bold text-gray-900">Insights Clave del Mercado</h3>
             <p className="text-sm text-gray-600">Análisis automático multi-fuente</p>
           </div>
         </div>
@@ -270,8 +270,8 @@ export default function DataLayer() {
             return (
               <div key={idx} className={`relative ${colorScheme.bg} rounded-xl p-5 border-2 border-transparent hover:border-gray-200 transition-all duration-300 hover:shadow-lg group ${isMultiSource ? 'md:col-span-2' : ''}`}>
                 <div className="flex items-start gap-4">
-                  <div className={`w-14 h-14 bg-gradient-to-br ${colorScheme.gradient} rounded-xl flex items-center justify-center shadow-lg flex-shrink-0 group-hover:scale-110 transition-transform duration-300`}>
-                    <span className="text-3xl">{insight.icon}</span>
+                  <div className={`w-12 h-12 bg-gradient-to-br ${colorScheme.gradient} rounded-xl flex items-center justify-center shadow-lg flex-shrink-0 group-hover:scale-110 transition-transform duration-300`}>
+                    <span className="text-2xl">{insight.icon}</span>
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-2">
@@ -302,8 +302,8 @@ export default function DataLayer() {
           <div className="flex items-center gap-3">
             <Search className="w-6 h-6" />
             <div className="text-left">
-              <h3 className="text-lg font-bold">Google Trends</h3>
-              <p className="text-sm text-blue-100">Keywords automotrices en tendencia • Score: {scores.search}/10</p>
+              <h3 className="text-base font-bold">Google Trends</h3>
+              <p className="text-xs text-blue-100">Keywords automotrices en tendencia • Score: {scores.search}/10</p>
             </div>
           </div>
           {expandedSections.trends ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
@@ -405,8 +405,8 @@ export default function DataLayer() {
           <div className="flex items-center gap-3">
             <Video className="w-6 h-6" />
             <div className="text-left">
-              <h3 className="text-lg font-bold">TikTok Creative Center</h3>
-              <p className="text-sm text-pink-100">Hashtags automotrices virales • Score: {scores.trend}/10</p>
+              <h3 className="text-base font-bold">TikTok Creative Center</h3>
+              <p className="text-xs text-pink-100">Hashtags automotrices virales • Score: {scores.trend}/10</p>
             </div>
           </div>
           {expandedSections.tiktok ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
@@ -480,8 +480,8 @@ export default function DataLayer() {
           <div className="flex items-center gap-3">
             <Share2 className="w-6 h-6" />
             <div className="text-left">
-              <h3 className="text-lg font-bold">Meta/Facebook Trends</h3>
-              <p className="text-sm text-blue-100">Tendencias automotrices en redes sociales • Score: {scores.social}/10</p>
+              <h3 className="text-base font-bold">Meta/Facebook Trends</h3>
+              <p className="text-xs text-blue-100">Tendencias automotrices en redes sociales • Score: {scores.social}/10</p>
             </div>
           </div>
           {expandedSections.meta ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
@@ -559,8 +559,8 @@ export default function DataLayer() {
           <div className="flex items-center gap-3">
             <BarChart3 className="w-6 h-6" />
             <div className="text-left">
-              <h3 className="text-lg font-bold">Google Analytics 4</h3>
-              <p className="text-sm text-green-100">Conversión e intención de compra • Score: {scores.intent}/10</p>
+              <h3 className="text-base font-bold">Google Analytics 4</h3>
+              <p className="text-xs text-green-100">Conversión e intención de compra • Score: {scores.intent}/10</p>
             </div>
           </div>
           {expandedSections.ga4 ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
@@ -584,19 +584,19 @@ export default function DataLayer() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <div className="bg-gray-50 rounded-lg p-4">
                 <p className="text-xs text-gray-600 mb-1">Total Usuarios</p>
-                <p className="text-2xl font-bold text-gray-900">{ga4Data?.overview?.totalUsers?.toLocaleString()}</p>
+                <p className="text-xl font-bold text-gray-900">{ga4Data?.overview?.totalUsers?.toLocaleString()}</p>
               </div>
               <div className="bg-gray-50 rounded-lg p-4">
                 <p className="text-xs text-gray-600 mb-1">Sesiones</p>
-                <p className="text-2xl font-bold text-gray-900">{ga4Data?.overview?.sessions?.toLocaleString()}</p>
+                <p className="text-xl font-bold text-gray-900">{ga4Data?.overview?.sessions?.toLocaleString()}</p>
               </div>
               <div className="bg-gray-50 rounded-lg p-4">
                 <p className="text-xs text-gray-600 mb-1">Conversiones (Leads)</p>
-                <p className="text-2xl font-bold text-green-600">{ga4Data?.overview?.conversions?.toLocaleString()}</p>
+                <p className="text-xl font-bold text-green-600">{ga4Data?.overview?.conversions?.toLocaleString()}</p>
               </div>
               <div className="bg-gray-50 rounded-lg p-4">
                 <p className="text-xs text-gray-600 mb-1">Tasa Conversión</p>
-                <p className="text-2xl font-bold text-green-600">{(ga4Data?.overview?.conversionRate * 100)?.toFixed(1)}%</p>
+                <p className="text-xl font-bold text-green-600">{(ga4Data?.overview?.conversionRate * 100)?.toFixed(1)}%</p>
               </div>
             </div>
 
@@ -683,7 +683,7 @@ export default function DataLayer() {
 
       {/* Keywords Reference */}
       <div className="bg-gradient-to-br from-toyota-red to-toyota-darkRed rounded-xl p-6 text-white">
-        <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+        <h3 className="text-base font-bold mb-4 flex items-center gap-2">
           <Car className="w-6 h-6" />
           Keywords Monitoreadas - Toyota RAV4 Híbrida
         </h3>

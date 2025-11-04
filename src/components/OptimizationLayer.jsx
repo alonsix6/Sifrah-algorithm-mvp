@@ -39,7 +39,7 @@ export default function OptimizationLayer() {
       <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
         <div className="flex items-start justify-between">
           <div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">
+            <h2 className="text-lg font-bold text-gray-900 mb-2">
               {LAYER_CONFIG.optimization.name}
             </h2>
             <p className="text-gray-600">
@@ -68,7 +68,7 @@ export default function OptimizationLayer() {
             </span>
           </div>
           <h3 className="text-sm font-medium text-white/80 mb-1">Leads Calificados</h3>
-          <p className="text-4xl font-bold mb-2">{PERFORMANCE_KPIS.leads.qualified.toLocaleString()}</p>
+          <p className="text-2xl font-bold mb-2">{PERFORMANCE_KPIS.leads.qualified.toLocaleString()}</p>
           <div className="flex items-baseline gap-2">
             <span className="text-sm text-white/70">de {PERFORMANCE_KPIS.leads.total.toLocaleString()} total</span>
             <span className="text-xs bg-white/20 px-2 py-1 rounded">{PERFORMANCE_KPIS.leads.qualification_rate}%</span>
@@ -92,7 +92,7 @@ export default function OptimizationLayer() {
             </span>
           </div>
           <h3 className="text-sm font-medium text-white/80 mb-1">Alcance Único</h3>
-          <p className="text-4xl font-bold mb-2">{(PERFORMANCE_KPIS.reach.unique_reach / 1000000).toFixed(1)}M</p>
+          <p className="text-2xl font-bold mb-2">{(PERFORMANCE_KPIS.reach.unique_reach / 1000000).toFixed(1)}M</p>
           <div className="flex items-baseline gap-2">
             <span className="text-sm text-white/70">Impresiones: {(PERFORMANCE_KPIS.reach.impressions / 1000000).toFixed(1)}M</span>
           </div>
@@ -115,7 +115,7 @@ export default function OptimizationLayer() {
             </span>
           </div>
           <h3 className="text-sm font-medium text-white/80 mb-1">Interacciones Totales</h3>
-          <p className="text-4xl font-bold mb-2">{(PERFORMANCE_KPIS.engagement.total_interactions / 1000).toFixed(1)}K</p>
+          <p className="text-2xl font-bold mb-2">{(PERFORMANCE_KPIS.engagement.total_interactions / 1000).toFixed(1)}K</p>
           <div className="flex items-baseline gap-2">
             <span className="text-sm text-white/70">Engagement Rate</span>
             <span className="text-xs bg-white/20 px-2 py-1 rounded">{PERFORMANCE_KPIS.engagement.engagement_rate}%</span>
@@ -137,7 +137,7 @@ export default function OptimizationLayer() {
             </span>
           </div>
           <h3 className="text-sm font-medium text-white/80 mb-1">Presupuesto Ejecutado</h3>
-          <p className="text-4xl font-bold mb-2">${(PERFORMANCE_KPIS.budget.total_spent / 1000).toFixed(1)}K</p>
+          <p className="text-2xl font-bold mb-2">${(PERFORMANCE_KPIS.budget.total_spent / 1000).toFixed(1)}K</p>
           <div className="flex items-baseline gap-2">
             <span className="text-sm text-white/70">de ${(PERFORMANCE_KPIS.budget.total_budget / 1000).toFixed(0)}K total</span>
           </div>
@@ -154,7 +154,7 @@ export default function OptimizationLayer() {
       <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
         <div className="flex items-center justify-between mb-6">
           <div>
-            <h3 className="text-xl font-bold text-gray-900">Performance Últimos 7 Días</h3>
+            <h3 className="text-base font-bold text-gray-900">Performance Últimos 7 Días</h3>
             <p className="text-sm text-gray-600">Evolución de métricas clave</p>
           </div>
           <div className="flex gap-4 text-sm">
@@ -189,7 +189,7 @@ export default function OptimizationLayer() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Channel Distribution */}
         <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
-          <h3 className="text-xl font-bold text-gray-900 mb-4">Distribución de Leads por Canal</h3>
+          <h3 className="text-base font-bold text-gray-900 mb-4">Distribución de Leads por Canal</h3>
           <ResponsiveContainer width="100%" height={250}>
             <PieChart>
               <Pie
@@ -224,7 +224,7 @@ export default function OptimizationLayer() {
 
         {/* Funnel de Conversión */}
         <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
-          <h3 className="text-xl font-bold text-gray-900 mb-4">Funnel de Conversión</h3>
+          <h3 className="text-base font-bold text-gray-900 mb-4">Funnel de Conversión</h3>
           <div className="space-y-3">
             {funnelData.map((stage, idx) => (
               <div key={idx}>
@@ -258,7 +258,7 @@ export default function OptimizationLayer() {
         <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
           <div className="flex items-center gap-3 mb-4">
             <AlertCircle className="w-6 h-6 text-toyota-red" />
-            <h3 className="text-xl font-bold text-gray-900">Alertas Automáticas</h3>
+            <h3 className="text-base font-bold text-gray-900">Alertas Automáticas</h3>
           </div>
           <div className="space-y-3">
             {ALERTS.slice(0, 3).map((alert) => (
@@ -290,7 +290,7 @@ export default function OptimizationLayer() {
         <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
           <div className="flex items-center gap-3 mb-4">
             <BarChart3 className="w-6 h-6 text-toyota-green" />
-            <h3 className="text-xl font-bold text-gray-900">A/B Tests Activos</h3>
+            <h3 className="text-base font-bold text-gray-900">A/B Tests Activos</h3>
           </div>
           <div className="space-y-4">
             {AB_TESTS.map((test) => (
@@ -308,12 +308,12 @@ export default function OptimizationLayer() {
                   <div className="p-2 bg-white rounded">
                     <p className="text-xs text-gray-500 mb-1">Variante A</p>
                     <p className="text-xs font-semibold">{test.variant_a.name}</p>
-                    <p className="text-lg font-bold text-gray-900">{test.variant_a.ctr || test.variant_a.view_rate}%</p>
+                    <p className="text-base font-bold text-gray-900">{test.variant_a.ctr || test.variant_a.view_rate}%</p>
                   </div>
                   <div className="p-2 bg-white rounded">
                     <p className="text-xs text-gray-500 mb-1">Variante B</p>
                     <p className="text-xs font-semibold">{test.variant_b.name}</p>
-                    <p className="text-lg font-bold text-gray-900">{test.variant_b.ctr || test.variant_b.view_rate}%</p>
+                    <p className="text-base font-bold text-gray-900">{test.variant_b.ctr || test.variant_b.view_rate}%</p>
                   </div>
                 </div>
 
@@ -330,7 +330,7 @@ export default function OptimizationLayer() {
 
       {/* Competitor Analysis */}
       <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
-        <h3 className="text-xl font-bold text-gray-900 mb-4">Análisis de Competencia</h3>
+        <h3 className="text-base font-bold text-gray-900 mb-4">Análisis de Competencia</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {COMPETITOR_INSIGHTS.filter(c => c.brand !== 'Toyota RAV4').map((comp, idx) => (
             <div key={idx} className="p-4 border-2 border-gray-200 rounded-lg hover:border-toyota-red transition-colors">
@@ -346,11 +346,11 @@ export default function OptimizationLayer() {
               <div className="grid grid-cols-2 gap-3 mb-3">
                 <div>
                   <p className="text-xs text-gray-500">Share of Voice</p>
-                  <p className="text-xl font-bold text-gray-900">{comp.share_of_voice}%</p>
+                  <p className="text-base font-bold text-gray-900">{comp.share_of_voice}%</p>
                 </div>
                 <div>
                   <p className="text-xs text-gray-500">Sentimiento</p>
-                  <p className="text-xl font-bold text-toyota-green">{comp.sentiment}%</p>
+                  <p className="text-base font-bold text-toyota-green">{comp.sentiment}%</p>
                 </div>
               </div>
 
@@ -372,15 +372,15 @@ export default function OptimizationLayer() {
         <div className="mt-4 p-5 bg-gradient-to-br from-toyota-red to-toyota-darkRed text-white rounded-xl">
           <div className="flex items-center justify-between">
             <div>
-              <h4 className="font-bold text-lg mb-1">Toyota RAV4</h4>
+              <h4 className="font-bold text-base mb-1">Toyota RAV4</h4>
               <div className="flex gap-6">
                 <div>
                   <p className="text-xs text-white/70">Share of Voice</p>
-                  <p className="text-2xl font-bold">17%</p>
+                  <p className="text-xl font-bold">17%</p>
                 </div>
                 <div>
                   <p className="text-xs text-white/70">Sentimiento</p>
-                  <p className="text-2xl font-bold">85%</p>
+                  <p className="text-xl font-bold">85%</p>
                 </div>
               </div>
             </div>

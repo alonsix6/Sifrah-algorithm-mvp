@@ -83,7 +83,7 @@ export default function Dashboard() {
                 <Car className="w-7 h-7 sm:w-8 sm:h-8 text-toyota-red" />
               </div>
               <div className="min-w-0">
-                <h1 className="text-2xl sm:text-3xl font-bold truncate">{BRAND_CONFIG.name}</h1>
+                <h1 className="text-xl sm:text-2xl font-bold truncate">{BRAND_CONFIG.name}</h1>
                 <p className="text-white/90 text-xs sm:text-sm mt-1">
                   {BRAND_CONFIG.tagline}
                 </p>
@@ -136,8 +136,8 @@ export default function Dashboard() {
                 >
                   <Icon className={`w-5 h-5 flex-shrink-0 ${isActive ? '' : 'opacity-70'}`} />
                   <div className="text-left min-w-0">
-                    <p className="text-sm font-semibold whitespace-nowrap">{layer.name}</p>
-                    <p className={`text-xs whitespace-nowrap ${isActive ? 'text-white/80' : 'text-gray-500'}`}>
+                    <p className="text-xs font-semibold whitespace-nowrap">{layer.name}</p>
+                    <p className={`text-[10px] whitespace-nowrap ${isActive ? 'text-white/80' : 'text-gray-500'}`}>
                       {layer.description}
                     </p>
                   </div>
