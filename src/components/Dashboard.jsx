@@ -167,7 +167,7 @@ export default function Dashboard() {
             </p>
             <div className="flex items-center gap-3 sm:gap-4">
               <span className="flex items-center gap-2 text-xs sm:text-sm">
-                <div className="w-2 h-2 bg-toyota-green rounded-full animate-pulse"></div>
+                <div className="w-2 h-2 bg-toyota-red rounded-full animate-pulse"></div>
                 {UI_TEXT.systemActive}
               </span>
               <span className="text-toyota-red font-semibold text-xs sm:text-sm">{UI_TEXT.footer.version}</span>

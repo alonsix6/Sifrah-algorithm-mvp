@@ -24,7 +24,7 @@ export const LAYER_CONFIG = {
     subtitle: 'Monitoreo en tiempo real del ecosistema digital automotriz',
     description: 'Búsqueda, Tendencia, Intención, Emoción',
     icon: 'Search',
-    color: 'from-toyota-red to-toyota-darkRed',
+    color: 'from-toyota-red to-toyota-red',
   },
   decision: {
     id: 'decision',
@@ -32,7 +32,7 @@ export const LAYER_CONFIG = {
     subtitle: 'Insights automáticos para optimizar inversión',
     description: 'Análisis y definición de estrategia',
     icon: 'Target',
-    color: 'from-toyota-darkRed to-toyota-gray',
+    color: 'from-toyota-red via-toyota-darkRed to-toyota-gray',
   },
   execution: {
     id: 'execution',
@@ -40,7 +40,7 @@ export const LAYER_CONFIG = {
     subtitle: 'Distribución inteligente de presupuesto y contenidos',
     description: 'Implementación en tiempo real',
     icon: 'Zap',
-    color: 'from-toyota-gray to-toyota-green',
+    color: 'from-toyota-gray to-toyota-black',
   },
   optimization: {
     id: 'optimization',
@@ -48,7 +48,7 @@ export const LAYER_CONFIG = {
     subtitle: 'Resultados en tiempo real y ajustes automáticos',
     description: 'Evaluación y redistribución',
     icon: 'TrendingUp',
-    color: 'from-toyota-red to-toyota-black',
+    color: 'from-toyota-black to-toyota-black',
   },
 };
 
@@ -289,8 +289,8 @@ export const METRIC_CARDS_CONFIG = [
     title: 'Interacciones',
     description: 'Likes, shares, comentarios, saves',
     icon: 'Heart',
-    color: 'toyota-green',
-    gradient: 'from-toyota-green to-success',
+    color: 'toyota-gray',
+    gradient: 'from-toyota-gray to-toyota-black',
   },
   {
     id: 'opportunity',
@@ -298,7 +298,7 @@ export const METRIC_CARDS_CONFIG = [
     description: 'Índice de oportunidad de inversión',
     icon: 'Zap',
     color: 'toyota-red',
-    gradient: 'from-toyota-red to-toyota-green',
+    gradient: 'from-toyota-red to-toyota-black',
   },
 ];
 
