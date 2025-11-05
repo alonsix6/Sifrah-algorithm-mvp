@@ -223,35 +223,46 @@ export default function OptimizationLayer() {
       {/* Channel Distribution */}
       <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
         <h3 className="text-base font-bold text-gray-900 mb-4">Distribución de Leads por Canal</h3>
-        <ResponsiveContainer width="100%" height={250}>
-          <PieChart>
-            <Pie
-              data={channelData}
-              cx="50%"
-              cy="50%"
-              labelLine={false}
-              label={(entry) => `${entry.name}: ${entry.value}%`}
-              outerRadius={80}
-              fill="#8884d8"
-              dataKey="value"
-            >
-              {channelData.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={entry.color} />
-              ))}
-            </Pie>
-            <Tooltip />
-          </PieChart>
-        </ResponsiveContainer>
-        <div className="mt-4 grid grid-cols-2 gap-3">
-          {channelData.map((channel, idx) => (
-            <div key={idx} className="flex items-center justify-between p-2 bg-gray-50 rounded">
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full" style={{ backgroundColor: channel.color }}></div>
-                <span className="text-sm font-medium">{channel.name}</span>
+
+        <div className="flex items-center gap-6">
+          {/* Pie Chart */}
+          <div className="flex-shrink-0">
+            <ResponsiveContainer width={220} height={220}>
+              <PieChart>
+                <Pie
+                  data={channelData}
+                  cx="50%"
+                  cy="50%"
+                  labelLine={false}
+                  label={false}
+                  outerRadius={90}
+                  fill="#8884d8"
+                  dataKey="value"
+                >
+                  {channelData.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={entry.color} />
+                  ))}
+                </Pie>
+                <Tooltip />
+              </PieChart>
+            </ResponsiveContainer>
+          </div>
+
+          {/* Legend - Right side */}
+          <div className="flex-1 space-y-2">
+            {channelData.map((channel, idx) => (
+              <div key={idx} className="flex items-center justify-between p-2 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full flex-shrink-0" style={{ backgroundColor: channel.color }}></div>
+                  <span className="text-sm font-medium text-gray-700">{channel.name}</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="text-sm font-bold text-gray-900">{channel.leads} leads</span>
+                  <span className="text-xs font-bold text-gray-600 bg-gray-200 px-2 py-1 rounded">{channel.value}%</span>
+                </div>
               </div>
-              <span className="text-sm font-bold text-gray-800">{channel.leads}</span>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
 
