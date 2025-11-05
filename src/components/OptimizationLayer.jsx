@@ -24,13 +24,48 @@ export default function OptimizationLayer() {
     { name: 'TikTok', value: 5, leads: 95, color: '#06B6D4' } // Turquesa TikTok
   ];
 
-  // Funnel de conversión
-  const funnelData = [
-    { stage: 'Impresiones', value: 3500000, percentage: 100 },
-    { stage: 'Clics', value: 105000, percentage: 3.0 },
-    { stage: 'Landing Page', value: 89250, percentage: 85 },
-    { stage: 'Formularios', value: 1247, percentage: 1.4 },
-    { stage: 'Test Drives', value: 342, percentage: 27.4 }
+  // Funnel de conversión - rediseñado como steps con conversión entre etapas
+  const funnelSteps = [
+    {
+      stage: 'Impresiones',
+      value: 3500000,
+      conversionRate: 3.0,
+      conversionLabel: 'CTR',
+      icon: '👁️',
+      color: 'from-blue-500 to-blue-600'
+    },
+    {
+      stage: 'Clics',
+      value: 105000,
+      conversionRate: 85.0,
+      conversionLabel: 'a Landing',
+      icon: '👆',
+      color: 'from-indigo-500 to-indigo-600'
+    },
+    {
+      stage: 'Visitas Landing',
+      value: 89250,
+      conversionRate: 1.4,
+      conversionLabel: 'a Formulario',
+      icon: '📄',
+      color: 'from-green-500 to-green-600'
+    },
+    {
+      stage: 'Formularios',
+      value: 1247,
+      conversionRate: 27.4,
+      conversionLabel: 'a Test Drive',
+      icon: '📝',
+      color: 'from-amber-500 to-orange-500'
+    },
+    {
+      stage: 'Test Drives',
+      value: 342,
+      conversionRate: null,
+      conversionLabel: null,
+      icon: '🚗',
+      color: 'from-toyota-red to-toyota-darkRed'
+    }
   ];
 
   return (
@@ -222,32 +257,60 @@ export default function OptimizationLayer() {
           </div>
         </div>
 
-        {/* Funnel de Conversión */}
+        {/* Journey de Conversión */}
         <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
-          <h3 className="text-base font-bold text-gray-900 mb-4">Funnel de Conversión</h3>
-          <div className="space-y-3">
-            {funnelData.map((stage, idx) => (
+          <h3 className="text-base font-bold text-gray-900 mb-2">Journey de Conversión</h3>
+          <p className="text-sm text-gray-600 mb-6">Tasa de conversión entre cada etapa del embudo</p>
+
+          <div className="space-y-4">
+            {funnelSteps.map((step, idx) => (
               <div key={idx}>
-                <div className="flex justify-between items-center mb-1">
-                  <span className="text-sm font-medium text-gray-700">{stage.stage}</span>
-                  <div className="flex items-center gap-2">
-                    <span className="text-sm font-bold text-gray-900">{stage.value.toLocaleString()}</span>
-                    <span className="text-xs text-gray-500">({stage.percentage.toFixed(1)}%)</span>
+                {/* Step Card */}
+                <div className={`bg-gradient-to-r ${step.color} rounded-xl p-4 text-white shadow-md`}>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <div className="text-3xl">{step.icon}</div>
+                      <div>
+                        <p className="text-xs font-medium text-white/80 uppercase tracking-wide">{step.stage}</p>
+                        <p className="text-xl font-bold">{step.value.toLocaleString()}</p>
+                      </div>
+                    </div>
+
+                    {step.conversionRate !== null && (
+                      <div className="text-right bg-white/20 rounded-lg px-3 py-2">
+                        <p className="text-xs font-medium text-white/90">{step.conversionLabel}</p>
+                        <p className="text-lg font-bold">{step.conversionRate}%</p>
+                      </div>
+                    )}
                   </div>
                 </div>
-                <div className="w-full h-3 bg-gray-200 rounded-full overflow-hidden">
-                  <div
-                    className={`h-full ${
-                      idx === 0 ? 'bg-blue-500' :
-                      idx === 1 ? 'bg-blue-600' :
-                      idx === 2 ? 'bg-green-500' :
-                      idx === 3 ? 'bg-green-600' : 'bg-toyota-red'
-                    }`}
-                    style={{ width: `${stage.percentage}%` }}
-                  ></div>
-                </div>
+
+                {/* Connector Arrow */}
+                {idx < funnelSteps.length - 1 && (
+                  <div className="flex justify-center py-2">
+                    <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                    </svg>
+                  </div>
+                )}
               </div>
             ))}
+          </div>
+
+          {/* Summary Stats */}
+          <div className="mt-6 pt-6 border-t border-gray-200">
+            <div className="grid grid-cols-2 gap-4">
+              <div className="bg-gray-50 rounded-lg p-3">
+                <p className="text-xs text-gray-600 mb-1">Conversión Global</p>
+                <p className="text-xl font-bold text-gray-900">0.01%</p>
+                <p className="text-xs text-gray-500">Impresiones → Test Drives</p>
+              </div>
+              <div className="bg-gray-50 rounded-lg p-3">
+                <p className="text-xs text-gray-600 mb-1">Etapa Crítica</p>
+                <p className="text-xl font-bold text-orange-600">1.4%</p>
+                <p className="text-xs text-gray-500">Landing → Formulario</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
