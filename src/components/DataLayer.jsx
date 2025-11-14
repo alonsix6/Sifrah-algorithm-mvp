@@ -707,7 +707,7 @@ export default function DataLayer() {
           <div>
             <p className="text-sm text-white/70 mb-2 font-semibold">Competencia:</p>
             <div className="flex flex-wrap gap-2">
-              <span className="px-3 py-1 bg-white/20 rounded-full text-sm">Honda CR-V</span>
+              <span className="px-3 py-1 bg-white/20 rounded-full text-sm">Toyota RAV4</span>
               <span className="px-3 py-1 bg-white/20 rounded-full text-sm">Mazda CX-5</span>
               <span className="px-3 py-1 bg-white/20 rounded-full text-sm">Nissan X-Trail</span>
             </div>

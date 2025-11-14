@@ -28,7 +28,7 @@ export default function DecisionLayer() {
     {
       priority: 'medium',
       category: 'Audiencias',
-      action: 'Expandir "Familias Jóvenes" - engagement 11.8% vs 8.2% promedio',
+      action: 'Expandir "Familias Profesionales" - engagement 11.8% vs 8.2% promedio',
       impact: '+342 leads adicionales/mes',
       confidence: 86
     },
@@ -43,36 +43,36 @@ export default function DecisionLayer() {
 
   const audiences = [
     {
-      name: 'Familias Jóvenes 30-45',
-      size: '450K',
+      name: 'Familias Profesionales 35-50',
+      size: '420K',
       engagement: '11.8%',
       status: 'active',
-      description: 'Profesionales con hijos, interés en seguridad y espacio familiar',
+      description: 'Profesionales con hijos, interés en Honda Sensing y confiabilidad',
       message: KEY_MESSAGES.family.message
     },
     {
-      name: 'Profesionales Eco-conscious',
-      size: '280K',
+      name: 'Eco-conscious Premium',
+      size: '310K',
       engagement: '9.4%',
       status: 'active',
-      description: 'Búsquedas de híbridos, sostenibilidad, eficiencia energética',
+      description: 'Ejecutivos interesados en e:HEV, eficiencia y tecnología híbrida',
       message: KEY_MESSAGES.hybrid.message
     },
     {
-      name: 'Aventureros Urbanos',
-      size: '320K',
+      name: 'Millennials Urbanos 25-35',
+      size: '380K',
       engagement: '8.7%',
       status: 'active',
-      description: 'Interés en 4x4, outdoor, viajes de fin de semana',
-      message: KEY_MESSAGES.adventure.message
+      description: 'Primera SUV, interés en tecnología, precio accesible y Magic Seats',
+      message: 'Tu primera SUV Honda a precio accesible'
     },
     {
-      name: 'Upgrade de Sedán',
-      size: '190K',
+      name: 'Compradores Pragmáticos',
+      size: '250K',
       engagement: '7.2%',
       status: 'testing',
-      description: 'Propietarios de sedanes buscando más espacio y versatilidad',
-      message: 'Es hora de crecer - más espacio, misma confiabilidad'
+      description: 'Enfoque en ahorro de combustible, confiabilidad Honda y servicio',
+      message: KEY_MESSAGES.sustainability.message
     }
   ];
 
