@@ -393,7 +393,7 @@ export default function OptimizationLayer() {
       <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
         <h3 className="text-base font-bold text-gray-900 mb-4">Análisis de Competencia</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {COMPETITOR_INSIGHTS.filter(c => c.brand !== 'Honda CR-V').map((comp, idx) => (
+          {COMPETITOR_INSIGHTS.filter(c => c.brand !== 'Honda CR-V / HR-V').map((comp, idx) => (
             <div key={idx} className="p-4 border-2 border-gray-200 rounded-lg hover:border-honda-red transition-colors">
               <div className="flex items-center justify-between mb-3">
                 <h4 className="font-bold text-gray-900">{comp.brand}</h4>
@@ -433,21 +433,21 @@ export default function OptimizationLayer() {
         <div className="mt-4 p-5 bg-gradient-to-br from-honda-red to-honda-darkRed text-white rounded-xl">
           <div className="flex items-center justify-between">
             <div>
-              <h4 className="font-bold text-base mb-1">Honda CR-V</h4>
+              <h4 className="font-bold text-base mb-1">Honda CR-V / HR-V</h4>
               <div className="flex gap-6">
                 <div>
                   <p className="text-xs text-white/70">Share of Voice</p>
-                  <p className="text-xl font-bold">17%</p>
+                  <p className="text-xl font-bold">14%</p>
                 </div>
                 <div>
                   <p className="text-xs text-white/70">Sentimiento</p>
-                  <p className="text-xl font-bold">85%</p>
+                  <p className="text-xl font-bold">80%</p>
                 </div>
               </div>
             </div>
             <div className="text-right">
               <span className="px-3 py-2 bg-white/20 rounded-lg text-sm font-bold">
-                🏆 Líder en Sentimiento
+                Nuestra Marca
               </span>
             </div>
           </div>
