@@ -67,10 +67,10 @@ Distribución inteligente de presupuesto y contenidos:
 Performance y ajustes automáticos:
 - **KPIs principales**: Postulaciones completadas, Alcance total, Interacciones, Charlas asistidas
 - **Funnel de conversión**: Alcance → Visitas Landing → Formularios → Postulaciones → Matriculados
-- **Análisis de competencia**: UNSA, UCSM, UTP, UAP
-- **Integración HubSpot (Mockup)**: Alertas automáticas cuando CPL supera límites establecidos
-  - Pregrado: Alerta en S/45, Pausa en S/55
-  - Posgrado: Alerta en S/70, Pausa en S/90
+- **Análisis de competencia**: UNSA, UCSM, UNSAAC (Cusco), UTP, UAC (Cusco), ULASALLE
+- **Integración HubSpot**: Sistema de alertas automáticas cuando CPL supera límites establecidos
+  - Pregrado: Alerta en $10, Pausa en $14 (máximo $12)
+  - Posgrado: Alerta en $13, Pausa en $17 (máximo $15)
 
 **Output**: Evaluación continua y redistribución de inversión
 
@@ -205,7 +205,311 @@ Archivo: `src/data/config.js`
 
 ---
 
-## 🔄 Integración HubSpot (Mockup)
+## 🗂️ Arquitectura de Datos - Guía Completa
+
+### ⚠️ IMPORTANTE: Cómo funcionan los datos en este sistema
+
+El sistema usa **2 estrategias diferentes** para cargar datos según el componente:
+
+#### 📂 Estrategia 1: Imports estáticos (Build time)
+Componentes que cargan datos desde archivos JavaScript:
+- **DecisionLayer** → `src/data/mockData.js` + `src/data/config.js`
+- **ExecutionLayer** → `src/data/mockData.js` + `src/data/config.js`
+- **OptimizationLayer** → `src/data/mockData.js` + `src/data/config.js`
+- **Dashboard** → `src/data/config.js`
+
+#### 📡 Estrategia 2: Fetch dinámico (Runtime)
+Componentes que cargan datos desde archivos JSON:
+- **DataLayer** → `public/data/*.json` (cargados con fetch al montar)
+
+### 📁 Mapa Completo de Archivos de Datos
+
+```
+SanPablo-algorithm-mvp/
+├── src/data/                    # Datos importados (build time)
+│   ├── config.js               # Configuración global del sistema
+│   │   ├── BRAND_CONFIG        # Colores, logo, nombre UCSP
+│   │   ├── LAYER_CONFIG        # Nombres y descripciones de capas
+│   │   ├── KEY_MESSAGES        # 5 mensajes clave (licenciamiento, formación, etc.)
+│   │   ├── TARGET_AUDIENCES    # Pregrado y Posgrado (audiencias + CPL targets)
+│   │   ├── CHANNELS_CONFIG     # Google Search, Meta Ads, YouTube, Display
+│   │   ├── HUBSPOT_CONFIG      # Thresholds de CPL, API keys
+│   │   └── METRIC_CARDS_CONFIG # Cards de KPIs principales
+│   │
+│   └── mockData.js             # Datos de rendimiento (mockup)
+│       ├── OPPORTUNITY_SCORE   # Score 0-100 + componentes + recomendación
+│       ├── BUDGET_ALLOCATION   # Presupuesto mensual por canal
+│       ├── PERFORMANCE_KPIS    # Leads, conversión, CPL, budget
+│       ├── CARRERAS_PERFORMANCE# 13 carreras con CPL/CPP/conversión
+│       ├── CONTENT_PILLARS     # Pilares de contenido + rendimiento
+│       ├── ALERTS              # Alertas automáticas
+│       ├── COMPETITOR_INSIGHTS # UNSA, UCSM, UNSAAC, UTP, UAC, ULASALLE
+│       └── HUBSPOT_MOCKUP      # Alertas de HubSpot (mockup)
+│
+└── public/data/                # Datos JSON dinámicos (runtime)
+    ├── trends/
+    │   └── latest.json         # Google Trends - 10 keywords educativas
+    ├── tiktok/
+    │   └── latest.json         # TikTok - 12 hashtags educativos
+    ├── meta/
+    │   └── latest.json         # Meta - 10 temas con engagement
+    └── mock/
+        └── ga4_data.json       # Google Analytics 4 - métricas web
+```
+
+### 🔧 Cómo Editar Datos Mockup
+
+#### ¿Qué necesitas cambiar?
+
+| **Quiero cambiar...**                  | **Archivo a editar**            | **Ruta**                        |
+|----------------------------------------|---------------------------------|---------------------------------|
+| Presupuesto mensual                    | `BUDGET_ALLOCATION`             | `src/data/mockData.js`          |
+| CPL/CPP de las 13 carreras             | `CARRERAS_PERFORMANCE`          | `src/data/mockData.js`          |
+| Opportunity Score (82/100)             | `OPPORTUNITY_SCORE`             | `src/data/mockData.js`          |
+| KPIs principales (leads, alcance, etc.)| `PERFORMANCE_KPIS`              | `src/data/mockData.js`          |
+| Thresholds CPL (Pregrado $12, Posgrado $15) | `HUBSPOT_CONFIG.cpl_thresholds` | `src/data/config.js`     |
+| CPL target de audiencias               | `TARGET_AUDIENCES[].cpl_target` | `src/data/config.js`            |
+| Mensajes clave institucionales         | `KEY_MESSAGES`                  | `src/data/config.js`            |
+| Colores del branding                   | `BRAND_CONFIG.colors`           | `src/data/config.js`            |
+| Keywords de Google Trends              | `trends/latest.json`            | `public/data/trends/`           |
+| Hashtags de TikTok                     | `tiktok/latest.json`            | `public/data/tiktok/`           |
+| Temas de Meta (Facebook/Instagram)     | `meta/latest.json`              | `public/data/meta/`             |
+| Métricas de Google Analytics           | `ga4_data.json`                 | `public/data/mock/`             |
+
+### ⚙️ Reglas de Edición (CRÍTICO)
+
+#### 1. **Moneda: TODO en USD ($)**
+Todos los valores monetarios deben estar en **dólares estadounidenses**:
+- ✅ `cpl: 10.40` = $10.40
+- ✅ `total_budget: 23000` = $23,000
+- ❌ ~~`cpl: 38.50`~~ = S/38.50 (INCORRECTO)
+
+#### 2. **CPL Targets por audiencia**
+- **Pregrado**: `cpl_target: 9.5` ($9.50 USD)
+- **Posgrado**: `cpl_target: 17.5` ($17.50 USD)
+
+#### 3. **CPL Thresholds HubSpot**
+```javascript
+// src/data/config.js - HUBSPOT_CONFIG
+pregrado: {
+  max_cpl: 12,    // USD máximo
+  alert_at: 10,   // Alerta en $10
+  pause_at: 14,   // Pausar en $14
+},
+posgrado: {
+  max_cpl: 15,    // USD máximo
+  alert_at: 13,   // Alerta en $13
+  pause_at: 17,   // Pausar en $17
+}
+```
+
+#### 4. **Estructura de OPPORTUNITY_SCORE**
+⚠️ **IMPORTANTE**: Esta estructura es crítica para DecisionLayer. No alterar:
+
+```javascript
+export const OPPORTUNITY_SCORE = {
+  current_score: 82,        // ✅ Debe ser "current_score" (no "total")
+  trend: '+5.2%',           // ✅ Debe existir
+  components: {             // ✅ Debe ser objeto (no array)
+    search_interest: {
+      score: 85,
+      weight: 0.25,         // ✅ Decimal (no porcentaje)
+      contribution: 21.25,  // ✅ Debe existir
+    },
+    // ... otros componentes
+  },
+  recommendation: {         // ✅ Debe existir
+    message: '...',
+    confidence: '95%',
+    priority: 'high',
+  },
+};
+```
+
+### 🚀 Migración de Mockup a Producción (Paso a Paso)
+
+#### **Fase 1: Integración HubSpot (Real-time CPL Monitoring)**
+
+1. **Obtener credenciales HubSpot**:
+   - Ir a HubSpot → Settings → Integrations → API Key
+   - Copiar Private App Access Token
+
+2. **Configurar en el sistema**:
+   ```javascript
+   // src/data/config.js
+   export const HUBSPOT_CONFIG = {
+     enabled: true,  // ✅ Cambiar a true
+     api_key: 'pat-na1-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',  // ✅ Pegar token
+     // ... resto de configuración
+   };
+   ```
+
+3. **Crear endpoint backend** (Node.js/Express o Netlify Functions):
+   ```javascript
+   // netlify/functions/hubspot-cpl.js
+   const axios = require('axios');
+
+   exports.handler = async (event) => {
+     const response = await axios.get('https://api.hubapi.com/crm/v3/objects/deals', {
+       headers: { 'Authorization': `Bearer ${process.env.HUBSPOT_API_KEY}` }
+     });
+     // Calcular CPL por campaña
+     return { statusCode: 200, body: JSON.stringify(response.data) };
+   };
+   ```
+
+4. **Actualizar DataLayer para consumir endpoint**:
+   ```javascript
+   // src/components/OptimizationLayer.jsx
+   const [hubspotData, setHubspotData] = useState(null);
+
+   useEffect(() => {
+     if (HUBSPOT_CONFIG.enabled) {
+       fetch('/.netlify/functions/hubspot-cpl')
+         .then(r => r.json())
+         .then(data => setHubspotData(data));
+     }
+   }, []);
+   ```
+
+#### **Fase 2: Activar Scrapers Automáticos**
+
+1. **Configurar GitHub Actions** (ya existe en `.github/workflows/`):
+   ```yaml
+   # .github/workflows/scrapers.yml
+   name: Update Social Data
+   on:
+     schedule:
+       - cron: '0 6 * * 1'  # Lunes 6 AM
+   jobs:
+     scrape:
+       runs-on: ubuntu-latest
+       steps:
+         - uses: actions/checkout@v3
+         - run: cd scrapers && npm install && npm run scrape:all
+         - run: git add public/data/ && git commit -m "Update data" && git push
+   ```
+
+2. **Activar GitHub Actions**:
+   - GitHub → Settings → Actions → Allow all actions
+
+3. **Configurar secretos** (si usas APIs pagadas):
+   - GitHub → Settings → Secrets → New repository secret
+   - Agregar: `APIFY_API_KEY`, `RAPIDAPI_KEY`, etc.
+
+#### **Fase 3: Conectar Google Analytics 4 Real**
+
+1. **Crear Service Account en Google Cloud**:
+   - Google Cloud Console → IAM & Admin → Service Accounts
+   - Crear nueva cuenta → Descargar JSON key
+
+2. **Dar acceso a GA4**:
+   - Google Analytics → Admin → Property Access Management
+   - Agregar email del service account con rol "Viewer"
+
+3. **Crear función serverless**:
+   ```javascript
+   // netlify/functions/ga4-data.js
+   const { BetaAnalyticsDataClient } = require('@google-analytics/data');
+
+   exports.handler = async () => {
+     const analyticsDataClient = new BetaAnalyticsDataClient({
+       credentials: JSON.parse(process.env.GA4_CREDENTIALS)
+     });
+
+     const [response] = await analyticsDataClient.runReport({
+       property: `properties/${process.env.GA4_PROPERTY_ID}`,
+       dateRanges: [{ startDate: '30daysAgo', endDate: 'today' }],
+       dimensions: [{ name: 'pagePath' }],
+       metrics: [{ name: 'screenPageViews' }, { name: 'conversions' }],
+     });
+
+     return { statusCode: 200, body: JSON.stringify(response) };
+   };
+   ```
+
+4. **Reemplazar mockData con datos reales**:
+   ```javascript
+   // src/components/DataLayer.jsx
+   const basePath = HUBSPOT_CONFIG.enabled
+     ? '/.netlify/functions'  // API real
+     : '/data';               // Mockup
+   ```
+
+#### **Fase 4: Integrar Meta Ads API y Google Ads API**
+
+1. **Meta Ads API** (pausado automático):
+   ```javascript
+   // netlify/functions/meta-pause-campaign.js
+   const axios = require('axios');
+
+   exports.handler = async (event) => {
+     const { campaign_id, cpl } = JSON.parse(event.body);
+
+     if (cpl > 12) {  // CPL Pregrado threshold
+       await axios.post(
+         `https://graph.facebook.com/v18.0/${campaign_id}`,
+         { status: 'PAUSED' },
+         { params: { access_token: process.env.META_ACCESS_TOKEN }}
+       );
+     }
+
+     return { statusCode: 200, body: JSON.stringify({ paused: true }) };
+   };
+   ```
+
+2. **Google Ads API** (ajuste de bids):
+   ```javascript
+   // netlify/functions/google-adjust-bids.js
+   const { GoogleAdsApi } = require('google-ads-api');
+
+   exports.handler = async (event) => {
+     const client = new GoogleAdsApi({
+       client_id: process.env.GOOGLE_ADS_CLIENT_ID,
+       client_secret: process.env.GOOGLE_ADS_CLIENT_SECRET,
+       developer_token: process.env.GOOGLE_ADS_DEVELOPER_TOKEN,
+     });
+
+     // Ajustar bids según OPPORTUNITY_SCORE
+     // ...
+   };
+   ```
+
+### 🧪 Testing Antes de Producción
+
+```bash
+# 1. Test local con datos mockup
+npm run dev
+
+# 2. Test build
+npm run build
+npm run preview
+
+# 3. Test scrapers
+cd scrapers
+npm run scrape:test
+
+# 4. Verificar estructura de datos
+node -e "const data = require('./src/data/mockData.js'); console.log(data.OPPORTUNITY_SCORE)"
+```
+
+### 📝 Checklist de Producción
+
+- [ ] Todos los valores en USD ($)
+- [ ] CPL targets actualizados (Pregrado $9.5, Posgrado $17.5)
+- [ ] OPPORTUNITY_SCORE con estructura correcta
+- [ ] HubSpot API key configurada
+- [ ] GA4 Service Account creada
+- [ ] Scrapers testeados localmente
+- [ ] GitHub Actions activadas
+- [ ] Variables de entorno en Netlify
+- [ ] Meta Ads API token válido
+- [ ] Google Ads API configurada
+- [ ] Build exitoso sin errores
+
+---
+
+## 🔄 Integración HubSpot
 
 El sistema incluye espacio para integración con HubSpot API:
 
@@ -214,14 +518,14 @@ El sistema incluye espacio para integración con HubSpot API:
 ```javascript
 cpl_thresholds: {
   pregrado: {
-    max_cpl: 50,      // S/ máximo por lead pregrado
-    alert_at: 45,     // Alerta cuando se acerca al límite
-    pause_at: 55,     // Pausar si supera este valor
+    max_cpl: 12,      // USD máximo por lead pregrado
+    alert_at: 10,     // Alerta cuando se acerca al límite
+    pause_at: 14,     // Pausar si supera este valor
   },
   posgrado: {
-    max_cpl: 80,
-    alert_at: 70,
-    pause_at: 90,
+    max_cpl: 15,      // USD máximo por lead posgrado
+    alert_at: 13,
+    pause_at: 17,
   },
 }
 ```
@@ -258,7 +562,7 @@ Score propietario 0-100 que evalúa 5 componentes:
 - **Postulaciones Completadas**: 1,256 (+15.0%)
 - **Alcance Total**: 875,000 usuarios únicos (+21.9%)
 - **Interacciones**: 142,500 (+8.1%)
-- **Costo por Postulación (CPP)**: S/38.50 (-7.9%)
+- **Costo por Postulación (CPP)**: $10.40 (-7.9%)
 - **Charlas Asistidas**: 485 (+17.7%)
 - **Conversaciones WhatsApp**: 1,420 (+28.2%)
 
@@ -280,13 +584,43 @@ Matriculados (240)
 
 ## 🏆 Competencia
 
-Principales universidades competidoras en Arequipa:
+Principales universidades competidoras en el sur del Perú (Arequipa y Cusco):
 
-1. **UNSA** - Universidad Nacional de San Agustín (45% market share, 49,509 postulantes)
-2. **UCSM** - Universidad Católica Santa María (28%, 8,500 postulantes)
-3. **UCSP** - Universidad Católica San Pablo (15%, 3,200 postulantes)
-4. **UTP** - Universidad Tecnológica del Perú (8%, 2,800 postulantes)
-5. **UAP** - Universidad Alas Peruanas (4%, 1,500 postulantes)
+### **Alta Amenaza**
+1. **UNSA** - Universidad Nacional de San Agustín (Arequipa)
+   - 38% share of voice, 72% sentiment
+   - 2da en ranking público nacional Sunedu 2025, posición 14 general
+   - Principal universidad pública del sur
+
+2. **UCSM** - Universidad Católica Santa María (Arequipa)
+   - 22% share of voice, 68% sentiment
+   - Principal competidor privado en Arequipa, fuerte en medicina
+
+3. **UNSAAC** - Universidad Nacional de San Antonio Abad del Cusco (Cusco)
+   - 12% share of voice, 70% sentiment
+   - 6,000+ postulantes por ciclo, 41 carreras
+   - Segunda universidad nacional más grande del sur, posición 9 ranking público Sunedu
+
+### **Amenaza Media**
+4. **UTP** - Universidad Tecnológica del Perú (Arequipa)
+   - 10% share of voice, 70% sentiment
+   - Enfoque en tecnología y empleabilidad
+
+5. **UAC** - Universidad Andina del Cusco (Cusco)
+   - 8% share of voice, 66% sentiment
+   - 4 campus: Cusco, Sicuani, Quillabamba, Puerto Maldonado
+   - Fuerte cobertura regional Cusco
+
+### **Amenaza Baja**
+6. **ULASALLE** - Universidad La Salle (Arequipa)
+   - 3% share of voice, 74% sentiment
+   - Pequeña pero de calidad, enfoque lasallista, licenciada 2018
+
+### **Nuestra Posición**
+**UCSP** - Universidad Católica San Pablo (Arequipa)
+- 13% share of voice, 78% sentiment
+- Primera universidad licenciada del sur del Perú
+- Posición 19 en ranking QS 2024
 
 ---
 

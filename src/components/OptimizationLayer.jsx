@@ -1,6 +1,6 @@
 import { TrendingUp, BarChart3, RefreshCw, Award, Target, Users, Heart, Zap, AlertCircle, GraduationCap, Bell } from 'lucide-react';
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
-import { PERFORMANCE_KPIS, ALERTS, AB_TESTS, COMPETITOR_INSIGHTS, HUBSPOT_MOCKUP } from '../data/mockData';
+import { PERFORMANCE_KPIS, ALERTS, COMPETITOR_INSIGHTS, HUBSPOT_MOCKUP } from '../data/mockData';
 import { LAYER_CONFIG, METRIC_CARDS_CONFIG, HUBSPOT_CONFIG } from '../data/config';
 
 export default function OptimizationLayer() {
@@ -400,79 +400,35 @@ export default function OptimizationLayer() {
         </div>
       </div>
 
-      {/* Alertas y A/B Tests */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Alertas Automáticas */}
-        <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
-          <div className="flex items-center gap-3 mb-4">
-            <AlertCircle className="w-6 h-6 text-ucsp-burgundy" />
-            <h3 className="text-base font-bold text-gray-900">Alertas Automáticas</h3>
-          </div>
-          <div className="space-y-3">
-            {ALERTS.slice(0, 3).map((alert) => (
-              <div key={alert.id} className={`p-4 rounded-lg border-l-4 ${
-                alert.severity === 'high' ? 'bg-red-50 border-red-500' :
-                alert.severity === 'medium' ? 'bg-yellow-50 border-yellow-500' :
-                'bg-blue-50 border-blue-500'
-              }`}>
-                <div className="flex items-start justify-between mb-2">
-                  <h4 className="font-bold text-gray-900 text-sm">{alert.title}</h4>
-                  <span className={`px-2 py-1 rounded text-xs font-bold ${
-                    alert.severity === 'high' ? 'bg-red-200 text-red-800' :
-                    alert.severity === 'medium' ? 'bg-yellow-200 text-yellow-800' :
-                    'bg-blue-200 text-blue-800'
-                  }`}>
-                    {alert.severity.toUpperCase()}
-                  </span>
-                </div>
-                <p className="text-xs text-gray-700 mb-2">{alert.message}</p>
-                <p className="text-xs font-semibold text-ucsp-blue">
-                  Acción: {alert.action}
-                </p>
-              </div>
-            ))}
-          </div>
+      {/* Alertas Automáticas */}
+      <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
+        <div className="flex items-center gap-3 mb-4">
+          <AlertCircle className="w-6 h-6 text-ucsp-burgundy" />
+          <h3 className="text-base font-bold text-gray-900">Alertas Automáticas</h3>
         </div>
-
-        {/* A/B Tests */}
-        <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
-          <div className="flex items-center gap-3 mb-4">
-            <BarChart3 className="w-6 h-6 text-ucsp-blue" />
-            <h3 className="text-base font-bold text-gray-900">A/B Tests Activos</h3>
-          </div>
-          <div className="space-y-4">
-            {AB_TESTS.map((test) => (
-              <div key={test.id} className="p-4 bg-gray-50 rounded-lg">
-                <div className="flex items-center justify-between mb-3">
-                  <h4 className="font-bold text-gray-900 text-sm">{test.name}</h4>
-                  <span className={`px-2 py-1 rounded text-xs font-bold ${
-                    test.status === 'completed' ? 'bg-green-100 text-green-700' : 'bg-blue-100 text-blue-700'
-                  }`}>
-                    {test.status === 'completed' ? 'COMPLETADO' : 'EN CURSO'}
-                  </span>
-                </div>
-
-                <div className="grid grid-cols-2 gap-3 mb-3">
-                  <div className="p-2 bg-white rounded">
-                    <p className="text-xs text-gray-500 mb-1">Variante A</p>
-                    <p className="text-xs font-semibold">{test.variant_a.name}</p>
-                    <p className="text-base font-bold text-gray-900">{test.variant_a.ctr || test.variant_a.view_rate}%</p>
-                  </div>
-                  <div className="p-2 bg-white rounded">
-                    <p className="text-xs text-gray-500 mb-1">Variante B</p>
-                    <p className="text-xs font-semibold">{test.variant_b.name}</p>
-                    <p className="text-base font-bold text-gray-900">{test.variant_b.ctr || test.variant_b.view_rate}%</p>
-                  </div>
-                </div>
-
-                {test.recommendation && (
-                  <p className="text-xs font-semibold text-ucsp-blue bg-green-50 p-2 rounded">
-                    ✓ {test.recommendation}
-                  </p>
-                )}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+          {ALERTS.slice(0, 3).map((alert) => (
+            <div key={alert.id} className={`p-4 rounded-lg border-l-4 ${
+              alert.severity === 'high' ? 'bg-red-50 border-red-500' :
+              alert.severity === 'medium' ? 'bg-yellow-50 border-yellow-500' :
+              'bg-blue-50 border-blue-500'
+            }`}>
+              <div className="flex items-start justify-between mb-2">
+                <h4 className="font-bold text-gray-900 text-sm">{alert.title}</h4>
+                <span className={`px-2 py-1 rounded text-xs font-bold ${
+                  alert.severity === 'high' ? 'bg-red-200 text-red-800' :
+                  alert.severity === 'medium' ? 'bg-yellow-200 text-yellow-800' :
+                  'bg-blue-200 text-blue-800'
+                }`}>
+                  {alert.severity.toUpperCase()}
+                </span>
               </div>
-            ))}
-          </div>
+              <p className="text-xs text-gray-700 mb-2">{alert.message}</p>
+              <p className="text-xs font-semibold text-ucsp-blue">
+                Acción: {alert.action}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
 
@@ -482,14 +438,21 @@ export default function OptimizationLayer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {COMPETITOR_INSIGHTS.filter(c => c.brand !== 'UCSP').map((comp, idx) => (
             <div key={idx} className="p-4 border-2 border-gray-200 rounded-lg hover:border-ucsp-burgundy transition-colors">
-              <div className="flex items-center justify-between mb-3">
-                <h4 className="font-bold text-gray-900">{comp.brand}</h4>
+              <div className="flex items-center justify-between mb-2">
+                <div>
+                  <h4 className="font-bold text-gray-900">{comp.brand}</h4>
+                  <p className="text-xs text-gray-500">{comp.location}</p>
+                </div>
                 <span className={`px-2 py-1 rounded text-xs font-bold ${
-                  comp.threat_level === 'high' ? 'bg-red-100 text-red-700' : 'bg-yellow-100 text-yellow-700'
+                  comp.threat_level === 'high' ? 'bg-red-100 text-red-700' :
+                  comp.threat_level === 'medium' ? 'bg-yellow-100 text-yellow-700' :
+                  'bg-green-100 text-green-700'
                 }`}>
-                  {comp.threat_level === 'high' ? 'Alta amenaza' : 'Media amenaza'}
+                  {comp.threat_level === 'high' ? 'Alta' : comp.threat_level === 'medium' ? 'Media' : 'Baja'}
                 </span>
               </div>
+
+              <p className="text-xs text-gray-600 mb-3 leading-relaxed">{comp.description}</p>
 
               <div className="grid grid-cols-2 gap-3 mb-3">
                 <div>
@@ -505,8 +468,8 @@ export default function OptimizationLayer() {
               <div>
                 <p className="text-xs text-gray-500 mb-1">Temas Trending</p>
                 <div className="flex flex-wrap gap-1">
-                  {comp.trending_topics.map((topic, idx) => (
-                    <span key={idx} className="px-2 py-1 bg-gray-100 rounded text-xs">
+                  {comp.trending_topics.map((topic, topicIdx) => (
+                    <span key={topicIdx} className="px-2 py-1 bg-gray-100 rounded text-xs">
                       {topic}
                     </span>
                   ))}
@@ -524,14 +487,15 @@ export default function OptimizationLayer() {
                 <GraduationCap className="w-5 h-5" />
                 Universidad Católica San Pablo
               </h4>
+              <p className="text-xs text-white/70 mb-2">Primera universidad licenciada del sur, posición 19 en ranking QS 2024</p>
               <div className="flex gap-6">
                 <div>
                   <p className="text-xs text-white/70">Share of Voice</p>
-                  <p className="text-xl font-bold">15%</p>
+                  <p className="text-xl font-bold">13%</p>
                 </div>
                 <div>
                   <p className="text-xs text-white/70">Sentimiento</p>
-                  <p className="text-xl font-bold">82%</p>
+                  <p className="text-xl font-bold">78%</p>
                 </div>
               </div>
             </div>

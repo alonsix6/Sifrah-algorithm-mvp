@@ -859,81 +859,78 @@ export const ALERTS = [
 ];
 
 // ============================================================================
-// A/B TESTS - Tests activos
-// ============================================================================
-export const AB_TESTS = [
-  {
-    id: 1,
-    name: 'Copy Lead Ads: "Tu futuro inicia aquí" vs "Fórmate con los mejores"',
-    status: 'running',
-    variant_a: {
-      name: 'Tu futuro inicia aquí',
-      ctr: 3.8,
-      conversions: 142,
-    },
-    variant_b: {
-      name: 'Fórmate con los mejores',
-      ctr: 4.5,
-      conversions: 168,
-    },
-    recommendation: 'Variante B tiene +18% mejor CTR, escalar al 100%',
-  },
-  {
-    id: 2,
-    name: 'Video thumbnail: Campus vs Estudiantes',
-    status: 'completed',
-    variant_a: {
-      name: 'Campus UCSP',
-      view_rate: 28.5,
-      watch_time: '0:42',
-    },
-    variant_b: {
-      name: 'Estudiantes',
-      view_rate: 35.2,
-      watch_time: '0:58',
-    },
-    recommendation: 'Variante B (Estudiantes) ganó, usar para próximas campañas',
-  },
-];
-
-// ============================================================================
 // COMPETITOR INSIGHTS - Análisis de competencia universitaria
 // ============================================================================
 export const COMPETITOR_INSIGHTS = [
   {
     brand: 'UNSA',
+    full_name: 'Universidad Nacional de San Agustín',
+    location: 'Arequipa',
     share_of_voice: 38,
     sentiment: 72,
     threat_level: 'high',
-    trending_topics: ['Universidad pública', 'Ingeniería', 'Tradición'],
+    trending_topics: ['Universidad pública', 'Tradición', 'Ingeniería'],
+    description: 'Principal universidad pública del sur, 2da en ranking nacional Sunedu 2025',
   },
   {
     brand: 'UCSM',
+    full_name: 'Universidad Católica Santa María',
+    location: 'Arequipa',
     share_of_voice: 22,
     sentiment: 68,
     threat_level: 'high',
-    trending_topics: ['Infraestructura', 'Medicina', 'Campus'],
+    trending_topics: ['Infraestructura', 'Medicina', 'Campus moderno'],
+    description: 'Principal competidor privado en Arequipa, fuerte en medicina',
+  },
+  {
+    brand: 'UNSAAC',
+    full_name: 'Universidad Nacional de San Antonio Abad del Cusco',
+    location: 'Cusco',
+    share_of_voice: 12,
+    sentiment: 70,
+    threat_level: 'high',
+    trending_topics: ['Universidad pública Cusco', '6000+ postulantes', '41 carreras'],
+    description: 'Segunda universidad nacional más grande del sur, posición 9 en ranking público Sunedu',
   },
   {
     brand: 'UTP',
-    share_of_voice: 12,
-    sentiment: 65,
+    full_name: 'Universidad Tecnológica del Perú',
+    location: 'Arequipa',
+    share_of_voice: 10,
+    sentiment: 70,
     threat_level: 'medium',
     trending_topics: ['Empleabilidad', 'Carreras tech', 'Innovación'],
+    description: 'Enfoque en tecnología y empleabilidad, creciente presencia regional',
   },
   {
-    brand: 'UAP',
+    brand: 'UAC',
+    full_name: 'Universidad Andina del Cusco',
+    location: 'Cusco',
     share_of_voice: 8,
-    sentiment: 58,
+    sentiment: 66,
     threat_level: 'medium',
-    trending_topics: ['Flexibilidad', 'Costos', 'Online'],
+    trending_topics: ['Presencia regional', 'Múltiples sedes', 'Flexibilidad'],
+    description: 'Privada con 4 campus (Cusco, Sicuani, Quillabamba, Pto. Maldonado), fuerte cobertura Cusco',
+  },
+  {
+    brand: 'ULASALLE',
+    full_name: 'Universidad La Salle',
+    location: 'Arequipa',
+    share_of_voice: 3,
+    sentiment: 74,
+    threat_level: 'low',
+    trending_topics: ['Educación lasallista', 'Valores', 'Calidad nicho'],
+    description: 'Pequeña pero de calidad, enfoque en valores lasallistas, licenciada desde 2018',
   },
   {
     brand: 'UCSP',
-    share_of_voice: 15,
-    sentiment: 82,
+    full_name: 'Universidad Católica San Pablo',
+    location: 'Arequipa',
+    share_of_voice: 13,
+    sentiment: 78,
     threat_level: null,
-    trending_topics: ['Calidad', 'Acreditación', 'Valores católicos'],
+    trending_topics: ['Primera licenciada sur', 'Acreditación internacional', 'Valores católicos'],
+    description: 'Primera universidad licenciada del sur, posición 19 en ranking QS 2024',
   },
 ];
 
@@ -950,6 +947,5 @@ export default {
   BUDGET_ALLOCATION,
   CONTENT_PILLARS,
   ALERTS,
-  AB_TESTS,
   COMPETITOR_INSIGHTS,
 };
