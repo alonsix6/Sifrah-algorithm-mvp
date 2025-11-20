@@ -57,7 +57,7 @@ export default function ExecutionLayer() {
 
           <div className="text-center lg:text-right">
             <div className="flex items-baseline gap-2">
-              <span className="text-xl text-white/80">S/</span>
+              <span className="text-xl text-white/80">$</span>
               <span className="text-4xl font-bold">{(BUDGET_ALLOCATION.total_budget / 1000).toFixed(0)}K</span>
             </div>
             <p className="text-white/80 mt-2">Total presupuesto mensual</p>
@@ -69,7 +69,7 @@ export default function ExecutionLayer() {
           <div className="flex justify-between items-center mb-3">
             <span className="text-sm font-medium">Ejecución del mes</span>
             <span className="text-xl font-bold">
-              S/{(Object.values(BUDGET_ALLOCATION.distribution).reduce((sum, ch) => sum + ch.amount, 0)).toLocaleString()}
+              ${(Object.values(BUDGET_ALLOCATION.distribution).reduce((sum, ch) => sum + ch.amount, 0)).toLocaleString()}
             </span>
           </div>
           <div className="w-full h-3 bg-white/20 rounded-full overflow-hidden">
@@ -151,7 +151,7 @@ export default function ExecutionLayer() {
                       <span className="text-2xl font-bold text-gray-900">{channel.percentage}%</span>
                     </div>
                     <div className="text-xl font-bold text-gray-800 mb-1">
-                      S/{channel.amount.toLocaleString()}
+                      ${channel.amount.toLocaleString()}
                     </div>
                     <p className="text-xs text-gray-500">del presupuesto total</p>
                   </div>
@@ -285,7 +285,7 @@ export default function ExecutionLayer() {
                   </div>
                   <div className="flex justify-between text-sm">
                     <span className="text-gray-500">CPP (Costo/Postulación)</span>
-                    <span className="font-semibold text-ucsp-burgundy">S/{carrera.cpp}</span>
+                    <span className="font-semibold text-ucsp-burgundy">${carrera.cpp}</span>
                   </div>
                 </div>
 

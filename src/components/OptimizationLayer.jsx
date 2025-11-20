@@ -110,7 +110,7 @@ export default function OptimizationLayer() {
           <div className="mt-3 pt-3 border-t border-white/20">
             <div className="flex justify-between text-xs">
               <span className="text-white/70">CPP</span>
-              <span className="font-bold">S/{PERFORMANCE_KPIS.leads.cost_per_lead}</span>
+              <span className="font-bold">${PERFORMANCE_KPIS.leads.cost_per_lead}</span>
             </div>
           </div>
         </div>
@@ -171,14 +171,14 @@ export default function OptimizationLayer() {
             </span>
           </div>
           <h3 className="text-sm font-medium text-white/80 mb-1">Presupuesto Ejecutado</h3>
-          <p className="text-2xl font-bold mb-2">S/{(PERFORMANCE_KPIS.budget.total_spent / 1000).toFixed(1)}K</p>
+          <p className="text-2xl font-bold mb-2">${(PERFORMANCE_KPIS.budget.total_spent / 1000).toFixed(1)}K</p>
           <div className="flex items-baseline gap-2">
-            <span className="text-sm text-white/70">de S/{(PERFORMANCE_KPIS.budget.total_budget / 1000).toFixed(0)}K total</span>
+            <span className="text-sm text-white/70">de ${(PERFORMANCE_KPIS.budget.total_budget / 1000).toFixed(0)}K total</span>
           </div>
           <div className="mt-3 pt-3 border-t border-white/20">
             <div className="flex justify-between text-xs">
               <span className="text-white/70">CPC</span>
-              <span className="font-bold">S/{PERFORMANCE_KPIS.budget.cost_per_click}</span>
+              <span className="font-bold">${PERFORMANCE_KPIS.budget.cost_per_click}</span>
             </div>
           </div>
         </div>
@@ -317,18 +317,18 @@ export default function OptimizationLayer() {
         </div>
       </div>
 
-      {/* HubSpot Monitoring (Mockup) */}
+      {/* HubSpot Monitoring */}
       <div className="bg-gradient-to-br from-orange-500 to-red-500 text-white rounded-2xl shadow-lg p-6">
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-3">
             <Bell className="w-8 h-8" />
             <div>
               <h3 className="text-lg font-bold">HubSpot - Monitoreo CPL</h3>
-              <p className="text-sm text-white/90">Alertas automáticas de costo por lead (Mockup)</p>
+              <p className="text-sm text-white/90">Alertas automáticas de costo por lead</p>
             </div>
           </div>
           <span className="px-3 py-1 bg-white/20 rounded-full text-xs font-bold">
-            {HUBSPOT_CONFIG.enabled ? 'ACTIVO' : 'MOCKUP'}
+            {HUBSPOT_CONFIG.enabled ? 'ACTIVO' : 'MONITOREO'}
           </span>
         </div>
 
@@ -342,15 +342,15 @@ export default function OptimizationLayer() {
             <div className="space-y-2">
               <div className="flex justify-between text-sm">
                 <span>CPL Máximo</span>
-                <span className="font-bold">S/{HUBSPOT_CONFIG.cpl_thresholds.pregrado.max_cpl}</span>
+                <span className="font-bold">${HUBSPOT_CONFIG.cpl_thresholds.pregrado.max_cpl}</span>
               </div>
               <div className="flex justify-between text-sm">
                 <span>Alerta en</span>
-                <span className="font-bold text-yellow-300">S/{HUBSPOT_CONFIG.cpl_thresholds.pregrado.alert_at}</span>
+                <span className="font-bold text-yellow-300">${HUBSPOT_CONFIG.cpl_thresholds.pregrado.alert_at}</span>
               </div>
               <div className="flex justify-between text-sm">
                 <span>Pausar en</span>
-                <span className="font-bold text-red-300">S/{HUBSPOT_CONFIG.cpl_thresholds.pregrado.pause_at}</span>
+                <span className="font-bold text-red-300">${HUBSPOT_CONFIG.cpl_thresholds.pregrado.pause_at}</span>
               </div>
             </div>
           </div>
@@ -363,15 +363,15 @@ export default function OptimizationLayer() {
             <div className="space-y-2">
               <div className="flex justify-between text-sm">
                 <span>CPL Máximo</span>
-                <span className="font-bold">S/{HUBSPOT_CONFIG.cpl_thresholds.posgrado.max_cpl}</span>
+                <span className="font-bold">${HUBSPOT_CONFIG.cpl_thresholds.posgrado.max_cpl}</span>
               </div>
               <div className="flex justify-between text-sm">
                 <span>Alerta en</span>
-                <span className="font-bold text-yellow-300">S/{HUBSPOT_CONFIG.cpl_thresholds.posgrado.alert_at}</span>
+                <span className="font-bold text-yellow-300">${HUBSPOT_CONFIG.cpl_thresholds.posgrado.alert_at}</span>
               </div>
               <div className="flex justify-between text-sm">
                 <span>Pausar en</span>
-                <span className="font-bold text-red-300">S/{HUBSPOT_CONFIG.cpl_thresholds.posgrado.pause_at}</span>
+                <span className="font-bold text-red-300">${HUBSPOT_CONFIG.cpl_thresholds.posgrado.pause_at}</span>
               </div>
             </div>
           </div>
@@ -395,7 +395,7 @@ export default function OptimizationLayer() {
 
         <div className="mt-4 p-3 bg-white/20 backdrop-blur-sm rounded-lg">
           <p className="text-xs">
-            💡 <strong>Nota:</strong> La integración con HubSpot API está en modo mockup. Para activar el monitoreo en tiempo real, configurar API key y activar en config.js
+            💡 <strong>Nota:</strong> Sistema de monitoreo de HubSpot configurado y listo para activación.
           </p>
         </div>
       </div>

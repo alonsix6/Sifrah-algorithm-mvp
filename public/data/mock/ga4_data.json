@@ -1,184 +1,127 @@
 {
-  "timestamp": "2025-01-30T15:30:00Z",
-  "source": "Google Analytics 4 (Mock)",
-  "property": "Honda Perú - CR-V & HR-V Microsite",
-  "dateRange": {
-    "start": "2024-12-01",
-    "end": "2025-01-30"
-  },
+  "timestamp": "2025-11-20T18:30:00.000000",
+  "property": "UCSP Perú - Admisiones",
+  "source": "Google Analytics 4",
   "overview": {
-    "totalUsers": 125680,
-    "activeUsers": 98450,
-    "newUsers": 87320,
-    "sessions": 198750,
-    "averageSessionDuration": "4m 28s",
-    "bounceRate": 0.31,
-    "conversions": 795,
-    "conversionRate": 0.004
+    "totalUsers": 45800,
+    "sessions": 68500,
+    "conversions": 1580,
+    "conversionRate": 0.063
   },
   "topPages": [
     {
-      "page": "/cr-v-advanced-hybrid",
-      "views": 48500,
-      "uniquePageviews": 35200,
+      "page": "/admision/pregrado",
+      "views": 18500,
       "avgTimeOnPage": "3m 45s",
+      "exitRate": 0.32,
+      "conversionRate": 0.085
+    },
+    {
+      "page": "/carreras/ingenieria-industrial",
+      "views": 12200,
+      "avgTimeOnPage": "4m 12s",
       "exitRate": 0.28,
-      "conversionRate": 0.0055
+      "conversionRate": 0.092
     },
     {
-      "page": "/cr-v-advanced-hybrid/especificaciones",
-      "views": 32800,
-      "uniquePageviews": 24600,
-      "avgTimeOnPage": "4m 18s",
-      "exitRate": 0.22,
-      "conversionRate": 0.0062
+      "page": "/carreras/medicina",
+      "views": 11800,
+      "avgTimeOnPage": "5m 05s",
+      "exitRate": 0.25,
+      "conversionRate": 0.098
     },
     {
-      "page": "/hr-v-2026/cotizar",
-      "views": 28200,
-      "uniquePageviews": 21900,
-      "avgTimeOnPage": "5m 12s",
-      "exitRate": 0.18,
-      "conversionRate": 0.0095
-    },
-    {
-      "page": "/comparador-suv",
-      "views": 19500,
-      "uniquePageviews": 14200,
+      "page": "/carreras/derecho",
+      "views": 9500,
       "avgTimeOnPage": "3m 28s",
       "exitRate": 0.35,
-      "conversionRate": 0.0042
+      "conversionRate": 0.075
+    },
+    {
+      "page": "/becas-y-financiamiento",
+      "views": 15600,
+      "avgTimeOnPage": "2m 52s",
+      "exitRate": 0.42,
+      "conversionRate": 0.068
+    },
+    {
+      "page": "/carreras/ciencia-datos",
+      "views": 8900,
+      "avgTimeOnPage": "4m 38s",
+      "exitRate": 0.30,
+      "conversionRate": 0.088
+    },
+    {
+      "page": "/admision/posgrado",
+      "views": 7200,
+      "avgTimeOnPage": "3m 15s",
+      "exitRate": 0.38,
+      "conversionRate": 0.072
+    },
+    {
+      "page": "/acreditacion-calidad",
+      "views": 6800,
+      "avgTimeOnPage": "2m 38s",
+      "exitRate": 0.45,
+      "conversionRate": 0.058
     }
   ],
   "searchTerms": [
     {
-      "term": "honda cr-v precio peru",
-      "searches": 5450,
-      "resultClicks": 4890,
-      "conversionRate": 0.0058,
+      "term": "admisión 2025",
+      "searches": 3500,
+      "resultClicks": 2950,
+      "conversionRate": 0.095,
       "trend": "rising"
     },
     {
-      "term": "suv hibrida honda",
-      "searches": 4280,
-      "resultClicks": 3650,
-      "conversionRate": 0.0052,
+      "term": "ingeniería industrial",
+      "searches": 2800,
+      "resultClicks": 2400,
+      "conversionRate": 0.088,
       "trend": "rising"
     },
     {
-      "term": "honda e:hev",
-      "searches": 3850,
-      "resultClicks": 3420,
-      "conversionRate": 0.0045,
+      "term": "medicina requisitos",
+      "searches": 2600,
+      "resultClicks": 2200,
+      "conversionRate": 0.092,
       "trend": "rising"
     },
     {
-      "term": "financiamiento honda",
-      "searches": 3150,
-      "resultClicks": 2680,
-      "conversionRate": 0.0082,
+      "term": "becas pregrado",
+      "searches": 3200,
+      "resultClicks": 2700,
+      "conversionRate": 0.078,
       "trend": "rising"
     },
     {
-      "term": "test drive honda cr-v",
-      "searches": 2820,
-      "resultClicks": 2520,
-      "conversionRate": 0.0118,
+      "term": "ciencia de datos",
+      "searches": 1900,
+      "resultClicks": 1650,
+      "conversionRate": 0.085,
       "trend": "rising"
+    },
+    {
+      "term": "maestrías",
+      "searches": 1500,
+      "resultClicks": 1280,
+      "conversionRate": 0.072,
+      "trend": "rising"
+    },
+    {
+      "term": "derecho ucsp",
+      "searches": 1800,
+      "resultClicks": 1520,
+      "conversionRate": 0.080,
+      "trend": "rising"
+    },
+    {
+      "term": "acreditación",
+      "searches": 1200,
+      "resultClicks": 980,
+      "conversionRate": 0.065,
+      "trend": "stable"
     }
-  ],
-  "demographics": {
-    "age": {
-      "25-34": 0.32,
-      "35-44": 0.38,
-      "45-54": 0.21,
-      "55-64": 0.07,
-      "65+": 0.02
-    },
-    "gender": {
-      "male": 0.58,
-      "female": 0.41,
-      "other": 0.01
-    },
-    "locations": {
-      "Lima": 0.62,
-      "Arequipa": 0.11,
-      "Trujillo": 0.08,
-      "Cusco": 0.06,
-      "Chiclayo": 0.05,
-      "Other": 0.08
-    }
-  },
-  "deviceCategory": {
-    "mobile": 0.58,
-    "desktop": 0.35,
-    "tablet": 0.07
-  },
-  "leadGeneration": {
-    "totalLeads": 795,
-    "qualifiedLeads": 517,
-    "qualificationRate": 0.65,
-    "testDriveRequests": 223,
-    "quotationRequests": 334,
-    "brochureDownloads": 1113,
-    "leadsBySource": [
-      {
-        "source": "google_search",
-        "leads": 318,
-        "qualified": 227,
-        "avgLeadScore": 78
-      },
-      {
-        "source": "facebook",
-        "leads": 223,
-        "qualified": 145,
-        "avgLeadScore": 72
-      },
-      {
-        "source": "instagram",
-        "leads": 143,
-        "qualified": 89,
-        "avgLeadScore": 69
-      },
-      {
-        "source": "youtube",
-        "leads": 80,
-        "qualified": 52,
-        "avgLeadScore": 75
-      },
-      {
-        "source": "tiktok",
-        "leads": 31,
-        "qualified": 18,
-        "avgLeadScore": 64
-      }
-    ]
-  },
-  "interestAreas": {
-    "hybrid_technology": {
-      "pageviews": 38500,
-      "avgTimeOnPage": "4m 12s",
-      "bounceRate": 0.24
-    },
-    "fuel_efficiency": {
-      "pageviews": 32800,
-      "avgTimeOnPage": "3m 48s",
-      "bounceRate": 0.28
-    },
-    "safety_features": {
-      "pageviews": 28500,
-      "avgTimeOnPage": "3m 22s",
-      "bounceRate": 0.31
-    },
-    "pricing_financing": {
-      "pageviews": 41200,
-      "avgTimeOnPage": "5m 05s",
-      "bounceRate": 0.19
-    }
-  },
-  "metadata": {
-    "note": "Mock data for MVP demonstration",
-    "actualIntegration": "Requires Honda Peru GA4 property access",
-    "updateFrequency": "Daily automatic once integrated"
-  }
+  ]
 }

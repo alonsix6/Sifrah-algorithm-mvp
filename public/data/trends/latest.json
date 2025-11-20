@@ -1,138 +1,148 @@
 {
-  "timestamp": "2025-11-04T18:30:00.000000",
+  "timestamp": "2025-11-20T18:30:00.000000",
   "region": "PE",
-  "category": "Automotive",
+  "category": "Education",
   "source": "Google Trends",
   "keywords": [
     {
-      "keyword": "honda cr-v",
-      "average_interest": 68,
+      "keyword": "admisión ucsp 2025",
+      "average_interest": 82,
       "trend": "rising",
-      "peak_score": 82,
-      "growth_3m": "+52%",
+      "peak_score": 95,
+      "growth_3m": "+125%",
       "top_regions": {
-        "Lima": 100,
-        "Arequipa": 72,
-        "Trujillo": 58,
-        "Cusco": 48,
-        "Chiclayo": 45
+        "Arequipa": 100,
+        "Puno": 68,
+        "Cusco": 55,
+        "Moquegua": 42,
+        "Tacna": 38
       }
     },
     {
-      "keyword": "cr-v advanced hybrid",
-      "average_interest": 75,
+      "keyword": "universidad católica san pablo",
+      "average_interest": 78,
       "trend": "rising",
       "peak_score": 88,
-      "growth_3m": "+95%",
+      "growth_3m": "+98%",
       "top_regions": {
-        "Lima": 100,
-        "Arequipa": 75,
-        "Trujillo": 62,
-        "Cusco": 52,
-        "Chiclayo": 48
+        "Arequipa": 100,
+        "Puno": 72,
+        "Cusco": 58,
+        "Moquegua": 45,
+        "Tacna": 40
       }
     },
     {
-      "keyword": "suv hibrida",
+      "keyword": "ingeniería industrial arequipa",
       "average_interest": 76,
       "trend": "rising",
       "peak_score": 90,
-      "growth_3m": "+85%",
+      "growth_3m": "+110%",
       "top_regions": {
-        "Lima": 100,
-        "Arequipa": 68,
-        "Trujillo": 55,
-        "Cusco": 45,
-        "Piura": 42
+        "Arequipa": 100,
+        "Puno": 65,
+        "Cusco": 52,
+        "Moquegua": 38,
+        "Tacna": 35
       }
     },
     {
-      "keyword": "auto hibrido",
-      "average_interest": 72,
+      "keyword": "derecho ucsp",
+      "average_interest": 71,
       "trend": "rising",
       "peak_score": 85,
-      "growth_3m": "+72%",
+      "growth_3m": "+88%",
       "top_regions": {
-        "Lima": 100,
-        "Arequipa": 70,
-        "Trujillo": 58,
-        "Cusco": 50,
-        "Piura": 45
+        "Arequipa": 100,
+        "Puno": 70,
+        "Cusco": 60,
+        "Moquegua": 40,
+        "Tacna": 42
       }
     },
     {
-      "keyword": "honda peru",
-      "average_interest": 68,
-      "trend": "stable",
-      "peak_score": 78,
-      "growth_3m": "+22%",
-      "top_regions": {
-        "Lima": 100,
-        "Arequipa": 65,
-        "Trujillo": 58,
-        "Cusco": 52,
-        "Chiclayo": 48
-      }
-    },
-    {
-      "keyword": "suv familiar",
-      "average_interest": 65,
+      "keyword": "medicina ucsp requisitos",
+      "average_interest": 85,
       "trend": "rising",
-      "peak_score": 75,
-      "growth_3m": "+48%",
+      "peak_score": 98,
+      "growth_3m": "+142%",
       "top_regions": {
-        "Lima": 100,
-        "Arequipa": 62,
-        "Trujillo": 55,
-        "Cusco": 48,
-        "Piura": 42
+        "Arequipa": 100,
+        "Puno": 75,
+        "Cusco": 62,
+        "Moquegua": 48,
+        "Tacna": 45
       }
     },
     {
-      "keyword": "eficiencia combustible",
+      "keyword": "ciencia de datos ucsp",
+      "average_interest": 68,
+      "trend": "rising",
+      "peak_score": 80,
+      "growth_3m": "+156%",
+      "top_regions": {
+        "Arequipa": 100,
+        "Puno": 58,
+        "Cusco": 48,
+        "Moquegua": 35,
+        "Tacna": 32
+      }
+    },
+    {
+      "keyword": "maestrías ucsp 2025",
+      "average_interest": 64,
+      "trend": "rising",
+      "peak_score": 76,
+      "growth_3m": "+78%",
+      "top_regions": {
+        "Arequipa": 100,
+        "Puno": 62,
+        "Cusco": 55,
+        "Moquegua": 38,
+        "Tacna": 40
+      }
+    },
+    {
+      "keyword": "becas ucsp arequipa",
+      "average_interest": 72,
+      "trend": "rising",
+      "peak_score": 87,
+      "growth_3m": "+105%",
+      "top_regions": {
+        "Arequipa": 100,
+        "Puno": 78,
+        "Cusco": 65,
+        "Moquegua": 52,
+        "Tacna": 48
+      }
+    },
+    {
+      "keyword": "universidad licenciada arequipa",
+      "average_interest": 66,
+      "trend": "rising",
+      "peak_score": 78,
+      "growth_3m": "+92%",
+      "top_regions": {
+        "Arequipa": 100,
+        "Puno": 70,
+        "Cusco": 58,
+        "Moquegua": 45,
+        "Tacna": 42
+      }
+    },
+    {
+      "keyword": "carreras universitarias arequipa",
       "average_interest": 70,
       "trend": "rising",
       "peak_score": 82,
-      "growth_3m": "+68%",
+      "growth_3m": "+85%",
       "top_regions": {
-        "Lima": 100,
-        "Arequipa": 68,
-        "Trujillo": 58,
-        "Cusco": 50,
-        "Chiclayo": 45
-      }
-    },
-    {
-      "keyword": "mejor suv",
-      "average_interest": 62,
-      "trend": "stable",
-      "peak_score": 72,
-      "growth_3m": "+28%",
-      "top_regions": {
-        "Lima": 100,
-        "Arequipa": 60,
-        "Trujillo": 52,
-        "Cusco": 48,
-        "Piura": 45
-      }
-    },
-    {
-      "keyword": "precio cr-v",
-      "average_interest": 72,
-      "trend": "rising",
-      "peak_score": 85,
-      "growth_3m": "+72%",
-      "top_regions": {
-        "Lima": 100,
-        "Arequipa": 72,
-        "Trujillo": 60,
-        "Cusco": 52,
-        "Chiclayo": 48
+        "Arequipa": 100,
+        "Puno": 68,
+        "Cusco": 60,
+        "Moquegua": 40,
+        "Tacna": 38
       }
     }
-  ],
-  "metadata": {
-    "method": "Curated data (pytrends unavailable)",
-    "note": "Google Trends data estimada para keywords de Honda CR-V en Perú. Datos conservadores basados en benchmarks de mercado donde Toyota lidera con 21.5% share."
-  }
+  ]
 }

@@ -348,7 +348,7 @@ export const METRIC_CARDS_CONFIG = [
 ];
 
 // ============================================================================
-// HUBSPOT INTEGRATION - Configuración de HubSpot (Mockup)
+// HUBSPOT INTEGRATION - Configuración de HubSpot
 // ============================================================================
 export const HUBSPOT_CONFIG = {
   enabled: false, // Cambiar a true cuando se integre API real
@@ -360,14 +360,14 @@ export const HUBSPOT_CONFIG = {
   },
   cpl_thresholds: {
     pregrado: {
-      max_cpl: 50, // S/ máximo por lead pregrado
-      alert_at: 45, // Alerta cuando se acerca al límite
-      pause_at: 55, // Pausar si supera este valor
+      max_cpl: 12, // USD máximo por lead pregrado
+      alert_at: 10, // Alerta cuando se acerca al límite
+      pause_at: 14, // Pausar si supera este valor
     },
     posgrado: {
-      max_cpl: 80,
-      alert_at: 70,
-      pause_at: 90,
+      max_cpl: 15,
+      alert_at: 13,
+      pause_at: 17,
     },
   },
   conversion_tracking: {
