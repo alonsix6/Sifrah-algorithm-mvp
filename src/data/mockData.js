@@ -109,7 +109,7 @@ export const PERFORMANCE_KPIS = {
     qualified: 1256,
     total: 1580,
     qualification_rate: 79.5,
-    cost_per_lead: 38.50,
+    cost_per_lead: 10.40,
     trend: '+15.0%',
     trend_value: 15.0,
   },
@@ -144,22 +144,22 @@ export const PERFORMANCE_KPIS = {
 
   // Budget / Presupuesto
   budget: {
-    total_budget: 85000, // S/ mensual
-    total_spent: 78200,
+    total_budget: 23000, // USD mensual
+    total_spent: 21200,
     spent_percentage: 92.0,
-    cost_per_click: 2.85,
+    cost_per_click: 0.77,
     trend: 'on-track',
   },
 
   // CPP (Costo por Postulación) - reemplazo de CPL
   cpp: {
-    current: 38.50,
-    previous: 41.80,
+    current: 10.40,
+    previous: 11.30,
     change: '-7.9',
     trend: 'down', // Reducción es positivo
     label: 'Costo por Postulación',
-    description: 'S/ invertido por cada postulación válida',
-    currency: 'S/',
+    description: '$ invertido por cada postulación válida',
+    currency: '$',
   },
 
   // Charlas informativas asistidas (reemplazo de test drives)
@@ -237,7 +237,7 @@ export const CARRERAS_PERFORMANCE = [
     nombre: 'Ingeniería Industrial',
     demanda: 'Alta',
     postulaciones: 285,
-    cpp: 38.50,
+    cpp: 10.40,
     conversion: 24,
     vacantes: 80,
     tendencia: 'rising',
@@ -245,7 +245,7 @@ export const CARRERAS_PERFORMANCE = [
     leadAds: {
       formularios: 420,
       conversion_rate: 32,
-      cpl: 28.00,
+      cpl: 7.55,
     },
     whatsapp: {
       conversaciones: 185,
@@ -262,7 +262,7 @@ export const CARRERAS_PERFORMANCE = [
     nombre: 'Derecho',
     demanda: 'Alta',
     postulaciones: 240,
-    cpp: 45.20,
+    cpp: 12.20,
     conversion: 22,
     vacantes: 60,
     tendencia: 'stable',
@@ -270,7 +270,7 @@ export const CARRERAS_PERFORMANCE = [
     leadAds: {
       formularios: 380,
       conversion_rate: 28,
-      cpl: 32.50,
+      cpl: 8.80,
     },
     whatsapp: {
       conversaciones: 156,
@@ -287,7 +287,7 @@ export const CARRERAS_PERFORMANCE = [
     nombre: 'Medicina Humana',
     demanda: 'Muy Alta',
     postulaciones: 320,
-    cpp: 52.00,
+    cpp: 14.05,
     conversion: 18,
     vacantes: 40,
     tendencia: 'rising',
@@ -295,7 +295,7 @@ export const CARRERAS_PERFORMANCE = [
     leadAds: {
       formularios: 485,
       conversion_rate: 35,
-      cpl: 38.00,
+      cpl: 10.25,
     },
     whatsapp: {
       conversaciones: 220,
@@ -312,7 +312,7 @@ export const CARRERAS_PERFORMANCE = [
     nombre: 'Administración',
     demanda: 'Alta',
     postulaciones: 195,
-    cpp: 42.30,
+    cpp: 11.40,
     conversion: 20,
     vacantes: 70,
     tendencia: 'stable',
@@ -337,7 +337,7 @@ export const CARRERAS_PERFORMANCE = [
     nombre: 'Arquitectura y Urbanismo',
     demanda: 'Media-Alta',
     postulaciones: 165,
-    cpp: 48.80,
+    cpp: 13.20,
     conversion: 19,
     vacantes: 50,
     tendencia: 'rising',
@@ -362,7 +362,7 @@ export const CARRERAS_PERFORMANCE = [
     nombre: 'Psicología',
     demanda: 'Alta',
     postulaciones: 175,
-    cpp: 40.50,
+    cpp: 10.95,
     conversion: 21,
     vacantes: 60,
     tendencia: 'stable',
@@ -387,7 +387,7 @@ export const CARRERAS_PERFORMANCE = [
     nombre: 'Ingeniería Civil',
     demanda: 'Media',
     postulaciones: 142,
-    cpp: 44.20,
+    cpp: 11.95,
     conversion: 18,
     vacantes: 55,
     tendencia: 'stable',
@@ -412,7 +412,7 @@ export const CARRERAS_PERFORMANCE = [
     nombre: 'Contabilidad',
     demanda: 'Media',
     postulaciones: 128,
-    cpp: 38.90,
+    cpp: 10.50,
     conversion: 20,
     vacantes: 50,
     tendencia: 'stable',
@@ -420,7 +420,7 @@ export const CARRERAS_PERFORMANCE = [
     leadAds: {
       formularios: 220,
       conversion_rate: 23,
-      cpl: 28.50,
+      cpl: 7.70,
     },
     whatsapp: {
       conversaciones: 85,
@@ -437,7 +437,7 @@ export const CARRERAS_PERFORMANCE = [
     nombre: 'Ciencia de la Computación',
     demanda: 'Media-Alta',
     postulaciones: 158,
-    cpp: 46.00,
+    cpp: 12.45,
     conversion: 22,
     vacantes: 45,
     tendencia: 'rising',
@@ -462,7 +462,7 @@ export const CARRERAS_PERFORMANCE = [
     nombre: 'Ciencia de Datos',
     demanda: 'Alta',
     postulaciones: 185,
-    cpp: 50.20,
+    cpp: 13.60,
     conversion: 25,
     vacantes: 40,
     tendencia: 'rising',
@@ -470,7 +470,7 @@ export const CARRERAS_PERFORMANCE = [
     leadAds: {
       formularios: 320,
       conversion_rate: 30,
-      cpl: 36.50,
+      cpl: 9.85,
     },
     whatsapp: {
       conversaciones: 135,
@@ -487,7 +487,7 @@ export const CARRERAS_PERFORMANCE = [
     nombre: 'Ingeniería Electrónica y Telecomunicaciones',
     demanda: 'Media',
     postulaciones: 118,
-    cpp: 42.80,
+    cpp: 11.55,
     conversion: 19,
     vacantes: 45,
     tendencia: 'stable',
@@ -512,7 +512,7 @@ export const CARRERAS_PERFORMANCE = [
     nombre: 'Ingeniería Mecatrónica',
     demanda: 'Media',
     postulaciones: 125,
-    cpp: 45.60,
+    cpp: 12.30,
     conversion: 20,
     vacantes: 40,
     tendencia: 'stable',
@@ -537,7 +537,7 @@ export const CARRERAS_PERFORMANCE = [
     nombre: 'Ingeniería Ambiental',
     demanda: 'Media',
     postulaciones: 105,
-    cpp: 41.20,
+    cpp: 11.15,
     conversion: 18,
     vacantes: 35,
     tendencia: 'rising',
@@ -545,7 +545,7 @@ export const CARRERAS_PERFORMANCE = [
     leadAds: {
       formularios: 175,
       conversion_rate: 21,
-      cpl: 29.50,
+      cpl: 7.95,
     },
     whatsapp: {
       conversaciones: 68,
@@ -672,13 +672,13 @@ export const HUBSPOT_MOCKUP = {
   alerts: [
     {
       type: 'warning',
-      message: 'Campaña "Medicina - Google Search" con CPL de S/53.03, cerca del límite de S/55',
+      message: 'Campaña "Medicina - Google Search" con CPL de $11.80, cerca del límite de $12',
       campaign_id: 'camp_003',
       timestamp: '2025-11-20T14:30:00',
     },
     {
       type: 'warning',
-      message: 'Campaña "Posgrado - Maestrías" con CPL de S/71.69, cerca del límite de S/80',
+      message: 'Campaña "Posgrado - Maestrías" con CPL de $14.20, cerca del límite de $15',
       campaign_id: 'camp_004',
       timestamp: '2025-11-20T13:15:00',
     },
@@ -697,43 +697,43 @@ export const HUBSPOT_MOCKUP = {
 // BUDGET ALLOCATION - Distribución de presupuesto por canal
 // ============================================================================
 export const BUDGET_ALLOCATION = {
-  total_budget: 85000, // S/ mensual para Admisiones 2025-I
+  total_budget: 23000, // USD mensual para Admisiones 2025-I
   distribution: {
     google_search: {
-      amount: 29750, // 35%
+      amount: 8050, // 35%
       percentage: 35,
       status: 'overperforming',
       kpi: 'CPL (Costo por Lead)',
-      target: 'S/35 o menos',
-      current_performance: 'S/32.50',
+      target: '$9.50 o menos',
+      current_performance: '$8.80',
     },
     social_media: {
-      amount: 29750, // 35%
+      amount: 8050, // 35%
       percentage: 35,
       status: 'performing',
       kpi: 'CPP (Costo por Postulación)',
-      target: 'S/40 o menos',
-      current_performance: 'S/38.20',
+      target: '$10.80 o menos',
+      current_performance: '$10.30',
       whatsapp_metrics: {
         conversations: 1847,
         response_rate: 68,
       },
     },
     youtube: {
-      amount: 17000, // 20%
+      amount: 4600, // 20%
       percentage: 20,
       status: 'ontrack',
       kpi: 'CPV (Costo por Vista)',
-      target: 'S/0.15 o menos',
-      current_performance: 'S/0.14',
+      target: '$0.04 o menos',
+      current_performance: '$0.038',
     },
     display: {
-      amount: 8500, // 10%
+      amount: 2300, // 10%
       percentage: 10,
       status: 'performing',
       kpi: 'CPM (Costo por Mil)',
-      target: 'S/12 o menos',
-      current_performance: 'S/11.80',
+      target: '$3.20 o menos',
+      current_performance: '$3.18',
     },
   },
   recommendations: [
@@ -841,7 +841,7 @@ export const ALERTS = [
     id: 1,
     severity: 'high',
     title: 'CPL elevado en Medicina',
-    message: 'Campaña de Medicina en Google Search superó S/53, cerca del límite de S/55',
+    message: 'Campaña de Medicina en Google Search superó $11.80, cerca del límite de $12',
     action: 'Revisar keywords y ajustar bids, considerar pausar temporalmente',
     timestamp: '2025-11-20T14:30:00',
   },
@@ -857,7 +857,7 @@ export const ALERTS = [
     id: 3,
     severity: 'low',
     title: 'Oportunidad en Puno',
-    message: 'Tráfico desde Puno creció +28% esta semana, bajo CPL de S/28',
+    message: 'Tráfico desde Puno creció +28% esta semana, bajo CPL de $7.55',
     action: 'Considerar aumentar budget 15% para Puno en próxima semana',
     timestamp: '2025-11-20T11:45:00',
   },

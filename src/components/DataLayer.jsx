@@ -24,7 +24,7 @@ export default function DataLayer() {
   const loadData = async () => {
     setIsRefreshing(true);
     try {
-      const basePath = `/data/autos`; // Solo una fuente de datos ahora
+      const basePath = `/data`; // Datos UCSP
       const [trends, tiktok, meta, ga4] = await Promise.all([
         fetch(`${basePath}/trends/latest.json`).then(r => r.json()).catch(() => null),
         fetch(`${basePath}/tiktok/latest.json`).then(r => r.json()).catch(() => null),

@@ -253,7 +253,7 @@ export default function DecisionLayer() {
                 </div>
                 <div>
                   <p className="text-xs text-gray-500">CPL Target</p>
-                  <p className="text-xl font-bold text-ucsp-burgundy">S/{aud.cpl_target}</p>
+                  <p className="text-xl font-bold text-ucsp-burgundy">${aud.cpl_target}</p>
                 </div>
               </div>
 
