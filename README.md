@@ -67,7 +67,7 @@ Distribución inteligente de presupuesto y contenidos:
 Performance y ajustes automáticos:
 - **KPIs principales**: Postulaciones completadas, Alcance total, Interacciones, Charlas asistidas
 - **Funnel de conversión**: Alcance → Visitas Landing → Formularios → Postulaciones → Matriculados
-- **Análisis de competencia**: UNSA, UCSM, UTP, UAP
+- **Análisis de competencia**: UNSA, UCSM, UNSAAC (Cusco), UTP, UAC (Cusco), ULASALLE
 - **Integración HubSpot**: Sistema de alertas automáticas cuando CPL supera límites establecidos
   - Pregrado: Alerta en $10, Pausa en $14 (máximo $12)
   - Posgrado: Alerta en $13, Pausa en $17 (máximo $15)
@@ -243,8 +243,7 @@ SanPablo-algorithm-mvp/
 │       ├── CARRERAS_PERFORMANCE# 13 carreras con CPL/CPP/conversión
 │       ├── CONTENT_PILLARS     # Pilares de contenido + rendimiento
 │       ├── ALERTS              # Alertas automáticas
-│       ├── AB_TESTS            # A/B tests activos
-│       ├── COMPETITOR_INSIGHTS # UNSA, UCSM, UTP, UAP
+│       ├── COMPETITOR_INSIGHTS # UNSA, UCSM, UNSAAC, UTP, UAC, ULASALLE
 │       └── HUBSPOT_MOCKUP      # Alertas de HubSpot (mockup)
 │
 └── public/data/                # Datos JSON dinámicos (runtime)
@@ -585,13 +584,43 @@ Matriculados (240)
 
 ## 🏆 Competencia
 
-Principales universidades competidoras en Arequipa:
+Principales universidades competidoras en el sur del Perú (Arequipa y Cusco):
 
-1. **UNSA** - Universidad Nacional de San Agustín (45% market share, 49,509 postulantes)
-2. **UCSM** - Universidad Católica Santa María (28%, 8,500 postulantes)
-3. **UCSP** - Universidad Católica San Pablo (15%, 3,200 postulantes)
-4. **UTP** - Universidad Tecnológica del Perú (8%, 2,800 postulantes)
-5. **UAP** - Universidad Alas Peruanas (4%, 1,500 postulantes)
+### **Alta Amenaza**
+1. **UNSA** - Universidad Nacional de San Agustín (Arequipa)
+   - 38% share of voice, 72% sentiment
+   - 2da en ranking público nacional Sunedu 2025, posición 14 general
+   - Principal universidad pública del sur
+
+2. **UCSM** - Universidad Católica Santa María (Arequipa)
+   - 22% share of voice, 68% sentiment
+   - Principal competidor privado en Arequipa, fuerte en medicina
+
+3. **UNSAAC** - Universidad Nacional de San Antonio Abad del Cusco (Cusco)
+   - 12% share of voice, 70% sentiment
+   - 6,000+ postulantes por ciclo, 41 carreras
+   - Segunda universidad nacional más grande del sur, posición 9 ranking público Sunedu
+
+### **Amenaza Media**
+4. **UTP** - Universidad Tecnológica del Perú (Arequipa)
+   - 10% share of voice, 70% sentiment
+   - Enfoque en tecnología y empleabilidad
+
+5. **UAC** - Universidad Andina del Cusco (Cusco)
+   - 8% share of voice, 66% sentiment
+   - 4 campus: Cusco, Sicuani, Quillabamba, Puerto Maldonado
+   - Fuerte cobertura regional Cusco
+
+### **Amenaza Baja**
+6. **ULASALLE** - Universidad La Salle (Arequipa)
+   - 3% share of voice, 74% sentiment
+   - Pequeña pero de calidad, enfoque lasallista, licenciada 2018
+
+### **Nuestra Posición**
+**UCSP** - Universidad Católica San Pablo (Arequipa)
+- 13% share of voice, 78% sentiment
+- Primera universidad licenciada del sur del Perú
+- Posición 19 en ranking QS 2024
 
 ---
 

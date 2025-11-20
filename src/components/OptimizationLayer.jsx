@@ -438,14 +438,21 @@ export default function OptimizationLayer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {COMPETITOR_INSIGHTS.filter(c => c.brand !== 'UCSP').map((comp, idx) => (
             <div key={idx} className="p-4 border-2 border-gray-200 rounded-lg hover:border-ucsp-burgundy transition-colors">
-              <div className="flex items-center justify-between mb-3">
-                <h4 className="font-bold text-gray-900">{comp.brand}</h4>
+              <div className="flex items-center justify-between mb-2">
+                <div>
+                  <h4 className="font-bold text-gray-900">{comp.brand}</h4>
+                  <p className="text-xs text-gray-500">{comp.location}</p>
+                </div>
                 <span className={`px-2 py-1 rounded text-xs font-bold ${
-                  comp.threat_level === 'high' ? 'bg-red-100 text-red-700' : 'bg-yellow-100 text-yellow-700'
+                  comp.threat_level === 'high' ? 'bg-red-100 text-red-700' :
+                  comp.threat_level === 'medium' ? 'bg-yellow-100 text-yellow-700' :
+                  'bg-green-100 text-green-700'
                 }`}>
-                  {comp.threat_level === 'high' ? 'Alta amenaza' : 'Media amenaza'}
+                  {comp.threat_level === 'high' ? 'Alta' : comp.threat_level === 'medium' ? 'Media' : 'Baja'}
                 </span>
               </div>
+
+              <p className="text-xs text-gray-600 mb-3 leading-relaxed">{comp.description}</p>
 
               <div className="grid grid-cols-2 gap-3 mb-3">
                 <div>
@@ -461,8 +468,8 @@ export default function OptimizationLayer() {
               <div>
                 <p className="text-xs text-gray-500 mb-1">Temas Trending</p>
                 <div className="flex flex-wrap gap-1">
-                  {comp.trending_topics.map((topic, idx) => (
-                    <span key={idx} className="px-2 py-1 bg-gray-100 rounded text-xs">
+                  {comp.trending_topics.map((topic, topicIdx) => (
+                    <span key={topicIdx} className="px-2 py-1 bg-gray-100 rounded text-xs">
                       {topic}
                     </span>
                   ))}
@@ -480,14 +487,15 @@ export default function OptimizationLayer() {
                 <GraduationCap className="w-5 h-5" />
                 Universidad Católica San Pablo
               </h4>
+              <p className="text-xs text-white/70 mb-2">Primera universidad licenciada del sur, posición 19 en ranking QS 2024</p>
               <div className="flex gap-6">
                 <div>
                   <p className="text-xs text-white/70">Share of Voice</p>
-                  <p className="text-xl font-bold">15%</p>
+                  <p className="text-xl font-bold">13%</p>
                 </div>
                 <div>
                   <p className="text-xs text-white/70">Sentimiento</p>
-                  <p className="text-xl font-bold">82%</p>
+                  <p className="text-xl font-bold">78%</p>
                 </div>
               </div>
             </div>
