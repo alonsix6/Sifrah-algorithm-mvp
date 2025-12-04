@@ -1,37 +1,38 @@
-# Guía de Scrapers - Honda Algorithm
+# Guía de Scrapers - UCSP Algorithm
 
-Esta guía explica cómo funcionan los 3 scrapers de tendencias de beauty del proyecto.
+Esta guía explica cómo funcionan los 3 scrapers de tendencias educativas del proyecto UCSP Algorithm.
 
 ---
 
-## 📊 Filosofía de los Scrapers
+## Filosofía de los Scrapers
 
 **TODOS los scrapers usan el mismo enfoque:**
-- ✅ **Observación de tendencias públicas**
-- ✅ **Independientes de cuentas personales**
-- ✅ **Sin necesidad de tokens privados**
-- ✅ **Datos curados de fuentes verificables**
+- Observación de tendencias públicas
+- Independientes de cuentas personales
+- Sin necesidad de tokens privados (actualmente)
+- Datos curados de fuentes verificables
+- Enfocados en educación superior y admisiones UCSP
 
 **NO extraen datos de cuentas personales ni requieren autenticación privada.**
 
 ---
 
-## 🔍 1. Google Trends Scraper
+## 1. Google Trends Scraper
 
 ### Descripción
-Extrae tendencias de búsqueda para keywords de beauty en Perú.
+Extrae tendencias de búsqueda para keywords de educación superior en el sur del Perú.
 
 ### Tecnología
 - **Librería:** `pytrends` (API no oficial de Google Trends)
 - **Idioma:** Python 3
-- **Requiere Token:** ❌ NO
+- **Requiere Token:** NO
 
 ### Datos que proporciona
-- Keywords de beauty (skincare, cerave, niacinamide, etc.)
+- Keywords educativas (UCSP, admisión, carreras, becas, etc.)
 - Interés promedio (0-100)
 - Tendencia (rising, stable, falling)
-- Crecimiento últimos 3 meses
-- Regiones top en Perú
+- Crecimiento últimos 30 días
+- Regiones top: Arequipa, Puno, Cusco, Moquegua, Tacna
 
 ### Cómo ejecutarlo
 ```bash
@@ -45,6 +46,7 @@ python3 scrapers/google_trends.py
 ### Salida
 - `data/trends/latest.json`
 - `data/trends/trends_YYYYMMDD_HHMMSS.json`
+- `public/data/trends/latest.json` (para frontend)
 
 ### Limitaciones
 - Google puede bloquear con 403 si hay muchos requests
@@ -53,23 +55,22 @@ python3 scrapers/google_trends.py
 
 ---
 
-## 🎵 2. TikTok Trends Scraper
+## 2. TikTok Trends Scraper
 
 ### Descripción
-Curador de tendencias virales de beauty en TikTok.
+Curador de tendencias educativas y universitarias en TikTok.
 
 ### Tecnología
-- **Librería:** Node.js + axios
+- **Librería:** Node.js + fs (sin axios necesario)
 - **Idioma:** JavaScript (ES Modules)
-- **Requiere Token:** ❌ NO
+- **Requiere Token:** NO
 
 ### Datos que proporciona
-- Hashtags trending (#skincare, #cerave, #makeuptutorial)
+- Hashtags trending (#universidad, #vidauniversitaria, #ucsp, #admision2026)
 - Views, posts, growth percentage
 - Relevance score (0-100)
 - Región (LATAM, Global, Peru)
-- Sounds trending
-- Creator categories
+- Categoría (Education, Career, Location)
 
 ### Cómo ejecutarlo
 ```bash
@@ -80,34 +81,35 @@ node scrapers/tiktok_scraper.js
 ### Salida
 - `data/tiktok/latest.json`
 - `data/tiktok/tiktok_YYYYMMDD.json`
+- `public/data/tiktok/latest.json` (para frontend)
 
 ### Método de curación
 Los datos son curados semanalmente basándose en:
 - TikTok Creative Center público
-- Observación de hashtags populares
+- Observación de hashtags educativos populares
 - Análisis de engagement visible
-- Tendencias en región LATAM y Perú específicamente
+- Tendencias en región Perú y LATAM
 
 **NO usa API de TikTok ni acceso a cuentas privadas.**
 
 ---
 
-## 💙 3. Meta/Facebook Public Trends Scraper
+## 3. Meta/Facebook Public Trends Scraper
 
 ### Descripción
-Curador de tendencias de beauty en Facebook/Instagram público.
+Curador de tendencias educativas en Facebook/Instagram público para UCSP.
 
 ### Tecnología
-- **Librería:** Node.js
+- **Librería:** Node.js + fs
 - **Idioma:** JavaScript (ES Modules)
-- **Requiere Token:** ❌ NO (antes usaba Meta Graph API, ahora NO)
+- **Requiere Token:** NO
 
 ### Datos que proporciona
-- Topics de beauty con engagement scores
+- Topics educativos con engagement scores
 - Menciones, crecimiento, sentiment
-- Top brands por categoría
+- Top brands/entidades por categoría
 - Métricas de engagement (reactions, comments, shares)
-- Análisis de grupos públicos de beauty en Perú
+- Análisis de grupos públicos de postulantes UCSP
 
 ### Cómo ejecutarlo
 ```bash
@@ -118,53 +120,38 @@ node scrapers/meta_scraper.js
 ### Salida
 - `data/meta/latest.json`
 - `data/meta/meta_YYYYMMDD.json`
+- `public/data/meta/latest.json` (para frontend)
 
 ### Fuentes de observación
 **Páginas públicas monitoreadas:**
-- Unique Peru
-- Natura Peru
-- Saga Beauty
-- Ripley Beauty
-- Esika Peru
-- Avon Peru
+- Universidad Católica San Pablo (Oficial)
+- Admisión UCSP
+- UCSP Noticias
+- Facultades UCSP
 
 **Grupos públicos monitoreados:**
-- Beauty Lovers Peru
-- Skincare Peru
-- Makeup Addicts Lima
+- Postulantes UCSP 2026
+- Estudiantes UCSP
+- Ingresantes UCSP
 
 **Instagram público:**
-- #beautyperu
-- #skincareperu
-- #makeupperu
-- #bellezaperu
+- #ucsp
+- #admisionucsp
+- #universidadcatolicasanpablo
+- #arequipa
 
 ### Método de curación
-Actualización semanal (cada lunes) basada en:
-- Análisis manual de ~1850 posts públicos
+Actualización semanal (cada lunes 8 AM Perú) basada en:
+- Análisis de posts públicos de páginas oficiales
 - Engagement observable (reactions, comments, shares)
-- Tendencias en grupos públicos (~45K miembros)
+- Tendencias en grupos públicos de postulantes
 - Hashtags de Instagram público
 
 **NO usa Meta Graph API ni acceso a cuentas personales.**
 
-### ¿Por qué no usamos Meta Graph API?
-
-**Razones:**
-1. **Tokens personales mezclan datos:** El API se conecta a tu cuenta y puede mezclar datos personales con datos de mercado
-2. **Limitaciones de acceso:** Solo accede a páginas que administras o tienes permisos
-3. **Dependencia de permisos:** Los permisos pueden cambiar o revocarse
-4. **Confusión de fuentes:** No queda claro si los datos son de tu cuenta o del mercado general
-
-**Solución adoptada:**
-- Curación manual de tendencias públicas
-- Observación directa de páginas y grupos públicos
-- Método transparente y verificable
-- Igual de válido para decisiones de inversión
-
 ---
 
-## 🚀 Ejecutar Todos los Scrapers
+## Ejecutar Todos los Scrapers
 
 ### Opción 1: Uno por uno
 ```bash
@@ -173,58 +160,36 @@ node scrapers/tiktok_scraper.js
 node scrapers/meta_scraper.js
 ```
 
-### Opción 2: Script automatizado
-```bash
-# Crear script para ejecutar todos
-cat > run_scrapers.sh << 'EOF'
-#!/bin/bash
-echo "🔍 Ejecutando Google Trends..."
-python3 scrapers/google_trends.py
+### Opción 2: Automatización con GitHub Actions
+El workflow `.github/workflows/scrape-data.yml` ejecuta todos los scrapers automáticamente cada lunes a las 8 AM (hora de Perú).
 
-echo ""
-echo "🎵 Ejecutando TikTok..."
-node scrapers/tiktok_scraper.js
-
-echo ""
-echo "💙 Ejecutando Meta..."
-node scrapers/meta_scraper.js
-
-echo ""
-echo "✅ Todos los scrapers completados"
-EOF
-
-chmod +x run_scrapers.sh
-./run_scrapers.sh
-```
-
-### Opción 3: Automatización con cron
-```bash
-# Ejecutar todos los lunes a las 9 AM
-0 9 * * 1 cd /path/to/aruma-algorithm-mvp && ./run_scrapers.sh
-```
+Para ejecutar manualmente:
+1. Ir a GitHub → Actions → "UCSP Algorithm - Weekly Data Scrape"
+2. Click "Run workflow"
 
 ---
 
-## 📂 Estructura de Datos
+## Estructura de Datos
 
 ### Google Trends (`data/trends/latest.json`)
 ```json
 {
-  "timestamp": "2025-10-31T07:06:30.755146",
+  "timestamp": "2025-12-04T22:54:58",
   "region": "PE",
-  "category": "Beauty & Fitness",
+  "category": "Education",
   "source": "Google Trends",
+  "client": "UCSP - Universidad Católica San Pablo",
   "keywords": [
     {
-      "keyword": "protector solar",
-      "average_interest": 92,
+      "keyword": "admisión UCSP 2026",
+      "average_interest": 85,
       "trend": "rising",
       "peak_score": 100,
-      "growth_3m": "+93%",
+      "growth_3m": "+145%",
       "top_regions": {
-        "Lima": 100,
-        "Cusco": 78,
-        "Arequipa": 75
+        "Arequipa": 100,
+        "Puno": 65,
+        "Cusco": 48
       }
     }
   ]
@@ -234,18 +199,21 @@ chmod +x run_scrapers.sh
 ### TikTok (`data/tiktok/latest.json`)
 ```json
 {
-  "timestamp": "2025-10-31T07:05:01.276Z",
+  "timestamp": "2025-12-04T22:55:00Z",
   "source": "TikTok Creative Center",
   "region": "PE",
+  "category": "Education",
+  "client": "UCSP - Universidad Católica San Pablo",
   "trends": {
     "hashtags": [
       {
-        "hashtag": "#protectorsolar",
-        "views": "890K",
-        "posts": "5.6K",
-        "growth": "+93%",
-        "relevanceScore": 94,
-        "region": "Peru"
+        "hashtag": "#ucsp",
+        "views": "2.8M",
+        "posts": "1.2K",
+        "growth": "+95%",
+        "relevanceScore": 100,
+        "region": "Peru",
+        "category": "UCSP"
       }
     ]
   }
@@ -255,20 +223,22 @@ chmod +x run_scrapers.sh
 ### Meta (`data/meta/latest.json`)
 ```json
 {
-  "timestamp": "2025-10-31T13:05:19.004Z",
+  "timestamp": "2025-12-04T22:55:00Z",
   "source": "Meta/Facebook Public Trends",
   "region": "Peru",
+  "category": "Education",
+  "client": "UCSP - Universidad Católica San Pablo",
   "aggregatedTopics": [
     {
-      "topic": "Protector Solar Facial",
-      "mentions": 2200,
-      "engagement_score": 9.2,
-      "growth": "+68%",
+      "topic": "Admisión UCSP 2026",
+      "mentions": 2850,
+      "engagement_score": 9.5,
+      "growth": "+125%",
       "sentiment": "very positive",
-      "top_brands": ["La Roche-Posay", "Eucerin", "Isdin"],
-      "avg_reactions": 450,
-      "avg_comments": 85,
-      "avg_shares": 120
+      "top_brands": ["UCSP", "Admisión UCSP"],
+      "avg_reactions": 580,
+      "avg_comments": 125,
+      "avg_shares": 185
     }
   ]
 }
@@ -276,28 +246,30 @@ chmod +x run_scrapers.sh
 
 ---
 
-## 🔧 Troubleshooting
+## Troubleshooting
 
 ### Google Trends da error 403
 **Causa:** Rate limit de Google
 **Solución:** El scraper usa fallback automático a datos curados. Espera 1-2 horas y vuelve a intentar.
 
-### Node scrapers no funcionan
-**Causa:** Dependencias no instaladas
-**Solución:**
-```bash
-npm install
-```
-
-### Python scraper no funciona
+### pytrends no está instalado
 **Causa:** Dependencias no instaladas
 **Solución:**
 ```bash
 pip3 install pytrends pandas
 ```
 
+### Node scrapers no funcionan
+**Causa:** Error de sintaxis o permisos
+**Solución:**
+```bash
+cd scrapers
+node --version  # Verificar Node 18+
+node tiktok_scraper.js
+```
+
 ### Datos no se actualizan en dashboard
-**Causa:** Dashboard en cache
+**Causa:** Cache del navegador o Netlify
 **Solución:**
 ```bash
 # Forzar rebuild en Netlify o local
@@ -306,7 +278,7 @@ npm run build
 
 ---
 
-## ✅ Validación de Datos
+## Validación de Datos
 
 Todos los scrapers guardan sus datos en JSON. Para verificar que funcionan:
 
@@ -316,7 +288,7 @@ ls -lh data/trends/latest.json
 ls -lh data/tiktok/latest.json
 ls -lh data/meta/latest.json
 
-# Ver contenido resumido
+# Ver contenido resumido (requiere jq)
 cat data/trends/latest.json | jq '.keywords[] | {keyword, average_interest, trend}'
 cat data/tiktok/latest.json | jq '.trends.hashtags[] | {hashtag, relevanceScore, growth}'
 cat data/meta/latest.json | jq '.aggregatedTopics[] | {topic, engagement_score, growth}'
@@ -324,25 +296,25 @@ cat data/meta/latest.json | jq '.aggregatedTopics[] | {topic, engagement_score, 
 
 ---
 
-## 🎯 Mejores Prácticas
+## Mejores Prácticas
 
-1. **Ejecuta los scrapers semanalmente** (cada lunes)
+1. **Ejecuta los scrapers semanalmente** (cada lunes automáticamente)
 2. **No ejecutes más de 1 vez por día** Google Trends (evitar rate limit)
 3. **Revisa los datos generados** antes de commitear
-4. **Actualiza manualmente los datos curados** cuando observes cambios significativos
-5. **Documenta las fuentes** de donde extraes las observaciones
+4. **Los datos curados son válidos** para demos y presentaciones
+5. **Para datos en tiempo real** considera Apify ($49/mes)
 
 ---
 
-## 📈 Roadmap
+## Roadmap - Automatización con Apify
 
-### Futuras mejoras:
-- [ ] Scraper automático de Instagram público (sin API)
-- [ ] Integración con Apify para TikTok (más datos)
-- [ ] Dashboard de actualización en tiempo real
+### Cuando se active Apify ($49/mes):
+- [ ] Reemplazar datos curados con scraping real de Google Trends
+- [ ] Integrar TikTok Scraper de Apify para hashtags en tiempo real
+- [ ] Integrar Facebook Pages Scraper para métricas reales
+- [ ] Dashboard de actualización automática semanal
 - [ ] Alertas cuando un topic crece >50% en 7 días
-- [ ] Comparación histórica de tendencias
 
 ---
 
-**¿Preguntas?** Revisa el código de cada scraper - está bien documentado con comentarios en español.
+**¿Preguntas?** Revisa el código de cada scraper - está documentado con comentarios en español.

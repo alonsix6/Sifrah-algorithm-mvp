@@ -10,7 +10,7 @@ export const MOCK_GA4_DATA = {
     total: 42200,
     new_users: 25650,
     returning: 2850,
-    avg_session_duration: '4:15', // Mayor que autos (más tiempo investigando carreras)
+    avg_session_duration: '4:15', // Tiempo promedio investigando carreras
     pages_per_session: 5.8,
     bounce_rate: 32.5, // porcentaje
   },
@@ -184,7 +184,7 @@ export const PERFORMANCE_KPIS = {
 };
 
 // ============================================================================
-// UCSP OPPORTUNITY SCORE - Reemplazo de Honda Opportunity Score
+// UCSP OPPORTUNITY SCORE - Índice de oportunidad para admisiones
 // ============================================================================
 export const OPPORTUNITY_SCORE = {
   current_score: 67,

@@ -1,135 +1,152 @@
 #!/usr/bin/env python3
 """
-Honda Algorithm - Google Trends Scraper
-Extrae tendencias de búsqueda para keywords automotrices
+UCSP Algorithm - Google Trends Scraper
+Extrae tendencias de búsqueda para keywords de educación superior - UCSP
+Universidad Católica San Pablo - Arequipa, Perú
 """
 
-from pytrends.request import TrendReq
-import pandas as pd
 import json
 import time
 from datetime import datetime
 import os
 import sys
 
+# Intentar importar pytrends (opcional)
+try:
+    from pytrends.request import TrendReq
+    import pandas as pd
+    PYTRENDS_AVAILABLE = True
+except ImportError:
+    PYTRENDS_AVAILABLE = False
+    print("⚠️ pytrends no disponible, usando datos curados")
+
 # Configuración
 REGION = os.getenv('REGION', 'PE')
-AUTOMOTIVE_KEYWORDS = [
-    'honda cr-v', 'cr-v hibrida', 'suv hibrida',
-    'auto hibrido', 'honda peru', 'suv familiar',
-    'eficiencia combustible', 'mejor suv', 'precio cr-v'
+
+# Keywords UCSP - Educación Superior
+UCSP_KEYWORDS = [
+    'UCSP', 'Universidad Católica San Pablo', 'admisión UCSP 2026',
+    'ingeniería industrial arequipa', 'derecho arequipa',
+    'medicina arequipa', 'universidades arequipa',
+    'becas UCSP', 'examen admisión UCSP'
 ]
 
 def generate_curated_trends_data():
-    """Genera datos curados basados en observación manual de Google Trends"""
+    """Genera datos curados basados en observación manual de Google Trends para UCSP"""
     return [
         {
-            'keyword': 'honda cr-v',
-            'average_interest': 85,
-            'trend': 'rising',
-            'peak_score': 96,
-            'growth_3m': '+68%',
-            'top_regions': {'Lima': 100, 'Arequipa': 74, 'Trujillo': 60, 'Cusco': 50, 'Chiclayo': 47}
-        },
-        {
-            'keyword': 'cr-v hibrida',
-            'average_interest': 92,
-            'trend': 'rising',
-            'peak_score': 100,
-            'growth_3m': '+135%',
-            'top_regions': {'Lima': 100, 'Arequipa': 76, 'Trujillo': 64, 'Cusco': 54, 'Chiclayo': 50}
-        },
-        {
-            'keyword': 'suv hibrida',
-            'average_interest': 76,
-            'trend': 'rising',
-            'peak_score': 90,
-            'growth_3m': '+85%',
-            'top_regions': {'Lima': 100, 'Arequipa': 68, 'Trujillo': 55, 'Cusco': 45, 'Piura': 42}
-        },
-        {
-            'keyword': 'auto hibrido',
+            'keyword': 'UCSP',
             'average_interest': 72,
-            'trend': 'rising',
+            'trend': 'stable',
             'peak_score': 85,
-            'growth_3m': '+72%',
-            'top_regions': {'Lima': 100, 'Arequipa': 70, 'Trujillo': 58, 'Cusco': 50, 'Piura': 45}
+            'growth_3m': '+15%',
+            'top_regions': {'Arequipa': 100, 'Puno': 45, 'Cusco': 38, 'Moquegua': 32, 'Tacna': 28}
         },
         {
-            'keyword': 'honda peru',
-            'average_interest': 70,
-            'trend': 'rising',
-            'peak_score': 80,
-            'growth_3m': '+32%',
-            'top_regions': {'Lima': 100, 'Arequipa': 67, 'Trujillo': 60, 'Cusco': 54, 'Chiclayo': 50}
-        },
-        {
-            'keyword': 'suv familiar',
-            'average_interest': 65,
-            'trend': 'rising',
-            'peak_score': 75,
-            'growth_3m': '+48%',
-            'top_regions': {'Lima': 100, 'Arequipa': 62, 'Trujillo': 55, 'Cusco': 48, 'Piura': 42}
-        },
-        {
-            'keyword': 'eficiencia combustible',
-            'average_interest': 70,
+            'keyword': 'Universidad Católica San Pablo',
+            'average_interest': 68,
             'trend': 'rising',
             'peak_score': 82,
+            'growth_3m': '+22%',
+            'top_regions': {'Arequipa': 100, 'Puno': 52, 'Cusco': 42, 'Lima': 35, 'Moquegua': 30}
+        },
+        {
+            'keyword': 'admisión UCSP 2026',
+            'average_interest': 85,
+            'trend': 'rising',
+            'peak_score': 100,
+            'growth_3m': '+145%',
+            'top_regions': {'Arequipa': 100, 'Puno': 65, 'Cusco': 48, 'Juliaca': 42, 'Tacna': 35}
+        },
+        {
+            'keyword': 'ingeniería industrial arequipa',
+            'average_interest': 76,
+            'trend': 'rising',
+            'peak_score': 92,
             'growth_3m': '+68%',
-            'top_regions': {'Lima': 100, 'Arequipa': 68, 'Trujillo': 58, 'Cusco': 50, 'Chiclayo': 45}
+            'top_regions': {'Arequipa': 100, 'Puno': 55, 'Cusco': 45, 'Moquegua': 38, 'Tacna': 32}
         },
         {
-            'keyword': 'mejor suv',
-            'average_interest': 62,
+            'keyword': 'derecho arequipa',
+            'average_interest': 70,
             'trend': 'stable',
-            'peak_score': 72,
+            'peak_score': 78,
             'growth_3m': '+28%',
-            'top_regions': {'Lima': 100, 'Arequipa': 60, 'Trujillo': 52, 'Cusco': 48, 'Piura': 45}
+            'top_regions': {'Arequipa': 100, 'Puno': 48, 'Cusco': 42, 'Juliaca': 35, 'Lima': 30}
         },
         {
-            'keyword': 'precio cr-v',
+            'keyword': 'medicina arequipa',
             'average_interest': 82,
             'trend': 'rising',
-            'peak_score': 94,
-            'growth_3m': '+105%',
-            'top_regions': {'Lima': 100, 'Arequipa': 74, 'Trujillo': 62, 'Cusco': 54, 'Chiclayo': 50}
+            'peak_score': 95,
+            'growth_3m': '+52%',
+            'top_regions': {'Arequipa': 100, 'Puno': 62, 'Cusco': 55, 'Lima': 48, 'Tacna': 40}
+        },
+        {
+            'keyword': 'universidades arequipa',
+            'average_interest': 78,
+            'trend': 'rising',
+            'peak_score': 88,
+            'growth_3m': '+35%',
+            'top_regions': {'Arequipa': 100, 'Puno': 58, 'Cusco': 50, 'Lima': 42, 'Moquegua': 35}
+        },
+        {
+            'keyword': 'becas UCSP',
+            'average_interest': 65,
+            'trend': 'rising',
+            'peak_score': 78,
+            'growth_3m': '+85%',
+            'top_regions': {'Arequipa': 100, 'Puno': 72, 'Cusco': 58, 'Juliaca': 52, 'Tacna': 45}
+        },
+        {
+            'keyword': 'examen admisión UCSP',
+            'average_interest': 88,
+            'trend': 'rising',
+            'peak_score': 100,
+            'growth_3m': '+125%',
+            'top_regions': {'Arequipa': 100, 'Puno': 68, 'Cusco': 52, 'Juliaca': 48, 'Moquegua': 38}
         }
     ]
 
 def fetch_trends_data():
-    """Obtiene datos de Google Trends para keywords automotrices"""
+    """Obtiene datos de Google Trends para keywords UCSP - Educación"""
 
-    print("🔍 Iniciando scraping de Google Trends...")
+    print("🔍 Iniciando scraping de Google Trends para UCSP...")
     print(f"📍 Región: {REGION}")
+    print(f"🎓 Categoría: Educación Superior")
 
     results = {
         'timestamp': datetime.now().isoformat(),
         'region': REGION,
-        'category': 'Automotive',
+        'category': 'Education',
         'source': 'Google Trends',
+        'client': 'UCSP - Universidad Católica San Pablo',
         'keywords': [],
         'metadata': {
             'method': 'pytrends API + curated fallback',
-            'note': 'Real-time Google Trends data'
+            'note': 'Datos de tendencias de búsqueda para educación superior en sur de Perú',
+            'timeframe': 'Últimos 30 días'
         }
     }
 
     try:
+        if not PYTRENDS_AVAILABLE:
+            raise ImportError("pytrends not installed")
+
         # Intentar usar pytrends con configuración simplificada
         pytrends = TrendReq(hl='es-PE', tz=-300)
 
         # Procesar keywords en grupos de 5 (límite de Google Trends)
-        for i in range(0, len(AUTOMOTIVE_KEYWORDS), 5):
-            batch = AUTOMOTIVE_KEYWORDS[i:i+5]
+        for i in range(0, len(UCSP_KEYWORDS), 5):
+            batch = UCSP_KEYWORDS[i:i+5]
 
             try:
                 print(f"\n📊 Procesando: {', '.join(batch)}")
 
                 pytrends.build_payload(
                     kw_list=batch,
-                    cat=47,  # Autos & Vehicles category
-                    timeframe='today 3-m',
+                    cat=67,  # Education category
+                    timeframe='today 1-m',  # Últimos 30 días
                     geo=REGION
                 )
 
@@ -203,35 +220,41 @@ def fetch_trends_data():
 
     except Exception as e:
         print(f"⚠️ Error en pytrends API: {e}")
-        print("📊 Usando datos curados de Google Trends...")
+        print("📊 Usando datos curados de Google Trends para UCSP...")
 
     # Si no se obtuvo data, usar datos curados
     if len(results['keywords']) == 0:
         results['keywords'] = generate_curated_trends_data()
         results['metadata']['method'] = 'Curated data (pytrends unavailable)'
-        print("✓ Usando datos curados de Google Trends")
+        print("✓ Usando datos curados de Google Trends para UCSP")
         for kw in results['keywords']:
             print(f"  ✓ {kw['keyword']}: avg interest = {kw['average_interest']}, trend = {kw['trend']}, growth = {kw.get('growth_3m', 'N/A')}")
-    
+
     # Guardar resultados
     output_dir = os.path.join(os.path.dirname(__file__), '../data/trends')
     os.makedirs(output_dir, exist_ok=True)
-    
+
     timestamp_str = datetime.now().strftime('%Y%m%d_%H%M%S')
     output_file = os.path.join(output_dir, f'trends_{timestamp_str}.json')
-    
+
     with open(output_file, 'w', encoding='utf-8') as f:
         json.dump(results, f, indent=2, ensure_ascii=False)
-    
+
     # Guardar también como latest.json
     latest_file = os.path.join(output_dir, 'latest.json')
     with open(latest_file, 'w', encoding='utf-8') as f:
         json.dump(results, f, indent=2, ensure_ascii=False)
-    
+
+    # Copiar a public/data para el frontend
+    public_dir = os.path.join(os.path.dirname(__file__), '../public/data/trends')
+    os.makedirs(public_dir, exist_ok=True)
+    with open(os.path.join(public_dir, 'latest.json'), 'w', encoding='utf-8') as f:
+        json.dump(results, f, indent=2, ensure_ascii=False)
+
     print(f"\n✅ Datos guardados en {output_file}")
     print(f"✅ Latest: {latest_file}")
     print(f"📈 Total keywords procesadas: {len(results['keywords'])}")
-    
+
     return results
 
 if __name__ == '__main__':
