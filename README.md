@@ -328,51 +328,7 @@ export const OPPORTUNITY_SCORE = {
 
 ### 🚀 Migración de Mockup a Producción (Paso a Paso)
 
-#### **Fase 1: Integración HubSpot (Real-time CPL Monitoring)**
-
-1. **Obtener credenciales HubSpot**:
-   - Ir a HubSpot → Settings → Integrations → API Key
-   - Copiar Private App Access Token
-
-2. **Configurar en el sistema**:
-   ```javascript
-   // src/data/config.js
-   export const HUBSPOT_CONFIG = {
-     enabled: true,  // ✅ Cambiar a true
-     api_key: 'pat-na1-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',  // ✅ Pegar token
-     // ... resto de configuración
-   };
-   ```
-
-3. **Crear endpoint backend** (Node.js/Express o Netlify Functions):
-   ```javascript
-   // netlify/functions/hubspot-cpl.js
-   const axios = require('axios');
-
-   exports.handler = async (event) => {
-     const response = await axios.get('https://api.hubapi.com/crm/v3/objects/deals', {
-       headers: { 'Authorization': `Bearer ${process.env.HUBSPOT_API_KEY}` }
-     });
-     // Calcular CPL por campaña
-     return { statusCode: 200, body: JSON.stringify(response.data) };
-   };
-   ```
-
-4. **Actualizar DataLayer para consumir endpoint**:
-   ```javascript
-   // src/components/OptimizationLayer.jsx
-   const [hubspotData, setHubspotData] = useState(null);
-
-   useEffect(() => {
-     if (HUBSPOT_CONFIG.enabled) {
-       fetch('/.netlify/functions/hubspot-cpl')
-         .then(r => r.json())
-         .then(data => setHubspotData(data));
-     }
-   }, []);
-   ```
-
-#### **Fase 2: Activar Scrapers Automáticos**
+#### **Fase 1: Activar Scrapers Automáticos (OBLIGATORIO)**
 
 1. **Configurar GitHub Actions** (ya existe en `.github/workflows/`):
    ```yaml
@@ -397,7 +353,9 @@ export const OPPORTUNITY_SCORE = {
    - GitHub → Settings → Secrets → New repository secret
    - Agregar: `APIFY_API_KEY`, `RAPIDAPI_KEY`, etc.
 
-#### **Fase 3: Conectar Google Analytics 4 Real**
+#### **Fase 2: Conectar Google Analytics 4 Real (OPCIONAL)**
+
+> Solo si el cliente tiene GA4 configurado y quiere métricas web reales.
 
 1. **Crear Service Account en Google Cloud**:
    - Google Cloud Console → IAM & Admin → Service Accounts
@@ -436,7 +394,9 @@ export const OPPORTUNITY_SCORE = {
      : '/data';               // Mockup
    ```
 
-#### **Fase 4: Integrar Meta Ads API y Google Ads API**
+#### **Fase 3: Integrar Meta Ads API y Google Ads API (OPCIONAL)**
+
+> Solo si el cliente quiere pausado automático de campañas basado en CPL.
 
 1. **Meta Ads API** (pausado automático):
    ```javascript
@@ -475,6 +435,36 @@ export const OPPORTUNITY_SCORE = {
    };
    ```
 
+#### **Fase 4: Integración HubSpot (OPCIONAL - Solo UCSP)**
+
+> Esta integración fue solicitada específicamente por UCSP para monitoreo de CPL en tiempo real. Otros clientes pueden no necesitarla.
+
+1. **Obtener credenciales HubSpot**:
+   - Ir a HubSpot → Settings → Integrations → API Key
+   - Copiar Private App Access Token
+
+2. **Configurar en el sistema**:
+   ```javascript
+   // src/data/config.js
+   export const HUBSPOT_CONFIG = {
+     enabled: true,  // Cambiar a true solo si se usa
+     api_key: 'pat-na1-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
+   };
+   ```
+
+3. **Crear endpoint backend** (Netlify Functions):
+   ```javascript
+   // netlify/functions/hubspot-cpl.js
+   const axios = require('axios');
+
+   exports.handler = async (event) => {
+     const response = await axios.get('https://api.hubapi.com/crm/v3/objects/deals', {
+       headers: { 'Authorization': `Bearer ${process.env.HUBSPOT_API_KEY}` }
+     });
+     return { statusCode: 200, body: JSON.stringify(response.data) };
+   };
+   ```
+
 ### 🧪 Testing Antes de Producción
 
 ```bash
@@ -495,21 +485,27 @@ node -e "const data = require('./src/data/mockData.js'); console.log(data.OPPORT
 
 ### 📝 Checklist de Producción
 
+**Obligatorio:**
 - [ ] Todos los valores en USD ($)
 - [ ] CPL targets actualizados (Pregrado $9.5, Posgrado $17.5)
 - [ ] OPPORTUNITY_SCORE con estructura correcta
-- [ ] HubSpot API key configurada
-- [ ] GA4 Service Account creada
 - [ ] Scrapers testeados localmente
 - [ ] GitHub Actions activadas
+- [ ] APIFY_TOKEN configurado en GitHub Secrets
+- [ ] Build exitoso sin errores
+
+**Opcional (según necesidad del cliente):**
+- [ ] GA4 Service Account creada
 - [ ] Variables de entorno en Netlify
 - [ ] Meta Ads API token válido
 - [ ] Google Ads API configurada
-- [ ] Build exitoso sin errores
+- [ ] HubSpot API key configurada *(Solo UCSP)*
 
 ---
 
-## 🔄 Integración HubSpot
+## 🔄 Integración HubSpot (Opcional - Solo UCSP)
+
+> ⚠️ **Nota**: Esta integración fue solicitada específicamente por UCSP. Otros clientes pueden no necesitarla y pueden ignorar esta sección.
 
 El sistema incluye espacio para integración con HubSpot API:
 
@@ -634,10 +630,610 @@ Principales universidades competidoras en el sur del Perú (Arequipa y Cusco):
 
 Para implementación en producción:
 
-1. **Fase 1**: Configurar API keys de HubSpot
-2. **Fase 2**: Activar scrapers automáticos (GitHub Actions cada lunes)
-3. **Fase 3**: Conectar con GA4 real de UCSP
-4. **Fase 4**: Integrar Meta Ads API y Google Ads API para pausado automático
+1. **Fase 1 (Obligatoria)**: Activar scrapers automáticos con Apify (GitHub Actions cada lunes)
+2. **Fase 2 (Opcional)**: Conectar con GA4 real (si el cliente tiene GA4)
+3. **Fase 3 (Opcional - Solo UCSP)**: Configurar API keys de HubSpot para monitoreo CPL
+4. **Fase 4 (Opcional)**: Integrar Meta Ads API y Google Ads API para pausado automático
+
+> **Nota**: HubSpot fue solicitado específicamente por UCSP. Otros clientes pueden no necesitar esta integración.
+
+---
+
+## 🚀 GUÍA DE PRODUCCIÓN: Apify + Multi-Cliente
+
+Esta sección documenta cómo llevar el sistema a **producción 100% funcional** con datos reales automatizados usando **Apify**.
+
+### ¿Por qué Apify?
+
+| Problema | Solución con Apify |
+|----------|-------------------|
+| pytrends falla constantemente | Apify tiene Actors estables para Google Trends |
+| TikTok bloquea scrapers | Apify maneja proxies y anti-bot automáticamente |
+| Meta API tokens expiran | Apify Actors manejan autenticación |
+| Necesitas mantener servidores | Apify es serverless, solo pagas por uso |
+| Múltiples clientes | Una cuenta Apify, múltiples configuraciones |
+
+**Costo**: ~$49/mes para múltiples clientes (modelo basado en créditos)
+
+### Arquitectura Code-First (Recomendada)
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│  Tu Repositorio (GitHub)                                        │
+│                                                                 │
+│  configs/clients/           scrapers/                           │
+│  ├── ucsp.js        ───────▶ apify_runner.js ────┐              │
+│  ├── powerpay.js                                 │              │
+│  └── [nuevo-cliente].js                          │              │
+│                                                  │              │
+│  .github/workflows/                              │              │
+│  └── scrape-data.yml  ◀──────────────────────────┘              │
+│       (Lunes 8 AM Perú)                                         │
+└──────────────────────────────────────────────────│──────────────┘
+                                                   │
+                          API call con parámetros  │
+                                                   ▼
+                      ┌─────────────────────────────────────────┐
+                      │  Apify Cloud                            │
+                      │  ┌─────────────────────────────────┐    │
+                      │  │ Actors (scrapers pre-hechos):   │    │
+                      │  │ • clockworks/tiktok-scraper     │    │
+                      │  │ • apify/google-trends-scraper   │    │
+                      │  │ • apify/facebook-posts-scraper  │    │
+                      │  │ • apify/instagram-scraper       │    │
+                      │  └─────────────────────────────────┘    │
+                      │  (Solo ejecuta, no guarda configs)      │
+                      └─────────────────────────────────────────┘
+                                                   │
+                                Resultados JSON    │
+                                                   ▼
+                      ┌─────────────────────────────────────────┐
+                      │  GitHub Actions:                        │
+                      │  1. Recibe datos de Apify               │
+                      │  2. Guarda en public/data/              │
+                      │  3. Commit + Push automático            │
+                      │  4. Netlify detecta cambio → Deploy     │
+                      └─────────────────────────────────────────┘
+```
+
+### Paso 1: Crear cuenta Apify
+
+1. Ir a [apify.com](https://apify.com) y crear cuenta
+2. Ir a **Settings → Integrations → API**
+3. Copiar tu **API Token**
+4. Guardarlo como secreto en GitHub:
+   - GitHub → Settings → Secrets and variables → Actions
+   - New repository secret: `APIFY_TOKEN`
+
+### Paso 2: Estructura de configuración multi-cliente
+
+Crear carpeta `configs/clients/` con un archivo por cliente:
+
+```javascript
+// configs/clients/ucsp.js
+export default {
+  id: 'ucsp',
+  name: 'Universidad Católica San Pablo',
+  industry: 'education',
+  region: 'PE',  // Perú
+
+  // Configuración TikTok
+  tiktok: {
+    hashtags: [
+      '#ucsp', '#admision2026', '#universidadarequipa',
+      '#vidauniversitaria', '#carreras2026', '#becasuniversitarias',
+      '#ingenieriaIndustrial', '#medicina', '#derecho'
+    ],
+    maxResults: 50,
+    language: 'es'
+  },
+
+  // Configuración Google Trends
+  trends: {
+    keywords: [
+      'UCSP', 'Universidad Católica San Pablo', 'admisión UCSP 2026',
+      'ingeniería industrial arequipa', 'medicina arequipa',
+      'universidades arequipa', 'becas UCSP'
+    ],
+    geo: 'PE',  // Perú
+    timeframe: 'today 1-m'  // Último mes
+  },
+
+  // Configuración Meta (Facebook/Instagram)
+  meta: {
+    pages: ['UCatolicaSanPablo'],
+    hashtags: ['#ucsp', '#sanpablo', '#arequipa'],
+    keywords: ['admisión', 'becas', 'carreras', 'matrícula']
+  },
+
+  // Configuración de salida
+  output: {
+    dataPath: 'public/data',
+    timezone: 'America/Lima'
+  }
+};
+```
+
+```javascript
+// configs/clients/powerpay.js (ejemplo otro cliente)
+export default {
+  id: 'powerpay',
+  name: 'PowerPay',
+  industry: 'fintech',
+  region: 'PE',
+
+  tiktok: {
+    hashtags: [
+      '#pagosdigitales', '#ecommerce', '#fintech',
+      '#emprendimiento', '#ventasonline', '#pasareladepago'
+    ],
+    maxResults: 50,
+    language: 'es'
+  },
+
+  trends: {
+    keywords: [
+      'pasarela de pago', 'pagos online peru',
+      'ecommerce peru', 'cobrar con tarjeta'
+    ],
+    geo: 'PE',
+    timeframe: 'today 1-m'
+  },
+
+  meta: {
+    pages: ['PowerPayPE'],
+    hashtags: ['#powerpay', '#pagosdigitales'],
+    keywords: ['pago', 'tarjeta', 'ecommerce']
+  },
+
+  output: {
+    dataPath: 'public/data',
+    timezone: 'America/Lima'
+  }
+};
+```
+
+### Paso 3: Runner de Apify
+
+```javascript
+// scrapers/apify_runner.js
+import { ApifyClient } from 'apify-client';
+import fs from 'fs';
+import path from 'path';
+
+// Inicializar cliente
+const client = new ApifyClient({
+  token: process.env.APIFY_TOKEN,
+});
+
+/**
+ * Scrape TikTok usando Apify Actor
+ */
+export async function scrapeTikTok(config) {
+  console.log(`🎵 Scraping TikTok para ${config.name}...`);
+
+  const run = await client.actor("clockworks/tiktok-scraper").call({
+    hashtags: config.tiktok.hashtags,
+    resultsPerPage: config.tiktok.maxResults,
+    shouldDownloadVideos: false,
+    shouldDownloadCovers: false,
+  });
+
+  const { items } = await client.dataset(run.defaultDatasetId).listItems();
+
+  return {
+    source: 'tiktok',
+    client: config.id,
+    timestamp: new Date().toISOString(),
+    hashtags_searched: config.tiktok.hashtags,
+    results_count: items.length,
+    trends: {
+      hashtags: processHashtags(items),
+      top_videos: processVideos(items)
+    }
+  };
+}
+
+/**
+ * Scrape Google Trends usando Apify Actor
+ */
+export async function scrapeGoogleTrends(config) {
+  console.log(`📈 Scraping Google Trends para ${config.name}...`);
+
+  const run = await client.actor("apify/google-trends-scraper").call({
+    searchTerms: config.trends.keywords,
+    geo: config.trends.geo,
+    timeRange: config.trends.timeframe,
+    isMultiple: true,
+  });
+
+  const { items } = await client.dataset(run.defaultDatasetId).listItems();
+
+  return {
+    source: 'google_trends',
+    client: config.id,
+    timestamp: new Date().toISOString(),
+    keywords_searched: config.trends.keywords,
+    region: config.trends.geo,
+    timeframe: config.trends.timeframe,
+    trends: processGoogleTrends(items)
+  };
+}
+
+/**
+ * Scrape Meta (Facebook/Instagram) usando Apify Actor
+ */
+export async function scrapeMeta(config) {
+  console.log(`📘 Scraping Meta para ${config.name}...`);
+
+  // Facebook Posts
+  const fbRun = await client.actor("apify/facebook-posts-scraper").call({
+    startUrls: config.meta.pages.map(page => ({
+      url: `https://www.facebook.com/${page}`
+    })),
+    resultsLimit: 50,
+  });
+
+  const { items: fbItems } = await client.dataset(fbRun.defaultDatasetId).listItems();
+
+  return {
+    source: 'meta',
+    client: config.id,
+    timestamp: new Date().toISOString(),
+    pages_scraped: config.meta.pages,
+    trends: {
+      topics: processMetaTopics(fbItems, config.meta.keywords),
+      engagement: calculateEngagement(fbItems)
+    }
+  };
+}
+
+/**
+ * Ejecutar todos los scrapers para un cliente
+ */
+export async function scrapeAll(config) {
+  const results = {};
+
+  try {
+    results.tiktok = await scrapeTikTok(config);
+  } catch (error) {
+    console.error(`❌ Error TikTok: ${error.message}`);
+    results.tiktok = { error: error.message };
+  }
+
+  try {
+    results.trends = await scrapeGoogleTrends(config);
+  } catch (error) {
+    console.error(`❌ Error Trends: ${error.message}`);
+    results.trends = { error: error.message };
+  }
+
+  try {
+    results.meta = await scrapeMeta(config);
+  } catch (error) {
+    console.error(`❌ Error Meta: ${error.message}`);
+    results.meta = { error: error.message };
+  }
+
+  return results;
+}
+
+/**
+ * Guardar resultados en archivos JSON
+ */
+export function saveResults(results, config) {
+  const dataPath = config.output.dataPath;
+  const date = new Date().toISOString().split('T')[0].replace(/-/g, '');
+
+  // Guardar cada fuente
+  for (const [source, data] of Object.entries(results)) {
+    if (data.error) continue;
+
+    const sourceDir = path.join(dataPath, source);
+    if (!fs.existsSync(sourceDir)) {
+      fs.mkdirSync(sourceDir, { recursive: true });
+    }
+
+    // Guardar con fecha
+    const filePath = path.join(sourceDir, `${source}_${date}.json`);
+    fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+
+    // Actualizar latest.json
+    const latestPath = path.join(sourceDir, 'latest.json');
+    fs.writeFileSync(latestPath, JSON.stringify(data, null, 2));
+
+    console.log(`✅ Guardado: ${filePath}`);
+  }
+}
+
+// Funciones auxiliares de procesamiento
+function processHashtags(items) {
+  const hashtagMap = new Map();
+  items.forEach(item => {
+    (item.hashtags || []).forEach(tag => {
+      const current = hashtagMap.get(tag) || { count: 0, views: 0 };
+      hashtagMap.set(tag, {
+        count: current.count + 1,
+        views: current.views + (item.playCount || 0)
+      });
+    });
+  });
+  return Array.from(hashtagMap.entries())
+    .map(([hashtag, data]) => ({ hashtag, ...data }))
+    .sort((a, b) => b.views - a.views)
+    .slice(0, 20);
+}
+
+function processVideos(items) {
+  return items
+    .sort((a, b) => (b.playCount || 0) - (a.playCount || 0))
+    .slice(0, 10)
+    .map(item => ({
+      id: item.id,
+      description: item.text?.slice(0, 100),
+      views: item.playCount,
+      likes: item.diggCount,
+      shares: item.shareCount,
+      author: item.authorMeta?.name
+    }));
+}
+
+function processGoogleTrends(items) {
+  return items.map(item => ({
+    keyword: item.term,
+    interest: item.interestOverTime?.[0]?.value || 0,
+    trend: item.trend || 'stable',
+    related_queries: item.relatedQueries?.slice(0, 5) || []
+  }));
+}
+
+function processMetaTopics(items, keywords) {
+  const topics = {};
+  items.forEach(post => {
+    keywords.forEach(keyword => {
+      if (post.text?.toLowerCase().includes(keyword.toLowerCase())) {
+        topics[keyword] = (topics[keyword] || 0) + 1;
+      }
+    });
+  });
+  return Object.entries(topics)
+    .map(([topic, mentions]) => ({ topic, mentions }))
+    .sort((a, b) => b.mentions - a.mentions);
+}
+
+function calculateEngagement(items) {
+  const total = items.reduce((acc, post) => ({
+    likes: acc.likes + (post.likes || 0),
+    comments: acc.comments + (post.comments || 0),
+    shares: acc.shares + (post.shares || 0)
+  }), { likes: 0, comments: 0, shares: 0 });
+
+  return {
+    ...total,
+    total: total.likes + total.comments + total.shares,
+    posts_analyzed: items.length
+  };
+}
+```
+
+### Paso 4: Script de ejecución
+
+```javascript
+// scrapers/run_apify.js
+import { scrapeAll, saveResults } from './apify_runner.js';
+
+// Cargar configuración del cliente
+const CLIENT_ID = process.env.CLIENT_ID || 'ucsp';
+const configPath = `../configs/clients/${CLIENT_ID}.js`;
+
+async function main() {
+  console.log(`\n${'='.repeat(50)}`);
+  console.log(`🚀 Iniciando scraping para: ${CLIENT_ID}`);
+  console.log(`📅 Fecha: ${new Date().toISOString()}`);
+  console.log(`${'='.repeat(50)}\n`);
+
+  try {
+    // Importar configuración dinámicamente
+    const { default: config } = await import(configPath);
+
+    // Ejecutar todos los scrapers
+    const results = await scrapeAll(config);
+
+    // Guardar resultados
+    saveResults(results, config);
+
+    console.log(`\n✅ Scraping completado para ${config.name}`);
+
+  } catch (error) {
+    console.error(`\n❌ Error fatal: ${error.message}`);
+    process.exit(1);
+  }
+}
+
+main();
+```
+
+### Paso 5: GitHub Actions actualizado
+
+```yaml
+# .github/workflows/scrape-data.yml
+name: UCSP Algorithm - Weekly Data Scrape (Apify)
+
+on:
+  schedule:
+    # Lunes 8 AM Perú (1 PM UTC)
+    - cron: '0 13 * * 1'
+  workflow_dispatch:
+    inputs:
+      client_id:
+        description: 'ID del cliente (ucsp, powerpay, etc.)'
+        required: false
+        default: 'ucsp'
+
+env:
+  NODE_VERSION: '18'
+  CLIENT_ID: ${{ github.event.inputs.client_id || 'ucsp' }}
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          cache-dependency-path: scrapers/package-lock.json
+
+      - name: 📦 Install dependencies
+        working-directory: scrapers
+        run: npm ci
+
+      - name: 🔍 Run Apify scrapers
+        working-directory: scrapers
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+          CLIENT_ID: ${{ env.CLIENT_ID }}
+        run: node run_apify.js
+
+      - name: 📤 Commit and push data
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+
+          # Agregar cambios
+          git add public/data/
+          git add data/
+
+          # Verificar si hay cambios
+          if git diff --staged --quiet; then
+            echo "No hay cambios para commitear"
+            exit 0
+          fi
+
+          # Commit con fecha
+          DATE=$(TZ='America/Lima' date '+%Y-%m-%d %H:%M')
+          git commit -m "📊 Actualización automática de datos - $DATE"
+
+          # Push
+          git push
+
+      - name: 🔔 Notificar éxito (opcional)
+        if: success()
+        run: |
+          echo "✅ Scraping completado exitosamente para $CLIENT_ID"
+          # Aquí puedes agregar notificación a Slack/Discord/Email
+```
+
+### Paso 6: Duplicar repo para nuevo cliente
+
+Sigue estos pasos para crear un nuevo Algorithm para otro cliente:
+
+```bash
+# 1. Clonar el repo base
+git clone https://github.com/alonsix6/SanPablo-algorithm-mvp.git NuevoCliente-algorithm-mvp
+cd NuevoCliente-algorithm-mvp
+
+# 2. Cambiar remote a nuevo repo
+git remote set-url origin https://github.com/tu-usuario/NuevoCliente-algorithm-mvp.git
+
+# 3. Crear archivo de configuración del nuevo cliente
+cp configs/clients/ucsp.js configs/clients/nuevocliente.js
+
+# 4. Editar la configuración
+nano configs/clients/nuevocliente.js
+# Cambiar: id, name, industry, hashtags, keywords, pages, etc.
+
+# 5. Actualizar package.json
+sed -i 's/ucsp-algorithm/nuevocliente-algorithm/g' package.json
+sed -i 's/UCSP/NuevoCliente/g' package.json
+
+# 6. Actualizar branding (colores, logo)
+# Editar: src/data/config.js → BRAND_CONFIG
+
+# 7. Limpiar datos del cliente anterior
+rm -rf public/data/*/latest.json
+rm -rf data/*/
+
+# 8. Configurar secretos en GitHub
+# GitHub → Settings → Secrets → APIFY_TOKEN
+
+# 9. Actualizar variable CLIENT_ID en workflow
+# .github/workflows/scrape-data.yml → default: 'nuevocliente'
+
+# 10. Commit inicial
+git add .
+git commit -m "Configuración inicial para NuevoCliente"
+git push -u origin main
+```
+
+### Checklist de nuevo cliente
+
+**Obligatorio:**
+- [ ] Repo clonado y remote actualizado
+- [ ] `configs/clients/[cliente].js` creado con:
+  - [ ] Hashtags TikTok relevantes
+  - [ ] Keywords Google Trends
+  - [ ] Páginas Meta (Facebook/Instagram)
+- [ ] `package.json` actualizado (nombre, descripción)
+- [ ] `src/data/config.js` actualizado:
+  - [ ] BRAND_CONFIG (colores, logo, nombre)
+  - [ ] TARGET_AUDIENCES (si aplica)
+- [ ] Secretos configurados en GitHub:
+  - [ ] `APIFY_TOKEN`
+- [ ] GitHub Actions habilitado
+- [ ] Netlify conectado (o hosting alternativo)
+- [ ] Primer scraping manual ejecutado (workflow_dispatch)
+- [ ] Datos aparecen en el dashboard
+
+**Opcional (solo si el cliente lo requiere):**
+- [ ] HUBSPOT_CONFIG (monitoreo CPL automático) - *UCSP lo usa, otros clientes pueden no necesitarlo*
+- [ ] GA4 API (métricas web reales)
+- [ ] Meta Ads API (pausado automático de campañas)
+
+### Costos estimados por cliente
+
+| Servicio | Costo mensual | Notas |
+|----------|--------------|-------|
+| Apify | ~$10-15 | Depende del volumen de scraping |
+| GitHub | $0 | Actions gratuito para repos públicos |
+| Netlify | $0 | Tier gratuito suficiente |
+| **Total** | **~$10-15/cliente** | Con una cuenta Apify de $49 puedes manejar 3-5 clientes |
+
+### Troubleshooting común
+
+**Error: "APIFY_TOKEN not found"**
+```bash
+# Verificar que el secreto esté configurado
+# GitHub → Settings → Secrets → Actions → APIFY_TOKEN
+```
+
+**Error: "Actor not found"**
+```bash
+# Los actors de Apify pueden cambiar de nombre
+# Verificar en apify.com/store los nombres actuales
+```
+
+**Error: "Rate limit exceeded"**
+```bash
+# Apify tiene límites por plan
+# Reducir maxResults o espaciar ejecuciones
+```
+
+**Datos no se actualizan en Netlify**
+```bash
+# Verificar que el commit se haya hecho
+git log -1
+
+# Verificar que Netlify detectó el cambio
+# Netlify Dashboard → Deploys
+```
 
 ---
 

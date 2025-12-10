@@ -1,8 +1,8 @@
 {
-  "name": "honda-algorithm",
+  "name": "ucsp-algorithm",
   "version": "1.0.0",
   "type": "module",
-  "description": "Honda Algorithm - Social Intelligence para Honda Autos y Motos en Perú",
+  "description": "UCSP Algorithm - Social Intelligence para Universidad Católica San Pablo",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

@@ -1,8 +1,8 @@
 {
-  "name": "honda-scrapers",
+  "name": "ucsp-scrapers",
   "version": "1.0.0",
   "type": "module",
-  "description": "Data scrapers for Honda Algorithm MVP",
+  "description": "Data scrapers for UCSP Algorithm - Social Intelligence para Universidad Católica San Pablo",
   "main": "index.js",
   "scripts": {
     "scrape:all": "node tiktok_scraper.js && node meta_scraper.js",
@@ -12,9 +12,10 @@
   },
   "keywords": [
     "scraper",
-    "automotive",
-    "data",
-    "honda"
+    "education",
+    "ucsp",
+    "university",
+    "social-listening"
   ],
   "author": "Reset",
   "license": "UNLICENSED",
