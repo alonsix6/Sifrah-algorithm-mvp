@@ -61,14 +61,14 @@ jobs:
           mkdir -p public/data/tiktok
           mkdir -p public/data/meta
 
-      # 7. Ejecutar scraper de Google Trends
-      - name: Run Google Trends Scraper (UCSP)
+      # 7. Ejecutar scraper de Google Trends con Apify
+      - name: Run Google Trends Scraper (Apify)
         working-directory: ./scrapers
         run: |
-          echo "Scraping Google Trends for UCSP education keywords..."
-          python google_trends.py
+          echo "Scraping Google Trends via Apify for UCSP..."
+          node google_trends_apify.js --client=ucsp
         env:
-          REGION: PE
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
         continue-on-error: true
 
       # 8. Ejecutar scraper de TikTok

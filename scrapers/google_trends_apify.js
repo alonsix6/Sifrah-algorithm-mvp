@@ -1,17 +1,15 @@
 #!/usr/bin/env node
 /**
- * Google Trends Scraper - Apify Integration
+ * Google Trends Scraper - Apify Only
  *
- * Scraper genérico y reutilizable para múltiples clientes.
- * Los keywords se configuran en archivos JSON en /config/
+ * Obtiene datos REALES de Google Trends via Apify.
+ * Se ejecuta semanalmente (Lunes 8am) via GitHub Actions.
  *
  * Uso:
- *   node google_trends_apify.js                    # Usa config/ucsp.json por defecto
- *   node google_trends_apify.js --client=ucsp     # Especifica cliente
- *   node google_trends_apify.js --client=otro     # Otro cliente (config/otro.json)
+ *   node google_trends_apify.js --client=ucsp
  *
  * Requiere:
- *   APIFY_TOKEN en archivo .env o variable de entorno
+ *   APIFY_TOKEN en .env o variable de entorno
  */
 
 import { ApifyClient } from 'apify-client';
@@ -20,50 +18,37 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { config } from 'dotenv';
 
-// Cargar variables de entorno
 config();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// ============================================================================
-// CONFIGURACIÓN
-// ============================================================================
 const APIFY_TOKEN = process.env.APIFY_TOKEN;
 const ACTOR_ID = 'apify/google-trends-scraper';
 
-// Parsear argumentos de línea de comandos
+// ============================================================================
+// ARGUMENTOS
+// ============================================================================
 function parseArgs() {
   const args = process.argv.slice(2);
-  const options = {
-    client: 'ucsp'  // Por defecto
-  };
-
+  const options = { client: 'ucsp' };
   args.forEach(arg => {
-    if (arg.startsWith('--client=')) {
-      options.client = arg.split('=')[1];
-    }
+    if (arg.startsWith('--client=')) options.client = arg.split('=')[1];
   });
-
   return options;
 }
 
 // ============================================================================
-// CARGAR CONFIGURACIÓN DEL CLIENTE
+// CARGAR CONFIG
 // ============================================================================
 async function loadClientConfig(clientName) {
   const configPath = path.join(__dirname, 'config', `${clientName}.json`);
-
   try {
     const content = await fs.readFile(configPath, 'utf-8');
     return JSON.parse(content);
   } catch (error) {
-    if (error.code === 'ENOENT') {
-      console.error(`❌ Archivo de configuración no encontrado: ${configPath}`);
-      console.error(`   Crea el archivo config/${clientName}.json con los keywords`);
-      process.exit(1);
-    }
-    throw error;
+    console.error(`❌ Config no encontrada: ${configPath}`);
+    process.exit(1);
   }
 }
 
@@ -79,89 +64,89 @@ async function scrapeGoogleTrends(clientConfig) {
   console.log('='.repeat(50));
 
   if (!APIFY_TOKEN) {
-    console.error('\n❌ ERROR: APIFY_TOKEN no está configurado');
-    console.error('   Agrega APIFY_TOKEN=tu_token al archivo .env');
+    console.error('\n❌ ERROR: APIFY_TOKEN no configurado');
+    console.error('   Configura APIFY_TOKEN en .env o como variable de entorno');
     process.exit(1);
   }
 
   const client = new ApifyClient({ token: APIFY_TOKEN });
 
+  const input = {
+    searchTerms: clientConfig.keywords,
+    geo: clientConfig.geo || clientConfig.region,
+    timeRange: clientConfig.timeRange || 'today 1-m',  // Últimos 30 días
+    maxItems: 100,
+    isPublic: true
+  };
+
+  console.log(`\n📤 Input para Apify:`);
+  console.log(JSON.stringify(input, null, 2));
+
   try {
-    console.log('\n⏳ Ejecutando actor de Apify...');
-    console.log(`   Actor: ${ACTOR_ID}`);
-
-    // Configuración del actor
-    const input = {
-      searchTerms: clientConfig.keywords,
-      geo: clientConfig.geo || clientConfig.region,
-      timeRange: clientConfig.timeRange || 'today 1-m',
-      maxItems: 100,
-      isPublic: true
-    };
-
-    console.log(`\n📤 Input enviado a Apify:`);
-    console.log(JSON.stringify(input, null, 2));
-
     // Iniciar el actor
+    console.log('\n🚀 Iniciando actor de Apify...');
     const run = await client.actor(ACTOR_ID).start(input);
-
-    console.log(`\n🚀 Actor iniciado`);
     console.log(`   Run ID: ${run.id}`);
 
-    // Esperar a que termine (máximo 5 minutos)
-    console.log(`\n⏳ Esperando que termine (máx 5 min)...`);
+    // Esperar a que termine (máximo 10 minutos para dar tiempo suficiente)
+    console.log('\n⏳ Esperando que termine (máx 10 min)...');
+    console.log('   Esto puede tardar varios minutos debido a rate limiting de Google...');
+
     const finishedRun = await client.run(run.id).waitForFinish({
-      waitSecs: 300
+      waitSecs: 600  // 10 minutos
     });
 
-    console.log(`\n✅ Actor ejecutado exitosamente`);
-    console.log(`   Estado: ${finishedRun.status}`);
-
-    // Obtener resultados del dataset
-    const { items } = await client.dataset(finishedRun.defaultDatasetId).listItems();
-
-    console.log(`\n📊 Resultados obtenidos: ${items.length} items`);
-
-    // Transformar al formato esperado por el frontend
-    const transformedData = transformToFrontendFormat(items, clientConfig);
-
-    // Guardar resultados
-    await saveResults(transformedData, clientConfig);
-
-    return transformedData;
-
-  } catch (error) {
-    console.error('\n❌ Error ejecutando Apify:', error.message);
-
-    if (error.message.includes('402')) {
-      console.error('   → Sin créditos en Apify. Verifica tu plan.');
-    } else if (error.message.includes('401')) {
-      console.error('   → Token de Apify inválido. Verifica APIFY_TOKEN.');
+    if (finishedRun.status !== 'SUCCEEDED') {
+      throw new Error(`Actor terminó con estado: ${finishedRun.status}`);
     }
 
+    console.log(`\n✅ Actor completado exitosamente`);
+
+    // Obtener resultados
+    const { items } = await client.dataset(finishedRun.defaultDatasetId).listItems();
+    console.log(`📊 Items obtenidos: ${items.length}`);
+
+    if (items.length === 0) {
+      throw new Error('No se obtuvieron resultados de Apify');
+    }
+
+    // Transformar al formato del frontend
+    const data = transformToFrontendFormat(items, clientConfig);
+
+    // Guardar
+    await saveResults(data);
+
+    return data;
+
+  } catch (error) {
+    console.error(`\n❌ Error: ${error.message}`);
     throw error;
   }
 }
 
 // ============================================================================
-// TRANSFORMAR DATOS AL FORMATO DEL FRONTEND
+// TRANSFORMAR DATOS
 // ============================================================================
 function transformToFrontendFormat(items, clientConfig) {
-  console.log('\n🔄 Transformando datos al formato del frontend...');
-  console.log(`   Items recibidos: ${items.length}`);
+  console.log('\n🔄 Transformando datos...');
 
   const keywords = items.map(item => {
     const keyword = item.searchTerm || item.inputUrlOrTerm || 'unknown';
 
-    // Extraer datos de interés temporal (si existen)
+    // Datos de timeline (si existen)
     const timelineData = item.interestOverTime_timelineData || [];
 
-    // Calcular métricas desde timeline si hay datos
+    // Topics relacionados
+    const topTopics = item.relatedTopics_top || [];
+    const risingTopics = item.relatedTopics_rising || [];
+
+    // Calcular métricas
     let avgInterest = 0;
     let peakScore = 0;
     let trend = 'stable';
     let growth = '+0%';
 
+    // Preferir timeline data si existe
     if (timelineData.length > 0) {
       const values = timelineData
         .map(dp => dp.value?.[0] || dp.value || 0)
@@ -171,7 +156,7 @@ function transformToFrontendFormat(items, clientConfig) {
         avgInterest = Math.round(values.reduce((a, b) => a + b, 0) / values.length);
         peakScore = Math.max(...values);
 
-        // Calcular tendencia
+        // Tendencia basada en últimos días vs anteriores
         if (values.length >= 14) {
           const recent = values.slice(-7);
           const older = values.slice(-14, -7);
@@ -187,76 +172,57 @@ function transformToFrontendFormat(items, clientConfig) {
           }
         }
       }
-    } else {
-      // Si no hay timeline, usar relatedTopics para estimar interés
-      const topTopics = item.relatedTopics_top || [];
-      const risingTopics = item.relatedTopics_rising || [];
+    } else if (topTopics.length > 0) {
+      // Usar topics como fallback
+      const topValues = topTopics.slice(0, 5).map(t => t.value || 0);
+      avgInterest = Math.round(topValues.reduce((a, b) => a + b, 0) / topValues.length);
+      peakScore = topValues[0] || avgInterest;
 
-      if (topTopics.length > 0) {
-        // El primer topic relacionado suele ser el más relevante
-        // Usamos su valor como indicador de interés relativo
-        const topValues = topTopics.slice(0, 5).map(t => t.value || 0);
-        avgInterest = Math.round(topValues.reduce((a, b) => a + b, 0) / topValues.length);
-        peakScore = topValues[0] || 0;
-      }
-
-      // Determinar tendencia desde rising topics
+      // Tendencia desde rising topics
       if (risingTopics.length > 0) {
         const hasBreakout = risingTopics.some(t =>
           t.formattedValue === 'Breakout' || (t.value && t.value > 1000)
         );
-        const avgRisingValue = risingTopics
-          .filter(t => typeof t.value === 'number' && t.value < 1000)
-          .reduce((sum, t) => sum + t.value, 0) / Math.max(risingTopics.length, 1);
-
-        if (hasBreakout || avgRisingValue > 100) {
+        if (hasBreakout) {
           trend = 'rising';
-          growth = hasBreakout ? '+200%' : `+${Math.round(avgRisingValue)}%`;
-        } else if (avgRisingValue > 50) {
-          trend = 'rising';
-          growth = `+${Math.round(avgRisingValue)}%`;
+          growth = '+200%';
+        } else {
+          const avgRising = risingTopics
+            .filter(t => typeof t.value === 'number' && t.value < 1000)
+            .reduce((sum, t, _, arr) => sum + t.value / arr.length, 0);
+          if (avgRising > 50) {
+            trend = 'rising';
+            growth = `+${Math.round(avgRising)}%`;
+          }
         }
       }
     }
 
-    // Extraer regiones
+    // Regiones
     const topRegions = {};
     const subregions = item.interestBySubregion || [];
     const cities = item.interestByCity || [];
 
-    // Regiones de interés en Perú sur
-    const targetRegions = ['Arequipa', 'Puno', 'Cusco', 'Tacna', 'Moquegua', 'Lima', 'Juliaca'];
-
     if (subregions.length > 0) {
       subregions.slice(0, 5).forEach(r => {
-        const name = r.geoName || r.name || 'Unknown';
-        topRegions[name] = r.value?.[0] || r.value || 0;
+        topRegions[r.geoName || r.name || 'Unknown'] = r.value?.[0] || r.value || 0;
       });
     } else if (cities.length > 0) {
       cities.slice(0, 5).forEach(c => {
-        const name = c.geoName || c.name || 'Unknown';
-        topRegions[name] = c.value?.[0] || c.value || 0;
+        topRegions[c.geoName || c.name || 'Unknown'] = c.value?.[0] || c.value || 0;
       });
-    } else {
-      // Generar datos regionales basados en el contexto (Perú sur)
-      // Solo si no hay datos reales disponibles
-      topRegions['Arequipa'] = 100;
-      topRegions['Puno'] = Math.round(avgInterest * 0.6) || 50;
-      topRegions['Cusco'] = Math.round(avgInterest * 0.5) || 45;
-      topRegions['Tacna'] = Math.round(avgInterest * 0.4) || 35;
-      topRegions['Moquegua'] = Math.round(avgInterest * 0.35) || 30;
     }
 
-    // Extraer queries relacionadas
+    // Rising queries
     const risingQueries = [];
     if (item.relatedQueries_rising?.length > 0) {
-      risingQueries.push(...item.relatedQueries_rising.slice(0, 5).map(q => q.query || q.title));
-    } else if (item.relatedTopics_rising?.length > 0) {
-      risingQueries.push(...item.relatedTopics_rising.slice(0, 5).map(t => t.topic?.title || ''));
+      risingQueries.push(...item.relatedQueries_rising.slice(0, 5).map(q => q.query));
+    } else if (risingTopics.length > 0) {
+      risingQueries.push(...risingTopics.slice(0, 5).map(t => t.topic?.title).filter(Boolean));
     }
 
-    // Top topics para insights adicionales
-    const topTopicsFormatted = (item.relatedTopics_top || []).slice(0, 5).map(t => ({
+    // Related topics formateados
+    const relatedTopics = topTopics.slice(0, 5).map(t => ({
       title: t.topic?.title || '',
       type: t.topic?.type || '',
       value: t.value || 0
@@ -264,22 +230,20 @@ function transformToFrontendFormat(items, clientConfig) {
 
     return {
       keyword,
-      average_interest: avgInterest || 50,  // Default 50 si no hay datos
+      average_interest: avgInterest,
       trend,
-      peak_score: peakScore || avgInterest || 50,
+      peak_score: peakScore,
       growth_3m: growth,
       top_regions: topRegions,
-      rising_queries: risingQueries.filter(q => q),
-      related_topics: topTopicsFormatted
+      rising_queries: risingQueries,
+      related_topics: relatedTopics
     };
   });
 
-  // Filtrar keywords sin datos útiles y ordenar por interés
-  const validKeywords = keywords
-    .filter(kw => kw.average_interest > 0 || kw.related_topics?.length > 0)
-    .sort((a, b) => b.average_interest - a.average_interest);
+  // Ordenar por interés
+  keywords.sort((a, b) => b.average_interest - a.average_interest);
 
-  console.log(`   Keywords procesados: ${validKeywords.length}`);
+  console.log(`   ✅ ${keywords.length} keywords procesados`);
 
   return {
     timestamp: new Date().toISOString(),
@@ -287,12 +251,13 @@ function transformToFrontendFormat(items, clientConfig) {
     category: clientConfig.category,
     source: 'Google Trends via Apify',
     client: `${clientConfig.client} - ${clientConfig.clientFullName}`,
-    keywords: validKeywords,
+    keywords,
     metadata: {
       method: 'Apify apify/google-trends-scraper',
-      note: 'Datos reales de Google Trends',
+      note: 'Datos reales de Google Trends - Últimos 30 días',
       timeframe: clientConfig.timeRange,
-      items_fetched: items.length,
+      keywords_requested: clientConfig.keywords.length,
+      keywords_received: keywords.length,
       ...clientConfig.metadata
     }
   };
@@ -301,58 +266,53 @@ function transformToFrontendFormat(items, clientConfig) {
 // ============================================================================
 // GUARDAR RESULTADOS
 // ============================================================================
-async function saveResults(data, clientConfig) {
-  // Determinar directorio de salida
-  const outputDirName = clientConfig.outputDir || clientConfig.client.toLowerCase();
-  const outputDir = path.join(__dirname, '../data/trends');
-
-  await fs.mkdir(outputDir, { recursive: true });
-
-  const timestamp = new Date().toISOString().split('T')[0].replace(/-/g, '');
-  const outputFile = path.join(outputDir, `trends_${timestamp}.json`);
-  const latestFile = path.join(outputDir, 'latest.json');
-
-  // Guardar con timestamp
-  await fs.writeFile(outputFile, JSON.stringify(data, null, 2));
-  console.log(`\n💾 Guardado: ${outputFile}`);
-
-  // Guardar como latest
-  await fs.writeFile(latestFile, JSON.stringify(data, null, 2));
-  console.log(`💾 Guardado: ${latestFile}`);
-
-  // Copiar a public/data para el frontend
+async function saveResults(data) {
+  const dataDir = path.join(__dirname, '../data/trends');
   const publicDir = path.join(__dirname, '../public/data/trends');
-  await fs.mkdir(publicDir, { recursive: true });
-  await fs.writeFile(path.join(publicDir, 'latest.json'), JSON.stringify(data, null, 2));
-  console.log(`💾 Guardado: ${path.join(publicDir, 'latest.json')}`);
 
-  // Mostrar resumen
-  console.log('\n📊 Resumen de resultados:');
-  console.log(`   Keywords procesados: ${data.keywords.length}`);
+  await fs.mkdir(dataDir, { recursive: true });
+  await fs.mkdir(publicDir, { recursive: true });
+
+  const timestamp = new Date().toISOString().replace(/[:.]/g, '-').split('T')[0];
+  const jsonData = JSON.stringify(data, null, 2);
+
+  // Guardar con timestamp (backup)
+  await fs.writeFile(path.join(dataDir, `trends_${timestamp}.json`), jsonData);
+
+  // Guardar como latest (el que lee el frontend)
+  await fs.writeFile(path.join(dataDir, 'latest.json'), jsonData);
+  await fs.writeFile(path.join(publicDir, 'latest.json'), jsonData);
+
+  console.log('\n💾 Archivos guardados:');
+  console.log(`   📁 data/trends/trends_${timestamp}.json`);
+  console.log(`   📁 data/trends/latest.json`);
+  console.log(`   📁 public/data/trends/latest.json ◄── Frontend lee este`);
+
+  // Resumen
+  console.log('\n📊 Resumen:');
   data.keywords.forEach(kw => {
-    const trendIcon = kw.trend === 'rising' ? '↑' : kw.trend === 'falling' ? '↓' : '→';
-    console.log(`   ${trendIcon} ${kw.keyword}: ${kw.average_interest}/100 (${kw.growth_3m})`);
+    const icon = kw.trend === 'rising' ? '↑' : kw.trend === 'falling' ? '↓' : '→';
+    console.log(`   ${icon} ${kw.keyword}: ${kw.average_interest}/100 (${kw.growth_3m})`);
   });
 }
 
 // ============================================================================
-// EJECUCIÓN PRINCIPAL
+// MAIN
 // ============================================================================
 async function main() {
   const options = parseArgs();
 
-  console.log('🚀 Google Trends Scraper con Apify');
+  console.log('🚀 Google Trends Scraper (Solo Apify)');
   console.log(`   Cliente: ${options.client}`);
+  console.log(`   Fecha: ${new Date().toLocaleString('es-PE')}`);
 
   try {
     const clientConfig = await loadClientConfig(options.client);
     await scrapeGoogleTrends(clientConfig);
-
     console.log('\n✅ Scraping completado exitosamente');
     process.exit(0);
-
   } catch (error) {
-    console.error('\n❌ Error fatal:', error.message);
+    console.error(`\n❌ Error fatal: ${error.message}`);
     process.exit(1);
   }
 }

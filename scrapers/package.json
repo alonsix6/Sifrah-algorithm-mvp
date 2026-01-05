@@ -8,10 +8,7 @@
     "scrape:all": "npm run scrape:trends && node tiktok_scraper.js && node meta_scraper.js",
     "scrape:tiktok": "node tiktok_scraper.js",
     "scrape:meta": "node meta_scraper.js",
-    "scrape:trends": "node google_trends_hybrid.js --client=ucsp",
-    "scrape:trends:apify": "node google_trends_apify.js --client=ucsp",
-    "scrape:trends:hybrid": "node google_trends_hybrid.js --client=ucsp",
-    "scrape:apify": "node examples/apify_integration_example.js",
+    "scrape:trends": "node google_trends_apify.js --client=ucsp",
     "validate": "node validate_data.js"
   },
   "keywords": [
