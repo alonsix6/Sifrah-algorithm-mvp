@@ -69,9 +69,15 @@ async function scrapeTikTokTrends(clientConfig) {
   const client = new ApifyClient({ token: APIFY_TOKEN });
 
   // Input para TikTok Trends Scraper (formato correcto del actor)
+  // Nota: TikTok solo soporta ciertos países para creators/videos
+  // Países válidos: AU, BR, CA, EG, FR, DE, ID, IL, IT, JP, MY, PH, RU, SA, SG, KR, ES, TW, TH, TR, AE, GB, US, VN
+  const validCountries = ['AU', 'BR', 'CA', 'EG', 'FR', 'DE', 'ID', 'IL', 'IT', 'JP', 'MY', 'PH', 'RU', 'SA', 'SG', 'KR', 'ES', 'TW', 'TH', 'TR', 'AE', 'GB', 'US', 'VN'];
+  const region = clientConfig.region || 'PE';
+  const fallbackCountry = validCountries.includes(region) ? region : 'US';
+
   const input = {
-    // Configuración general
-    adsCountryCode: clientConfig.region || 'PE',
+    // Configuración general - hashtags soportan cualquier país
+    adsCountryCode: region,
     adsTimeRange: clientConfig.tiktok?.timeRange || '30',  // 7, 30, 120 días
     resultsPerPage: clientConfig.tiktok?.resultsPerPage || 20,
 
@@ -84,10 +90,10 @@ async function scrapeTikTokTrends(clientConfig) {
     // Filtros de industria (para hashtags)
     adsHashtagIndustry: clientConfig.tiktok?.industry || 'Education',
 
-    // Configuración de países para cada tipo
-    adsSoundsCountryCode: clientConfig.region || 'PE',
-    adsCreatorsCountryCode: clientConfig.region || 'PE',
-    adsVideosCountryCode: clientConfig.region || 'PE',
+    // Configuración de países (usar fallback para los que requieren país válido)
+    adsSoundsCountryCode: fallbackCountry,
+    adsCreatorsCountryCode: fallbackCountry,
+    adsVideosCountryCode: fallbackCountry,
 
     // Ordenamiento
     adsRankType: 'popular',
