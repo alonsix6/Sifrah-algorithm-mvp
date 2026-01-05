@@ -1,0 +1,24 @@
+{
+  "client": "UCSP",
+  "clientFullName": "Universidad Católica San Pablo",
+  "region": "PE",
+  "geo": "PE",
+  "category": "Education",
+  "timeRange": "today 1-m",
+  "outputDir": "ucsp",
+  "keywords": [
+    "UCSP",
+    "Universidad Católica San Pablo",
+    "admisión UCSP 2026",
+    "ingeniería industrial arequipa",
+    "derecho arequipa",
+    "medicina arequipa",
+    "universidades arequipa",
+    "becas UCSP",
+    "examen admisión UCSP"
+  ],
+  "metadata": {
+    "market": "Sur del Perú (Arequipa, Puno, Cusco, Moquegua, Tacna)",
+    "product": "Pregrado y Posgrado 2026-I"
+  }
+}

@@ -9,6 +9,8 @@
     "scrape:tiktok": "node tiktok_scraper.js",
     "scrape:meta": "node meta_scraper.js",
     "scrape:trends": "python google_trends.py",
+    "scrape:trends:apify": "node google_trends_apify.js",
+    "scrape:trends:ucsp": "node google_trends_apify.js --client=ucsp",
     "scrape:apify": "node examples/apify_integration_example.js",
     "validate": "node validate_data.js"
   },
