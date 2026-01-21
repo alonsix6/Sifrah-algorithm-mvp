@@ -4,7 +4,7 @@ import { PERFORMANCE_KPIS, ALERTS, COMPETITOR_INSIGHTS, CRM_MOCKUP } from '../da
 import { LAYER_CONFIG, CRM_CONFIG } from '../data/config';
 
 export default function OptimizationLayer() {
-  // Performance ultimos 7 dias - FitZone Fitness
+  // Performance últimos 7 días - FitZone Fitness
   const performanceData = [
     { date: '14 Ene', leads: 58, reach: 340000, engagement: 32500, spent: 3280 },
     { date: '15 Ene', leads: 72, reach: 385000, engagement: 38200, spent: 3520 },
@@ -17,61 +17,26 @@ export default function OptimizationLayer() {
 
   // Channel performance distribution - FitZone
   const channelData = [
-    { name: 'Meta Ads', value: 40, leads: 740, color: '#FF6B35' }, // FitZone Orange
-    { name: 'Google Search', value: 30, leads: 555, color: '#00D4FF' }, // Electric Blue
-    { name: 'TikTok Ads', value: 15, leads: 278, color: '#B8FF00' }, // Lime
-    { name: 'Display', value: 10, leads: 185, color: '#F97316' }, // Dark Orange
-    { name: 'Influencers', value: 5, leads: 92, color: '#14B8A6' } // Teal
+    { name: 'Meta Ads', value: 40, leads: 740, color: '#FF6B35' },
+    { name: 'Google Search', value: 30, leads: 555, color: '#00D4FF' },
+    { name: 'TikTok Ads', value: 15, leads: 278, color: '#B8FF00' },
+    { name: 'Display', value: 10, leads: 185, color: '#F97316' },
+    { name: 'Influencers', value: 5, leads: 92, color: '#14B8A6' }
   ];
 
-  // Funnel de conversion FitZone - Journey del cliente
+  // Funnel de conversión FitZone - Journey del cliente
   const funnelSteps = [
-    {
-      stage: 'Alcance',
-      value: 2500000,
-      conversionRate: 2.7,
-      conversionLabel: 'a Landing',
-      IconComponent: Users,
-      color: 'from-fitzone-orange to-fitzone-darkOrange'
-    },
-    {
-      stage: 'Visitas Landing',
-      value: 68500,
-      conversionRate: 2.7,
-      conversionLabel: 'a Trial',
-      IconComponent: Globe,
-      color: 'from-fitzone-darkOrange to-fitzone-electric'
-    },
-    {
-      stage: 'Trials Solicitados',
-      value: 1850,
-      conversionRate: 46.8,
-      conversionLabel: 'a Trial Activo',
-      IconComponent: Activity,
-      color: 'from-fitzone-electric to-fitzone-lime'
-    },
-    {
-      stage: 'Trials Activos',
-      value: 866,
-      conversionRate: 55.0,
-      conversionLabel: 'a Miembro',
-      IconComponent: Dumbbell,
-      color: 'from-fitzone-lime to-green-500'
-    },
-    {
-      stage: 'Nuevos Miembros',
-      value: 476,
-      conversionRate: null,
-      conversionLabel: null,
-      IconComponent: CheckCircle,
-      color: 'from-green-500 to-green-600'
-    }
+    { stage: 'Alcance', value: 2500000, conversionRate: 2.7, IconComponent: Users, bgColor: 'bg-fitzone-orange' },
+    { stage: 'Visitas Landing', value: 68500, conversionRate: 2.7, IconComponent: Globe, bgColor: 'bg-fitzone-darkOrange' },
+    { stage: 'Trials Solicitados', value: 1850, conversionRate: 46.8, IconComponent: Activity, bgColor: 'bg-fitzone-electric' },
+    { stage: 'Trials Activos', value: 866, conversionRate: 55.0, IconComponent: Dumbbell, bgColor: 'bg-fitzone-lime' },
+    { stage: 'Nuevos Miembros', value: 476, conversionRate: null, IconComponent: CheckCircle, bgColor: 'bg-green-500' }
   ];
 
   return (
     <div className="space-y-8">
       {/* Header */}
-      <div className="bg-fitzone-slate/80 backdrop-blur-sm rounded-2xl shadow-fitzone-lg p-6 border border-fitzone-orange/20">
+      <div className="bg-fitzone-slate rounded-2xl shadow-lg p-6 border border-fitzone-orange/20">
         <div className="flex items-start justify-between">
           <div>
             <h2 className="text-lg font-bold text-white mb-2">
@@ -82,9 +47,9 @@ export default function OptimizationLayer() {
             </p>
           </div>
           <div className="flex gap-2">
-            <span className="px-3 py-1 bg-gradient-fitzone text-white rounded-full text-sm font-medium flex items-center gap-1 shadow-fitzone-glow">
+            <span className="px-3 py-1 bg-fitzone-orange text-white rounded-full text-sm font-medium flex items-center gap-1">
               <RefreshCw className="w-4 h-4" />
-              Auto-optimizacion activa
+              Auto-optimización activa
             </span>
           </div>
         </div>
@@ -93,7 +58,7 @@ export default function OptimizationLayer() {
       {/* KPIs Principales */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {/* Nuevos Miembros */}
-        <div className="bg-gradient-to-br from-fitzone-orange to-fitzone-darkOrange text-white rounded-2xl p-6 shadow-fitzone-lg hover:shadow-fitzone-glow transition-all duration-300">
+        <div className="bg-fitzone-orange text-white rounded-2xl p-6 shadow-lg">
           <div className="flex items-center justify-between mb-3">
             <UserPlus className="w-8 h-8" />
             <span className={`px-3 py-1 rounded-full text-xs font-bold ${
@@ -116,7 +81,7 @@ export default function OptimizationLayer() {
         </div>
 
         {/* Alcance */}
-        <div className="bg-gradient-to-br from-fitzone-electric to-cyan-600 text-white rounded-2xl p-6 shadow-fitzone-lg hover:shadow-fitzone-glow transition-all duration-300">
+        <div className="bg-fitzone-electric text-white rounded-2xl p-6 shadow-lg">
           <div className="flex items-center justify-between mb-3">
             <Users className="w-8 h-8" />
             <span className={`px-3 py-1 rounded-full text-xs font-bold ${
@@ -125,7 +90,7 @@ export default function OptimizationLayer() {
               {PERFORMANCE_KPIS.reach.trend}
             </span>
           </div>
-          <h3 className="text-sm font-medium text-white/80 mb-1">Alcance Unico</h3>
+          <h3 className="text-sm font-medium text-white/80 mb-1">Alcance Único</h3>
           <p className="text-2xl font-bold mb-2">{(PERFORMANCE_KPIS.reach.unique_reach / 1000000).toFixed(1)}M</p>
           <div className="flex items-baseline gap-2">
             <span className="text-sm text-white/70">Impresiones: {(PERFORMANCE_KPIS.reach.impressions / 1000000).toFixed(1)}M</span>
@@ -139,7 +104,7 @@ export default function OptimizationLayer() {
         </div>
 
         {/* Engagement */}
-        <div className="bg-gradient-to-br from-fitzone-lime to-green-500 text-fitzone-charcoal rounded-2xl p-6 shadow-fitzone-lg hover:shadow-fitzone-glow transition-all duration-300">
+        <div className="bg-fitzone-lime text-fitzone-charcoal rounded-2xl p-6 shadow-lg">
           <div className="flex items-center justify-between mb-3">
             <Heart className="w-8 h-8" />
             <span className={`px-3 py-1 rounded-full text-xs font-bold ${
@@ -163,7 +128,7 @@ export default function OptimizationLayer() {
         </div>
 
         {/* Budget */}
-        <div className="bg-gradient-to-br from-fitzone-slate to-fitzone-charcoal text-white rounded-2xl p-6 shadow-fitzone-lg border border-fitzone-orange/30 hover:border-fitzone-orange/50 transition-all duration-300">
+        <div className="bg-fitzone-slate text-white rounded-2xl p-6 shadow-lg border border-fitzone-orange/30">
           <div className="flex items-center justify-between mb-3">
             <Award className="w-8 h-8 text-fitzone-orange" />
             <span className="px-3 py-1 rounded-full text-xs font-bold bg-fitzone-lime text-fitzone-charcoal">
@@ -185,11 +150,11 @@ export default function OptimizationLayer() {
       </div>
 
       {/* Performance Trends */}
-      <div className="bg-fitzone-slate/80 backdrop-blur-sm rounded-2xl shadow-fitzone-lg p-6 border border-fitzone-orange/20">
+      <div className="bg-fitzone-slate rounded-2xl shadow-lg p-6 border border-fitzone-orange/20">
         <div className="flex items-center justify-between mb-6">
           <div>
-            <h3 className="text-base font-bold text-white">Performance Ultimos 7 Dias</h3>
-            <p className="text-sm text-fitzone-textGray">Evolucion de metricas clave</p>
+            <h3 className="text-base font-bold text-white">Performance Últimos 7 Días</h3>
+            <p className="text-sm text-fitzone-textGray">Evolución de métricas clave</p>
           </div>
           <div className="flex gap-4 text-sm">
             <div className="flex items-center gap-2">
@@ -220,8 +185,8 @@ export default function OptimizationLayer() {
       </div>
 
       {/* Channel Distribution */}
-      <div className="bg-fitzone-slate/80 backdrop-blur-sm rounded-2xl shadow-fitzone-lg p-8 border border-fitzone-orange/20">
-        <h3 className="text-base font-bold text-white mb-8 text-center md:text-left">Distribucion de Leads por Canal</h3>
+      <div className="bg-fitzone-slate rounded-2xl shadow-lg p-8 border border-fitzone-orange/20">
+        <h3 className="text-base font-bold text-white mb-8 text-center md:text-left">Distribución de Leads por Canal</h3>
 
         <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12">
           {/* Pie Chart */}
@@ -253,7 +218,7 @@ export default function OptimizationLayer() {
           {/* Legend */}
           <div className="flex-1 max-w-md space-y-3">
             {channelData.map((channel, idx) => (
-              <div key={idx} className="flex items-center justify-between px-4 py-3 bg-fitzone-charcoal/60 rounded-lg hover:bg-fitzone-charcoal transition-all duration-200 border border-fitzone-orange/10 hover:border-fitzone-orange/30">
+              <div key={idx} className="flex items-center justify-between px-4 py-3 bg-fitzone-charcoal rounded-lg hover:bg-fitzone-charcoal/80 transition-all duration-200 border border-fitzone-orange/10 hover:border-fitzone-orange/30">
                 <div className="flex items-center gap-3 min-w-0">
                   <div className="w-3.5 h-3.5 rounded-full flex-shrink-0 shadow-sm" style={{ backgroundColor: channel.color }}></div>
                   <span className="text-sm font-medium text-white truncate">{channel.name}</span>
@@ -270,16 +235,16 @@ export default function OptimizationLayer() {
         </div>
       </div>
 
-      {/* Funnel de Conversion - Horizontal */}
-      <div className="bg-fitzone-slate/80 backdrop-blur-sm rounded-2xl shadow-fitzone-lg p-6 border border-fitzone-orange/20">
-        <h3 className="text-base font-bold text-white mb-6">Funnel de Conversion FitZone</h3>
+      {/* Funnel de Conversión - Horizontal */}
+      <div className="bg-fitzone-slate rounded-2xl shadow-lg p-6 border border-fitzone-orange/20">
+        <h3 className="text-base font-bold text-white mb-6">Funnel de Conversión FitZone</h3>
 
         {/* Horizontal Flow */}
         <div className="flex items-center justify-between gap-3 overflow-x-auto pb-4">
           {funnelSteps.map((step, idx) => (
             <div key={idx} className="flex items-center gap-3 flex-shrink-0">
               {/* Step Card */}
-              <div className={`bg-gradient-to-br ${step.color} rounded-xl p-4 text-white shadow-md min-w-[140px]`}>
+              <div className={`${step.bgColor} rounded-xl p-4 text-white shadow-md min-w-[140px]`}>
                 <div className="text-center">
                   <div className="flex justify-center mb-2">
                     <step.IconComponent className="w-8 h-8" />
@@ -306,17 +271,17 @@ export default function OptimizationLayer() {
         <div className="mt-6 pt-6 border-t border-fitzone-orange/20">
           <div className="grid grid-cols-3 gap-4">
             <div className="bg-fitzone-orange/10 rounded-lg p-3 border border-fitzone-orange/20">
-              <p className="text-xs text-fitzone-textGray mb-1">Conversion Global</p>
+              <p className="text-xs text-fitzone-textGray mb-1">Conversión Global</p>
               <p className="text-xl font-bold text-fitzone-orange">0.019%</p>
               <p className="text-xs text-fitzone-textGray">Alcance → Miembros</p>
             </div>
             <div className="bg-fitzone-lime/10 rounded-lg p-3 border border-fitzone-lime/20">
               <p className="text-xs text-fitzone-textGray mb-1">Trial → Miembro</p>
               <p className="text-xl font-bold text-fitzone-lime">55.0%</p>
-              <p className="text-xs text-fitzone-textGray">Excelente retencion</p>
+              <p className="text-xs text-fitzone-textGray">Excelente retención</p>
             </div>
             <div className="bg-fitzone-electric/10 rounded-lg p-3 border border-fitzone-electric/20">
-              <p className="text-xs text-fitzone-textGray mb-1">Tasa Conversion Web</p>
+              <p className="text-xs text-fitzone-textGray mb-1">Tasa Conversión Web</p>
               <p className="text-xl font-bold text-fitzone-electric">2.7%</p>
               <p className="text-xs text-fitzone-textGray">Landing → Trial</p>
             </div>
@@ -325,13 +290,13 @@ export default function OptimizationLayer() {
       </div>
 
       {/* CRM Monitoring - CPL Alerts */}
-      <div className="bg-gradient-to-br from-fitzone-orange to-fitzone-darkOrange text-white rounded-2xl shadow-fitzone-lg p-6">
+      <div className="bg-fitzone-orange text-white rounded-2xl shadow-lg p-6">
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-3">
             <Bell className="w-8 h-8" />
             <div>
               <h3 className="text-lg font-bold">CRM - Monitoreo CPL por Audiencia</h3>
-              <p className="text-sm text-white/90">Alertas automaticas de costo por lead</p>
+              <p className="text-sm text-white/90">Alertas automáticas de costo por lead</p>
             </div>
           </div>
           <span className="px-3 py-1 bg-white/20 rounded-full text-xs font-bold">
@@ -341,10 +306,10 @@ export default function OptimizationLayer() {
 
         {/* CPL Thresholds by Audience */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
+          <div className="bg-white/10 rounded-xl p-4">
             <h4 className="font-bold mb-3 flex items-center gap-2">
               <Zap className="w-5 h-5" />
-              Jovenes Activos
+              Jóvenes Activos
             </h4>
             <div className="space-y-2">
               <div className="flex justify-between text-sm">
@@ -362,7 +327,7 @@ export default function OptimizationLayer() {
             </div>
           </div>
 
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
+          <div className="bg-white/10 rounded-xl p-4">
             <h4 className="font-bold mb-3 flex items-center gap-2">
               <Target className="w-5 h-5" />
               Profesionales Wellness
@@ -383,7 +348,7 @@ export default function OptimizationLayer() {
             </div>
           </div>
 
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
+          <div className="bg-white/10 rounded-xl p-4">
             <h4 className="font-bold mb-3 flex items-center gap-2">
               <Users className="w-5 h-5" />
               Familias Activas
@@ -421,15 +386,15 @@ export default function OptimizationLayer() {
           </div>
         )}
 
-        <div className="mt-4 p-3 bg-white/20 backdrop-blur-sm rounded-lg">
+        <div className="mt-4 p-3 bg-white/20 rounded-lg">
           <p className="text-xs flex items-center gap-1">
-            <Lightbulb className="w-4 h-4" /> <strong>Nota:</strong> Sistema de alertas automaticas configurado para notificacion en tiempo real cuando CPL supera umbrales.
+            <Lightbulb className="w-4 h-4" /> <strong>Nota:</strong> Sistema de alertas automáticas configurado para notificación en tiempo real cuando CPL supera umbrales.
           </p>
         </div>
       </div>
 
-      {/* Alertas Automaticas */}
-      <div className="bg-fitzone-slate/80 backdrop-blur-sm rounded-2xl shadow-fitzone-lg p-6 border border-fitzone-orange/20">
+      {/* Alertas Automáticas */}
+      <div className="bg-fitzone-slate rounded-2xl shadow-lg p-6 border border-fitzone-orange/20">
         <div className="flex items-center gap-3 mb-4">
           <AlertCircle className="w-6 h-6 text-fitzone-orange" />
           <h3 className="text-base font-bold text-white">Alertas del Mercado Fitness</h3>
@@ -453,7 +418,7 @@ export default function OptimizationLayer() {
               </div>
               <p className="text-xs text-fitzone-textGray mb-2">{alert.message}</p>
               <p className="text-xs font-semibold text-fitzone-orange">
-                Accion: {alert.action}
+                Acción: {alert.action}
               </p>
             </div>
           ))}
@@ -461,11 +426,11 @@ export default function OptimizationLayer() {
       </div>
 
       {/* Competitor Analysis */}
-      <div className="bg-fitzone-slate/80 backdrop-blur-sm rounded-2xl shadow-fitzone-lg p-6 border border-fitzone-orange/20">
-        <h3 className="text-base font-bold text-white mb-4">Analisis de Competencia Fitness</h3>
+      <div className="bg-fitzone-slate rounded-2xl shadow-lg p-6 border border-fitzone-orange/20">
+        <h3 className="text-base font-bold text-white mb-4">Análisis de Competencia Fitness</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {COMPETITOR_INSIGHTS.filter(c => c.brand !== 'FitZone').map((comp, idx) => (
-            <div key={idx} className="p-4 bg-fitzone-charcoal/60 border-2 border-fitzone-slate rounded-lg hover:border-fitzone-orange/50 transition-colors">
+            <div key={idx} className="p-4 bg-fitzone-charcoal border-2 border-fitzone-slate rounded-lg hover:border-fitzone-orange/50 transition-colors">
               <div className="flex items-center justify-between mb-2">
                 <div>
                   <h4 className="font-bold text-white">{comp.brand}</h4>
@@ -508,14 +473,14 @@ export default function OptimizationLayer() {
         </div>
 
         {/* FitZone Comparison */}
-        <div className="mt-4 p-5 bg-gradient-to-br from-fitzone-orange to-fitzone-darkOrange text-white rounded-xl shadow-fitzone-glow">
+        <div className="mt-4 p-5 bg-fitzone-orange text-white rounded-xl">
           <div className="flex items-center justify-between">
             <div>
               <h4 className="font-bold text-base mb-1 flex items-center gap-2">
                 <Dumbbell className="w-5 h-5" />
-                FitZone Peru
+                FitZone Perú
               </h4>
-              <p className="text-xs text-white/70 mb-2">Cadena mid-premium con mejor relacion precio-valor y tecnologia</p>
+              <p className="text-xs text-white/70 mb-2">Cadena mid-premium con mejor relación precio-valor y tecnología</p>
               <div className="flex gap-6">
                 <div>
                   <p className="text-xs text-white/70">Share of Voice</p>

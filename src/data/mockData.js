@@ -1,5 +1,5 @@
 // Mock Data para FitZone - Dashboard Demo Comercial
-// Datos simulados realistas para cadena de gimnasios en Lima, Peru
+// Datos simulados realistas para cadena de gimnasios en Lima, Perú
 
 // ============================================================================
 // MOCK GA4 DATA - Google Analytics 4 simulado
@@ -17,7 +17,7 @@ export const MOCK_GA4_DATA = {
   top_pages: [
     {
       page: '/membresias',
-      title: 'Membresias FitZone',
+      title: 'Membresías FitZone',
       views: 18500,
       bounce_rate: 28,
       avg_time: '4:12',
@@ -62,7 +62,7 @@ export const MOCK_GA4_DATA = {
   },
 
   traffic_sources: {
-    organic_search: { percentage: 28, sessions: 19180, label: 'Busqueda Organica' },
+    organic_search: { percentage: 28, sessions: 19180, label: 'Búsqueda Orgánica' },
     paid_search: { percentage: 25, sessions: 17125, label: 'Google Ads' },
     social_media: { percentage: 35, sessions: 23975, label: 'Meta Ads' },
     direct: { percentage: 8, sessions: 5480, label: 'Directo' },
@@ -88,7 +88,7 @@ export const MOCK_GA4_DATA = {
 };
 
 // ============================================================================
-// PERFORMANCE KPIs - Metricas principales del dashboard
+// PERFORMANCE KPIs - Métricas principales del dashboard
 // ============================================================================
 export const PERFORMANCE_KPIS = {
   nuevos_miembros: {
@@ -115,7 +115,7 @@ export const PERFORMANCE_KPIS = {
     change: '+28.2',
     trend: 'up',
     label: 'Alcance Total',
-    description: 'Usuarios unicos impactados',
+    description: 'Usuarios únicos impactados',
   },
 
   reach: {
@@ -175,13 +175,13 @@ export const PERFORMANCE_KPIS = {
     previous: 74.2,
     change: '+4.3',
     trend: 'up',
-    label: 'Retencion Mensual',
+    label: 'Retención Mensual',
     description: 'Porcentaje de miembros que renuevan',
   },
 };
 
 // ============================================================================
-// FITZONE OPPORTUNITY SCORE - Indice de oportunidad fitness
+// FITZONE OPPORTUNITY SCORE - Índice de oportunidad fitness
 // ============================================================================
 export const OPPORTUNITY_SCORE = {
   current_score: 78,
@@ -191,13 +191,13 @@ export const OPPORTUNITY_SCORE = {
       score: 82,
       weight: 0.25,
       contribution: 20.5,
-      insight: 'Busquedas de "gimnasio lima" +18% vs mes anterior',
+      insight: 'Búsquedas de "gimnasio lima" +18% vs mes anterior',
     },
     social_engagement: {
       score: 75,
       weight: 0.20,
       contribution: 15.0,
-      insight: '#gymtok Peru trending, +85K menciones/semana',
+      insight: '#gymtok Perú trending, +85K menciones/semana',
     },
     competitor_gap: {
       score: 85,
@@ -209,7 +209,7 @@ export const OPPORTUNITY_SCORE = {
       score: 92,
       weight: 0.15,
       contribution: 13.8,
-      insight: 'Enero = pico maximo de demanda, propositos de ano nuevo',
+      insight: 'Enero = pico máximo de demanda, propósitos de año nuevo',
     },
     conversion_efficiency: {
       score: 76,
@@ -219,14 +219,14 @@ export const OPPORTUNITY_SCORE = {
     },
   },
   recommendation: {
-    message: 'Momento optimo para aumentar inversion en Meta Ads. Audiencia joven mostrando alto engagement con contenido de transformacion. Aprovechar pico estacional de Enero.',
+    message: 'Momento óptimo para aumentar inversión en Meta Ads. Audiencia joven mostrando alto engagement con contenido de transformación. Aprovechar pico estacional de Enero.',
     confidence: '92%',
     priority: 'high',
     actions: [
       'Incrementar budget TikTok 25%',
-      'Lanzar campana "Proposito 2026"',
+      'Lanzar campaña "Propósito 2026"',
       'Activar influencers micro (10-50K)',
-      'Promocion sin matricula primera quincena',
+      'Promoción sin matrícula primera quincena',
     ],
   },
 };
@@ -237,7 +237,7 @@ export const OPPORTUNITY_SCORE = {
 export const SERVICIOS_PERFORMANCE = [
   {
     id: 1,
-    nombre: 'Membresia Basica',
+    nombre: 'Membresía Básica',
     demanda: 'Alta',
     leads: 520,
     conversiones: 42,
@@ -251,7 +251,7 @@ export const SERVICIOS_PERFORMANCE = [
   },
   {
     id: 2,
-    nombre: 'Membresia Premium',
+    nombre: 'Membresía Premium',
     demanda: 'Alta',
     leads: 340,
     conversiones: 22,
@@ -307,7 +307,7 @@ export const SERVICIOS_PERFORMANCE = [
   },
   {
     id: 6,
-    nombre: 'Nutricion/Suplementos',
+    nombre: 'Nutrición/Suplementos',
     demanda: 'Media',
     leads: 130,
     conversiones: 13,
@@ -345,14 +345,14 @@ export const SEDES_PERFORMANCE = [
 export const COMPETENCIA = [
   {
     name: 'Smart Fit',
-    full_name: 'Smart Fit Peru',
+    full_name: 'Smart Fit Perú',
     market_share: 45,
     sedes: 95,
     rank: 1,
     type: 'Low-cost',
     precio: 'S/79-109',
     fortalezas: ['Precio bajo', 'Muchas sedes', 'Sin permanencia'],
-    debilidades: ['Masificacion', 'Sin clases grupales', 'Atencion basica'],
+    debilidades: ['Masificación', 'Sin clases grupales', 'Atención básica'],
   },
   {
     name: 'b2',
@@ -373,7 +373,7 @@ export const COMPETENCIA = [
     rank: 3,
     type: 'Premium',
     precio: 'S/300+',
-    fortalezas: ['Ultra premium', 'Experiencia completa', 'Tecnologia'],
+    fortalezas: ['Ultra premium', 'Experiencia completa', 'Tecnología'],
     debilidades: ['Muy caro', 'Solo 2 sedes'],
   },
   {
@@ -384,7 +384,7 @@ export const COMPETENCIA = [
     rank: 4,
     type: 'Club',
     precio: 'S/200-350',
-    fortalezas: ['Piscinas', 'Familias', 'Natacion'],
+    fortalezas: ['Piscinas', 'Familias', 'Natación'],
     debilidades: ['Pocas sedes', 'Infraestructura variable'],
   },
   {
@@ -396,29 +396,29 @@ export const COMPETENCIA = [
     type: 'Boutique',
     precio: 'S/250-400',
     fortalezas: ['Wellness integral', 'Comunidad', 'Box/Funcional'],
-    debilidades: ['Nicho especifico', 'Precio alto'],
+    debilidades: ['Nicho específico', 'Precio alto'],
   },
   {
     name: 'FitZone',
-    full_name: 'FitZone Peru',
+    full_name: 'FitZone Perú',
     market_share: 12,
     sedes: 12,
     rank: 3,
     type: 'Full-service Premium',
     precio: 'S/100-250',
-    fortalezas: ['Relacion precio-valor', 'Tecnologia', 'Comunidad activa'],
-    debilidades: ['En expansion', 'Menor awareness'],
+    fortalezas: ['Relación precio-valor', 'Tecnología', 'Comunidad activa'],
+    debilidades: ['En expansión', 'Menor awareness'],
   },
 ];
 
 // ============================================================================
-// CRM MOCKUP - Datos simulados de campanas
+// CRM MOCKUP - Datos simulados de campañas
 // ============================================================================
 export const CRM_MOCKUP = {
   campaigns: [
     {
       id: 'camp_001',
-      name: 'Proposito 2026 - Jovenes',
+      name: 'Propósito 2026 - Jóvenes',
       status: 'active',
       budget: 10000,
       spent: 8500,
@@ -426,11 +426,11 @@ export const CRM_MOCKUP = {
       cpl: 11.80,
       alert_status: 'normal',
       platform: 'Meta Ads',
-      audience: 'Jovenes Activos',
+      audience: 'Jóvenes Activos',
     },
     {
       id: 'camp_002',
-      name: 'Membresia Premium - Ejecutivos',
+      name: 'Membresía Premium - Ejecutivos',
       status: 'active',
       budget: 7500,
       spent: 6200,
@@ -450,7 +450,7 @@ export const CRM_MOCKUP = {
       cpl: 10.88,
       alert_status: 'normal',
       platform: 'TikTok Ads',
-      audience: 'Jovenes Activos',
+      audience: 'Jóvenes Activos',
     },
     {
       id: 'camp_004',
@@ -468,13 +468,13 @@ export const CRM_MOCKUP = {
   alerts: [
     {
       type: 'success',
-      message: 'Campana "TikTok Transformaciones" superando objetivos: CPL $10.88 vs target $12',
+      message: 'Campaña "TikTok Transformaciones" superando objetivos: CPL $10.88 vs target $12',
       campaign_id: 'camp_003',
       timestamp: '2026-01-20T14:30:00',
     },
     {
       type: 'warning',
-      message: 'Campana "Plan Familiar" con CPL de $22.10, cerca del limite de $25',
+      message: 'Campaña "Plan Familiar" con CPL de $22.10, cerca del límite de $25',
       campaign_id: 'camp_004',
       timestamp: '2026-01-20T13:15:00',
     },
@@ -490,7 +490,7 @@ export const CRM_MOCKUP = {
 };
 
 // ============================================================================
-// BUDGET ALLOCATION - Distribucion de presupuesto por canal
+// BUDGET ALLOCATION - Distribución de presupuesto por canal
 // ============================================================================
 export const BUDGET_ALLOCATION = {
   total_budget: 25000,
@@ -535,7 +535,7 @@ export const BUDGET_ALLOCATION = {
       percentage: 5,
       status: 'performing',
       kpi: 'Engagement Rate',
-      target: '8% o mas',
+      target: '8% o más',
       current_performance: '12.5%',
     },
   },
@@ -559,8 +559,8 @@ export const BUDGET_ALLOCATION = {
       channel: 'google_display',
       from: 10,
       to: 5,
-      reason: 'Display con conversion rate bajo, redirigir a TikTok',
-      impact: 'Redistribucion mas eficiente',
+      reason: 'Display con conversión rate bajo, redirigir a TikTok',
+      impact: 'Redistribución más eficiente',
     },
   ],
 };
@@ -572,7 +572,7 @@ export const CONTENT_PILLARS = [
   {
     id: 1,
     title: 'Transformaciones Reales',
-    description: 'Historias de exito y antes/despues de miembros',
+    description: 'Historias de éxito y antes/después de miembros',
     status: 'overperforming',
     performance: {
       engagement_rate: 18.5,
@@ -585,7 +585,7 @@ export const CONTENT_PILLARS = [
   {
     id: 2,
     title: 'Rutinas y Tips',
-    description: 'Contenido educativo de entrenamientos y nutricion',
+    description: 'Contenido educativo de entrenamientos y nutrición',
     status: 'performing',
     performance: {
       engagement_rate: 12.8,
@@ -593,7 +593,7 @@ export const CONTENT_PILLARS = [
       conversions: 198,
     },
     recommended_budget: 0.25,
-    formats: ['Videos cortos', 'Infografias', 'Lives'],
+    formats: ['Videos cortos', 'Infografías', 'Lives'],
   },
   {
     id: 3,
@@ -611,7 +611,7 @@ export const CONTENT_PILLARS = [
   {
     id: 4,
     title: 'Promociones y Ofertas',
-    description: 'Campanas de adquisicion y ofertas especiales',
+    description: 'Campañas de adquisición y ofertas especiales',
     status: 'ontrack',
     performance: {
       engagement_rate: 8.5,
@@ -623,8 +623,8 @@ export const CONTENT_PILLARS = [
   },
   {
     id: 5,
-    title: 'Tecnologia e Innovacion',
-    description: 'App, maquinas conectadas, IA para planes',
+    title: 'Tecnología e Innovación',
+    description: 'App, máquinas conectadas, IA para planes',
     status: 'performing',
     performance: {
       engagement_rate: 10.2,
@@ -637,22 +637,22 @@ export const CONTENT_PILLARS = [
 ];
 
 // ============================================================================
-// ALERTS - Alertas automaticas del sistema
+// ALERTS - Alertas automáticas del sistema
 // ============================================================================
 export const ALERTS = [
   {
     id: 1,
     severity: 'high',
     title: 'Pico de demanda detectado',
-    message: 'Busquedas de "gimnasio enero" aumentaron 85% esta semana. Momento optimo para push de campanas.',
+    message: 'Búsquedas de "gimnasio enero" aumentaron 85% esta semana. Momento óptimo para push de campañas.',
     action: 'Aumentar budget 20% en Meta y TikTok para capturar demanda',
     timestamp: '2026-01-20T09:00:00',
   },
   {
     id: 2,
     severity: 'medium',
-    title: 'Competidor con promocion agresiva',
-    message: 'Smart Fit lanzo promocion "Sin matricula + 1 mes gratis". Detectado en redes sociales.',
+    title: 'Competidor con promoción agresiva',
+    message: 'Smart Fit lanzó promoción "Sin matrícula + 1 mes gratis". Detectado en redes sociales.',
     action: 'Evaluar respuesta competitiva, destacar diferenciadores de calidad',
     timestamp: '2026-01-19T15:30:00',
   },
@@ -660,7 +660,7 @@ export const ALERTS = [
     id: 3,
     severity: 'low',
     title: 'Oportunidad en Los Olivos',
-    message: 'Trafico desde Lima Norte crecio +35% esta semana con CPL de $8.50',
+    message: 'Tráfico desde Lima Norte creció +35% esta semana con CPL de $8.50',
     action: 'Considerar aumentar budget 15% para Lima Norte',
     timestamp: '2026-01-19T11:45:00',
   },
@@ -668,26 +668,26 @@ export const ALERTS = [
     id: 4,
     severity: 'high',
     title: 'Contenido viral detectado',
-    message: 'Video de transformacion de miembro alcanzo 500K views en TikTok organicamente',
-    action: 'Amplificar con paid, contactar a miembro para colaboracion',
+    message: 'Video de transformación de miembro alcanzó 500K views en TikTok orgánicamente',
+    action: 'Amplificar con paid, contactar a miembro para colaboración',
     timestamp: '2026-01-18T18:00:00',
   },
 ];
 
 // ============================================================================
-// COMPETITOR INSIGHTS - Analisis de competencia fitness
+// COMPETITOR INSIGHTS - Análisis de competencia fitness
 // ============================================================================
 export const COMPETITOR_INSIGHTS = [
   {
     brand: 'Smart Fit',
-    full_name: 'Smart Fit Peru',
+    full_name: 'Smart Fit Perú',
     location: 'Lima + Provincias',
     share_of_voice: 42,
     sentiment: 65,
     threat_level: 'high',
-    trending_topics: ['precio bajo', 'muchas sedes', 'maquinas ocupadas', 'sin clases'],
-    description: 'Lider absoluto por precio, saturando mercado low-cost',
-    opportunity: 'Capturar usuarios insatisfechos con masificacion y falta de clases',
+    trending_topics: ['precio bajo', 'muchas sedes', 'máquinas ocupadas', 'sin clases'],
+    description: 'Líder absoluto por precio, saturando mercado low-cost',
+    opportunity: 'Capturar usuarios insatisfechos con masificación y falta de clases',
   },
   {
     brand: 'b2',
@@ -718,7 +718,7 @@ export const COMPETITOR_INSIGHTS = [
     share_of_voice: 10,
     sentiment: 70,
     threat_level: 'medium',
-    trending_topics: ['piscina', 'familias', 'natacion', 'infraestructura'],
+    trending_topics: ['piscina', 'familias', 'natación', 'infraestructura'],
     description: 'Diferenciado por piscinas y enfoque familiar',
     opportunity: 'Considerar piscina en sedes selectas (La Molina, Surco)',
   },
@@ -730,18 +730,18 @@ export const COMPETITOR_INSIGHTS = [
     sentiment: 85,
     threat_level: 'low',
     trending_topics: ['wellness', 'comunidad', 'box', 'experiencia', 'caro'],
-    description: 'Nicho boutique con alta fidelizacion',
+    description: 'Nicho boutique con alta fidelización',
     opportunity: 'Incorporar elementos wellness/detox en experiencia FitZone',
   },
   {
     brand: 'FitZone',
-    full_name: 'FitZone Peru',
+    full_name: 'FitZone Perú',
     location: 'Lima',
     share_of_voice: 15,
     sentiment: 80,
     threat_level: null,
     trending_topics: ['precio justo', 'buenas clases', 'app', 'comunidad', 'nuevo'],
-    description: 'Posicionamiento mid-premium con tecnologia',
+    description: 'Posicionamiento mid-premium con tecnología',
     opportunity: 'Aumentar awareness y consolidar diferenciadores',
   },
 ];

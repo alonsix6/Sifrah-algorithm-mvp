@@ -43,15 +43,15 @@ export default function ExecutionLayer() {
       </div>
 
       {/* Budget Overview */}
-      <div className="bg-gradient-to-br from-fitzone-orange to-fitzone-darkOrange text-white rounded-2xl shadow-fitzone-lg p-8">
+      <div className="bg-fitzone-orange text-white rounded-2xl shadow-lg p-8">
         <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 mb-8">
           <div className="flex items-center gap-4">
-            <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center">
+            <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center">
               <DollarSign className="w-10 h-10" />
             </div>
             <div>
               <h3 className="text-xl font-bold">Presupuesto Mensual FitZone</h3>
-              <p className="text-white/90 mt-1 text-sm">Distribucion inteligente por canal digital</p>
+              <p className="text-white/90 mt-1 text-sm">Distribución inteligente por canal digital</p>
             </div>
           </div>
 
@@ -65,9 +65,9 @@ export default function ExecutionLayer() {
         </div>
 
         {/* Budget Progress */}
-        <div className="bg-white/10 backdrop-blur-sm rounded-xl p-5">
+        <div className="bg-white/10 rounded-xl p-5">
           <div className="flex justify-between items-center mb-3">
-            <span className="text-sm font-medium">Ejecucion del mes</span>
+            <span className="text-sm font-medium">Ejecución del mes</span>
             <span className="text-xl font-bold">
               ${(Object.values(BUDGET_ALLOCATION.distribution).reduce((sum, ch) => sum + ch.amount, 0)).toLocaleString()}
             </span>
@@ -82,12 +82,12 @@ export default function ExecutionLayer() {
       {/* Budget Allocation by Channel */}
       <div className="bg-fitzone-slate rounded-2xl shadow-lg p-6 border border-fitzone-orange/10">
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-12 h-12 bg-gradient-to-br from-fitzone-electric to-fitzone-cyan rounded-xl flex items-center justify-center">
+          <div className="w-12 h-12 bg-fitzone-electric rounded-xl flex items-center justify-center">
             <Target className="w-6 h-6 text-white" />
           </div>
           <div>
-            <h3 className="text-base font-bold text-white">Distribucion por Canal Digital</h3>
-            <p className="text-sm text-fitzone-textGray">Performance y asignacion para adquisicion de miembros</p>
+            <h3 className="text-base font-bold text-white">Distribución por Canal Digital</h3>
+            <p className="text-sm text-fitzone-textGray">Performance y asignación para adquisición de miembros</p>
           </div>
         </div>
 
@@ -158,11 +158,11 @@ export default function ExecutionLayer() {
       {/* Optimization Recommendations */}
       <div className="bg-fitzone-slate rounded-2xl shadow-lg p-6 border border-fitzone-orange/10">
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-12 h-12 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-xl flex items-center justify-center">
+          <div className="w-12 h-12 bg-amber-500 rounded-xl flex items-center justify-center">
             <AlertTriangle className="w-6 h-6 text-white" />
           </div>
           <div>
-            <h3 className="text-base font-bold text-white">Recomendaciones de Optimizacion</h3>
+            <h3 className="text-base font-bold text-white">Recomendaciones de Optimización</h3>
             <p className="text-sm text-fitzone-textGray">Ajustes sugeridos basados en performance</p>
           </div>
         </div>
@@ -214,12 +214,12 @@ export default function ExecutionLayer() {
       <div className="bg-fitzone-slate rounded-2xl shadow-lg p-6 border border-fitzone-orange/10">
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 bg-gradient-fitzone rounded-xl flex items-center justify-center">
+            <div className="w-12 h-12 bg-fitzone-orange rounded-xl flex items-center justify-center">
               <Dumbbell className="w-6 h-6 text-white" />
             </div>
             <div>
               <h3 className="text-base font-bold text-white">Performance por Servicio</h3>
-              <p className="text-sm text-fitzone-textGray">Rendimiento de campana por tipo de membresia</p>
+              <p className="text-sm text-fitzone-textGray">Rendimiento de campaña por tipo de membresía</p>
             </div>
           </div>
           <button
@@ -246,7 +246,7 @@ export default function ExecutionLayer() {
             .map((servicio, idx) => {
             return (
               <div key={servicio.id} className={`p-5 rounded-xl border-2 ${
-                idx < 2 ? 'bg-fitzone-orange/5 border-fitzone-orange/30' : 'bg-fitzone-charcoal/60 border-fitzone-slate'
+                idx < 2 ? 'bg-fitzone-orange/5 border-fitzone-orange/30' : 'bg-fitzone-charcoal border-fitzone-slate'
               }`}>
                 <div className="flex items-center justify-between mb-3">
                   <h4 className="font-bold text-white text-base">{servicio.nombre}</h4>
@@ -313,15 +313,15 @@ export default function ExecutionLayer() {
       </div>
 
       {/* Timing Recommendations */}
-      <div className="bg-gradient-to-br from-fitzone-electric to-fitzone-cyan text-white rounded-2xl shadow-lg p-8">
+      <div className="bg-fitzone-electric text-white rounded-2xl shadow-lg p-8">
         <div className="flex items-center gap-3 mb-6">
           <Calendar className="w-8 h-8" />
-          <h3 className="text-lg font-bold">Timing Optimo de Campana</h3>
+          <h3 className="text-lg font-bold">Timing Óptimo de Campaña</h3>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-5">
-            <h4 className="font-bold text-base mb-3">Mejores horarios del dia</h4>
+          <div className="bg-white/10 rounded-xl p-5">
+            <h4 className="font-bold text-base mb-3">Mejores horarios del día</h4>
             <div className="space-y-2">
               <div className="flex justify-between items-center">
                 <span className="text-white/90">5:00 - 8:00 AM (Early birds)</span>
@@ -336,11 +336,11 @@ export default function ExecutionLayer() {
                 <span className="px-2 py-1 bg-fitzone-lime/30 rounded text-sm font-bold">+60%</span>
               </div>
             </div>
-            <p className="text-xs text-white/70 mt-3">Pico maximo: 6-9 PM post-trabajo</p>
+            <p className="text-xs text-white/70 mt-3">Pico máximo: 6-9 PM post-trabajo</p>
           </div>
 
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-5">
-            <h4 className="font-bold text-base mb-3">Mejores dias de la semana</h4>
+          <div className="bg-white/10 rounded-xl p-5">
+            <h4 className="font-bold text-base mb-3">Mejores días de la semana</h4>
             <div className="space-y-2">
               <div className="flex justify-between items-center">
                 <span className="text-white/90">Lunes</span>
@@ -351,18 +351,18 @@ export default function ExecutionLayer() {
                 <span className="px-2 py-1 bg-white/20 rounded text-sm font-bold">Alta</span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-white/90">Sabado AM</span>
+                <span className="text-white/90">Sábado AM</span>
                 <span className="px-2 py-1 bg-white/20 rounded text-sm font-bold">Media</span>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="mt-6 p-4 bg-white/20 backdrop-blur-sm rounded-xl">
+        <div className="mt-6 p-4 bg-white/20 rounded-xl">
           <p className="text-sm font-semibold mb-2 flex items-center gap-2">
             <Lightbulb className="w-4 h-4" /> Estacionalidad FitZone:
           </p>
-          <p className="text-sm">Enero (pico maximo - propositos), Feb-Mar (verano), Sep-Nov (pre-verano). Diciembre es el mes mas bajo - reducir budget 20%.</p>
+          <p className="text-sm">Enero (pico máximo - propósitos), Feb-Mar (verano), Sep-Nov (pre-verano). Diciembre es el mes más bajo - reducir budget 20%.</p>
         </div>
       </div>
     </div>

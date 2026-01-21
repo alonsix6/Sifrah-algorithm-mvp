@@ -73,13 +73,13 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-fitzone-charcoal to-fitzone-darkSlate">
+    <div className="min-h-screen bg-fitzone-charcoal">
       {/* Header */}
-      <header className="bg-gradient-to-r from-fitzone-charcoal via-fitzone-slate to-fitzone-charcoal text-white shadow-fitzone-lg border-b border-fitzone-orange/20">
+      <header className="bg-fitzone-slate text-white shadow-lg border-b border-fitzone-orange/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div className="flex items-center gap-3 sm:gap-4">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-fitzone rounded-xl flex items-center justify-center flex-shrink-0 shadow-fitzone-glow">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 bg-fitzone-orange rounded-xl flex items-center justify-center flex-shrink-0">
                 <Dumbbell className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
               </div>
               <div className="min-w-0">
@@ -106,7 +106,7 @@ export default function Dashboard() {
                   })}
                 </p>
               </div>
-              <div className="w-10 h-10 bg-fitzone-orange/20 rounded-full flex items-center justify-center backdrop-blur-sm flex-shrink-0 hover:bg-fitzone-orange/30 transition-colors animate-pulse-glow">
+              <div className="w-10 h-10 bg-fitzone-orange/20 rounded-full flex items-center justify-center backdrop-blur-sm flex-shrink-0 hover:bg-fitzone-orange/30 transition-colors">
                 <Zap className="w-5 h-5 text-fitzone-orange" fill="currentColor" />
               </div>
             </div>
@@ -115,12 +115,21 @@ export default function Dashboard() {
       </header>
 
       {/* Layer Navigation */}
-      <div className="bg-fitzone-slate/80 backdrop-blur-sm border-b border-fitzone-orange/10 sticky top-0 z-40 shadow-lg">
+      <div className="bg-fitzone-darkSlate border-b border-fitzone-orange/10 sticky top-0 z-40 shadow-lg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex gap-3 overflow-x-auto py-4 scrollbar-hide">
             {layers.map((layer) => {
               const Icon = layer.icon;
               const isActive = activeLayer === layer.id;
+
+              // Usar colores sólidos en lugar de gradientes
+              const solidColorMap = {
+                'from-fitzone-electric to-fitzone-cyan': 'bg-fitzone-electric',
+                'from-fitzone-orange to-fitzone-darkOrange': 'bg-fitzone-orange',
+                'from-fitzone-lime to-green-500': 'bg-fitzone-lime',
+                'from-amber-500 to-orange-500': 'bg-amber-500',
+              };
+              const solidColor = solidColorMap[layer.color] || 'bg-fitzone-orange';
 
               return (
                 <button
@@ -129,8 +138,8 @@ export default function Dashboard() {
                   className={`
                     flex-shrink-0 flex items-center gap-3 px-5 py-3.5 rounded-xl font-medium transition-all duration-300
                     ${isActive
-                      ? `bg-gradient-to-r ${layer.color} text-white shadow-fitzone-glow transform hover:shadow-fitzone-lg`
-                      : 'bg-fitzone-charcoal/60 text-fitzone-textGray hover:bg-fitzone-charcoal hover:text-white border border-fitzone-slate hover:border-fitzone-orange/30'
+                      ? `${solidColor} text-white shadow-lg`
+                      : 'bg-fitzone-charcoal text-fitzone-textGray hover:bg-fitzone-slate hover:text-white border border-fitzone-slate hover:border-fitzone-orange/30'
                     }
                   `}
                 >
