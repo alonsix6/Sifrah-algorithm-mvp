@@ -1,8 +1,17 @@
-import { Target, Users, MessageSquare, TrendingUp, Lightbulb, Zap, AlertCircle, Dumbbell, Flame, BarChart3, CheckCircle, FlaskConical } from 'lucide-react';
+import { Target, Users, MessageSquare, TrendingUp, Lightbulb, Zap, AlertCircle, Dumbbell, Flame, BarChart3, CheckCircle, FlaskConical, Calendar } from 'lucide-react';
 import { OPPORTUNITY_SCORE } from '../data/mockData';
 import { LAYER_CONFIG, KEY_MESSAGES, TARGET_AUDIENCES } from '../data/config';
 
 export default function DecisionLayer() {
+  // Helper function to get monthly period (1st to today)
+  const getMonthlyPeriod = () => {
+    const now = new Date();
+    const monthNames = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+    return `1-${now.getDate()} ${monthNames[now.getMonth()]} ${now.getFullYear()}`;
+  };
+
+  const monthlyPeriod = getMonthlyPeriod();
+
   const recommendations = [
     {
       priority: 'high',
@@ -73,7 +82,11 @@ export default function DecisionLayer() {
               {LAYER_CONFIG.decision.subtitle}
             </p>
           </div>
-          <div className="flex gap-2">
+          <div className="flex gap-2 items-center">
+            <div className="flex items-center gap-2 bg-fitzone-purple/20 text-fitzone-lightPurple px-3 py-1.5 rounded-lg">
+              <Calendar className="w-4 h-4" />
+              <span className="text-sm font-medium">{monthlyPeriod}</span>
+            </div>
             <span className="px-3 py-1 bg-fitzone-purple text-white rounded-full text-sm font-medium">
               IA Activa
             </span>

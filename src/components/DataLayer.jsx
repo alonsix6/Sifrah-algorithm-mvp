@@ -1,7 +1,36 @@
 import { useState, useEffect } from 'react';
-import { Search, TrendingUp, Video, Share2, Dumbbell, RefreshCw, ChevronDown, ChevronUp, BarChart3, Info, Music, Target, DollarSign, Layers, Lightbulb, Users, Globe, MapPin, Eye, Clock, MousePointer, Smartphone, Monitor, ExternalLink } from 'lucide-react';
+import { Search, TrendingUp, Video, Share2, Dumbbell, RefreshCw, ChevronDown, ChevronUp, BarChart3, Info, Music, Target, DollarSign, Layers, Lightbulb, Users, Globe, MapPin, Eye, Clock, MousePointer, Smartphone, Monitor, ExternalLink, Calendar } from 'lucide-react';
 
 export default function DataLayer() {
+  // Helper function to get current week info
+  const getWeekPeriod = () => {
+    const now = new Date();
+    const startOfYear = new Date(now.getFullYear(), 0, 1);
+    const days = Math.floor((now - startOfYear) / (24 * 60 * 60 * 1000));
+    const weekNumber = Math.ceil((days + startOfYear.getDay() + 1) / 7);
+
+    // Get Monday of current week
+    const dayOfWeek = now.getDay();
+    const monday = new Date(now);
+    monday.setDate(now.getDate() - (dayOfWeek === 0 ? 6 : dayOfWeek - 1));
+
+    // Get Sunday of current week
+    const sunday = new Date(monday);
+    sunday.setDate(monday.getDate() + 6);
+
+    const formatDate = (date) => date.getDate();
+    const monthNames = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+    const month = monthNames[now.getMonth()];
+    const year = now.getFullYear();
+
+    return {
+      weekNumber,
+      range: `${formatDate(monday)}-${formatDate(sunday)} ${month} ${year}`
+    };
+  };
+
+  const weekPeriod = getWeekPeriod();
+
   const [trendsData, setTrendsData] = useState(null);
   const [tiktokData, setTiktokData] = useState(null);
   const [metaData, setMetaData] = useState(null);
@@ -207,6 +236,11 @@ export default function DataLayer() {
             </div>
           </div>
           <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 bg-fitzone-cyan/20 text-fitzone-cyan px-3 py-2 rounded-lg">
+              <Calendar className="w-4 h-4" />
+              <span className="text-sm font-semibold">Semana {weekPeriod.weekNumber}</span>
+              <span className="text-xs opacity-80">| {weekPeriod.range}</span>
+            </div>
             <div className="text-right">
               <p className="text-fitzone-textGray text-xs uppercase font-semibold mb-1">Score Global</p>
               <p className="text-3xl font-bold text-fitzone-purple">{scores.overall}</p>

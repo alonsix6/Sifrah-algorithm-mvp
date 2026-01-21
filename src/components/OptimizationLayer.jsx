@@ -1,9 +1,18 @@
-import { TrendingUp, BarChart3, RefreshCw, Award, Target, Users, Heart, Zap, AlertCircle, Dumbbell, Bell, Globe, FileText, CheckCircle, Lightbulb, Activity, UserPlus } from 'lucide-react';
+import { TrendingUp, BarChart3, RefreshCw, Award, Target, Users, Heart, Zap, AlertCircle, Dumbbell, Bell, Globe, FileText, CheckCircle, Lightbulb, Activity, UserPlus, Calendar } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 import { PERFORMANCE_KPIS, ALERTS, COMPETITOR_INSIGHTS, CRM_MOCKUP } from '../data/mockData';
 import { LAYER_CONFIG, CRM_CONFIG } from '../data/config';
 
 export default function OptimizationLayer() {
+  // Helper function to get monthly period (1st to today)
+  const getMonthlyPeriod = () => {
+    const now = new Date();
+    const monthNames = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+    return `1-${now.getDate()} ${monthNames[now.getMonth()]} ${now.getFullYear()}`;
+  };
+
+  const monthlyPeriod = getMonthlyPeriod();
+
   // Performance últimos 7 días - FitZone Fitness
   const performanceData = [
     { date: '14 Ene', leads: 58, reach: 340000, engagement: 32500, spent: 3280 },
@@ -46,7 +55,11 @@ export default function OptimizationLayer() {
               {LAYER_CONFIG.optimization.subtitle}
             </p>
           </div>
-          <div className="flex gap-2">
+          <div className="flex gap-2 items-center">
+            <div className="flex items-center gap-2 bg-fitzone-amber/20 text-fitzone-amber px-3 py-1.5 rounded-lg">
+              <Calendar className="w-4 h-4" />
+              <span className="text-sm font-medium">{monthlyPeriod}</span>
+            </div>
             <span className="px-3 py-1 bg-fitzone-purple text-white rounded-full text-sm font-medium flex items-center gap-1">
               <RefreshCw className="w-4 h-4" />
               Auto-optimización activa

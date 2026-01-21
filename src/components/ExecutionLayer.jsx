@@ -1,9 +1,18 @@
 import { useState } from 'react';
-import { DollarSign, TrendingUp, Target, Zap, Calendar, PlayCircle, AlertTriangle, Dumbbell, ChevronDown, ChevronUp, MessageCircle, Rocket, CheckCircle, ArrowRight, AlertCircle, FileText, Globe, Star, Lightbulb } from 'lucide-react';
+import { DollarSign, TrendingUp, Target, Zap, Calendar, PlayCircle, AlertTriangle, Dumbbell, ChevronDown, ChevronUp, MessageCircle, Rocket, CheckCircle, ArrowRight, AlertCircle, FileText, Globe, Star, Lightbulb, CalendarDays } from 'lucide-react';
 import { BUDGET_ALLOCATION, SERVICIOS_PERFORMANCE, SEDES_PERFORMANCE } from '../data/mockData';
 import { LAYER_CONFIG } from '../data/config';
 
 export default function ExecutionLayer() {
+  // Helper function to get monthly period (1st to today)
+  const getMonthlyPeriod = () => {
+    const now = new Date();
+    const monthNames = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+    return `1-${now.getDate()} ${monthNames[now.getMonth()]} ${now.getFullYear()}`;
+  };
+
+  const monthlyPeriod = getMonthlyPeriod();
+
   const [showAllServicios, setShowAllServicios] = useState(false);
 
   const getStatusColor = (status) => {
@@ -33,7 +42,11 @@ export default function ExecutionLayer() {
               {LAYER_CONFIG.execution.subtitle}
             </p>
           </div>
-          <div className="flex gap-2">
+          <div className="flex gap-2 items-center">
+            <div className="flex items-center gap-2 bg-fitzone-emerald/20 text-fitzone-emerald px-3 py-1.5 rounded-lg">
+              <CalendarDays className="w-4 h-4" />
+              <span className="text-sm font-medium">{monthlyPeriod}</span>
+            </div>
             <span className="px-3 py-1 bg-fitzone-emerald text-fitzone-charcoal rounded-full text-sm font-medium flex items-center gap-1">
               <PlayCircle className="w-4 h-4" />
               Live
