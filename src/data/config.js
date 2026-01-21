@@ -1,61 +1,61 @@
-// Configuracion general del FitZone Algorithm
-// Textos, mensajes, secciones y configuracion de UI
+// Configuración general del FitZone Algorithm
+// Textos, mensajes, secciones y configuración de UI
 
 // ============================================================================
-// BRAND CONFIGURATION - Configuracion de marca FitZone
+// BRAND CONFIGURATION - Configuración de marca FitZone
 // ============================================================================
 export const BRAND_CONFIG = {
   name: 'FitZone Algorithm',
   tagline: 'Inteligencia de Mercado Fitness',
-  subtitle: 'Optimizacion automatica de inversion digital en adquisicion de miembros',
-  product: 'Membresias y Servicios 2026',
+  subtitle: 'Optimización automática de inversión digital en adquisición de miembros',
+  product: 'Membresías y Servicios 2026',
   market: 'Lima Metropolitana (12 sedes)',
-  client: 'FitZone Peru',
+  client: 'FitZone Perú',
   version: '1.0.0',
   slogan: 'Tu Espacio, Tu Ritmo',
   founded: 2019,
 };
 
 // ============================================================================
-// LAYER TITLES - Titulos y descripciones de las 4 capas
+// LAYER TITLES - Títulos y descripciones de las 4 capas
 // ============================================================================
 export const LAYER_CONFIG = {
   data: {
     id: 'data',
-    name: 'Captura de Senales',
+    name: 'Captura de Señales',
     subtitle: 'Monitoreo en tiempo real del ecosistema digital fitness',
-    description: 'Busqueda, Tendencia, Intencion, Engagement',
+    description: 'Búsqueda, Tendencia, Intención, Engagement',
     icon: 'Search',
     color: 'from-fitzone-orange to-fitzone-darkOrange',
   },
   decision: {
     id: 'decision',
     name: 'Inteligencia de Mercado',
-    subtitle: 'Insights automaticos para optimizar inversion en adquisicion',
-    description: 'Analisis y definicion de estrategia',
+    subtitle: 'Insights automáticos para optimizar inversión en adquisición',
+    description: 'Análisis y definición de estrategia',
     icon: 'Target',
     color: 'from-fitzone-darkOrange to-fitzone-electric',
   },
   execution: {
     id: 'execution',
-    name: 'Activacion Estrategica',
-    subtitle: 'Distribucion inteligente de presupuesto y contenidos',
-    description: 'Implementacion en tiempo real',
+    name: 'Activación Estratégica',
+    subtitle: 'Distribución inteligente de presupuesto y contenidos',
+    description: 'Implementación en tiempo real',
     icon: 'Zap',
     color: 'from-fitzone-electric to-fitzone-lime',
   },
   optimization: {
     id: 'optimization',
-    name: 'Performance & Optimizacion',
-    subtitle: 'Resultados en tiempo real y ajustes automaticos',
-    description: 'Evaluacion y redistribucion',
+    name: 'Performance & Optimización',
+    subtitle: 'Resultados en tiempo real y ajustes automáticos',
+    description: 'Evaluación y redistribución',
     icon: 'TrendingUp',
     color: 'from-fitzone-lime to-fitzone-orange',
   },
 };
 
 // ============================================================================
-// KEY MESSAGES - Mensajes clave de comunicacion FitZone
+// KEY MESSAGES - Mensajes clave de comunicación FitZone
 // ============================================================================
 export const KEY_MESSAGES = {
   espacio: {
@@ -64,35 +64,35 @@ export const KEY_MESSAGES = {
     description: 'Entrena a tu manera, cuando quieras',
   },
   tecnologia: {
-    title: 'Tecnologia que te Impulsa',
-    message: 'App con tracking de progreso y maquinas conectadas',
+    title: 'Tecnología que te Impulsa',
+    message: 'App con tracking de progreso y máquinas conectadas',
     description: 'Planes personalizados por IA',
   },
   comunidad: {
     title: 'Comunidad que Motiva',
-    message: 'Clases grupales energeticas y eventos mensuales',
+    message: 'Clases grupales energéticas y eventos mensuales',
     description: 'Retos y challenges que te mantienen activo',
   },
   resultados: {
     title: 'Resultados Garantizados',
-    message: 'Asesoria nutricional incluida y mediciones mensuales',
+    message: 'Asesoría nutricional incluida y mediciones mensuales',
     description: 'Personal trainers certificados',
   },
   precio: {
     title: 'Precio Justo, Calidad Premium',
-    message: 'Mejor relacion precio-valor del mercado',
+    message: 'Mejor relación precio-valor del mercado',
     description: 'Sin costos ocultos, congelamiento gratis',
   },
 };
 
 // ============================================================================
-// DATA SOURCES - Configuracion de fuentes de datos
+// DATA SOURCES - Configuración de fuentes de datos
 // ============================================================================
 export const DATA_SOURCES_CONFIG = {
   googleTrends: {
     enabled: true,
     name: 'Google Trends',
-    description: 'Tendencias de busqueda fitness en tiempo real',
+    description: 'Tendencias de búsqueda fitness en tiempo real',
     icon: 'TrendingUp',
     color: 'text-fitzone-electric',
     bgColor: 'bg-fitzone-slate',
@@ -144,7 +144,7 @@ export const DATA_SOURCES_CONFIG = {
   ga4: {
     enabled: false,
     name: 'Google Analytics 4',
-    description: 'Trafico web y conversiones',
+    description: 'Tráfico web y conversiones',
     icon: 'BarChart3',
     color: 'text-fitzone-orange',
     bgColor: 'bg-fitzone-slate',
@@ -154,7 +154,7 @@ export const DATA_SOURCES_CONFIG = {
 };
 
 // ============================================================================
-// CHANNELS - Canales de activacion
+// CHANNELS - Canales de activación
 // ============================================================================
 export const CHANNELS_CONFIG = {
   meta_ads: {
@@ -171,8 +171,8 @@ export const CHANNELS_CONFIG = {
     icon: 'Search',
     color: 'text-fitzone-lime',
     bgColor: 'bg-fitzone-slate',
-    primary_kpi: 'Intencion de compra',
-    description: 'Campanas Brand, Generic, Competitor',
+    primary_kpi: 'Intención de compra',
+    description: 'Campañas Brand, Generic, Competitor',
   },
   google_display: {
     name: 'Google Display',
@@ -187,7 +187,7 @@ export const CHANNELS_CONFIG = {
     icon: 'Video',
     color: 'text-fitzone-lime',
     bgColor: 'bg-fitzone-slate',
-    primary_kpi: 'Jovenes 18-25',
+    primary_kpi: 'Jóvenes 18-25',
     description: 'In-Feed y TopView ads',
   },
   influencers: {
@@ -209,12 +209,12 @@ export const SEDES_CONFIG = [
   { id: 3, name: 'FitZone Surco', distrito: 'Surco', nse: 'A/B', size: '1,100 m2', type: 'Familias' },
   { id: 4, name: 'FitZone La Molina', distrito: 'La Molina', nse: 'A/B', size: '900 m2', type: 'Premium' },
   { id: 5, name: 'FitZone San Borja', distrito: 'San Borja', nse: 'B', size: '800 m2', type: 'Funcional' },
-  { id: 6, name: 'FitZone Magdalena', distrito: 'Magdalena', nse: 'B/C', size: '750 m2', type: 'Jovenes' },
-  { id: 7, name: 'FitZone Jesus Maria', distrito: 'Jesus Maria', nse: 'B/C', size: '700 m2', type: 'Oficinistas' },
-  { id: 8, name: 'FitZone Lince', distrito: 'Lince', nse: 'B/C', size: '650 m2', type: 'Economico' },
+  { id: 6, name: 'FitZone Magdalena', distrito: 'Magdalena', nse: 'B/C', size: '750 m2', type: 'Jóvenes' },
+  { id: 7, name: 'FitZone Jesús María', distrito: 'Jesús María', nse: 'B/C', size: '700 m2', type: 'Oficinistas' },
+  { id: 8, name: 'FitZone Lince', distrito: 'Lince', nse: 'B/C', size: '650 m2', type: 'Económico' },
   { id: 9, name: 'FitZone San Miguel', distrito: 'San Miguel', nse: 'B/C', size: '800 m2', type: 'Mall' },
   { id: 10, name: 'FitZone Independencia', distrito: 'Independencia', nse: 'C/D', size: '600 m2', type: 'Lima Norte' },
-  { id: 11, name: 'FitZone Los Olivos', distrito: 'Los Olivos', nse: 'C', size: '700 m2', type: 'Expansion' },
+  { id: 11, name: 'FitZone Los Olivos', distrito: 'Los Olivos', nse: 'C', size: '700 m2', type: 'Expansión' },
   { id: 12, name: 'FitZone Ate', distrito: 'Ate', nse: 'C/D', size: '650 m2', type: 'Lima Este' },
 ];
 
@@ -224,8 +224,8 @@ export const SEDES_CONFIG = [
 export const TARGET_AUDIENCES = [
   {
     id: 'jovenes_activos',
-    name: 'Jovenes Activos',
-    description: '18-30 anos, estudiantes y primeros trabajos',
+    name: 'Jóvenes Activos',
+    description: '18-30 años, estudiantes y primeros trabajos',
     size: '~85,000',
     age_range: '18-30',
     priority: 'high',
@@ -237,14 +237,14 @@ export const TARGET_AUDIENCES = [
         characteristics: ['Alto engagement redes', 'Sensibles al precio', 'Influenciados por tendencias'],
       },
       {
-        name: 'Jovenes Profesionales',
+        name: 'Jóvenes Profesionales',
         size: '~40,000',
         age: '25-30',
         characteristics: ['Primer sueldo', 'Buscan comunidad', 'Orientados a resultados'],
       },
     ],
     interests: ['Verse bien', 'Socializar', 'Tendencias TikTok', 'Transformaciones'],
-    message: 'Tu transformacion empieza hoy: resultados visibles en 8 semanas',
+    message: 'Tu transformación empieza hoy: resultados visibles en 8 semanas',
     channels: {
       'Meta Ads': 35,
       'TikTok Ads': 25,
@@ -264,7 +264,7 @@ export const TARGET_AUDIENCES = [
   {
     id: 'profesionales_wellness',
     name: 'Profesionales Wellness',
-    description: '30-45 anos, ejecutivos y profesionales',
+    description: '30-45 años, ejecutivos y profesionales',
     size: '~35,000',
     age_range: '30-45',
     priority: 'medium',
@@ -273,16 +273,16 @@ export const TARGET_AUDIENCES = [
         name: 'Ejecutivos',
         size: '~20,000',
         age: '30-40',
-        characteristics: ['Manejo del estres', 'Horarios flexibles', 'Buscan calidad'],
+        characteristics: ['Manejo del estrés', 'Horarios flexibles', 'Buscan calidad'],
       },
       {
         name: 'Profesionales Senior',
         size: '~15,000',
         age: '40-45',
-        characteristics: ['Salud preventiva', 'Dispuestos a pagar mas', 'Valoran asesoria'],
+        characteristics: ['Salud preventiva', 'Dispuestos a pagar más', 'Valoran asesoría'],
       },
     ],
-    interests: ['Salud', 'Manejo estres', 'Calidad de vida', 'Personal training'],
+    interests: ['Salud', 'Manejo estrés', 'Calidad de vida', 'Personal training'],
     message: 'Invierte en tu salud: bienestar integral para profesionales exigentes',
     channels: {
       'Google Search': 40,
@@ -303,13 +303,13 @@ export const TARGET_AUDIENCES = [
   {
     id: 'familias_activas',
     name: 'Familias Activas',
-    description: '35-50 anos, padres con hijos',
+    description: '35-50 años, padres con hijos',
     size: '~20,000',
     age_range: '35-50',
     priority: 'tertiary',
     segments: [
       {
-        name: 'Padres Jovenes',
+        name: 'Padres Jóvenes',
         size: '~12,000',
         age: '35-42',
         characteristics: ['Ejemplo para hijos', 'Buscan actividad conjunta', 'Valoran kids zone'],
@@ -318,11 +318,11 @@ export const TARGET_AUDIENCES = [
         name: 'Padres Establecidos',
         size: '~8,000',
         age: '43-50',
-        characteristics: ['Natacion familiar', 'Clases grupales', 'Plan familiar'],
+        characteristics: ['Natación familiar', 'Clases grupales', 'Plan familiar'],
       },
     ],
-    interests: ['Actividad en familia', 'Natacion', 'Clases kids', 'Planes familiares'],
-    message: 'Fitness en familia: comparte habitos saludables con los que mas quieres',
+    interests: ['Actividad en familia', 'Natación', 'Clases kids', 'Planes familiares'],
+    message: 'Fitness en familia: comparte hábitos saludables con los que más quieres',
     channels: {
       'Facebook': 45,
       'Google Search': 30,
@@ -347,24 +347,24 @@ export const TARGET_AUDIENCES = [
 export const OPTIMAL_TIMING = {
   dayparts: [
     { name: 'Early Morning', hours: '5:00 - 8:00', performance: 'high', multiplier: 1.4, audience: 'Profesionales' },
-    { name: 'Mediodia', hours: '12:00 - 14:00', performance: 'medium', multiplier: 1.1, audience: 'Oficinistas' },
+    { name: 'Mediodía', hours: '12:00 - 14:00', performance: 'medium', multiplier: 1.1, audience: 'Oficinistas' },
     { name: 'After Work', hours: '18:00 - 21:00', performance: 'very_high', multiplier: 1.6, audience: 'Todos' },
-    { name: 'Noche', hours: '21:00 - 23:00', performance: 'medium', multiplier: 1.0, audience: 'Jovenes' },
+    { name: 'Noche', hours: '21:00 - 23:00', performance: 'medium', multiplier: 1.0, audience: 'Jóvenes' },
   ],
   weekdays: [
-    { name: 'Lunes', performance: 'very_high', recommended: true, note: 'Propositos de semana' },
+    { name: 'Lunes', performance: 'very_high', recommended: true, note: 'Propósitos de semana' },
     { name: 'Martes', performance: 'high', recommended: true, note: 'Momentum de lunes' },
-    { name: 'Miercoles', performance: 'medium', recommended: true, note: 'Mitad de semana' },
+    { name: 'Miércoles', performance: 'medium', recommended: true, note: 'Mitad de semana' },
     { name: 'Jueves', performance: 'high', recommended: true, note: 'Pre-fin de semana' },
     { name: 'Viernes', performance: 'low', recommended: false, note: 'Planes sociales' },
-    { name: 'Sabado', performance: 'medium', recommended: true, note: 'Clases grupales AM' },
+    { name: 'Sábado', performance: 'medium', recommended: true, note: 'Clases grupales AM' },
     { name: 'Domingo', performance: 'low', recommended: false, note: 'Descanso' },
   ],
   seasonality: [
-    { month: 'Enero', demand: 'very_high', note: 'Propositos de Ano Nuevo' },
+    { month: 'Enero', demand: 'very_high', note: 'Propósitos de Año Nuevo' },
     { month: 'Febrero', demand: 'high', note: 'Verano, playas' },
     { month: 'Marzo', demand: 'high', note: 'Post-verano, rutina' },
-    { month: 'Abril-Mayo', demand: 'medium', note: 'Estabilizacion' },
+    { month: 'Abril-Mayo', demand: 'medium', note: 'Estabilización' },
     { month: 'Junio-Agosto', demand: 'high', note: 'Invierno, indoor' },
     { month: 'Sept-Nov', demand: 'high', note: 'Pre-verano' },
     { month: 'Diciembre', demand: 'low', note: 'Fiestas' },
@@ -375,16 +375,16 @@ export const OPTIMAL_TIMING = {
 // SERVICIOS - Productos/Servicios monitoreados
 // ============================================================================
 export const SERVICIOS_CONFIG = [
-  { id: 1, nombre: 'Membresia Basica', revenue_pct: 35, cpl_target: 10, conversion: 8 },
-  { id: 2, nombre: 'Membresia Premium', revenue_pct: 25, cpl_target: 15, conversion: 6 },
+  { id: 1, nombre: 'Membresía Básica', revenue_pct: 35, cpl_target: 10, conversion: 8 },
+  { id: 2, nombre: 'Membresía Premium', revenue_pct: 25, cpl_target: 15, conversion: 6 },
   { id: 3, nombre: 'Plan Familiar', revenue_pct: 15, cpl_target: 22, conversion: 5 },
   { id: 4, nombre: 'Personal Training', revenue_pct: 12, cpl_target: 28, conversion: 4 },
   { id: 5, nombre: 'Clases Especializadas', revenue_pct: 8, cpl_target: 12, conversion: 7 },
-  { id: 6, nombre: 'Nutricion/Suplementos', revenue_pct: 5, cpl_target: 8, conversion: 10 },
+  { id: 6, nombre: 'Nutrición/Suplementos', revenue_pct: 5, cpl_target: 8, conversion: 10 },
 ];
 
 // ============================================================================
-// METRIC CARDS - Configuracion de tarjetas metricas principales
+// METRIC CARDS - Configuración de tarjetas métricas principales
 // ============================================================================
 export const METRIC_CARDS_CONFIG = [
   {
@@ -398,7 +398,7 @@ export const METRIC_CARDS_CONFIG = [
   {
     id: 'reach',
     title: 'Alcance Total',
-    description: 'Usuarios unicos impactados en Lima',
+    description: 'Usuarios únicos impactados en Lima',
     icon: 'Eye',
     color: 'fitzone-electric',
     gradient: 'from-fitzone-electric to-fitzone-cyan',
@@ -414,7 +414,7 @@ export const METRIC_CARDS_CONFIG = [
   {
     id: 'opportunity',
     title: 'FitZone Opportunity Score',
-    description: 'Indice de oportunidad de inversion fitness',
+    description: 'Índice de oportunidad de inversión fitness',
     icon: 'Zap',
     color: 'fitzone-orange',
     gradient: 'from-fitzone-orange to-fitzone-lime',
@@ -466,7 +466,7 @@ export const CRM_CONFIG = {
 // ============================================================================
 export const UI_TEXT = {
   loading: 'Cargando FitZone Algorithm...',
-  lastUpdate: 'Ultima actualizacion',
+  lastUpdate: 'Última actualización',
   systemActive: 'Sistema activo',
   noData: 'No hay datos disponibles',
   error: 'Error al cargar datos',
