@@ -95,40 +95,29 @@ export default function DataLayer() {
 
   const scores = calculateScores();
 
-  // Generate fitness insights - separate regular insights from multi-source
+  // Generate fitness insights - exactly 4 sources: Google Trends, TikTok, Meta, GA4
   const generateInsights = () => {
-    if (mlInsights?.insights?.length > 0) {
-      return mlInsights.insights.slice(0, 5).map(insight => ({
-        source: insight.source || 'ML Analysis',
-        IconComponent: getInsightIcon(insight.type),
-        text: `${insight.title}. ${insight.description}`,
-        priority: insight.priority,
-        action: insight.action,
-        isML: true
-      }));
-    }
-
-    // Fallback fitness insights
+    // Always return exactly 4 insights, one per source
     return [
       {
         source: 'Google Trends',
         IconComponent: Search,
-        text: '"Gimnasio Lima" lidera búsquedas con 82/100 de interés. Búsquedas de "gimnasio enero" aumentaron +85% esta semana - pico estacional de propósitos.',
+        text: '"Gimnasio Lima" lidera búsquedas con 92/100 de interés y +85% de crecimiento. 5 keywords en tendencia explosiva en los últimos 3 meses.',
       },
       {
         source: 'TikTok',
         IconComponent: Video,
-        text: '#gymtok alcanza 2.5B views globales. Contenido de transformación tiene engagement 3x superior. FitZone tiene oportunidad de capitalizar trend.',
+        text: '#gymtok alcanza 2.5B views globales. #propósito2026 crece +180% en LATAM. Contenido de transformación tiene engagement 9.2/10.',
       },
       {
         source: 'Meta',
         IconComponent: Share2,
-        text: '"Fitness Perú" genera 45K menciones/semana con engagement 8.5/10. Smart Fit domina awareness, oportunidad en segmento mid-premium.',
+        text: 'Sentimiento social muy positivo. 60% de los topics tienen sentimiento positivo. "Propósitos Año Nuevo" genera 52K menciones.',
       },
       {
         source: 'GA4',
         IconComponent: BarChart3,
-        text: '68,500 sesiones generaron 1,850 trials (2.7% conversión). Página "/membresías" es la más efectiva con 4:12 de tiempo promedio.',
+        text: '68,500 usuarios generaron 1,850 trials (2.7% conversión). Página "/trial-gratis" lidera con 5.47% de tasa de conversión.',
       },
     ];
   };
