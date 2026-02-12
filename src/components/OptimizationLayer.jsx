@@ -1,7 +1,7 @@
-import { TrendingUp, BarChart3, RefreshCw, Award, Target, Users, Heart, Zap, AlertCircle, ShoppingBag, Bell, Globe, FileText, CheckCircle, Lightbulb, Activity, ShoppingCart, Calendar } from 'lucide-react';
+import { TrendingUp, BarChart3, RefreshCw, Award, Target, Users, Heart, AlertCircle, ShoppingBag, Globe, FileText, CheckCircle, Lightbulb, Activity, ShoppingCart, Calendar } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
-import { PERFORMANCE_KPIS, ALERTS, COMPETITOR_INSIGHTS, CRM_MOCKUP } from '../data/mockData';
-import { LAYER_CONFIG, CRM_CONFIG } from '../data/config';
+import { PERFORMANCE_KPIS, ALERTS, COMPETITOR_INSIGHTS } from '../data/mockData';
+import { LAYER_CONFIG } from '../data/config';
 
 export default function OptimizationLayer() {
   // Helper function to get monthly period (1st to today)
@@ -35,10 +35,10 @@ export default function OptimizationLayer() {
 
   // Funnel de conversión Sifrah - Ecommerce Journey
   const funnelSteps = [
-    { stage: 'Alcance', value: 2500000, conversionRate: 2.7, IconComponent: Users, bgColor: 'bg-sifrah-pink' },
-    { stage: 'Tráfico', value: 68500, conversionRate: 3.8, IconComponent: Globe, bgColor: 'bg-sifrah-darkPink' },
-    { stage: 'Carrito', value: 2600, conversionRate: 42.0, IconComponent: ShoppingCart, bgColor: 'bg-sifrah-cyan' },
-    { stage: 'Compra', value: 1092, conversionRate: null, IconComponent: CheckCircle, bgColor: 'bg-sifrah-emerald' }
+    { stage: 'Alcance', value: 2500000, conversionRate: 3.5, IconComponent: Users, bgColor: 'bg-sifrah-pink' },
+    { stage: 'Tráfico', value: 87500, conversionRate: 5.5, IconComponent: Globe, bgColor: 'bg-sifrah-darkPink' },
+    { stage: 'Carrito', value: 4812, conversionRate: 48.0, IconComponent: ShoppingCart, bgColor: 'bg-sifrah-cyan' },
+    { stage: 'Compra', value: 2310, conversionRate: null, IconComponent: CheckCircle, bgColor: 'bg-sifrah-emerald' }
   ];
 
   return (
@@ -295,125 +295,20 @@ export default function OptimizationLayer() {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
             <div className="bg-sifrah-softPink rounded-lg p-3 border border-sifrah-border">
               <p className="text-xs text-sifrah-textMedium mb-0.5 sm:mb-1">Conversión Global</p>
-              <p className="text-lg sm:text-xl font-bold text-sifrah-pink">0.044%</p>
+              <p className="text-lg sm:text-xl font-bold text-sifrah-pink">0.092%</p>
               <p className="text-xs text-sifrah-textMedium">Alcance → Compra</p>
             </div>
             <div className="bg-sifrah-emerald/10 rounded-lg p-3 border border-sifrah-emerald/20">
               <p className="text-xs text-sifrah-textMedium mb-0.5 sm:mb-1">Carrito → Compra</p>
-              <p className="text-lg sm:text-xl font-bold text-sifrah-emerald">42.0%</p>
+              <p className="text-lg sm:text-xl font-bold text-sifrah-emerald">48.0%</p>
               <p className="text-xs text-sifrah-textMedium">Excelente conversión</p>
             </div>
             <div className="bg-sifrah-cyan/10 rounded-lg p-3 border border-sifrah-cyan/20">
               <p className="text-xs text-sifrah-textMedium mb-0.5 sm:mb-1">Tráfico → Carrito</p>
-              <p className="text-lg sm:text-xl font-bold text-sifrah-cyan">3.8%</p>
+              <p className="text-lg sm:text-xl font-bold text-sifrah-cyan">5.5%</p>
               <p className="text-xs text-sifrah-textMedium">Tasa add-to-cart</p>
             </div>
           </div>
-        </div>
-      </div>
-
-      {/* CRM Monitoring - CPA Alerts */}
-      <div className="bg-sifrah-pink text-white rounded-xl sm:rounded-2xl shadow-lg p-3 sm:p-4 lg:p-6">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 mb-4 sm:mb-6">
-          <div className="flex items-center gap-2 sm:gap-3">
-            <Bell className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8" />
-            <div>
-              <h3 className="text-sm sm:text-base lg:text-lg font-bold">CRM - Monitoreo CPA por Audiencia</h3>
-              <p className="text-xs sm:text-sm text-white/90">Alertas automáticas de costo por adquisición</p>
-            </div>
-          </div>
-          <span className="px-2 sm:px-3 py-1 bg-white/20 rounded-full text-xs font-bold self-start sm:self-auto">
-            {CRM_CONFIG.enabled ? 'ACTIVO' : 'MONITOREO'}
-          </span>
-        </div>
-
-        {/* CPA Thresholds by Audience */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 mb-4 sm:mb-6">
-          <div className="bg-white/10 rounded-lg sm:rounded-xl p-3 sm:p-4">
-            <h4 className="font-bold text-sm sm:text-base mb-2 sm:mb-3 flex items-center gap-1.5 sm:gap-2">
-              <Zap className="w-4 h-4 sm:w-5 sm:h-5" />
-              Jovenes Trendy (18-25)
-            </h4>
-            <div className="space-y-1.5 sm:space-y-2">
-              <div className="flex justify-between text-xs sm:text-sm">
-                <span>CPA Target</span>
-                <span className="font-bold">${CRM_CONFIG.cpa_thresholds.jovenes_trendy.cpa_target}</span>
-              </div>
-              <div className="flex justify-between text-xs sm:text-sm">
-                <span>Alerta en</span>
-                <span className="font-bold text-yellow-300">${CRM_CONFIG.cpa_thresholds.jovenes_trendy.cpa_alert}</span>
-              </div>
-              <div className="flex justify-between text-xs sm:text-sm">
-                <span>Pausar en</span>
-                <span className="font-bold text-red-300">${CRM_CONFIG.cpa_thresholds.jovenes_trendy.cpa_pause}</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-white/10 rounded-lg sm:rounded-xl p-3 sm:p-4">
-            <h4 className="font-bold text-sm sm:text-base mb-2 sm:mb-3 flex items-center gap-1.5 sm:gap-2">
-              <Target className="w-4 h-4 sm:w-5 sm:h-5" />
-              Profesionales con Estilo (26-35)
-            </h4>
-            <div className="space-y-1.5 sm:space-y-2">
-              <div className="flex justify-between text-xs sm:text-sm">
-                <span>CPA Target</span>
-                <span className="font-bold">${CRM_CONFIG.cpa_thresholds.profesionales_estilo.cpa_target}</span>
-              </div>
-              <div className="flex justify-between text-xs sm:text-sm">
-                <span>Alerta en</span>
-                <span className="font-bold text-yellow-300">${CRM_CONFIG.cpa_thresholds.profesionales_estilo.cpa_alert}</span>
-              </div>
-              <div className="flex justify-between text-xs sm:text-sm">
-                <span>Pausar en</span>
-                <span className="font-bold text-red-300">${CRM_CONFIG.cpa_thresholds.profesionales_estilo.cpa_pause}</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-white/10 rounded-lg sm:rounded-xl p-3 sm:p-4 sm:col-span-2 lg:col-span-1">
-            <h4 className="font-bold text-sm sm:text-base mb-2 sm:mb-3 flex items-center gap-1.5 sm:gap-2">
-              <Users className="w-4 h-4 sm:w-5 sm:h-5" />
-              Madres & Regaladoras (35-45)
-            </h4>
-            <div className="space-y-1.5 sm:space-y-2">
-              <div className="flex justify-between text-xs sm:text-sm">
-                <span>CPA Target</span>
-                <span className="font-bold">${CRM_CONFIG.cpa_thresholds.madres_regalo.cpa_target}</span>
-              </div>
-              <div className="flex justify-between text-xs sm:text-sm">
-                <span>Alerta en</span>
-                <span className="font-bold text-yellow-300">${CRM_CONFIG.cpa_thresholds.madres_regalo.cpa_alert}</span>
-              </div>
-              <div className="flex justify-between text-xs sm:text-sm">
-                <span>Pausar en</span>
-                <span className="font-bold text-red-300">${CRM_CONFIG.cpa_thresholds.madres_regalo.cpa_pause}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Alertas Recientes */}
-        {CRM_MOCKUP && CRM_MOCKUP.alerts && CRM_MOCKUP.alerts.length > 0 && (
-          <div className="space-y-1.5 sm:space-y-2">
-            <h4 className="font-bold text-xs sm:text-sm mb-1.5 sm:mb-2">Alertas Recientes:</h4>
-            {CRM_MOCKUP.alerts.slice(0, 2).map((alert, idx) => (
-              <div key={idx} className={`p-2 sm:p-3 rounded-lg ${
-                alert.type === 'critical' ? 'bg-red-500/30 border border-red-300' :
-                alert.type === 'warning' ? 'bg-yellow-500/30 border border-yellow-300' :
-                'bg-green-500/30 border border-green-300'
-              }`}>
-                <p className="text-xs sm:text-sm font-medium">{alert.message}</p>
-              </div>
-            ))}
-          </div>
-        )}
-
-        <div className="mt-3 sm:mt-4 p-2 sm:p-3 bg-white/20 rounded-lg">
-          <p className="text-xs flex items-start sm:items-center gap-1">
-            <Lightbulb className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0 mt-0.5 sm:mt-0" />
-            <span><strong>Nota:</strong> Sistema de alertas automáticas configurado para notificación en tiempo real cuando CPA supera umbrales.</span>
-          </p>
         </div>
       </div>
 
