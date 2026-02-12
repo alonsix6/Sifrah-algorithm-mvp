@@ -75,20 +75,20 @@ export default function OptimizationLayer() {
           <div className="flex items-center justify-between mb-2 sm:mb-3">
             <Users className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8" />
             <span className={`px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs font-bold ${
-              PERFORMANCE_KPIS.reach.trend_value > 0 ? 'bg-sifrah-emerald text-white' : 'bg-red-400'
+              PERFORMANCE_KPIS.alcance.trend === 'up' ? 'bg-sifrah-emerald text-white' : 'bg-red-400'
             }`}>
-              {PERFORMANCE_KPIS.reach.trend}
+              {PERFORMANCE_KPIS.alcance.change}%
             </span>
           </div>
           <h3 className="text-xs sm:text-sm font-medium text-white/80 mb-0.5 sm:mb-1">Alcance Total</h3>
-          <p className="text-xl sm:text-2xl font-bold mb-1 sm:mb-2">{(PERFORMANCE_KPIS.reach.unique_reach / 1000000).toFixed(1)}M</p>
+          <p className="text-xl sm:text-2xl font-bold mb-1 sm:mb-2">{(PERFORMANCE_KPIS.alcance.current / 1000000).toFixed(1)}M</p>
           <div className="flex items-baseline gap-2">
-            <span className="text-xs sm:text-sm text-white/70">Impresiones: {(PERFORMANCE_KPIS.reach.impressions / 1000000).toFixed(1)}M</span>
+            <span className="text-xs sm:text-sm text-white/70">Impresiones: {(PERFORMANCE_KPIS.impresiones.current / 1000000).toFixed(1)}M</span>
           </div>
           <div className="mt-2 sm:mt-3 pt-2 sm:pt-3 border-t border-white/20">
             <div className="flex justify-between text-xs">
               <span className="text-white/70">Frecuencia</span>
-              <span className="font-bold">{PERFORMANCE_KPIS.reach.frequency}</span>
+              <span className="font-bold">{PERFORMANCE_KPIS.frecuencia.current}</span>
             </div>
           </div>
         </div>
@@ -98,20 +98,20 @@ export default function OptimizationLayer() {
           <div className="flex items-center justify-between mb-2 sm:mb-3">
             <ShoppingCart className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8" />
             <span className={`px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs font-bold ${
-              PERFORMANCE_KPIS.leads.trend_value > 0 ? 'bg-sifrah-emerald text-white' : 'bg-red-400'
+              PERFORMANCE_KPIS.conversiones_ecommerce.trend === 'up' ? 'bg-sifrah-emerald text-white' : 'bg-red-400'
             }`}>
-              {PERFORMANCE_KPIS.leads.trend}
+              {PERFORMANCE_KPIS.conversiones_ecommerce.change}%
             </span>
           </div>
           <h3 className="text-xs sm:text-sm font-medium text-white/80 mb-0.5 sm:mb-1">Ventas Ecommerce</h3>
-          <p className="text-xl sm:text-2xl font-bold mb-1 sm:mb-2">{PERFORMANCE_KPIS.nuevos_miembros.current.toLocaleString()}</p>
+          <p className="text-xl sm:text-2xl font-bold mb-1 sm:mb-2">{PERFORMANCE_KPIS.conversiones_ecommerce.current.toLocaleString()}</p>
           <div className="flex items-baseline gap-2">
-            <span className="text-xs sm:text-sm text-white/70">Conversiones: {PERFORMANCE_KPIS.leads.qualified.toLocaleString()}</span>
+            <span className="text-xs sm:text-sm text-white/70">Conversiones: {PERFORMANCE_KPIS.conversiones_ecommerce.current.toLocaleString()}</span>
           </div>
           <div className="mt-2 sm:mt-3 pt-2 sm:pt-3 border-t border-white/20">
             <div className="flex justify-between text-xs">
               <span className="text-white/70">CPA Promedio</span>
-              <span className="font-bold">${PERFORMANCE_KPIS.leads.cost_per_lead}</span>
+              <span className="font-bold">${PERFORMANCE_KPIS.cpa_ecommerce.current}</span>
             </div>
           </div>
         </div>
@@ -121,21 +121,21 @@ export default function OptimizationLayer() {
           <div className="flex items-center justify-between mb-2 sm:mb-3">
             <ShoppingBag className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8" />
             <span className={`px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs font-bold ${
-              PERFORMANCE_KPIS.engagement.trend_value > 0 ? 'bg-white text-sifrah-emerald' : 'bg-red-400 text-white'
+              PERFORMANCE_KPIS.alcance_retail.trend === 'up' ? 'bg-white text-sifrah-emerald' : 'bg-red-400 text-white'
             }`}>
-              {PERFORMANCE_KPIS.engagement.trend}
+              {PERFORMANCE_KPIS.alcance_retail.change}%
             </span>
           </div>
           <h3 className="text-xs sm:text-sm font-medium text-white/80 mb-0.5 sm:mb-1">Ventas Retail</h3>
-          <p className="text-xl sm:text-2xl font-bold mb-1 sm:mb-2">{(PERFORMANCE_KPIS.engagement.total_interactions / 1000).toFixed(1)}K</p>
+          <p className="text-xl sm:text-2xl font-bold mb-1 sm:mb-2">{(PERFORMANCE_KPIS.alcance_retail.current / 1000000).toFixed(1)}M</p>
           <div className="flex items-baseline gap-1 sm:gap-2 flex-wrap">
             <span className="text-xs sm:text-sm text-white/70">Alcance tiendas</span>
-            <span className="text-xs bg-white/20 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded">{PERFORMANCE_KPIS.engagement.engagement_rate}%</span>
+            <span className="text-xs bg-white/20 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded">{PERFORMANCE_KPIS.alcance_retail.change}%</span>
           </div>
           <div className="mt-2 sm:mt-3 pt-2 sm:pt-3 border-t border-white/20">
             <div className="flex justify-between text-xs">
               <span className="text-white/70">Impresiones</span>
-              <span className="font-bold">{(PERFORMANCE_KPIS.engagement.shares / 1000).toFixed(1)}K</span>
+              <span className="font-bold">{(PERFORMANCE_KPIS.impresiones_retail.current / 1000000).toFixed(1)}M</span>
             </div>
           </div>
         </div>
@@ -145,18 +145,18 @@ export default function OptimizationLayer() {
           <div className="flex items-center justify-between mb-2 sm:mb-3">
             <Award className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-sifrah-pink" />
             <span className="px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs font-bold bg-sifrah-emerald text-white">
-              {PERFORMANCE_KPIS.budget.spent_percentage.toFixed(0)}%
+              {PERFORMANCE_KPIS.inversion.spent_percentage.toFixed(0)}%
             </span>
           </div>
           <h3 className="text-xs sm:text-sm font-medium text-sifrah-textMedium mb-0.5 sm:mb-1">Inversión Ejecutada</h3>
-          <p className="text-xl sm:text-2xl font-bold mb-1 sm:mb-2 text-sifrah-pink">${(PERFORMANCE_KPIS.budget.total_spent / 1000).toFixed(1)}K</p>
+          <p className="text-xl sm:text-2xl font-bold mb-1 sm:mb-2 text-sifrah-pink">${(PERFORMANCE_KPIS.inversion.total_spent / 1000).toFixed(1)}K</p>
           <div className="flex items-baseline gap-2">
-            <span className="text-xs sm:text-sm text-sifrah-textMedium">de ${(PERFORMANCE_KPIS.budget.total_budget / 1000).toFixed(0)}K total</span>
+            <span className="text-xs sm:text-sm text-sifrah-textMedium">de ${(PERFORMANCE_KPIS.inversion.total_budget / 1000).toFixed(0)}K total</span>
           </div>
           <div className="mt-2 sm:mt-3 pt-2 sm:pt-3 border-t border-sifrah-border">
             <div className="flex justify-between text-xs">
               <span className="text-sifrah-textMedium">CPM Promedio</span>
-              <span className="font-bold text-sifrah-pink">${PERFORMANCE_KPIS.budget.cost_per_click}</span>
+              <span className="font-bold text-sifrah-pink">${PERFORMANCE_KPIS.cpm.current}</span>
             </div>
           </div>
         </div>
@@ -332,20 +332,20 @@ export default function OptimizationLayer() {
           <div className="bg-white/10 rounded-lg sm:rounded-xl p-3 sm:p-4">
             <h4 className="font-bold text-sm sm:text-base mb-2 sm:mb-3 flex items-center gap-1.5 sm:gap-2">
               <Zap className="w-4 h-4 sm:w-5 sm:h-5" />
-              Mujeres 25-35
+              Jovenes Trendy (18-25)
             </h4>
             <div className="space-y-1.5 sm:space-y-2">
               <div className="flex justify-between text-xs sm:text-sm">
                 <span>CPA Target</span>
-                <span className="font-bold">${CRM_CONFIG.cpl_thresholds.jovenes_activos.cpl_target}</span>
+                <span className="font-bold">${CRM_CONFIG.cpa_thresholds.jovenes_trendy.cpa_target}</span>
               </div>
               <div className="flex justify-between text-xs sm:text-sm">
                 <span>Alerta en</span>
-                <span className="font-bold text-yellow-300">${CRM_CONFIG.cpl_thresholds.jovenes_activos.cpl_alert}</span>
+                <span className="font-bold text-yellow-300">${CRM_CONFIG.cpa_thresholds.jovenes_trendy.cpa_alert}</span>
               </div>
               <div className="flex justify-between text-xs sm:text-sm">
                 <span>Pausar en</span>
-                <span className="font-bold text-red-300">${CRM_CONFIG.cpl_thresholds.jovenes_activos.cpl_pause}</span>
+                <span className="font-bold text-red-300">${CRM_CONFIG.cpa_thresholds.jovenes_trendy.cpa_pause}</span>
               </div>
             </div>
           </div>
@@ -353,20 +353,20 @@ export default function OptimizationLayer() {
           <div className="bg-white/10 rounded-lg sm:rounded-xl p-3 sm:p-4">
             <h4 className="font-bold text-sm sm:text-base mb-2 sm:mb-3 flex items-center gap-1.5 sm:gap-2">
               <Target className="w-4 h-4 sm:w-5 sm:h-5" />
-              Profesionales Fashion
+              Profesionales con Estilo (26-35)
             </h4>
             <div className="space-y-1.5 sm:space-y-2">
               <div className="flex justify-between text-xs sm:text-sm">
                 <span>CPA Target</span>
-                <span className="font-bold">${CRM_CONFIG.cpl_thresholds.profesionales_wellness.cpl_target}</span>
+                <span className="font-bold">${CRM_CONFIG.cpa_thresholds.profesionales_estilo.cpa_target}</span>
               </div>
               <div className="flex justify-between text-xs sm:text-sm">
                 <span>Alerta en</span>
-                <span className="font-bold text-yellow-300">${CRM_CONFIG.cpl_thresholds.profesionales_wellness.cpl_alert}</span>
+                <span className="font-bold text-yellow-300">${CRM_CONFIG.cpa_thresholds.profesionales_estilo.cpa_alert}</span>
               </div>
               <div className="flex justify-between text-xs sm:text-sm">
                 <span>Pausar en</span>
-                <span className="font-bold text-red-300">${CRM_CONFIG.cpl_thresholds.profesionales_wellness.cpl_pause}</span>
+                <span className="font-bold text-red-300">${CRM_CONFIG.cpa_thresholds.profesionales_estilo.cpa_pause}</span>
               </div>
             </div>
           </div>
@@ -374,20 +374,20 @@ export default function OptimizationLayer() {
           <div className="bg-white/10 rounded-lg sm:rounded-xl p-3 sm:p-4 sm:col-span-2 lg:col-span-1">
             <h4 className="font-bold text-sm sm:text-base mb-2 sm:mb-3 flex items-center gap-1.5 sm:gap-2">
               <Users className="w-4 h-4 sm:w-5 sm:h-5" />
-              Gift Shoppers
+              Madres & Regaladoras (35-45)
             </h4>
             <div className="space-y-1.5 sm:space-y-2">
               <div className="flex justify-between text-xs sm:text-sm">
                 <span>CPA Target</span>
-                <span className="font-bold">${CRM_CONFIG.cpl_thresholds.familias_activas.cpl_target}</span>
+                <span className="font-bold">${CRM_CONFIG.cpa_thresholds.madres_regalo.cpa_target}</span>
               </div>
               <div className="flex justify-between text-xs sm:text-sm">
                 <span>Alerta en</span>
-                <span className="font-bold text-yellow-300">${CRM_CONFIG.cpl_thresholds.familias_activas.cpl_alert}</span>
+                <span className="font-bold text-yellow-300">${CRM_CONFIG.cpa_thresholds.madres_regalo.cpa_alert}</span>
               </div>
               <div className="flex justify-between text-xs sm:text-sm">
                 <span>Pausar en</span>
-                <span className="font-bold text-red-300">${CRM_CONFIG.cpl_thresholds.familias_activas.cpl_pause}</span>
+                <span className="font-bold text-red-300">${CRM_CONFIG.cpa_thresholds.madres_regalo.cpa_pause}</span>
               </div>
             </div>
           </div>

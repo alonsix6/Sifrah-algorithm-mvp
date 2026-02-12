@@ -274,50 +274,50 @@ export default function ExecutionLayer() {
 
                 <div className="space-y-2 sm:space-y-3 mb-3 sm:mb-4">
                   <div className="flex justify-between text-xs sm:text-sm">
-                    <span className="text-sifrah-textMedium">Leads</span>
-                    <span className="font-semibold text-sifrah-textDark">{servicio.leads}</span>
+                    <span className="text-sifrah-textMedium">Ventas Ecommerce</span>
+                    <span className="font-semibold text-sifrah-textDark">{servicio.ventas_ecommerce}</span>
                   </div>
                   <div className="flex justify-between text-xs sm:text-sm">
-                    <span className="text-sifrah-textMedium">Conversiones</span>
-                    <span className="font-semibold text-sifrah-emerald">{servicio.conversiones}</span>
+                    <span className="text-sifrah-textMedium">Ordenes</span>
+                    <span className="font-semibold text-sifrah-emerald">{servicio.ecommerce.orders}</span>
                   </div>
                   <div className="flex justify-between text-xs sm:text-sm">
-                    <span className="text-sifrah-textMedium">CPL</span>
-                    <span className="font-semibold text-sifrah-pink">${servicio.cpl}</span>
+                    <span className="text-sifrah-textMedium">CPA</span>
+                    <span className="font-semibold text-sifrah-pink">${servicio.ecommerce.cpa}</span>
                   </div>
                 </div>
 
-                {/* Lead Ads Metrics */}
+                {/* Ecommerce Metrics */}
                 <div className="pt-2 sm:pt-3 border-t border-sifrah-border mb-2 sm:mb-3">
                   <p className="text-[10px] sm:text-xs font-semibold text-sifrah-textMedium mb-1.5 sm:mb-2 flex items-center gap-1">
-                    <FileText className="w-2.5 h-2.5 sm:w-3 sm:h-3" /> Lead Ads (Meta)
+                    <ShoppingBag className="w-2.5 h-2.5 sm:w-3 sm:h-3" /> Ecommerce
                   </p>
                   <div className="grid grid-cols-2 gap-2 text-[10px] sm:text-xs">
                     <div>
-                      <p className="text-sifrah-textMedium">Formularios</p>
-                      <p className="font-semibold text-sifrah-textDark">{servicio.leadAds.formularios}</p>
+                      <p className="text-sifrah-textMedium">Conv. Rate</p>
+                      <p className="font-semibold text-sifrah-emerald">{servicio.ecommerce.conversion_rate}%</p>
                     </div>
                     <div>
-                      <p className="text-sifrah-textMedium">Conv. Rate</p>
-                      <p className="font-semibold text-sifrah-emerald">{servicio.leadAds.conversion_rate}%</p>
+                      <p className="text-sifrah-textMedium">Ticket Prom.</p>
+                      <p className="font-semibold text-sifrah-textDark">S/{servicio.avg_ticket}</p>
                     </div>
                   </div>
                 </div>
 
-                {/* WhatsApp Metrics */}
+                {/* Retail Metrics */}
                 <div className="pt-2 sm:pt-3 border-t border-sifrah-border">
                   <p className="text-[10px] sm:text-xs font-semibold text-sifrah-textMedium mb-1.5 sm:mb-2 flex items-center gap-1">
-                    <MessageCircle className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-sifrah-emerald" />
-                    WhatsApp
+                    <Globe className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-sifrah-emerald" />
+                    Retail (Tiendas)
                   </p>
                   <div className="grid grid-cols-2 gap-2 text-[10px] sm:text-xs">
                     <div>
-                      <p className="text-sifrah-textMedium">Conversaciones</p>
-                      <p className="font-semibold text-sifrah-textDark">{servicio.whatsapp.conversaciones}</p>
+                      <p className="text-sifrah-textMedium">Alcance</p>
+                      <p className="font-semibold text-sifrah-textDark">{(servicio.retail.alcance / 1000).toFixed(0)}K</p>
                     </div>
                     <div>
-                      <p className="text-sifrah-textMedium">Tasa Respuesta</p>
-                      <p className="font-semibold text-sifrah-emerald">{servicio.whatsapp.tasa_respuesta}%</p>
+                      <p className="text-sifrah-textMedium">Impresiones</p>
+                      <p className="font-semibold text-sifrah-emerald">{(servicio.retail.impresiones / 1000000).toFixed(1)}M</p>
                     </div>
                   </div>
                 </div>
