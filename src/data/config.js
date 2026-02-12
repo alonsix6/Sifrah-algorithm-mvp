@@ -1,98 +1,98 @@
-// Configuracion general del Sifrah Algorithm
-// Textos, mensajes, secciones y configuracion de UI
+// Configuración general del Sifrah Algorithm
+// Textos, mensajes, secciones y configuración de UI
 
 // ============================================================================
-// BRAND CONFIGURATION - Configuracion de marca Sifrah
+// BRAND CONFIGURATION - Configuración de marca Sifrah
 // ============================================================================
 export const BRAND_CONFIG = {
   name: 'Sifrah Algorithm',
-  tagline: 'Inteligencia de Mercado - Accesorios & Bisuteria',
-  subtitle: 'Optimizacion automatica de inversion digital en awareness, ecommerce y retail',
-  product: 'Bisuteria y Accesorios 2026',
-  market: 'Peru Nacional (+90 tiendas)',
-  client: 'Sifrah Peru',
+  tagline: 'Inteligencia de Mercado - Accesorios & Bisutería',
+  subtitle: 'Optimización automática de inversión digital en awareness, ecommerce y retail',
+  product: 'Bisutería y Accesorios 2026',
+  market: 'Perú Nacional (+90 tiendas)',
+  client: 'Sifrah Perú',
   version: '1.0.0',
   slogan: 'Brilla con Luz Propia',
   founded: 2016,
 };
 
 // ============================================================================
-// LAYER TITLES - Titulos y descripciones de las 4 capas
+// LAYER TITLES - Títulos y descripciones de las 4 capas
 // ============================================================================
 export const LAYER_CONFIG = {
   data: {
     id: 'data',
-    name: 'Captura de Senales',
+    name: 'Captura de Señales',
     subtitle: 'Monitoreo en tiempo real del ecosistema digital de moda y accesorios',
-    description: 'Busqueda, Tendencia, Intencion, Engagement',
+    description: 'Búsqueda, Tendencia, Intención, Engagement',
     icon: 'Search',
     color: 'from-sifrah-pink to-sifrah-darkPink',
   },
   decision: {
     id: 'decision',
     name: 'Inteligencia de Mercado',
-    subtitle: 'Insights automaticos para optimizar inversion en awareness y ventas',
-    description: 'Analisis y definicion de estrategia',
+    subtitle: 'Insights automáticos para optimizar inversión en awareness y ventas',
+    description: 'Análisis y definición de estrategia',
     icon: 'Target',
     color: 'from-sifrah-darkPink to-sifrah-cyan',
   },
   execution: {
     id: 'execution',
-    name: 'Activacion Estrategica',
-    subtitle: 'Distribucion inteligente de presupuesto y contenidos',
-    description: 'Implementacion en tiempo real',
+    name: 'Activación Estratégica',
+    subtitle: 'Distribución inteligente de presupuesto y contenidos',
+    description: 'Implementación en tiempo real',
     icon: 'Zap',
     color: 'from-sifrah-cyan to-sifrah-emerald',
   },
   optimization: {
     id: 'optimization',
-    name: 'Performance & Optimizacion',
-    subtitle: 'Resultados en tiempo real y ajustes automaticos',
-    description: 'Evaluacion y redistribucion',
+    name: 'Performance & Optimización',
+    subtitle: 'Resultados en tiempo real y ajustes automáticos',
+    description: 'Evaluación y redistribución',
     icon: 'TrendingUp',
     color: 'from-sifrah-emerald to-sifrah-pink',
   },
 };
 
 // ============================================================================
-// KEY MESSAGES - Mensajes clave de comunicacion Sifrah
+// KEY MESSAGES - Mensajes clave de comunicación Sifrah
 // ============================================================================
 export const KEY_MESSAGES = {
   brilla: {
     title: 'Brilla con Luz Propia',
-    message: 'Accesorios que potencian tu estilo unico y personal',
-    description: 'Bisuteria moderna y versatil para cada momento',
+    message: 'Accesorios que potencian tu estilo único y personal',
+    description: 'Bisutería moderna y versátil para cada momento',
   },
   tendencia: {
     title: 'Siempre a la Moda',
-    message: '+6,000 productos nuevos al ano, tendencias globales',
+    message: '+6,000 productos nuevos al año, tendencias globales',
     description: 'Colecciones que se renuevan constantemente',
   },
   accesible: {
     title: 'Moda Accesible',
     message: 'Ticket promedio S/50, accesorios para todos los estilos',
-    description: 'Calidad y diseno a precios justos',
+    description: 'Calidad y diseño a precios justos',
   },
   experiencia: {
     title: 'Experiencia de Compra',
-    message: '+90 tiendas en todo el Peru y tienda online',
-    description: 'Omnicanalidad: tienda fisica, ecommerce y marketplaces',
+    message: '+90 tiendas en todo el Perú y tienda online',
+    description: 'Omnicanalidad: tienda física, ecommerce y marketplaces',
   },
   comunidad: {
     title: 'Comunidad Sifrah',
     message: 'Creada por mujeres, para mujeres que brillan',
-    description: 'Una marca peruana con 10 anos de historia',
+    description: 'Una marca peruana con 10 años de historia',
   },
 };
 
 // ============================================================================
-// DATA SOURCES - Configuracion de fuentes de datos
+// DATA SOURCES - Configuración de fuentes de datos
 // ============================================================================
 export const DATA_SOURCES_CONFIG = {
   googleTrends: {
     enabled: true,
     name: 'Google Trends',
-    description: 'Tendencias de busqueda de bisuteria y accesorios en tiempo real',
+    description: 'Tendencias de búsqueda de bisutería y accesorios en tiempo real',
     icon: 'TrendingUp',
     color: 'text-sifrah-cyan',
     bgColor: 'bg-sifrah-lightGray',
@@ -134,17 +134,17 @@ export const DATA_SOURCES_CONFIG = {
   moda: {
     enabled: true,
     name: 'Portales de Moda',
-    description: 'Peru Retail, Gestion, Fashion Network, portales especializados',
+    description: 'Perú Retail, Gestión, Fashion Network, portales especializados',
     icon: 'Globe',
     color: 'text-sifrah-emerald',
     bgColor: 'bg-sifrah-lightGray',
-    sources: ['Peru Retail', 'Fashion Network', 'Gestion'],
+    sources: ['Perú Retail', 'Fashion Network', 'Gestión'],
     status: 'active',
   },
   ga4: {
     enabled: false,
     name: 'Google Analytics 4',
-    description: 'Trafico web y conversiones ecommerce',
+    description: 'Tráfico web y conversiones ecommerce',
     icon: 'BarChart3',
     color: 'text-sifrah-pink',
     bgColor: 'bg-sifrah-lightGray',
@@ -154,7 +154,7 @@ export const DATA_SOURCES_CONFIG = {
 };
 
 // ============================================================================
-// CHANNELS - Canales de activacion
+// CHANNELS - Canales de activación
 // ============================================================================
 export const CHANNELS_CONFIG = {
   meta_ads: {
@@ -172,7 +172,7 @@ export const CHANNELS_CONFIG = {
     color: 'text-sifrah-emerald',
     bgColor: 'bg-sifrah-lightGray',
     primary_kpi: 'Conversiones Ecommerce',
-    description: 'Campanas Brand, Generic, Competitor',
+    description: 'Campañas Brand, Generic, Competitor',
   },
   google_display: {
     name: 'Google Display',
@@ -187,7 +187,7 @@ export const CHANNELS_CONFIG = {
     icon: 'Video',
     color: 'text-sifrah-pink',
     bgColor: 'bg-sifrah-lightGray',
-    primary_kpi: 'Awareness + Engagement Jovenes',
+    primary_kpi: 'Awareness + Engagement Jóvenes',
     description: 'In-Feed y TopView ads',
   },
   influencers: {
@@ -215,7 +215,7 @@ export const SEDES_CONFIG = [
   { id: 9, name: 'Sifrah Open Plaza Piura', ciudad: 'Piura', region: 'Piura', type: 'Regional' },
   { id: 10, name: 'Sifrah Real Plaza Chiclayo', ciudad: 'Chiclayo', region: 'Lambayeque', type: 'Regional' },
   { id: 11, name: 'Sifrah Real Plaza Cusco', ciudad: 'Cusco', region: 'Cusco', type: 'Regional' },
-  { id: 12, name: 'Sifrah Real Plaza Huancayo', ciudad: 'Huancayo', region: 'Junin', type: 'Regional' },
+  { id: 12, name: 'Sifrah Real Plaza Huancayo', ciudad: 'Huancayo', region: 'Junín', type: 'Regional' },
 ];
 
 // ============================================================================
@@ -224,8 +224,8 @@ export const SEDES_CONFIG = [
 export const TARGET_AUDIENCES = [
   {
     id: 'jovenes_trendy',
-    name: 'Jovenes Trendy',
-    description: '18-25 anos, universitarias y primer trabajo',
+    name: 'Jóvenes Trendy',
+    description: '18-25 años, universitarias y primer trabajo',
     size: '~120,000',
     age_range: '18-25',
     priority: 'high',
@@ -243,8 +243,8 @@ export const TARGET_AUDIENCES = [
         characteristics: ['Primer sueldo', 'Buscan accesorios para oficina', 'Compran por impulso'],
       },
     ],
-    interests: ['Moda', 'TikTok trends', 'Outfits del dia', 'Bisuteria trendy'],
-    message: 'Accesorios que brillan como tu: encuentra tu estilo desde S/15',
+    interests: ['Moda', 'TikTok trends', 'Outfits del día', 'Bisutería trendy'],
+    message: 'Accesorios que brillan como tú: encuentra tu estilo desde S/15',
     channels: {
       'Meta Ads': 35,
       'TikTok Ads': 30,
@@ -257,7 +257,7 @@ export const TARGET_AUDIENCES = [
   {
     id: 'profesionales_estilo',
     name: 'Profesionales con Estilo',
-    description: '26-35 anos, profesionales y emprendedoras',
+    description: '26-35 años, profesionales y emprendedoras',
     size: '~80,000',
     age_range: '26-35',
     priority: 'high',
@@ -275,7 +275,7 @@ export const TARGET_AUDIENCES = [
         characteristics: ['Imagen profesional', 'Regalos corporativos', 'Mayor ticket'],
       },
     ],
-    interests: ['Bisuteria fina', 'Carteras', 'Accesorios premium', 'Look profesional'],
+    interests: ['Bisutería fina', 'Carteras', 'Accesorios premium', 'Look profesional'],
     message: 'Eleva tu look profesional con accesorios que hablan de ti',
     channels: {
       'Meta Ads': 40,
@@ -289,7 +289,7 @@ export const TARGET_AUDIENCES = [
   {
     id: 'madres_regalo',
     name: 'Madres & Regaladoras',
-    description: '35-45 anos, madres y compradoras de regalos',
+    description: '35-45 años, madres y compradoras de regalos',
     size: '~55,000',
     age_range: '35-45',
     priority: 'medium',
@@ -298,7 +298,7 @@ export const TARGET_AUDIENCES = [
         name: 'Madres Modernas',
         size: '~30,000',
         age: '35-40',
-        characteristics: ['Compran para si mismas e hijas', 'Buscan variedad', 'Valoran tienda fisica'],
+        characteristics: ['Compran para sí mismas e hijas', 'Buscan variedad', 'Valoran tienda física'],
       },
       {
         name: 'Compradoras de Regalos',
@@ -307,7 +307,7 @@ export const TARGET_AUDIENCES = [
         characteristics: ['Fechas especiales', 'Sets y packs', 'Fidelidad de marca'],
       },
     ],
-    interests: ['Regalos', 'Moda madre-hija', 'Accesorios clasicos', 'Ofertas especiales'],
+    interests: ['Regalos', 'Moda madre-hija', 'Accesorios clásicos', 'Ofertas especiales'],
     message: 'El regalo perfecto que brilla: accesorios para cada momento especial',
     channels: {
       'Meta Ads': 45,
@@ -325,39 +325,39 @@ export const TARGET_AUDIENCES = [
 // ============================================================================
 export const OPTIMAL_TIMING = {
   dayparts: [
-    { name: 'Manana', hours: '8:00 - 12:00', performance: 'high', multiplier: 1.3, audience: 'Profesionales' },
+    { name: 'Mañana', hours: '8:00 - 12:00', performance: 'high', multiplier: 1.3, audience: 'Profesionales' },
     { name: 'Almuerzo', hours: '12:00 - 14:00', performance: 'very_high', multiplier: 1.5, audience: 'Oficinistas' },
     { name: 'Tarde', hours: '14:00 - 18:00', performance: 'medium', multiplier: 1.1, audience: 'Universitarias' },
     { name: 'Noche', hours: '20:00 - 23:00', performance: 'very_high', multiplier: 1.6, audience: 'Todas' },
   ],
   weekdays: [
     { name: 'Lunes', performance: 'medium', recommended: true, note: 'Inicio de semana, browsing' },
-    { name: 'Martes', performance: 'medium', recommended: true, note: 'Busqueda activa' },
-    { name: 'Miercoles', performance: 'high', recommended: true, note: 'Mitad de semana, compras online' },
+    { name: 'Martes', performance: 'medium', recommended: true, note: 'Búsqueda activa' },
+    { name: 'Miércoles', performance: 'high', recommended: true, note: 'Mitad de semana, compras online' },
     { name: 'Jueves', performance: 'high', recommended: true, note: 'Pre-fin de semana' },
     { name: 'Viernes', performance: 'very_high', recommended: true, note: 'Pago quincenal, compras mall' },
-    { name: 'Sabado', performance: 'very_high', recommended: true, note: 'Dia de compras en tienda' },
+    { name: 'Sábado', performance: 'very_high', recommended: true, note: 'Día de compras en tienda' },
     { name: 'Domingo', performance: 'high', recommended: true, note: 'Shopping mall familiar' },
   ],
   seasonality: [
     { month: 'Enero', demand: 'medium', note: 'Post-fiestas, liquidaciones' },
-    { month: 'Febrero', demand: 'very_high', note: 'San Valentin, regalos' },
+    { month: 'Febrero', demand: 'very_high', note: 'San Valentín, regalos' },
     { month: 'Marzo', demand: 'high', note: 'Vuelta a clases, accesorios' },
     { month: 'Abril', demand: 'medium', note: 'Semana Santa' },
     { month: 'Mayo', demand: 'very_high', note: 'Dia de la Madre' },
     { month: 'Junio', demand: 'medium', note: 'Dia del Padre (regalos)' },
     { month: 'Julio', demand: 'very_high', note: 'Fiestas Patrias, liquidaciones' },
-    { month: 'Agosto-Sept', demand: 'medium', note: 'Primavera, nueva coleccion' },
-    { month: 'Octubre', demand: 'high', note: 'Halloween, accesorios tematicos' },
+    { month: 'Agosto-Sept', demand: 'medium', note: 'Primavera, nueva colección' },
+    { month: 'Octubre', demand: 'high', note: 'Halloween, accesorios temáticos' },
     { month: 'Nov-Dic', demand: 'very_high', note: 'Black Friday, Navidad, regalos' },
   ],
 };
 
 // ============================================================================
-// PRODUCTOS - Lineas de producto monitoreadas
+// PRODUCTOS - Líneas de producto monitoreadas
 // ============================================================================
 export const SERVICIOS_CONFIG = [
-  { id: 1, nombre: 'Bisuteria', revenue_pct: 45, avg_ticket: 35, conversion: 12 },
+  { id: 1, nombre: 'Bisutería', revenue_pct: 45, avg_ticket: 35, conversion: 12 },
   { id: 2, nombre: 'Carteras y Billeteras', revenue_pct: 20, avg_ticket: 65, conversion: 8 },
   { id: 3, nombre: 'Accesorios para Cabello', revenue_pct: 12, avg_ticket: 20, conversion: 15 },
   { id: 4, nombre: 'Pashminas y Bufandas', revenue_pct: 8, avg_ticket: 45, conversion: 7 },
@@ -366,13 +366,13 @@ export const SERVICIOS_CONFIG = [
 ];
 
 // ============================================================================
-// METRIC CARDS - Configuracion de tarjetas metricas principales
+// METRIC CARDS - Configuración de tarjetas métricas principales
 // ============================================================================
 export const METRIC_CARDS_CONFIG = [
   {
     id: 'alcance',
     title: 'Alcance Total',
-    description: 'Usuarios unicos impactados a nivel nacional',
+    description: 'Usuarios únicos impactados a nivel nacional',
     icon: 'Eye',
     color: 'sifrah-pink',
     gradient: 'from-sifrah-pink to-sifrah-darkPink',
@@ -396,7 +396,7 @@ export const METRIC_CARDS_CONFIG = [
   {
     id: 'opportunity',
     title: 'Sifrah Opportunity Score',
-    description: 'Indice de oportunidad de inversion en moda y accesorios',
+    description: 'Índice de oportunidad de inversión en moda y accesorios',
     icon: 'Zap',
     color: 'sifrah-gold',
     gradient: 'from-sifrah-gold to-sifrah-amber',
@@ -404,7 +404,7 @@ export const METRIC_CARDS_CONFIG = [
 ];
 
 // ============================================================================
-// CRM INTEGRATION - Configuracion de alertas
+// CRM INTEGRATION - Configuración de alertas
 // ============================================================================
 export const CRM_CONFIG = {
   enabled: false,
@@ -448,7 +448,7 @@ export const CRM_CONFIG = {
 // ============================================================================
 export const UI_TEXT = {
   loading: 'Cargando Sifrah Algorithm...',
-  lastUpdate: 'Ultima actualizacion',
+  lastUpdate: 'Última actualización',
   systemActive: 'Sistema activo',
   noData: 'No hay datos disponibles',
   error: 'Error al cargar datos',
@@ -464,7 +464,7 @@ export const UI_TEXT = {
     export: 'Exportar',
     refresh: 'Actualizar',
     filter: 'Filtrar',
-    expandAll: 'Mostrar todas las lineas de producto',
+    expandAll: 'Mostrar todas las líneas de producto',
     collapseAll: 'Mostrar solo top 5',
   },
 };

@@ -22,8 +22,8 @@ export default function DecisionLayer() {
     },
     {
       priority: 'high',
-      category: 'Campana',
-      action: 'Lanzar "Brilla en San Valentin" - Febrero es pico maximo de demanda de regalos y accesorios (+120% busquedas)',
+      category: 'Campaña',
+      action: 'Lanzar "Brilla en San Valentín" - Febrero es pico máximo de demanda de regalos y accesorios (+120% búsquedas)',
       impact: '+350 conversiones estimadas primera quincena',
       confidence: 92
     },
@@ -31,13 +31,13 @@ export default function DecisionLayer() {
       priority: 'medium',
       category: 'Influencers',
       action: 'Activar micro-influencers moda (10-50K) - UGC de styling con accesorios Sifrah tiene 3x engagement',
-      impact: '+420K alcance organico estimado',
+      impact: '+420K alcance orgánico estimado',
       confidence: 88
     },
     {
       priority: 'medium',
-      category: 'Promocion',
-      action: 'Promocion "Envio Gratis + 20% OFF" primera quincena - Capturar demanda San Valentin vs Isadora',
+      category: 'Promoción',
+      action: 'Promoción "Envío Gratis + 20% OFF" primera quincena - Capturar demanda San Valentín vs Isadora',
       impact: 'Capturar compradoras sensibles al precio y regaladoras',
       confidence: 85
     },
@@ -103,7 +103,7 @@ export default function DecisionLayer() {
             </div>
             <div>
               <h3 className="text-lg sm:text-xl font-bold">Sifrah Opportunity Score</h3>
-              <p className="text-white/90 mt-0.5 sm:mt-1 text-xs sm:text-sm">Indice de oportunidad para inversion en awareness y ventas de accesorios</p>
+              <p className="text-white/90 mt-0.5 sm:mt-1 text-xs sm:text-sm">Índice de oportunidad para inversión en awareness y ventas de accesorios</p>
             </div>
           </div>
 
@@ -132,11 +132,11 @@ export default function DecisionLayer() {
             <div key={key} className="bg-white/10 rounded-lg sm:rounded-xl p-3 sm:p-4 lg:p-5">
               <div className="flex items-center justify-between mb-2 sm:mb-3">
                 <h4 className="font-semibold text-xs sm:text-sm text-white/80">
-                  {key === 'search_interest' ? 'Interes Busqueda' :
+                  {key === 'search_interest' ? 'Interés Búsqueda' :
                    key === 'social_engagement' ? 'Engagement Social' :
                    key === 'competitor_gap' ? 'Gap Competitivo' :
-                   key === 'seasonal_index' ? 'Indice Estacional' :
-                   key === 'conversion_efficiency' ? 'Eficiencia Conversion' : key}
+                   key === 'seasonal_index' ? 'Índice Estacional' :
+                   key === 'conversion_efficiency' ? 'Eficiencia Conversión' : key}
                 </h4>
                 <span className="text-xs bg-white/20 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded">
                   {(component.weight * 100).toFixed(0)}% peso
@@ -155,7 +155,7 @@ export default function DecisionLayer() {
           <div className="flex items-start gap-2 sm:gap-3">
             <Lightbulb className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0 mt-0.5 sm:mt-1" />
             <div className="min-w-0">
-              <p className="font-semibold mb-1 sm:mb-2 text-xs sm:text-sm">Recomendacion automatica:</p>
+              <p className="font-semibold mb-1 sm:mb-2 text-xs sm:text-sm">Recomendación automática:</p>
               <p className="text-sm sm:text-base">{OPPORTUNITY_SCORE.recommendation.message}</p>
               <div className="flex flex-wrap gap-1.5 sm:gap-2 mt-2 sm:mt-3">
                 {OPPORTUNITY_SCORE.recommendation.actions.map((action, idx) => (
@@ -180,8 +180,8 @@ export default function DecisionLayer() {
             <TrendingUp className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
           </div>
           <div>
-            <h3 className="text-sm sm:text-base font-bold text-sifrah-textDark">Recomendaciones Estrategicas</h3>
-            <p className="text-xs sm:text-sm text-sifrah-textMedium">Acciones prioritarias basadas en senales del mercado de moda y accesorios</p>
+            <h3 className="text-sm sm:text-base font-bold text-sifrah-textDark">Recomendaciones Estratégicas</h3>
+            <p className="text-xs sm:text-sm text-sifrah-textMedium">Acciones prioritarias basadas en señales del mercado de moda y accesorios</p>
           </div>
         </div>
 
@@ -232,7 +232,7 @@ export default function DecisionLayer() {
           </div>
           <div>
             <h3 className="text-sm sm:text-base font-bold text-sifrah-textDark">Audiencias Objetivo Sifrah</h3>
-            <p className="text-xs sm:text-sm text-sifrah-textMedium">Segmentacion inteligente para awareness y ventas de accesorios 2026</p>
+            <p className="text-xs sm:text-sm text-sifrah-textMedium">Segmentación inteligente para awareness y ventas de accesorios 2026</p>
           </div>
         </div>
 
@@ -255,7 +255,7 @@ export default function DecisionLayer() {
 
               <div className="flex flex-wrap gap-3 sm:gap-4 lg:gap-6 mt-3 sm:mt-4 pb-3 sm:pb-4 border-b border-sifrah-border">
                 <div>
-                  <p className="text-xs text-sifrah-textMedium">Tamano Potencial</p>
+                  <p className="text-xs text-sifrah-textMedium">Tamaño Potencial</p>
                   <p className="text-lg sm:text-xl font-bold text-sifrah-textDark">{aud.size}</p>
                 </div>
                 <div>
@@ -347,7 +347,7 @@ export default function DecisionLayer() {
             <div className="flex flex-wrap gap-1.5 sm:gap-2">
               <span className="px-1.5 sm:px-2 py-0.5 sm:py-1 bg-sifrah-softPink rounded text-xs text-sifrah-textDark">Precio justo</span>
               <span className="px-1.5 sm:px-2 py-0.5 sm:py-1 bg-sifrah-softPink rounded text-xs text-sifrah-textDark">Calidad accesible</span>
-              <span className="px-1.5 sm:px-2 py-0.5 sm:py-1 bg-sifrah-softPink rounded text-xs text-sifrah-textDark">Envio gratis</span>
+              <span className="px-1.5 sm:px-2 py-0.5 sm:py-1 bg-sifrah-softPink rounded text-xs text-sifrah-textDark">Envío gratis</span>
             </div>
           </div>
         </div>
