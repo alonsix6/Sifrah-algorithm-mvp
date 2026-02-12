@@ -155,9 +155,9 @@ export const PERFORMANCE_KPIS = {
   },
 
   cpm: {
-    current: 3.20,
-    previous: 3.85,
-    change: '-16.9',
+    current: 0.85,
+    previous: 1.05,
+    change: '-19.0',
     trend: 'down',
     label: 'CPM',
     description: 'Costo por mil impresiones',
@@ -165,9 +165,9 @@ export const PERFORMANCE_KPIS = {
   },
 
   cpm_alcance: {
-    current: 2.89,
-    previous: 3.10,
-    change: '-6.8',
+    current: 0.62,
+    previous: 0.75,
+    change: '-17.3',
     trend: 'down',
     label: 'CPM Alcance',
     description: 'Costo por mil alcance unico',
@@ -185,9 +185,9 @@ export const PERFORMANCE_KPIS = {
   },
 
   cpa_ecommerce: {
-    current: 7.46,
-    previous: 9.14,
-    change: '-18.4',
+    current: 3.20,
+    previous: 4.15,
+    change: '-22.9',
     trend: 'down',
     label: 'CPA Ecommerce',
     description: 'Costo por adquisicion (solo ecommerce)',
@@ -249,7 +249,7 @@ export const OPPORTUNITY_SCORE = {
       score: 80,
       weight: 0.20,
       contribution: 16.0,
-      insight: 'CPA ecommerce $7.46, por debajo del target $8',
+      insight: 'CPA ecommerce $3.20, por debajo del target $4',
     },
   },
   recommendation: {
@@ -280,7 +280,7 @@ export const SERVICIOS_PERFORMANCE = [
     revenue: 64750,
     trend: '+22%',
     precio: 'S/15-80',
-    ecommerce: { orders: 558, conversion_rate: 12.5, cpa: 6.20 },
+    ecommerce: { orders: 558, conversion_rate: 12.5, cpa: 2.80 },
     retail: { alcance: 850000, impresiones: 2400000 },
   },
   {
@@ -294,7 +294,7 @@ export const SERVICIOS_PERFORMANCE = [
     revenue: 24700,
     trend: '+15%',
     precio: 'S/35-120',
-    ecommerce: { orders: 248, conversion_rate: 8.2, cpa: 8.50 },
+    ecommerce: { orders: 248, conversion_rate: 8.2, cpa: 3.85 },
     retail: { alcance: 420000, impresiones: 1200000 },
   },
   {
@@ -308,7 +308,7 @@ export const SERVICIOS_PERFORMANCE = [
     revenue: 18400,
     trend: '+28%',
     precio: 'S/8-45',
-    ecommerce: { orders: 186, conversion_rate: 15.0, cpa: 4.80 },
+    ecommerce: { orders: 186, conversion_rate: 15.0, cpa: 2.15 },
     retail: { alcance: 320000, impresiones: 880000 },
   },
   {
@@ -322,7 +322,7 @@ export const SERVICIOS_PERFORMANCE = [
     revenue: 9450,
     trend: '+8%',
     precio: 'S/25-80',
-    ecommerce: { orders: 98, conversion_rate: 7.0, cpa: 10.20 },
+    ecommerce: { orders: 98, conversion_rate: 7.0, cpa: 4.60 },
     retail: { alcance: 180000, impresiones: 520000 },
   },
   {
@@ -336,7 +336,7 @@ export const SERVICIOS_PERFORMANCE = [
     revenue: 6600,
     trend: '+12%',
     precio: 'S/20-65',
-    ecommerce: { orders: 88, conversion_rate: 9.0, cpa: 7.80 },
+    ecommerce: { orders: 88, conversion_rate: 9.0, cpa: 3.50 },
     retail: { alcance: 210000, impresiones: 580000 },
   },
   {
@@ -350,7 +350,7 @@ export const SERVICIOS_PERFORMANCE = [
     revenue: 8550,
     trend: '+18%',
     precio: 'S/12-55',
-    ecommerce: { orders: 62, conversion_rate: 11.0, cpa: 5.50 },
+    ecommerce: { orders: 62, conversion_rate: 11.0, cpa: 2.50 },
     retail: { alcance: 150000, impresiones: 420000 },
   },
 ];
@@ -459,7 +459,7 @@ export const CRM_MOCKUP = {
       objetivo: 'awareness',
       alcance: 1200000,
       impresiones: 3600000,
-      cpm: 0.61,
+      cpm: 0.55,
       platform: 'Meta Ads',
       audience: 'Jovenes Trendy',
     },
@@ -471,7 +471,7 @@ export const CRM_MOCKUP = {
       spent: 1750,
       objetivo: 'ecommerce',
       conversiones: 234,
-      cpa: 7.48,
+      cpa: 3.10,
       platform: 'Meta Ads',
       audience: 'Profesionales con Estilo',
     },
@@ -510,7 +510,7 @@ export const CRM_MOCKUP = {
     },
     {
       type: 'success',
-      message: 'CPA ecommerce en $7.48, por debajo del target de $8. Excelente rendimiento.',
+      message: 'CPA ecommerce en $3.10, por debajo del target de $4. Excelente rendimiento.',
       campaign_id: 'camp_002',
       timestamp: '2026-02-10T13:15:00',
     },
@@ -538,8 +538,8 @@ export const BUDGET_ALLOCATION = {
       percentage: 40,
       status: 'overperforming',
       kpi: 'Awareness + Conversiones Ecommerce',
-      target: 'Alcance 1.5M+ / CPA < $8',
-      current_performance: 'Alcance 2.1M / CPA $7.48',
+      target: 'Alcance 1.5M+ / CPA < $4',
+      current_performance: 'Alcance 2.1M / CPA $3.10',
       platforms: ['Instagram', 'Facebook'],
     },
     tiktok_ads: {
@@ -555,16 +555,16 @@ export const BUDGET_ALLOCATION = {
       percentage: 15,
       status: 'performing',
       kpi: 'Conversiones Ecommerce',
-      target: 'CPA < $10',
-      current_performance: 'CPA $8.20',
+      target: 'CPA < $5',
+      current_performance: 'CPA $3.80',
     },
     google_display: {
       amount: 1000,
       percentage: 10,
       status: 'ontrack',
       kpi: 'Awareness + Remarketing',
-      target: 'CPM < $4',
-      current_performance: 'CPM $3.45',
+      target: 'CPM < $1.20',
+      current_performance: 'CPM $0.95',
     },
     influencers: {
       amount: 1000,

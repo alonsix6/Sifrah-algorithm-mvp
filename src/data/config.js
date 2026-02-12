@@ -425,24 +425,9 @@ export const CRM_CONFIG = {
   },
   cpa_thresholds: {
     ecommerce: {
-      cpa_target: 8,
-      cpa_alert: 12,
-      cpa_pause: 18,
-    },
-    jovenes_trendy: {
-      cpa_target: 6,
-      cpa_alert: 10,
-      cpa_pause: 15,
-    },
-    profesionales_estilo: {
-      cpa_target: 8,
-      cpa_alert: 12,
-      cpa_pause: 18,
-    },
-    madres_regalo: {
-      cpa_target: 10,
-      cpa_alert: 15,
-      cpa_pause: 22,
+      cpa_target: 4,
+      cpa_alert: 6,
+      cpa_pause: 8,
     },
   },
   conversion_tracking: {

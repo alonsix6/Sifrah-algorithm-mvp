@@ -44,7 +44,7 @@ export default function DecisionLayer() {
     {
       priority: 'low',
       category: 'Arequipa',
-      action: 'Aumentar budget 20% para Arequipa y Trujillo - CPA $5.80 vs promedio $7.46',
+      action: 'Aumentar budget 20% para Arequipa y Trujillo - CPA $2.65 vs promedio $3.20',
       impact: '+95 ventas ecommerce adicionales/mes en provincias',
       confidence: 78
     }
