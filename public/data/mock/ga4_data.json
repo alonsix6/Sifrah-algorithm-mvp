@@ -1,139 +1,147 @@
 {
-  "timestamp": "2026-01-21T08:30:00.000Z",
-  "property": "FitZone Peru - Membresias",
+  "timestamp": "2026-02-12T08:30:00.000Z",
+  "property": "Sifrah Peru - Ecommerce",
   "source": "Google Analytics 4",
   "overview": {
-    "totalUsers": 42800,
-    "sessions": 68500,
-    "conversions": 1850,
-    "conversionRate": 0.027
+    "totalUsers": 95200,
+    "sessions": 142800,
+    "conversions": 1240,
+    "conversionRate": 0.013
   },
   "topPages": [
     {
-      "page": "/membresias",
-      "views": 18500,
-      "avgTimeOnPage": "4m 12s",
-      "exitRate": 0.28,
-      "conversionRate": 0.082
-    },
-    {
-      "page": "/sedes/miraflores",
-      "views": 12200,
+      "page": "/collections/bisuteria",
+      "views": 28500,
       "avgTimeOnPage": "3m 45s",
-      "exitRate": 0.32,
-      "conversionRate": 0.065
-    },
-    {
-      "page": "/promociones",
-      "views": 15600,
-      "avgTimeOnPage": "2m 58s",
-      "exitRate": 0.25,
-      "conversionRate": 0.088
-    },
-    {
-      "page": "/clases",
-      "views": 9800,
-      "avgTimeOnPage": "3m 22s",
-      "exitRate": 0.35,
-      "conversionRate": 0.058
-    },
-    {
-      "page": "/personal-training",
-      "views": 7200,
-      "avgTimeOnPage": "4m 05s",
-      "exitRate": 0.38,
-      "conversionRate": 0.042
-    },
-    {
-      "page": "/horarios",
-      "views": 8900,
-      "avgTimeOnPage": "2m 15s",
-      "exitRate": 0.42,
-      "conversionRate": 0.048
-    },
-    {
-      "page": "/trial-gratis",
-      "views": 11200,
-      "avgTimeOnPage": "3m 38s",
       "exitRate": 0.22,
-      "conversionRate": 0.125
+      "conversionRate": 0.045,
+      "addToCartRate": 0.125
     },
     {
-      "page": "/nutricion",
-      "views": 5400,
-      "avgTimeOnPage": "4m 25s",
+      "page": "/collections/aretes",
+      "views": 22100,
+      "avgTimeOnPage": "3m 12s",
+      "exitRate": 0.28,
+      "conversionRate": 0.038,
+      "addToCartRate": 0.108
+    },
+    {
+      "page": "/collections/carteras",
+      "views": 18500,
+      "avgTimeOnPage": "4m 02s",
+      "exitRate": 0.25,
+      "conversionRate": 0.042,
+      "addToCartRate": 0.115
+    },
+    {
+      "page": "/collections/collares",
+      "views": 15200,
+      "avgTimeOnPage": "2m 58s",
+      "exitRate": 0.30,
+      "conversionRate": 0.032,
+      "addToCartRate": 0.095
+    },
+    {
+      "page": "/collections/san-valentin",
+      "views": 19800,
+      "avgTimeOnPage": "3m 38s",
+      "exitRate": 0.20,
+      "conversionRate": 0.052,
+      "addToCartRate": 0.142
+    },
+    {
+      "page": "/collections/nuevos-ingresos",
+      "views": 16500,
+      "avgTimeOnPage": "3m 22s",
+      "exitRate": 0.32,
+      "conversionRate": 0.035,
+      "addToCartRate": 0.098
+    },
+    {
+      "page": "/tiendas",
+      "views": 12800,
+      "avgTimeOnPage": "2m 15s",
+      "exitRate": 0.38,
+      "conversionRate": 0.018,
+      "addToCartRate": 0.0
+    },
+    {
+      "page": "/collections/accesorios-cabello",
+      "views": 8900,
+      "avgTimeOnPage": "2m 48s",
       "exitRate": 0.35,
-      "conversionRate": 0.055
+      "conversionRate": 0.028,
+      "addToCartRate": 0.082
     }
   ],
   "searchTerms": [
     {
-      "term": "membresia precio",
-      "searches": 3200,
-      "resultClicks": 2720,
-      "conversionRate": 0.092,
-      "trend": "rising"
-    },
-    {
-      "term": "gimnasio miraflores",
-      "searches": 2850,
-      "resultClicks": 2420,
-      "conversionRate": 0.078,
-      "trend": "rising"
-    },
-    {
-      "term": "trial gratis",
-      "searches": 2100,
-      "resultClicks": 1890,
-      "conversionRate": 0.125,
-      "trend": "rising"
-    },
-    {
-      "term": "horarios clases",
-      "searches": 1850,
-      "resultClicks": 1575,
-      "conversionRate": 0.062,
-      "trend": "stable"
-    },
-    {
-      "term": "personal trainer",
-      "searches": 1400,
-      "resultClicks": 1190,
+      "term": "bisuteria peru",
+      "searches": 4200,
+      "resultClicks": 3570,
       "conversionRate": 0.048,
       "trend": "rising"
     },
     {
-      "term": "spinning lima",
-      "searches": 980,
-      "resultClicks": 835,
-      "conversionRate": 0.058,
-      "trend": "stable"
-    },
-    {
-      "term": "crossfit surco",
-      "searches": 720,
-      "resultClicks": 612,
-      "conversionRate": 0.065,
+      "term": "aretes tendencia",
+      "searches": 3100,
+      "resultClicks": 2635,
+      "conversionRate": 0.042,
       "trend": "rising"
     },
     {
-      "term": "plan familiar",
-      "searches": 650,
-      "resultClicks": 552,
-      "conversionRate": 0.052,
+      "term": "regalos san valentin mujer",
+      "searches": 2800,
+      "resultClicks": 2380,
+      "conversionRate": 0.055,
+      "trend": "rising"
+    },
+    {
+      "term": "carteras mujer peru",
+      "searches": 2200,
+      "resultClicks": 1870,
+      "conversionRate": 0.038,
+      "trend": "rising"
+    },
+    {
+      "term": "collares de moda",
+      "searches": 1850,
+      "resultClicks": 1572,
+      "conversionRate": 0.035,
+      "trend": "stable"
+    },
+    {
+      "term": "sifrah tiendas",
+      "searches": 1500,
+      "resultClicks": 1275,
+      "conversionRate": 0.022,
+      "trend": "rising"
+    },
+    {
+      "term": "accesorios mujer lima",
+      "searches": 1200,
+      "resultClicks": 1020,
+      "conversionRate": 0.032,
+      "trend": "stable"
+    },
+    {
+      "term": "pulseras de moda",
+      "searches": 980,
+      "resultClicks": 833,
+      "conversionRate": 0.028,
       "trend": "stable"
     }
   ],
   "trafficSources": {
-    "organic_search": { "percentage": 28, "sessions": 19180 },
-    "paid_search": { "percentage": 25, "sessions": 17125 },
-    "social_media": { "percentage": 35, "sessions": 23975 },
-    "direct": { "percentage": 8, "sessions": 5480 },
-    "referral": { "percentage": 4, "sessions": 2740 }
+    "organic_search": { "percentage": 25, "sessions": 35700 },
+    "paid_search": { "percentage": 15, "sessions": 21420 },
+    "social_media": { "percentage": 40, "sessions": 57120 },
+    "direct": { "percentage": 12, "sessions": 17136 },
+    "referral": { "percentage": 8, "sessions": 11424 }
   },
   "devices": {
-    "mobile": { "percentage": 78, "sessions": 53430 },
-    "desktop": { "percentage": 18, "sessions": 12330 },
-    "tablet": { "percentage": 4, "sessions": 2740 }
+    "mobile": { "percentage": 82, "sessions": 117096 },
+    "desktop": { "percentage": 14, "sessions": 19992 },
+    "tablet": { "percentage": 4, "sessions": 5712 }
   }
 }

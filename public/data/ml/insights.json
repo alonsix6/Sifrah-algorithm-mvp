@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-01-21T08:30:00.000Z",
+  "generated_at": "2026-02-12T08:30:00.000Z",
   "insights": [
     {
       "id": "ml_trend_momentum",
       "type": "multi_source",
       "priority": "high",
-      "title": "Pico estacional de demanda fitness",
-      "description": "83% de keywords fitness en tendencia alcista por propositos de ano nuevo",
-      "action": "Maximizar inversion en Meta Ads y TikTok durante enero",
+      "title": "Pico estacional de demanda San Valentin",
+      "description": "85% de keywords de accesorios y regalos en tendencia alcista por proximidad a San Valentin",
+      "action": "Maximizar inversion en Meta Ads y TikTok para capturar demanda de regalos",
       "confidence": 0.92,
       "impact_score": 9.5,
       "source": "ML Trend Analysis"
@@ -17,12 +17,12 @@
       "type": "trend",
       "priority": "high",
       "title": "5 keywords en tendencia explosiva",
-      "description": "Crecimiento promedio de +65% en los ultimos 3 meses",
+      "description": "Crecimiento promedio de +72% en los ultimos 3 meses",
       "action": "Crear contenido targeting estos keywords emergentes",
       "keywords": [
-        "gimnasio lima",
-        "bajar de peso gimnasio",
-        "membresia gimnasio"
+        "bisuteria peru",
+        "accesorios regalo mujer",
+        "aretes tendencia"
       ],
       "confidence": 0.88,
       "impact_score": 9,
@@ -33,8 +33,8 @@
       "type": "social",
       "priority": "high",
       "title": "Sentimiento social muy positivo",
-      "description": "60% de los topics tienen sentimiento positivo",
-      "action": "Amplificar contenido de transformaciones y resultados",
+      "description": "65% de los topics tienen sentimiento positivo hacia Sifrah",
+      "action": "Amplificar contenido GRWM y unboxing de nuevas colecciones",
       "confidence": 0.85,
       "impact_score": 8.5,
       "source": "Meta Social Listening"
@@ -47,10 +47,10 @@
       "description": "4 temas aparecen tanto en Google Trends como en redes sociales",
       "action": "Priorizar estos temas en la estrategia de contenido",
       "keywords": [
-        "membresias",
-        "transformaciones",
-        "clases grupales",
-        "nutricion"
+        "bisuteria moderna",
+        "accesorios san valentin",
+        "aretes tendencia",
+        "carteras mujer"
       ],
       "confidence": 0.90,
       "impact_score": 8.5,
@@ -60,11 +60,11 @@
       "id": "trend_top_keyword",
       "type": "trend",
       "priority": "high",
-      "title": "\"gimnasio lima\" lidera las busquedas",
-      "description": "Con un interes de 92/100 y +85% de crecimiento",
+      "title": "\"bisuteria peru\" lidera las busquedas",
+      "description": "Con un interes de 88/100 y +72% de crecimiento",
       "action": "Aumentar inversion en este keyword en Google Ads",
-      "metric": 92,
-      "change": "+85%",
+      "metric": 88,
+      "change": "+72%",
       "confidence": 0.92,
       "impact_score": 9.2,
       "source": "Google Trends"
@@ -74,18 +74,18 @@
       "type": "budget",
       "priority": "medium",
       "title": "Optimizacion detectada: TikTok Ads",
-      "description": "Aumentar de 15% a 20%",
-      "action": "TikTok muestra ROI superior en audiencia joven (CPL -12%)",
+      "description": "Aumentar de 25% a 30%",
+      "action": "TikTok muestra engagement 45% superior al target en contenido GRWM",
       "recommendations": [
         {
           "channel": "tiktok_ads",
           "type": "increase",
-          "from": 15,
-          "to": 20,
+          "from": 25,
+          "to": 30,
           "change": "+5.0%",
-          "impact": 1250,
+          "impact": 500,
           "confidence": "high",
-          "reason": "TikTok muestra CPL 12% inferior al target"
+          "reason": "TikTok muestra engagement 45% superior al objetivo"
         },
         {
           "channel": "google_display",
@@ -93,9 +93,9 @@
           "from": 10,
           "to": 5,
           "change": "-5.0%",
-          "impact": 1250,
+          "impact": 500,
           "confidence": "high",
-          "reason": "Display muestra menor conversion rate"
+          "reason": "Display muestra menor impacto en awareness vs TikTok"
         }
       ],
       "confidence": 0.85,
@@ -106,10 +106,10 @@
       "id": "ga4_conversion_rate",
       "type": "intent",
       "priority": "medium",
-      "title": "Tasa de conversion: 2.7%",
-      "description": "1,850 trials de 68,500 sesiones",
-      "action": "Optimizar landing de trial-gratis con 12.5% conversion",
-      "metric": 2.7,
+      "title": "Tasa de conversion ecommerce: 1.3%",
+      "description": "1,240 compras de 95,200 sesiones en sifrah.com",
+      "action": "Optimizar pagina de coleccion bisuteria con 12.5% add-to-cart rate",
+      "metric": 1.3,
       "confidence": 0.88,
       "impact_score": 7.5,
       "source": "Google Analytics 4"
@@ -118,21 +118,21 @@
       "id": "trend_regional",
       "type": "trend",
       "priority": "medium",
-      "title": "Concentracion en Lima Metropolitana",
-      "description": "100% del interes viene de Lima y distritos",
-      "action": "Geo-segmentar campanas por distrito y sede",
+      "title": "Demanda nacional con foco en Lima",
+      "description": "55% del trafico viene de Lima, seguido por Arequipa (10%) y Trujillo (8%)",
+      "action": "Geo-segmentar campanas por ciudad y tienda mas cercana",
       "regions": [
         {
-          "region": "Miraflores",
+          "region": "Lima",
           "score": 92
         },
         {
-          "region": "San Isidro",
-          "score": 85
+          "region": "Arequipa",
+          "score": 78
         },
         {
-          "region": "Surco",
-          "score": 78
+          "region": "Trujillo",
+          "score": 72
         }
       ],
       "confidence": 0.82,
@@ -143,9 +143,9 @@
       "id": "ga4_top_page",
       "type": "intent",
       "priority": "medium",
-      "title": "/trial-gratis es la pagina con mayor conversion",
-      "description": "11,200 vistas con 12.5% conversion",
-      "action": "Dirigir mas trafico a esta pagina y replicar estructura",
+      "title": "/collections/bisuteria es la pagina con mayor conversion",
+      "description": "28,500 vistas con 12.5% add-to-cart rate",
+      "action": "Dirigir mas trafico a esta coleccion y replicar estructura en otras categorias",
       "confidence": 0.85,
       "impact_score": 7.5,
       "source": "Google Analytics 4"
@@ -154,9 +154,9 @@
       "id": "social_brand_presence",
       "type": "social",
       "priority": "medium",
-      "title": "FitZone presente en 4/5 conversaciones",
-      "description": "La marca aparece en 80% de los temas monitoreados",
-      "action": "Mantener share of voice y mejorar en tema de precios",
+      "title": "Sifrah presente en 4/5 conversaciones de accesorios",
+      "description": "La marca aparece en 80% de los temas monitoreados de bisuteria en Peru",
+      "action": "Mantener share of voice y fortalecer presencia en ecommerce",
       "confidence": 0.85,
       "impact_score": 6.5,
       "source": "Meta Social Listening"

@@ -1,228 +1,228 @@
 {
-  "timestamp": "2026-01-21T08:30:00.000Z",
+  "timestamp": "2026-02-12T08:30:00.000Z",
   "region": "PE",
-  "category": "Health & Fitness",
+  "category": "Fashion & Accessories",
   "source": "Google Trends (Curated Fallback)",
-  "client": "FitZone Peru - Cadena de Gimnasios",
+  "client": "Sifrah Peru - Bisuteria y Accesorios",
   "keywords": [
     {
-      "keyword": "gimnasio lima",
-      "average_interest": 92,
-      "trend": "rising",
-      "peak_score": 100,
-      "growth_3m": "+85%",
-      "top_regions": {
-        "Lima": 100,
-        "Callao": 78,
-        "Arequipa": 45,
-        "Trujillo": 38,
-        "Cusco": 32
-      },
-      "rising_queries": [
-        "gimnasio cerca de mi",
-        "gimnasio 24 horas lima",
-        "gimnasio barato lima"
-      ],
-      "related_topics": [
-        {
-          "title": "Smart Fit",
-          "type": "Brand",
-          "value": 95
-        },
-        {
-          "title": "b2 Gimnasios",
-          "type": "Brand",
-          "value": 68
-        },
-        {
-          "title": "FitZone",
-          "type": "Brand",
-          "value": 45
-        }
-      ],
-      "source": "curated"
-    },
-    {
-      "keyword": "membresia gimnasio",
-      "average_interest": 78,
-      "trend": "rising",
-      "peak_score": 95,
-      "growth_3m": "+62%",
-      "top_regions": {
-        "Lima": 100,
-        "Callao": 72,
-        "Arequipa": 48,
-        "Cusco": 35,
-        "Piura": 32
-      },
-      "rising_queries": [
-        "membresia gimnasio precio",
-        "membresia sin permanencia",
-        "membresia gimnasio promocion"
-      ],
-      "related_topics": [
-        {
-          "title": "Plan mensual",
-          "type": "Product",
-          "value": 88
-        },
-        {
-          "title": "Plan anual",
-          "type": "Product",
-          "value": 72
-        },
-        {
-          "title": "Pase libre",
-          "type": "Product",
-          "value": 65
-        }
-      ],
-      "source": "curated"
-    },
-    {
-      "keyword": "crossfit lima",
-      "average_interest": 68,
-      "trend": "rising",
-      "peak_score": 82,
-      "growth_3m": "+45%",
-      "top_regions": {
-        "Lima": 100,
-        "Miraflores": 92,
-        "San Isidro": 85,
-        "Surco": 78,
-        "La Molina": 72
-      },
-      "rising_queries": [
-        "crossfit para principiantes",
-        "crossfit precio",
-        "box crossfit lima"
-      ],
-      "related_topics": [
-        {
-          "title": "HIIT",
-          "type": "Activity",
-          "value": 82
-        },
-        {
-          "title": "Funcional",
-          "type": "Activity",
-          "value": 78
-        },
-        {
-          "title": "WOD",
-          "type": "Topic",
-          "value": 65
-        }
-      ],
-      "source": "curated"
-    },
-    {
-      "keyword": "personal trainer lima",
-      "average_interest": 72,
-      "trend": "rising",
-      "peak_score": 88,
-      "growth_3m": "+38%",
-      "top_regions": {
-        "Lima": 100,
-        "San Isidro": 88,
-        "Miraflores": 85,
-        "La Molina": 75,
-        "Surco": 72
-      },
-      "rising_queries": [
-        "personal trainer precio",
-        "entrenador personal lima",
-        "personal trainer online"
-      ],
-      "related_topics": [
-        {
-          "title": "Nutricion",
-          "type": "Service",
-          "value": 85
-        },
-        {
-          "title": "Plan de entrenamiento",
-          "type": "Service",
-          "value": 80
-        },
-        {
-          "title": "Resultados",
-          "type": "Topic",
-          "value": 75
-        }
-      ],
-      "source": "curated"
-    },
-    {
-      "keyword": "bajar de peso gimnasio",
+      "keyword": "bisuteria peru",
       "average_interest": 88,
       "trend": "rising",
       "peak_score": 100,
-      "growth_3m": "+92%",
+      "growth_3m": "+72%",
       "top_regions": {
         "Lima": 100,
-        "Callao": 82,
-        "Arequipa": 65,
-        "Trujillo": 58,
-        "Chiclayo": 52
+        "Arequipa": 78,
+        "Trujillo": 65,
+        "Chiclayo": 55,
+        "Piura": 48
       },
       "rising_queries": [
-        "como bajar de peso rapido",
-        "rutina para bajar de peso",
-        "cardio para quemar grasa"
+        "bisuteria peru online",
+        "bisuteria moderna peru",
+        "bisuteria tendencia 2026"
       ],
       "related_topics": [
         {
-          "title": "Propositos 2026",
-          "type": "Topic",
-          "value": 95
+          "title": "Sifrah",
+          "type": "Brand",
+          "value": 85
         },
         {
-          "title": "Transformacion",
-          "type": "Topic",
-          "value": 88
+          "title": "Isadora",
+          "type": "Brand",
+          "value": 72
         },
         {
-          "title": "Dieta",
-          "type": "Topic",
-          "value": 82
+          "title": "Do it!",
+          "type": "Brand",
+          "value": 58
         }
       ],
       "source": "curated"
     },
     {
-      "keyword": "clases de spinning",
-      "average_interest": 65,
-      "trend": "stable",
-      "peak_score": 78,
-      "growth_3m": "+22%",
+      "keyword": "aretes tendencia",
+      "average_interest": 82,
+      "trend": "rising",
+      "peak_score": 95,
+      "growth_3m": "+58%",
       "top_regions": {
         "Lima": 100,
-        "Miraflores": 88,
-        "San Borja": 75,
-        "Surco": 70,
-        "Magdalena": 65
+        "Arequipa": 72,
+        "Trujillo": 62,
+        "Cusco": 48,
+        "Piura": 42
       },
       "rising_queries": [
-        "spinning beneficios",
-        "spinning para bajar de peso",
-        "clases spinning lima"
+        "aretes tendencia 2026",
+        "aretes de moda mujer",
+        "aretes argolla grandes"
       ],
       "related_topics": [
         {
-          "title": "Ciclismo indoor",
-          "type": "Activity",
+          "title": "Aretes argolla",
+          "type": "Product",
+          "value": 88
+        },
+        {
+          "title": "Aretes dorados",
+          "type": "Product",
+          "value": 75
+        },
+        {
+          "title": "Aretes perla",
+          "type": "Product",
+          "value": 68
+        }
+      ],
+      "source": "curated"
+    },
+    {
+      "keyword": "accesorios regalo mujer",
+      "average_interest": 78,
+      "trend": "rising",
+      "peak_score": 100,
+      "growth_3m": "+125%",
+      "top_regions": {
+        "Lima": 100,
+        "Callao": 82,
+        "Arequipa": 68,
+        "Trujillo": 55,
+        "Cusco": 48
+      },
+      "rising_queries": [
+        "regalo san valentin mujer",
+        "accesorios para regalar",
+        "regalo bisuteria mujer"
+      ],
+      "related_topics": [
+        {
+          "title": "San Valentin",
+          "type": "Season",
+          "value": 95
+        },
+        {
+          "title": "Set de accesorios",
+          "type": "Product",
+          "value": 82
+        },
+        {
+          "title": "Joyeria",
+          "type": "Category",
+          "value": 72
+        }
+      ],
+      "source": "curated"
+    },
+    {
+      "keyword": "carteras mujer peru",
+      "average_interest": 75,
+      "trend": "rising",
+      "peak_score": 88,
+      "growth_3m": "+42%",
+      "top_regions": {
+        "Lima": 100,
+        "Arequipa": 75,
+        "Trujillo": 62,
+        "Chiclayo": 52,
+        "Piura": 45
+      },
+      "rising_queries": [
+        "carteras de moda 2026",
+        "carteras baratas lima",
+        "carteras mujer online"
+      ],
+      "related_topics": [
+        {
+          "title": "Carteras crossbody",
+          "type": "Product",
+          "value": 85
+        },
+        {
+          "title": "Carteras pequeñas",
+          "type": "Product",
           "value": 78
         },
         {
-          "title": "Cardio",
-          "type": "Activity",
-          "value": 72
+          "title": "Billeteras mujer",
+          "type": "Product",
+          "value": 65
+        }
+      ],
+      "source": "curated"
+    },
+    {
+      "keyword": "collares de moda",
+      "average_interest": 72,
+      "trend": "rising",
+      "peak_score": 85,
+      "growth_3m": "+38%",
+      "top_regions": {
+        "Lima": 100,
+        "Arequipa": 68,
+        "Trujillo": 58,
+        "Cusco": 52,
+        "Huancayo": 45
+      },
+      "rising_queries": [
+        "collares de moda mujer",
+        "collar tendencia 2026",
+        "collares dorados"
+      ],
+      "related_topics": [
+        {
+          "title": "Collar choker",
+          "type": "Product",
+          "value": 82
         },
         {
-          "title": "Clases grupales",
-          "type": "Service",
+          "title": "Collar cadena",
+          "type": "Product",
+          "value": 75
+        },
+        {
+          "title": "Collar perlas",
+          "type": "Product",
           "value": 68
+        }
+      ],
+      "source": "curated"
+    },
+    {
+      "keyword": "tiendas sifrah",
+      "average_interest": 65,
+      "trend": "rising",
+      "peak_score": 78,
+      "growth_3m": "+55%",
+      "top_regions": {
+        "Lima": 100,
+        "Arequipa": 85,
+        "Trujillo": 72,
+        "Chiclayo": 65,
+        "Piura": 58
+      },
+      "rising_queries": [
+        "sifrah tienda cerca",
+        "sifrah jockey plaza",
+        "sifrah mega plaza"
+      ],
+      "related_topics": [
+        {
+          "title": "Centro comercial",
+          "type": "Location",
+          "value": 82
+        },
+        {
+          "title": "Sifrah online",
+          "type": "Brand",
+          "value": 75
+        },
+        {
+          "title": "Horarios",
+          "type": "Info",
+          "value": 62
         }
       ],
       "source": "curated"
@@ -230,11 +230,11 @@
   ],
   "metadata": {
     "method": "Curated data (Apify unavailable)",
-    "note": "Keywords fitness de alto volumen para Lima Peru. Pico estacional de Enero por propositos de ano nuevo.",
+    "note": "Keywords de bisuteria y accesorios de alto volumen para Peru. Pico estacional de Febrero por San Valentin.",
     "timeframe": "today 1-m",
     "apify_keywords": 0,
     "curated_keywords": 6,
-    "market": "Lima Metropolitana (12 distritos)",
-    "product": "Membresias y Servicios Fitness 2026"
+    "market": "Peru Nacional (+90 tiendas)",
+    "product": "Bisuteria y Accesorios Femeninos 2026"
   }
 }

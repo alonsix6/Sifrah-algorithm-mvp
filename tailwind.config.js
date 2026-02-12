@@ -7,61 +7,65 @@ export default {
   theme: {
     extend: {
       colors: {
-        // FitZone Brand Colors - Royal Purple (Premium & Elegant)
-        fitzone: {
-          // Primarios - Violeta vibrante
-          purple: '#7C3AED',        // Violeta principal (premium, energía)
-          darkPurple: '#5B21B6',    // Violeta hover/oscuro
-          lightPurple: '#A78BFA',   // Violeta claro (acentos)
+        // Sifrah Brand Colors - Rosa/Magenta (Light Mode)
+        sifrah: {
+          // Primarios - Rosa/Magenta vibrante
+          pink: '#ef008f',            // Rosa principal (acento primario)
+          darkPink: '#a30061',        // Rosa hover/oscuro
+          lightPink: '#ff89d0',       // Rosa claro (acentos)
+          softPink: '#fce4f0',        // Rosa suave (badges, highlights)
 
-          // Secundarios - Oscuros (fondos premium)
-          charcoal: '#0F0A1A',      // Negro-morado (fondo principal)
-          slate: '#1A1432',         // Slate morado (cards)
-          darkSlate: '#0A0612',     // Más oscuro (contraste)
+          // Fondos claros (Light Mode)
+          white: '#FFFFFF',           // Fondo principal
+          snow: '#FAFAFA',            // Fondo alternativo
+          lightGray: '#F5F5F7',       // Fondo de cards
+          border: '#E5E7EB',          // Bordes suaves
+
+          // Textos
+          textDark: '#1F2937',        // Texto principal (casi negro)
+          textMedium: '#6B7280',      // Texto secundario
+          textLight: '#9CA3AF',       // Texto terciario
 
           // Acentos tech/datos
-          cyan: '#06B6D4',          // Cyan (datos, tech)
-          electric: '#22D3EE',      // Cyan brillante (gráficos)
+          cyan: '#06B6D4',            // Cyan (datos, tech)
+          electric: '#22D3EE',        // Cyan brillante (gráficos)
 
           // Éxito/Positivo
-          emerald: '#10B981',       // Esmeralda (éxito, crecimiento)
-          green: '#22C55E',         // Verde (positivo)
+          emerald: '#10B981',         // Esmeralda (éxito, crecimiento)
+          green: '#22C55E',           // Verde (positivo)
+
+          // Premium
+          gold: '#D4AF37',            // Dorado (bisutería, premium)
 
           // Alerta/Negativo
-          red: '#EF4444',           // Rojo (alerta)
-          amber: '#F59E0B',         // Ámbar (advertencia)
-
-          // Neutros
-          white: '#FFFFFF',
-          lightGray: '#F5F5F7',
-          textGray: '#9CA3AF',
-          mediumGray: '#6B7280',
+          red: '#EF4444',             // Rojo (alerta)
+          amber: '#F59E0B',           // Ámbar (advertencia)
         },
         // Semantic colors
-        success: '#10B981',         // Esmeralda FitZone para éxito
-        warning: '#F59E0B',         // Ámbar
-        error: '#EF4444',           // Rojo
-        info: '#06B6D4',            // Cyan
+        success: '#10B981',
+        warning: '#F59E0B',
+        error: '#EF4444',
+        info: '#06B6D4',
       },
       fontFamily: {
-        sans: ['Inter', 'Helvetica Neue', 'Arial', 'sans-serif'],
-        display: ['Inter', 'Helvetica Neue', 'sans-serif'],
+        sans: ['DM Sans', 'Inter', 'Helvetica Neue', 'Arial', 'sans-serif'],
+        display: ['DM Sans', 'Inter', 'Helvetica Neue', 'sans-serif'],
       },
       backgroundImage: {
-        // Gradientes FitZone Royal Purple
-        'gradient-fitzone': 'linear-gradient(135deg, #7C3AED 0%, #5B21B6 100%)',
-        'gradient-fitzone-dark': 'linear-gradient(135deg, #1A1432 0%, #0F0A1A 100%)',
-        'gradient-fitzone-energy': 'linear-gradient(135deg, #7C3AED 0%, #10B981 100%)',
-        'gradient-fitzone-tech': 'linear-gradient(135deg, #06B6D4 0%, #22D3EE 100%)',
-        'gradient-fitzone-premium': 'linear-gradient(135deg, #0F0A1A 0%, #1A1432 50%, #7C3AED 100%)',
-        'gradient-hero': 'linear-gradient(180deg, #0F0A1A 0%, #1A1432 100%)',
+        // Gradientes Sifrah Light Mode
+        'gradient-sifrah': 'linear-gradient(135deg, #ef008f 0%, #a30061 100%)',
+        'gradient-sifrah-light': 'linear-gradient(135deg, #FFFFFF 0%, #FAFAFA 100%)',
+        'gradient-sifrah-soft': 'linear-gradient(135deg, #fce4f0 0%, #FFFFFF 100%)',
+        'gradient-sifrah-tech': 'linear-gradient(135deg, #06B6D4 0%, #22D3EE 100%)',
+        'gradient-sifrah-premium': 'linear-gradient(135deg, #ef008f 0%, #D4AF37 100%)',
+        'gradient-hero': 'linear-gradient(180deg, #FFFFFF 0%, #FAFAFA 100%)',
       },
       boxShadow: {
-        'fitzone': '0 20px 50px rgba(124, 58, 237, 0.15)',
-        'fitzone-lg': '0 30px 60px rgba(124, 58, 237, 0.25)',
-        'fitzone-glow': '0 0 30px rgba(124, 58, 237, 0.4)',
-        'card': '0 4px 20px rgba(0, 0, 0, 0.3)',
-        'card-hover': '0 8px 30px rgba(124, 58, 237, 0.2)',
+        'sifrah': '0 20px 50px rgba(239, 0, 143, 0.1)',
+        'sifrah-lg': '0 30px 60px rgba(239, 0, 143, 0.15)',
+        'sifrah-glow': '0 0 30px rgba(239, 0, 143, 0.2)',
+        'card': '0 1px 3px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.04)',
+        'card-hover': '0 4px 20px rgba(239, 0, 143, 0.12)',
       },
       animation: {
         'fadeIn': 'fadeIn 0.5s ease-in-out',
@@ -84,8 +88,8 @@ export default {
           '100%': { transform: 'translateY(0)', opacity: '1' },
         },
         pulseGlow: {
-          '0%, 100%': { boxShadow: '0 0 20px rgba(124, 58, 237, 0.3)' },
-          '50%': { boxShadow: '0 0 40px rgba(124, 58, 237, 0.6)' },
+          '0%, 100%': { boxShadow: '0 0 20px rgba(239, 0, 143, 0.15)' },
+          '50%': { boxShadow: '0 0 40px rgba(239, 0, 143, 0.3)' },
         },
         bounceSubtle: {
           '0%, 100%': { transform: 'translateY(0)' },
