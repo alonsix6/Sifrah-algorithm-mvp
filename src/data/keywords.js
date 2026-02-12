@@ -1,5 +1,5 @@
-// Keywords y hashtags para Sifrah - Bisuteria y accesorios Peru
-// Configuracion completa para busquedas y monitoreo social
+// Keywords y hashtags para Sifrah - Bisutería y accesorios Perú
+// Configuración completa para búsquedas y monitoreo social
 
 export const KEYWORDS_SIFRAH = {
   // Marca Sifrah
@@ -30,7 +30,7 @@ export const KEYWORDS_SIFRAH = {
     'accesorios para mujer',
   ],
 
-  // Intencion de compra alta
+  // Intención de compra alta
   intencion: [
     'comprar aretes online peru',
     'collares de moda peru',
@@ -237,7 +237,7 @@ export const HIGH_INTENT_KEYWORDS = [
   'bisuteria envio gratis',
 ];
 
-// Configuracion para Google Trends
+// Configuración para Google Trends
 export const GOOGLE_TRENDS_CONFIG = {
   keywords: ALL_KEYWORDS.slice(0, 15),
   region: 'PE',
@@ -252,7 +252,7 @@ export const GOOGLE_TRENDS_CONFIG = {
   refreshInterval: 3600000,
 };
 
-// Configuracion para TikTok
+// Configuración para TikTok
 export const TIKTOK_CONFIG = {
   hashtags: [
     ...HASHTAGS_SIFRAH.core,
@@ -271,7 +271,7 @@ export const TIKTOK_CONFIG = {
   ],
 };
 
-// Configuracion para Meta (Facebook/Instagram)
+// Configuración para Meta (Facebook/Instagram)
 export const META_CONFIG = {
   hashtags: [
     ...HASHTAGS_SIFRAH.core,

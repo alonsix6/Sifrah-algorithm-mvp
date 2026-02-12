@@ -64,7 +64,7 @@ export default function ExecutionLayer() {
             </div>
             <div>
               <h3 className="text-base sm:text-lg lg:text-xl font-bold">Presupuesto Mensual Sifrah</h3>
-              <p className="text-white/90 mt-0.5 sm:mt-1 text-xs sm:text-sm">Distribucion inteligente por canal digital</p>
+              <p className="text-white/90 mt-0.5 sm:mt-1 text-xs sm:text-sm">Distribución inteligente por canal digital</p>
             </div>
           </div>
 
@@ -80,7 +80,7 @@ export default function ExecutionLayer() {
         {/* Budget Progress */}
         <div className="bg-white/10 rounded-lg sm:rounded-xl p-3 sm:p-4 lg:p-5">
           <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-2 mb-2 sm:mb-3">
-            <span className="text-xs sm:text-sm font-medium">Ejecucion del mes</span>
+            <span className="text-xs sm:text-sm font-medium">Ejecución del mes</span>
             <span className="text-lg sm:text-xl font-bold">
               ${(Object.values(BUDGET_ALLOCATION.distribution).reduce((sum, ch) => sum + ch.amount, 0)).toLocaleString()}
             </span>
@@ -99,8 +99,8 @@ export default function ExecutionLayer() {
             <Target className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
           </div>
           <div>
-            <h3 className="text-sm sm:text-base font-bold text-sifrah-textDark">Distribucion por Canal Digital</h3>
-            <p className="text-xs sm:text-sm text-sifrah-textMedium">Performance y asignacion para awareness, ecommerce y retail</p>
+            <h3 className="text-sm sm:text-base font-bold text-sifrah-textDark">Distribución por Canal Digital</h3>
+            <p className="text-xs sm:text-sm text-sifrah-textMedium">Performance y asignación para awareness, ecommerce y retail</p>
           </div>
         </div>
 
@@ -177,7 +177,7 @@ export default function ExecutionLayer() {
             <AlertTriangle className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
           </div>
           <div>
-            <h3 className="text-sm sm:text-base font-bold text-sifrah-textDark">Recomendaciones de Optimizacion</h3>
+            <h3 className="text-sm sm:text-base font-bold text-sifrah-textDark">Recomendaciones de Optimización</h3>
             <p className="text-xs sm:text-sm text-sifrah-textMedium">Ajustes sugeridos basados en performance</p>
           </div>
         </div>
@@ -233,8 +233,8 @@ export default function ExecutionLayer() {
               <ShoppingBag className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
             </div>
             <div>
-              <h3 className="text-sm sm:text-base font-bold text-sifrah-textDark">Performance por Linea de Producto</h3>
-              <p className="text-xs sm:text-sm text-sifrah-textMedium">Rendimiento de campana por categoria de producto</p>
+              <h3 className="text-sm sm:text-base font-bold text-sifrah-textDark">Performance por Línea de Producto</h3>
+              <p className="text-xs sm:text-sm text-sifrah-textMedium">Rendimiento de campaña por categoría de producto</p>
             </div>
           </div>
           <button
@@ -331,12 +331,12 @@ export default function ExecutionLayer() {
       <div className="bg-sifrah-cyan text-white rounded-xl sm:rounded-2xl shadow-lg p-4 sm:p-6 lg:p-8">
         <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
           <Calendar className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8" />
-          <h3 className="text-base sm:text-lg font-bold">Timing Optimo de Campana</h3>
+          <h3 className="text-base sm:text-lg font-bold">Timing Óptimo de Campaña</h3>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
           <div className="bg-white/10 rounded-lg sm:rounded-xl p-3 sm:p-4 lg:p-5">
-            <h4 className="font-bold text-sm sm:text-base mb-2 sm:mb-3">Mejores horarios del dia</h4>
+            <h4 className="font-bold text-sm sm:text-base mb-2 sm:mb-3">Mejores horarios del día</h4>
             <div className="space-y-2">
               <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-2">
                 <span className="text-white/90 text-xs sm:text-sm">10:00 - 1:00 PM (Mid-morning)</span>
@@ -351,22 +351,22 @@ export default function ExecutionLayer() {
                 <span className="px-2 py-0.5 sm:py-1 bg-sifrah-emerald/30 rounded text-xs sm:text-sm font-bold w-fit">+55%</span>
               </div>
             </div>
-            <p className="text-[10px] sm:text-xs text-white/70 mt-2 sm:mt-3">Pico maximo: 7-10 PM navegacion nocturna</p>
+            <p className="text-[10px] sm:text-xs text-white/70 mt-2 sm:mt-3">Pico máximo: 7-10 PM navegación nocturna</p>
           </div>
 
           <div className="bg-white/10 rounded-lg sm:rounded-xl p-3 sm:p-4 lg:p-5">
-            <h4 className="font-bold text-sm sm:text-base mb-2 sm:mb-3">Mejores dias de la semana</h4>
+            <h4 className="font-bold text-sm sm:text-base mb-2 sm:mb-3">Mejores días de la semana</h4>
             <div className="space-y-2">
               <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-2">
                 <span className="text-white/90 text-xs sm:text-sm">Viernes</span>
                 <span className="px-2 py-0.5 sm:py-1 bg-sifrah-emerald/30 rounded text-xs sm:text-sm font-bold w-fit">Muy Alta</span>
               </div>
               <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-2">
-                <span className="text-white/90 text-xs sm:text-sm">Sabado</span>
+                <span className="text-white/90 text-xs sm:text-sm">Sábado</span>
                 <span className="px-2 py-0.5 sm:py-1 bg-white/20 rounded text-xs sm:text-sm font-bold w-fit">Alta</span>
               </div>
               <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-2">
-                <span className="text-white/90 text-xs sm:text-sm">Miercoles</span>
+                <span className="text-white/90 text-xs sm:text-sm">Miércoles</span>
                 <span className="px-2 py-0.5 sm:py-1 bg-white/20 rounded text-xs sm:text-sm font-bold w-fit">Media</span>
               </div>
             </div>
@@ -377,7 +377,7 @@ export default function ExecutionLayer() {
           <p className="text-xs sm:text-sm font-semibold mb-1.5 sm:mb-2 flex items-center gap-1.5 sm:gap-2">
             <Lightbulb className="w-3 h-3 sm:w-4 sm:h-4" /> Estacionalidad Sifrah:
           </p>
-          <p className="text-xs sm:text-sm">Mayo (Dia de la Madre - pico maximo), Dic-Ene (Navidad/Ano Nuevo), Jul (Fiestas Patrias), Feb (San Valentin). Marzo es el mes mas bajo - reducir budget 20%.</p>
+          <p className="text-xs sm:text-sm">Mayo (Día de la Madre - pico máximo), Dic-Ene (Navidad/Año Nuevo), Jul (Fiestas Patrias), Feb (San Valentín). Marzo es el mes más bajo - reducir budget 20%.</p>
         </div>
       </div>
     </div>

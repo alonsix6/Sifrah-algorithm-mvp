@@ -166,8 +166,8 @@ export default function OptimizationLayer() {
       <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg p-3 sm:p-4 lg:p-6 border border-sifrah-border">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4 mb-4 sm:mb-6">
           <div>
-            <h3 className="text-sm sm:text-base font-bold text-sifrah-textDark">Performance Ultimos 7 Dias</h3>
-            <p className="text-xs sm:text-sm text-sifrah-textMedium">Evolucion de metricas clave</p>
+            <h3 className="text-sm sm:text-base font-bold text-sifrah-textDark">Performance Últimos 7 Días</h3>
+            <p className="text-xs sm:text-sm text-sifrah-textMedium">Evolución de métricas clave</p>
           </div>
           <div className="flex gap-3 sm:gap-4 text-xs sm:text-sm">
             <div className="flex items-center gap-1.5 sm:gap-2">
@@ -250,7 +250,7 @@ export default function OptimizationLayer() {
         </div>
       </div>
 
-      {/* Funnel de Conversion - Responsive */}
+      {/* Funnel de Conversión - Responsive */}
       <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg p-3 sm:p-4 lg:p-6 border border-sifrah-border">
         <h3 className="text-sm sm:text-base font-bold text-sifrah-textDark mb-4 sm:mb-6">Funnel de Conversión Ecommerce Sifrah</h3>
 
@@ -302,6 +302,7 @@ export default function OptimizationLayer() {
               <p className="text-xs text-sifrah-textMedium mb-0.5 sm:mb-1">Carrito → Compra</p>
               <p className="text-lg sm:text-xl font-bold text-sifrah-emerald">48.0%</p>
               <p className="text-xs text-sifrah-textMedium">Excelente conversión</p>
+
             </div>
             <div className="bg-sifrah-cyan/10 rounded-lg p-3 border border-sifrah-cyan/20">
               <p className="text-xs text-sifrah-textMedium mb-0.5 sm:mb-1">Tráfico → Carrito</p>
@@ -312,7 +313,7 @@ export default function OptimizationLayer() {
         </div>
       </div>
 
-      {/* Alertas Automaticas */}
+      {/* Alertas Automáticas */}
       <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg p-3 sm:p-4 lg:p-6 border border-sifrah-border">
         <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
           <AlertCircle className="w-5 h-5 sm:w-6 sm:h-6 text-sifrah-pink" />
@@ -337,7 +338,7 @@ export default function OptimizationLayer() {
               </div>
               <p className="text-xs text-sifrah-textMedium mb-1.5 sm:mb-2">{alert.message}</p>
               <p className="text-xs font-semibold text-sifrah-pink">
-                Accion: {alert.action}
+                Acción: {alert.action}
               </p>
             </div>
           ))}
@@ -346,7 +347,7 @@ export default function OptimizationLayer() {
 
       {/* Competitor Analysis */}
       <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg p-3 sm:p-4 lg:p-6 border border-sifrah-border">
-        <h3 className="text-sm sm:text-base font-bold text-sifrah-textDark mb-3 sm:mb-4">Análisis de Competencia Accesorios</h3>
+        <h3 className="text-sm sm:text-base font-bold text-sifrah-textDark mb-3 sm:mb-4">Análisis de Competencia - Accesorios</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
           {COMPETITOR_INSIGHTS.filter(c => c.brand !== 'Sifrah').map((comp, idx) => (
             <div key={idx} className="p-3 sm:p-4 bg-sifrah-snow border-2 border-sifrah-border rounded-lg hover:border-sifrah-pink/50 transition-colors">
@@ -399,7 +400,7 @@ export default function OptimizationLayer() {
                 <ShoppingBag className="w-4 h-4 sm:w-5 sm:h-5" />
                 Sifrah Peru
               </h4>
-              <p className="text-xs text-white/70 mb-2">Marca de accesorios y joyería con presencia ecommerce y retail en Perú</p>
+              <p className="text-xs text-white/70 mb-2">Marca de accesorios y bisutería con presencia ecommerce y retail en Perú</p>
               <div className="flex flex-wrap gap-4 sm:gap-6">
                 <div>
                   <p className="text-xs text-white/70">Share of Voice</p>

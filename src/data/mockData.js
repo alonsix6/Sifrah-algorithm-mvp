@@ -1,5 +1,5 @@
 // Mock Data para Sifrah - Dashboard Demo Comercial
-// Datos simulados realistas para cadena de bisuteria y accesorios en Peru
+// Datos simulados realistas para cadena de bisutería y accesorios en Perú
 
 // ============================================================================
 // MOCK GA4 DATA - Google Analytics 4 simulado
@@ -17,7 +17,7 @@ export const MOCK_GA4_DATA = {
   top_pages: [
     {
       page: '/collections/bisuteria',
-      title: 'Bisuteria - Sifrah',
+      title: 'Bisutería - Sifrah',
       views: 28500,
       bounce_rate: 22,
       avg_time: '5:10',
@@ -62,7 +62,7 @@ export const MOCK_GA4_DATA = {
   },
 
   traffic_sources: {
-    organic_search: { percentage: 22, sessions: 20944, label: 'Busqueda Organica' },
+    organic_search: { percentage: 22, sessions: 20944, label: 'Búsqueda Orgánica' },
     paid_search: { percentage: 18, sessions: 17136, label: 'Google Ads' },
     social_media: { percentage: 42, sessions: 39984, label: 'Meta + TikTok Ads' },
     direct: { percentage: 12, sessions: 11424, label: 'Directo' },
@@ -88,7 +88,7 @@ export const MOCK_GA4_DATA = {
 };
 
 // ============================================================================
-// PERFORMANCE KPIs - Metricas principales del dashboard
+// PERFORMANCE KPIs - Métricas principales del dashboard
 // ============================================================================
 export const PERFORMANCE_KPIS = {
   alcance: {
@@ -97,7 +97,7 @@ export const PERFORMANCE_KPIS = {
     change: '+20.8',
     trend: 'up',
     label: 'Alcance Total',
-    description: 'Usuarios unicos impactados a nivel nacional',
+    description: 'Usuarios únicos impactados a nivel nacional',
   },
 
   impresiones: {
@@ -131,7 +131,7 @@ export const PERFORMANCE_KPIS = {
     previous: 78500,
     change: '+21.3',
     trend: 'up',
-    label: 'Trafico Web',
+    label: 'Tráfico Web',
     description: 'Sesiones en sifrah.com',
   },
 
@@ -140,8 +140,8 @@ export const PERFORMANCE_KPIS = {
     total_spent: 9250,
     spent_percentage: 92.5,
     trend: 'on-track',
-    label: 'Inversion',
-    description: 'Inversion publicitaria mensual',
+    label: 'Inversión',
+    description: 'Inversión publicitaria mensual',
     currency: '$',
   },
 
@@ -170,7 +170,7 @@ export const PERFORMANCE_KPIS = {
     change: '-17.3',
     trend: 'down',
     label: 'CPM Alcance',
-    description: 'Costo por mil alcance unico',
+    description: 'Costo por mil alcance único',
     currency: '$',
   },
 
@@ -190,7 +190,7 @@ export const PERFORMANCE_KPIS = {
     change: '-22.9',
     trend: 'down',
     label: 'CPA Ecommerce',
-    description: 'Costo por adquisicion (solo ecommerce)',
+    description: 'Costo por adquisición (solo ecommerce)',
     currency: '$',
   },
 
@@ -201,7 +201,7 @@ export const PERFORMANCE_KPIS = {
     change: '+20.0',
     trend: 'up',
     label: 'Alcance Retail',
-    description: 'Alcance de campanas orientadas a tiendas fisicas',
+    description: 'Alcance de campañas orientadas a tiendas físicas',
   },
 
   impresiones_retail: {
@@ -210,12 +210,12 @@ export const PERFORMANCE_KPIS = {
     change: '+18.2',
     trend: 'up',
     label: 'Impresiones Retail',
-    description: 'Impresiones de campanas orientadas a tiendas fisicas',
+    description: 'Impresiones de campañas orientadas a tiendas físicas',
   },
 };
 
 // ============================================================================
-// SIFRAH OPPORTUNITY SCORE - Indice de oportunidad moda/accesorios
+// SIFRAH OPPORTUNITY SCORE - Índice de oportunidad moda/accesorios
 // ============================================================================
 export const OPPORTUNITY_SCORE = {
   current_score: 82,
@@ -225,7 +225,7 @@ export const OPPORTUNITY_SCORE = {
       score: 85,
       weight: 0.25,
       contribution: 21.3,
-      insight: 'Busquedas de "bisuteria peru" +22% vs mes anterior',
+      insight: 'Búsquedas de "bisutería peru" +22% vs mes anterior',
     },
     social_engagement: {
       score: 88,
@@ -243,7 +243,7 @@ export const OPPORTUNITY_SCORE = {
       score: 90,
       weight: 0.15,
       contribution: 13.5,
-      insight: 'Proximidad San Valentin = pico de demanda en accesorios regalo',
+      insight: 'Proximidad San Valentín = pico de demanda en accesorios regalo',
     },
     conversion_efficiency: {
       score: 80,
@@ -253,25 +253,25 @@ export const OPPORTUNITY_SCORE = {
     },
   },
   recommendation: {
-    message: 'Momento optimo para aumentar inversion en awareness. Tendencias de moda en TikTok alineadas con coleccion Sifrah. San Valentin acercandose impulsa demanda de regalos.',
+    message: 'Momento óptimo para aumentar inversión en awareness. Tendencias de moda en TikTok alineadas con colección Sifrah. San Valentín acercándose impulsa demanda de regalos.',
     confidence: '89%',
     priority: 'high',
     actions: [
       'Incrementar budget TikTok 30% (contenido GRWM)',
-      'Lanzar campana "Brilla en San Valentin"',
+      'Lanzar campaña "Brilla en San Valentín"',
       'Activar influencers micro (10-50K) de moda',
-      'Promover coleccion regalo + envio gratis en ecommerce',
+      'Promover colección regalo + envío gratis en ecommerce',
     ],
   },
 };
 
 // ============================================================================
-// PRODUCTOS PERFORMANCE - Rendimiento por linea de producto
+// PRODUCTOS PERFORMANCE - Rendimiento por línea de producto
 // ============================================================================
 export const SERVICIOS_PERFORMANCE = [
   {
     id: 1,
-    nombre: 'Bisuteria',
+    nombre: 'Bisutería',
     demanda: 'Muy Alta',
     ventas_ecommerce: 558,
     unidades: 1850,
@@ -385,8 +385,8 @@ export const COMPETENCIA = [
     rank: 2,
     type: 'Internacional',
     precio: 'S/30-150',
-    fortalezas: ['Marca internacional', 'Diseno exclusivo', 'Presencia en malls'],
-    debilidades: ['Menor cobertura nacional', 'Precio mas alto', 'Ecommerce limitado'],
+    fortalezas: ['Marca internacional', 'Diseño exclusivo', 'Presencia en malls'],
+    debilidades: ['Menor cobertura nacional', 'Precio más alto', 'Ecommerce limitado'],
   },
   {
     name: 'Do it!',
@@ -396,8 +396,8 @@ export const COMPETENCIA = [
     rank: 3,
     type: 'Nacional',
     precio: 'S/15-80',
-    fortalezas: ['Muchas tiendas', 'Precio accesible', 'Publico joven'],
-    debilidades: ['Percepcion de menor calidad', 'Menos variedad bisuteria'],
+    fortalezas: ['Muchas tiendas', 'Precio accesible', 'Público joven'],
+    debilidades: ['Percepción de menor calidad', 'Menos variedad bisutería'],
   },
   {
     name: 'Waba Shopping',
@@ -407,8 +407,8 @@ export const COMPETENCIA = [
     rank: 4,
     type: 'Mayorista/Minorista',
     precio: 'S/5-60',
-    fortalezas: ['Precio muy bajo', 'Gran volumen', '25 anos en mercado'],
-    debilidades: ['Imagen menos premium', 'Sin ecommerce fuerte', 'Publico B2B'],
+    fortalezas: ['Precio muy bajo', 'Gran volumen', '25 años en mercado'],
+    debilidades: ['Imagen menos premium', 'Sin ecommerce fuerte', 'Público B2B'],
   },
   {
     name: 'Amphora',
@@ -429,8 +429,8 @@ export const COMPETENCIA = [
     rank: 6,
     type: 'Artesanal/Premium',
     precio: 'S/80-350',
-    fortalezas: ['Artesanal', 'Exclusividad', 'Bisuteria fina'],
-    debilidades: ['Pocas tiendas', 'Precio alto', 'Produccion limitada'],
+    fortalezas: ['Artesanal', 'Exclusividad', 'Bisutería fina'],
+    debilidades: ['Pocas tiendas', 'Precio alto', 'Producción limitada'],
   },
   {
     name: 'Sifrah',
@@ -438,15 +438,15 @@ export const COMPETENCIA = [
     market_share: 35,
     tiendas: 90,
     rank: 1,
-    type: 'Nacional Lider',
+    type: 'Nacional Líder',
     precio: 'S/15-120',
-    fortalezas: ['Lider en tiendas', 'Precio accesible', 'Variedad', 'Ecommerce + Marketplaces'],
-    debilidades: ['Awareness digital en crecimiento', 'Expansion internacional pendiente'],
+    fortalezas: ['Líder en tiendas', 'Precio accesible', 'Variedad', 'Ecommerce + Marketplaces'],
+    debilidades: ['Awareness digital en crecimiento', 'Expansión internacional pendiente'],
   },
 ];
 
 // ============================================================================
-// CRM MOCKUP - Datos simulados de campanas
+// CRM MOCKUP - Datos simulados de campañas
 // ============================================================================
 export const CRM_MOCKUP = {
   campaigns: [
@@ -461,7 +461,7 @@ export const CRM_MOCKUP = {
       impresiones: 3600000,
       cpm: 0.55,
       platform: 'Meta Ads',
-      audience: 'Jovenes Trendy',
+      audience: 'Jóvenes Trendy',
     },
     {
       id: 'camp_002',
@@ -486,11 +486,11 @@ export const CRM_MOCKUP = {
       reproducciones: 620000,
       engagement_rate: 14.5,
       platform: 'TikTok Ads',
-      audience: 'Jovenes Trendy',
+      audience: 'Jóvenes Trendy',
     },
     {
       id: 'camp_004',
-      name: 'Retail - San Valentin Tiendas',
+      name: 'Retail - San Valentín Tiendas',
       status: 'active',
       budget: 1500,
       spent: 1280,
@@ -504,7 +504,7 @@ export const CRM_MOCKUP = {
   alerts: [
     {
       type: 'success',
-      message: 'Campana "TikTok GRWM" superando objetivos: engagement 14.5% vs target 10%',
+      message: 'Campaña "TikTok GRWM" superando objetivos: engagement 14.5% vs target 10%',
       campaign_id: 'camp_003',
       timestamp: '2026-02-10T14:30:00',
     },
@@ -526,7 +526,7 @@ export const CRM_MOCKUP = {
 };
 
 // ============================================================================
-// BUDGET ALLOCATION - Distribucion de presupuesto por canal
+// BUDGET ALLOCATION - Distribución de presupuesto por canal
 // ============================================================================
 export const BUDGET_ALLOCATION = {
   total_budget: 10000,
@@ -546,7 +546,7 @@ export const BUDGET_ALLOCATION = {
       amount: 2500,
       percentage: 25,
       status: 'overperforming',
-      kpi: 'Awareness + Engagement Jovenes',
+      kpi: 'Awareness + Engagement Jóvenes',
       target: 'Alcance 800K+ / Engagement > 10%',
       current_performance: 'Alcance 950K / Engagement 14.5%',
     },
@@ -582,6 +582,7 @@ export const BUDGET_ALLOCATION = {
       from: 25,
       to: 30,
       reason: 'Engagement 45% por encima del objetivo, contenido GRWM resonando con audiencia joven',
+
       impact: '+200K alcance/mes estimado',
     },
     {
@@ -596,7 +597,7 @@ export const BUDGET_ALLOCATION = {
       from: 10,
       to: 5,
       reason: 'Display con menor impacto en awareness vs TikTok, redirigir presupuesto',
-      impact: 'Redistribucion a canales mas eficientes',
+      impact: 'Redistribución a canales más eficientes',
     },
   ],
 };
@@ -608,7 +609,7 @@ export const CONTENT_PILLARS = [
   {
     id: 1,
     title: 'Get Ready With Me (GRWM)',
-    description: 'Contenido de styling con accesorios Sifrah, outfit del dia',
+    description: 'Contenido de styling con accesorios Sifrah, outfit del día',
     status: 'overperforming',
     performance: {
       engagement_rate: 16.8,
@@ -647,7 +648,7 @@ export const CONTENT_PILLARS = [
   {
     id: 4,
     title: 'Promociones y Ofertas',
-    description: 'Campanas de venta, descuentos y ofertas especiales',
+    description: 'Campañas de venta, descuentos y ofertas especiales',
     status: 'ontrack',
     performance: {
       engagement_rate: 9.2,
@@ -668,27 +669,27 @@ export const CONTENT_PILLARS = [
       conversions: 145,
     },
     recommended_budget: 0.10,
-    formats: ['Infografias', 'Reels educativos', 'Guias de estilo'],
+    formats: ['Infografías', 'Reels educativos', 'Guías de estilo'],
   },
 ];
 
 // ============================================================================
-// ALERTS - Alertas automaticas del sistema
+// ALERTS - Alertas automáticas del sistema
 // ============================================================================
 export const ALERTS = [
   {
     id: 1,
     severity: 'high',
-    title: 'Pico de demanda San Valentin',
-    message: 'Busquedas de "regalo accesorios san valentin" aumentaron 120% esta semana. Momento optimo para push de campanas.',
+    title: 'Pico de demanda San Valentín',
+    message: 'Búsquedas de "regalo accesorios san valentín" aumentaron 120% esta semana. Momento óptimo para push de campañas.',
     action: 'Aumentar budget 25% en Meta y TikTok para capturar demanda de regalos',
     timestamp: '2026-02-10T09:00:00',
   },
   {
     id: 2,
     severity: 'medium',
-    title: 'Competidor con nueva coleccion',
-    message: 'Isadora lanzo coleccion San Valentin con 20% descuento. Detectado en redes sociales con alto engagement.',
+    title: 'Competidor con nueva colección',
+    message: 'Isadora lanzó colección San Valentín con 20% descuento. Detectado en redes sociales con alto engagement.',
     action: 'Evaluar respuesta competitiva, destacar variedad y precio accesible de Sifrah',
     timestamp: '2026-02-09T15:30:00',
   },
@@ -696,7 +697,7 @@ export const ALERTS = [
     id: 3,
     severity: 'low',
     title: 'Oportunidad en Arequipa',
-    message: 'Trafico desde Arequipa crecio +40% esta semana con CPA de $5.80 en ecommerce',
+    message: 'Tráfico desde Arequipa creció +40% esta semana con CPA de $5.80 en ecommerce',
     action: 'Considerar aumentar budget 20% para region Arequipa',
     timestamp: '2026-02-09T11:45:00',
   },
@@ -704,14 +705,14 @@ export const ALERTS = [
     id: 4,
     severity: 'high',
     title: 'Contenido viral detectado',
-    message: 'Video GRWM de influencer con aretes Sifrah alcanzo 800K views en TikTok organicamente',
-    action: 'Amplificar con paid, negociar colaboracion continua con la creadora',
+    message: 'Video GRWM de influencer con aretes Sifrah alcanzó 800K views en TikTok orgánicamente',
+    action: 'Amplificar con paid, negociar colaboración continua con la creadora',
     timestamp: '2026-02-08T18:00:00',
   },
 ];
 
 // ============================================================================
-// COMPETITOR INSIGHTS - Analisis de competencia accesorios
+// COMPETITOR INSIGHTS - Análisis de competencia accesorios
 // ============================================================================
 export const COMPETITOR_INSIGHTS = [
   {
@@ -721,9 +722,9 @@ export const COMPETITOR_INSIGHTS = [
     share_of_voice: 28,
     sentiment: 75,
     threat_level: 'high',
-    trending_topics: ['diseno exclusivo', 'marca internacional', 'precio alto', 'poca variedad'],
+    trending_topics: ['diseño exclusivo', 'marca internacional', 'precio alto', 'poca variedad'],
     description: 'Principal competidor premium con presencia internacional',
-    opportunity: 'Capturar clientes que buscan variedad y mejor precio sin sacrificar diseno',
+    opportunity: 'Capturar clientes que buscan variedad y mejor precio sin sacrificar diseño',
   },
   {
     brand: 'Do it!',
@@ -732,7 +733,7 @@ export const COMPETITOR_INSIGHTS = [
     share_of_voice: 20,
     sentiment: 68,
     threat_level: 'high',
-    trending_topics: ['precio bajo', 'muchas tiendas', 'calidad variable', 'publico joven'],
+    trending_topics: ['precio bajo', 'muchas tiendas', 'calidad variable', 'público joven'],
     description: 'Competidor directo en precio accesible con red de tiendas',
     opportunity: 'Diferenciarse en calidad y experiencia de marca',
   },
@@ -754,8 +755,8 @@ export const COMPETITOR_INSIGHTS = [
     share_of_voice: 12,
     sentiment: 72,
     threat_level: 'medium',
-    trending_topics: ['ropa y accesorios', 'marca peruana', 'NSE alto', 'diseno propio'],
-    description: 'Marca de moda con linea de accesorios como complemento',
+    trending_topics: ['ropa y accesorios', 'marca peruana', 'NSE alto', 'diseño propio'],
+    description: 'Marca de moda con línea de accesorios como complemento',
     opportunity: 'Posicionarse como especialista vs marca generalista',
   },
   {
@@ -765,9 +766,9 @@ export const COMPETITOR_INSIGHTS = [
     share_of_voice: 5,
     sentiment: 88,
     threat_level: 'low',
-    trending_topics: ['artesanal', 'exclusivo', 'bisuteria fina', 'premium'],
+    trending_topics: ['artesanal', 'exclusivo', 'bisutería fina', 'premium'],
     description: 'Nicho artesanal de alta gama con fiel base de clientes',
-    opportunity: 'No competir directamente, pero inspirar linea premium',
+    opportunity: 'No competir directamente, pero inspirar línea premium',
   },
   {
     brand: 'Sifrah',
@@ -776,8 +777,8 @@ export const COMPETITOR_INSIGHTS = [
     share_of_voice: 32,
     sentiment: 82,
     threat_level: null,
-    trending_topics: ['variedad', 'precio justo', 'muchas tiendas', 'bisuteria moderna', 'marca peruana'],
-    description: 'Lider nacional en accesorios con mayor red de tiendas',
+    trending_topics: ['variedad', 'precio justo', 'muchas tiendas', 'bisutería moderna', 'marca peruana'],
+    description: 'Líder nacional en accesorios con mayor red de tiendas',
     opportunity: 'Consolidar liderazgo digital y expandir ecommerce',
   },
 ];
