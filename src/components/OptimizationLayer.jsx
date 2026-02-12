@@ -1,4 +1,4 @@
-import { TrendingUp, BarChart3, RefreshCw, Award, Target, Users, Heart, Zap, AlertCircle, Dumbbell, Bell, Globe, FileText, CheckCircle, Lightbulb, Activity, UserPlus, Calendar } from 'lucide-react';
+import { TrendingUp, BarChart3, RefreshCw, Award, Target, Users, Heart, Zap, AlertCircle, ShoppingBag, Bell, Globe, FileText, CheckCircle, Lightbulb, Activity, ShoppingCart, Calendar } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 import { PERFORMANCE_KPIS, ALERTS, COMPETITOR_INSIGHTS, CRM_MOCKUP } from '../data/mockData';
 import { LAYER_CONFIG, CRM_CONFIG } from '../data/config';
@@ -13,54 +13,53 @@ export default function OptimizationLayer() {
 
   const monthlyPeriod = getMonthlyPeriod();
 
-  // Performance últimos 7 días - FitZone Fitness
+  // Performance últimos 7 días - Sifrah Accessories
   const performanceData = [
-    { date: '14 Ene', leads: 58, reach: 340000, engagement: 32500, spent: 3280 },
-    { date: '15 Ene', leads: 72, reach: 385000, engagement: 38200, spent: 3520 },
-    { date: '16 Ene', leads: 64, reach: 360000, engagement: 35100, spent: 3380 },
-    { date: '17 Ene', leads: 85, reach: 410000, engagement: 42800, spent: 3680 },
-    { date: '18 Ene', leads: 78, reach: 395000, engagement: 39600, spent: 3580 },
-    { date: '19 Ene', leads: 92, reach: 445000, engagement: 48500, spent: 3850 },
-    { date: '20 Ene', leads: 68, reach: 375000, engagement: 36200, spent: 3420 }
+    { date: '14 Ene', trafico: 4200, reach: 340000, interacciones: 32500, spent: 3280 },
+    { date: '15 Ene', trafico: 5100, reach: 385000, interacciones: 38200, spent: 3520 },
+    { date: '16 Ene', trafico: 4600, reach: 360000, interacciones: 35100, spent: 3380 },
+    { date: '17 Ene', trafico: 6300, reach: 410000, interacciones: 42800, spent: 3680 },
+    { date: '18 Ene', trafico: 5800, reach: 395000, interacciones: 39600, spent: 3580 },
+    { date: '19 Ene', trafico: 7200, reach: 445000, interacciones: 48500, spent: 3850 },
+    { date: '20 Ene', trafico: 4900, reach: 375000, interacciones: 36200, spent: 3420 }
   ];
 
-  // Channel performance distribution - FitZone
+  // Channel performance distribution - Sifrah
   const channelData = [
-    { name: 'Meta Ads', value: 40, leads: 740, color: '#FF6B35' },
-    { name: 'Google Search', value: 30, leads: 555, color: '#00D4FF' },
-    { name: 'TikTok Ads', value: 15, leads: 278, color: '#B8FF00' },
-    { name: 'Display', value: 10, leads: 185, color: '#F97316' },
-    { name: 'Influencers', value: 5, leads: 92, color: '#14B8A6' }
+    { name: 'Meta Ads', value: 40, trafico: 4800, color: '#ef008f' },
+    { name: 'Google Search', value: 30, trafico: 3600, color: '#00D4FF' },
+    { name: 'TikTok Ads', value: 15, trafico: 1800, color: '#10B981' },
+    { name: 'Display', value: 10, trafico: 1200, color: '#F59E0B' },
+    { name: 'Influencers', value: 5, trafico: 600, color: '#14B8A6' }
   ];
 
-  // Funnel de conversión FitZone - Journey del cliente
+  // Funnel de conversión Sifrah - Ecommerce Journey
   const funnelSteps = [
-    { stage: 'Alcance', value: 2500000, conversionRate: 2.7, IconComponent: Users, bgColor: 'bg-fitzone-purple' },
-    { stage: 'Visitas Landing', value: 68500, conversionRate: 2.7, IconComponent: Globe, bgColor: 'bg-fitzone-darkPurple' },
-    { stage: 'Trials Solicitados', value: 1850, conversionRate: 46.8, IconComponent: Activity, bgColor: 'bg-fitzone-cyan' },
-    { stage: 'Trials Activos', value: 866, conversionRate: 55.0, IconComponent: Dumbbell, bgColor: 'bg-fitzone-emerald' },
-    { stage: 'Nuevos Miembros', value: 476, conversionRate: null, IconComponent: CheckCircle, bgColor: 'bg-green-500' }
+    { stage: 'Alcance', value: 2500000, conversionRate: 2.7, IconComponent: Users, bgColor: 'bg-sifrah-pink' },
+    { stage: 'Tráfico', value: 68500, conversionRate: 3.8, IconComponent: Globe, bgColor: 'bg-sifrah-darkPink' },
+    { stage: 'Carrito', value: 2600, conversionRate: 42.0, IconComponent: ShoppingCart, bgColor: 'bg-sifrah-cyan' },
+    { stage: 'Compra', value: 1092, conversionRate: null, IconComponent: CheckCircle, bgColor: 'bg-sifrah-emerald' }
   ];
 
   return (
     <div className="space-y-4 sm:space-y-6 lg:space-y-8">
       {/* Header */}
-      <div className="bg-fitzone-slate rounded-xl sm:rounded-2xl shadow-lg p-3 sm:p-4 lg:p-6 border border-fitzone-purple/20">
+      <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg p-3 sm:p-4 lg:p-6 border border-sifrah-border">
         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-4">
           <div>
-            <h2 className="text-base sm:text-lg font-bold text-white mb-1 sm:mb-2">
+            <h2 className="text-base sm:text-lg font-bold text-sifrah-textDark mb-1 sm:mb-2">
               {LAYER_CONFIG.optimization.name}
             </h2>
-            <p className="text-xs sm:text-sm text-fitzone-textGray">
+            <p className="text-xs sm:text-sm text-sifrah-textMedium">
               {LAYER_CONFIG.optimization.subtitle}
             </p>
           </div>
           <div className="flex flex-wrap gap-2 items-center">
-            <div className="flex items-center gap-1.5 sm:gap-2 bg-fitzone-amber/20 text-fitzone-amber px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg">
+            <div className="flex items-center gap-1.5 sm:gap-2 bg-sifrah-amber/20 text-sifrah-amber px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg">
               <Calendar className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               <span className="text-xs sm:text-sm font-medium">{monthlyPeriod}</span>
             </div>
-            <span className="px-2 sm:px-3 py-1 bg-fitzone-purple text-white rounded-full text-xs sm:text-sm font-medium flex items-center gap-1">
+            <span className="px-2 sm:px-3 py-1 bg-sifrah-pink text-white rounded-full text-xs sm:text-sm font-medium flex items-center gap-1">
               <RefreshCw className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               <span className="hidden sm:inline">Auto-optimización activa</span>
               <span className="sm:hidden">Activa</span>
@@ -71,40 +70,17 @@ export default function OptimizationLayer() {
 
       {/* KPIs Principales */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
-        {/* Nuevos Miembros */}
-        <div className="bg-fitzone-purple text-white rounded-xl sm:rounded-2xl p-4 sm:p-5 lg:p-6 shadow-lg">
-          <div className="flex items-center justify-between mb-2 sm:mb-3">
-            <UserPlus className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8" />
-            <span className={`px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs font-bold ${
-              PERFORMANCE_KPIS.leads.trend_value > 0 ? 'bg-fitzone-emerald text-fitzone-charcoal' : 'bg-red-400'
-            }`}>
-              {PERFORMANCE_KPIS.leads.trend}
-            </span>
-          </div>
-          <h3 className="text-xs sm:text-sm font-medium text-white/80 mb-0.5 sm:mb-1">Nuevos Miembros</h3>
-          <p className="text-xl sm:text-2xl font-bold mb-1 sm:mb-2">{PERFORMANCE_KPIS.nuevos_miembros.current.toLocaleString()}</p>
-          <div className="flex items-baseline gap-2">
-            <span className="text-xs sm:text-sm text-white/70">{PERFORMANCE_KPIS.leads.qualified.toLocaleString()} leads calificados</span>
-          </div>
-          <div className="mt-2 sm:mt-3 pt-2 sm:pt-3 border-t border-white/20">
-            <div className="flex justify-between text-xs">
-              <span className="text-white/70">CPL Promedio</span>
-              <span className="font-bold">${PERFORMANCE_KPIS.leads.cost_per_lead}</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Alcance */}
-        <div className="bg-fitzone-cyan text-white rounded-xl sm:rounded-2xl p-4 sm:p-5 lg:p-6 shadow-lg">
+        {/* Alcance Total */}
+        <div className="bg-sifrah-pink text-white rounded-xl sm:rounded-2xl p-4 sm:p-5 lg:p-6 shadow-lg">
           <div className="flex items-center justify-between mb-2 sm:mb-3">
             <Users className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8" />
             <span className={`px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs font-bold ${
-              PERFORMANCE_KPIS.reach.trend_value > 0 ? 'bg-fitzone-emerald text-fitzone-charcoal' : 'bg-red-400'
+              PERFORMANCE_KPIS.reach.trend_value > 0 ? 'bg-sifrah-emerald text-white' : 'bg-red-400'
             }`}>
               {PERFORMANCE_KPIS.reach.trend}
             </span>
           </div>
-          <h3 className="text-xs sm:text-sm font-medium text-white/80 mb-0.5 sm:mb-1">Alcance Unico</h3>
+          <h3 className="text-xs sm:text-sm font-medium text-white/80 mb-0.5 sm:mb-1">Alcance Total</h3>
           <p className="text-xl sm:text-2xl font-bold mb-1 sm:mb-2">{(PERFORMANCE_KPIS.reach.unique_reach / 1000000).toFixed(1)}M</p>
           <div className="flex items-baseline gap-2">
             <span className="text-xs sm:text-sm text-white/70">Impresiones: {(PERFORMANCE_KPIS.reach.impressions / 1000000).toFixed(1)}M</span>
@@ -117,67 +93,90 @@ export default function OptimizationLayer() {
           </div>
         </div>
 
-        {/* Engagement */}
-        <div className="bg-fitzone-emerald text-fitzone-charcoal rounded-xl sm:rounded-2xl p-4 sm:p-5 lg:p-6 shadow-lg">
+        {/* Ventas Ecommerce */}
+        <div className="bg-sifrah-cyan text-white rounded-xl sm:rounded-2xl p-4 sm:p-5 lg:p-6 shadow-lg">
           <div className="flex items-center justify-between mb-2 sm:mb-3">
-            <Heart className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8" />
+            <ShoppingCart className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8" />
             <span className={`px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs font-bold ${
-              PERFORMANCE_KPIS.engagement.trend_value > 0 ? 'bg-fitzone-charcoal text-fitzone-emerald' : 'bg-red-400 text-white'
+              PERFORMANCE_KPIS.leads.trend_value > 0 ? 'bg-sifrah-emerald text-white' : 'bg-red-400'
+            }`}>
+              {PERFORMANCE_KPIS.leads.trend}
+            </span>
+          </div>
+          <h3 className="text-xs sm:text-sm font-medium text-white/80 mb-0.5 sm:mb-1">Ventas Ecommerce</h3>
+          <p className="text-xl sm:text-2xl font-bold mb-1 sm:mb-2">{PERFORMANCE_KPIS.nuevos_miembros.current.toLocaleString()}</p>
+          <div className="flex items-baseline gap-2">
+            <span className="text-xs sm:text-sm text-white/70">Conversiones: {PERFORMANCE_KPIS.leads.qualified.toLocaleString()}</span>
+          </div>
+          <div className="mt-2 sm:mt-3 pt-2 sm:pt-3 border-t border-white/20">
+            <div className="flex justify-between text-xs">
+              <span className="text-white/70">CPA Promedio</span>
+              <span className="font-bold">${PERFORMANCE_KPIS.leads.cost_per_lead}</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Ventas Retail */}
+        <div className="bg-sifrah-emerald text-white rounded-xl sm:rounded-2xl p-4 sm:p-5 lg:p-6 shadow-lg">
+          <div className="flex items-center justify-between mb-2 sm:mb-3">
+            <ShoppingBag className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8" />
+            <span className={`px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs font-bold ${
+              PERFORMANCE_KPIS.engagement.trend_value > 0 ? 'bg-white text-sifrah-emerald' : 'bg-red-400 text-white'
             }`}>
               {PERFORMANCE_KPIS.engagement.trend}
             </span>
           </div>
-          <h3 className="text-xs sm:text-sm font-medium text-fitzone-charcoal/80 mb-0.5 sm:mb-1">Interacciones Totales</h3>
+          <h3 className="text-xs sm:text-sm font-medium text-white/80 mb-0.5 sm:mb-1">Ventas Retail</h3>
           <p className="text-xl sm:text-2xl font-bold mb-1 sm:mb-2">{(PERFORMANCE_KPIS.engagement.total_interactions / 1000).toFixed(1)}K</p>
           <div className="flex items-baseline gap-1 sm:gap-2 flex-wrap">
-            <span className="text-xs sm:text-sm text-fitzone-charcoal/70">Engagement Rate</span>
-            <span className="text-xs bg-fitzone-charcoal/20 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded">{PERFORMANCE_KPIS.engagement.engagement_rate}%</span>
+            <span className="text-xs sm:text-sm text-white/70">Alcance tiendas</span>
+            <span className="text-xs bg-white/20 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded">{PERFORMANCE_KPIS.engagement.engagement_rate}%</span>
           </div>
-          <div className="mt-2 sm:mt-3 pt-2 sm:pt-3 border-t border-fitzone-charcoal/20">
+          <div className="mt-2 sm:mt-3 pt-2 sm:pt-3 border-t border-white/20">
             <div className="flex justify-between text-xs">
-              <span className="text-fitzone-charcoal/70">Shares</span>
+              <span className="text-white/70">Impresiones</span>
               <span className="font-bold">{(PERFORMANCE_KPIS.engagement.shares / 1000).toFixed(1)}K</span>
             </div>
           </div>
         </div>
 
-        {/* Budget */}
-        <div className="bg-fitzone-slate text-white rounded-xl sm:rounded-2xl p-4 sm:p-5 lg:p-6 shadow-lg border border-fitzone-purple/30">
+        {/* Inversión */}
+        <div className="bg-white text-sifrah-textDark rounded-xl sm:rounded-2xl p-4 sm:p-5 lg:p-6 shadow-lg border border-sifrah-border">
           <div className="flex items-center justify-between mb-2 sm:mb-3">
-            <Award className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-fitzone-purple" />
-            <span className="px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs font-bold bg-fitzone-emerald text-fitzone-charcoal">
+            <Award className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-sifrah-pink" />
+            <span className="px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs font-bold bg-sifrah-emerald text-white">
               {PERFORMANCE_KPIS.budget.spent_percentage.toFixed(0)}%
             </span>
           </div>
-          <h3 className="text-xs sm:text-sm font-medium text-fitzone-textGray mb-0.5 sm:mb-1">Presupuesto Ejecutado</h3>
-          <p className="text-xl sm:text-2xl font-bold mb-1 sm:mb-2 text-fitzone-purple">${(PERFORMANCE_KPIS.budget.total_spent / 1000).toFixed(1)}K</p>
+          <h3 className="text-xs sm:text-sm font-medium text-sifrah-textMedium mb-0.5 sm:mb-1">Inversión Ejecutada</h3>
+          <p className="text-xl sm:text-2xl font-bold mb-1 sm:mb-2 text-sifrah-pink">${(PERFORMANCE_KPIS.budget.total_spent / 1000).toFixed(1)}K</p>
           <div className="flex items-baseline gap-2">
-            <span className="text-xs sm:text-sm text-fitzone-textGray">de ${(PERFORMANCE_KPIS.budget.total_budget / 1000).toFixed(0)}K total</span>
+            <span className="text-xs sm:text-sm text-sifrah-textMedium">de ${(PERFORMANCE_KPIS.budget.total_budget / 1000).toFixed(0)}K total</span>
           </div>
-          <div className="mt-2 sm:mt-3 pt-2 sm:pt-3 border-t border-fitzone-purple/20">
+          <div className="mt-2 sm:mt-3 pt-2 sm:pt-3 border-t border-sifrah-border">
             <div className="flex justify-between text-xs">
-              <span className="text-fitzone-textGray">CPC Promedio</span>
-              <span className="font-bold text-fitzone-purple">${PERFORMANCE_KPIS.budget.cost_per_click}</span>
+              <span className="text-sifrah-textMedium">CPM Promedio</span>
+              <span className="font-bold text-sifrah-pink">${PERFORMANCE_KPIS.budget.cost_per_click}</span>
             </div>
           </div>
         </div>
       </div>
 
       {/* Performance Trends */}
-      <div className="bg-fitzone-slate rounded-xl sm:rounded-2xl shadow-lg p-3 sm:p-4 lg:p-6 border border-fitzone-purple/20">
+      <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg p-3 sm:p-4 lg:p-6 border border-sifrah-border">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4 mb-4 sm:mb-6">
           <div>
-            <h3 className="text-sm sm:text-base font-bold text-white">Performance Ultimos 7 Dias</h3>
-            <p className="text-xs sm:text-sm text-fitzone-textGray">Evolucion de metricas clave</p>
+            <h3 className="text-sm sm:text-base font-bold text-sifrah-textDark">Performance Ultimos 7 Dias</h3>
+            <p className="text-xs sm:text-sm text-sifrah-textMedium">Evolucion de metricas clave</p>
           </div>
           <div className="flex gap-3 sm:gap-4 text-xs sm:text-sm">
             <div className="flex items-center gap-1.5 sm:gap-2">
-              <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-fitzone-purple"></div>
-              <span className="text-fitzone-textGray">Leads</span>
+              <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-sifrah-pink"></div>
+              <span className="text-sifrah-textMedium">Tráfico</span>
             </div>
             <div className="flex items-center gap-1.5 sm:gap-2">
-              <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-fitzone-cyan"></div>
-              <span className="text-fitzone-textGray">Engagement (K)</span>
+              <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-sifrah-cyan"></div>
+              <span className="text-sifrah-textMedium">Interacciones (K)</span>
             </div>
           </div>
         </div>
@@ -185,24 +184,24 @@ export default function OptimizationLayer() {
         <div className="w-full h-[200px] sm:h-[250px] lg:h-[300px]">
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={performanceData}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
+              <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />
               <XAxis dataKey="date" stroke="#9CA3AF" style={{ fontSize: '10px' }} tick={{ fontSize: 10 }} />
               <YAxis yAxisId="left" stroke="#9CA3AF" style={{ fontSize: '10px' }} tick={{ fontSize: 10 }} width={35} />
               <YAxis yAxisId="right" orientation="right" stroke="#9CA3AF" style={{ fontSize: '10px' }} tick={{ fontSize: 10 }} width={35} />
               <Tooltip
-                contentStyle={{ backgroundColor: '#1A1A2E', border: '1px solid #FF6B35', borderRadius: '8px', color: '#fff', fontSize: '12px' }}
-                labelStyle={{ fontWeight: 'bold', marginBottom: '8px', color: '#FF6B35' }}
+                contentStyle={{ backgroundColor: '#FFFFFF', border: '1px solid #ef008f', borderRadius: '8px', color: '#1a1a2e', fontSize: '12px' }}
+                labelStyle={{ fontWeight: 'bold', marginBottom: '8px', color: '#ef008f' }}
               />
-              <Line yAxisId="left" type="monotone" dataKey="leads" stroke="#FF6B35" strokeWidth={2} dot={{ r: 3 }} />
-              <Line yAxisId="right" type="monotone" dataKey="engagement" stroke="#00D4FF" strokeWidth={2} dot={{ r: 3 }} />
+              <Line yAxisId="left" type="monotone" dataKey="trafico" stroke="#ef008f" strokeWidth={2} dot={{ r: 3 }} />
+              <Line yAxisId="right" type="monotone" dataKey="interacciones" stroke="#00D4FF" strokeWidth={2} dot={{ r: 3 }} />
             </LineChart>
           </ResponsiveContainer>
         </div>
       </div>
 
       {/* Channel Distribution */}
-      <div className="bg-fitzone-slate rounded-xl sm:rounded-2xl shadow-lg p-4 sm:p-6 lg:p-8 border border-fitzone-purple/20">
-        <h3 className="text-sm sm:text-base font-bold text-white mb-4 sm:mb-6 lg:mb-8 text-center md:text-left">Distribucion de Leads por Canal</h3>
+      <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg p-4 sm:p-6 lg:p-8 border border-sifrah-border">
+        <h3 className="text-sm sm:text-base font-bold text-sifrah-textDark mb-4 sm:mb-6 lg:mb-8 text-center md:text-left">Distribución de Tráfico por Canal</h3>
 
         <div className="flex flex-col lg:flex-row items-center justify-center gap-4 sm:gap-6 lg:gap-12">
           {/* Pie Chart */}
@@ -223,25 +222,25 @@ export default function OptimizationLayer() {
                     <Cell key={`cell-${index}`} fill={entry.color} />
                   ))}
                 </Pie>
-                <Tooltip contentStyle={{ backgroundColor: '#1A1A2E', border: '1px solid #FF6B35', borderRadius: '8px', color: '#fff', fontSize: '12px' }} />
+                <Tooltip contentStyle={{ backgroundColor: '#FFFFFF', border: '1px solid #ef008f', borderRadius: '8px', color: '#1a1a2e', fontSize: '12px' }} />
               </PieChart>
             </ResponsiveContainer>
           </div>
 
           {/* Divider - only visible on desktop */}
-          <div className="hidden lg:block w-px h-64 bg-fitzone-purple/20"></div>
+          <div className="hidden lg:block w-px h-64 bg-sifrah-border"></div>
 
           {/* Legend */}
           <div className="flex-1 w-full max-w-md space-y-2 sm:space-y-3">
             {channelData.map((channel, idx) => (
-              <div key={idx} className="flex items-center justify-between px-3 sm:px-4 py-2 sm:py-3 bg-fitzone-charcoal rounded-lg hover:bg-fitzone-charcoal/80 transition-all duration-200 border border-fitzone-purple/10 hover:border-fitzone-purple/30">
+              <div key={idx} className="flex items-center justify-between px-3 sm:px-4 py-2 sm:py-3 bg-sifrah-snow rounded-lg hover:bg-sifrah-lightGray transition-all duration-200 border border-sifrah-border hover:border-sifrah-pink/30">
                 <div className="flex items-center gap-2 sm:gap-3 min-w-0">
                   <div className="w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-full flex-shrink-0 shadow-sm" style={{ backgroundColor: channel.color }}></div>
-                  <span className="text-xs sm:text-sm font-medium text-white truncate">{channel.name}</span>
+                  <span className="text-xs sm:text-sm font-medium text-sifrah-textDark truncate">{channel.name}</span>
                 </div>
                 <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0 ml-2 sm:ml-4">
-                  <span className="text-xs sm:text-sm font-bold text-white">{channel.leads}</span>
-                  <span className="text-xs sm:text-sm font-bold text-fitzone-charcoal bg-fitzone-purple px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md min-w-[40px] sm:min-w-[48px] text-center">
+                  <span className="text-xs sm:text-sm font-bold text-sifrah-textDark">{channel.trafico}</span>
+                  <span className="text-xs sm:text-sm font-bold text-white bg-sifrah-pink px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md min-w-[40px] sm:min-w-[48px] text-center">
                     {channel.value}%
                   </span>
                 </div>
@@ -252,8 +251,8 @@ export default function OptimizationLayer() {
       </div>
 
       {/* Funnel de Conversion - Responsive */}
-      <div className="bg-fitzone-slate rounded-xl sm:rounded-2xl shadow-lg p-3 sm:p-4 lg:p-6 border border-fitzone-purple/20">
-        <h3 className="text-sm sm:text-base font-bold text-white mb-4 sm:mb-6">Funnel de Conversion FitZone</h3>
+      <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg p-3 sm:p-4 lg:p-6 border border-sifrah-border">
+        <h3 className="text-sm sm:text-base font-bold text-sifrah-textDark mb-4 sm:mb-6">Funnel de Conversión Ecommerce Sifrah</h3>
 
         {/* Mobile: Vertical Stack, Desktop: Horizontal Flow */}
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-2 sm:gap-3 lg:gap-3 overflow-x-auto pb-2 lg:pb-4">
@@ -281,8 +280,8 @@ export default function OptimizationLayer() {
               {/* Arrow with conversion rate - Desktop only */}
               {idx < funnelSteps.length - 1 && (
                 <div className="hidden lg:flex flex-col items-center justify-center min-w-[50px] xl:min-w-[60px]">
-                  <div className="text-xs xl:text-sm font-bold text-fitzone-purple mb-1">{step.conversionRate}%</div>
-                  <svg className="w-6 h-6 xl:w-8 xl:h-8 text-fitzone-textGray" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="text-xs xl:text-sm font-bold text-sifrah-pink mb-1">{step.conversionRate}%</div>
+                  <svg className="w-6 h-6 xl:w-8 xl:h-8 text-sifrah-textMedium" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
                 </div>
@@ -292,35 +291,35 @@ export default function OptimizationLayer() {
         </div>
 
         {/* Summary Stats */}
-        <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-fitzone-purple/20">
+        <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-sifrah-border">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
-            <div className="bg-fitzone-purple/10 rounded-lg p-3 border border-fitzone-purple/20">
-              <p className="text-xs text-fitzone-textGray mb-0.5 sm:mb-1">Conversion Global</p>
-              <p className="text-lg sm:text-xl font-bold text-fitzone-purple">0.019%</p>
-              <p className="text-xs text-fitzone-textGray">Alcance - Miembros</p>
+            <div className="bg-sifrah-softPink rounded-lg p-3 border border-sifrah-border">
+              <p className="text-xs text-sifrah-textMedium mb-0.5 sm:mb-1">Conversión Global</p>
+              <p className="text-lg sm:text-xl font-bold text-sifrah-pink">0.044%</p>
+              <p className="text-xs text-sifrah-textMedium">Alcance → Compra</p>
             </div>
-            <div className="bg-fitzone-emerald/10 rounded-lg p-3 border border-fitzone-emerald/20">
-              <p className="text-xs text-fitzone-textGray mb-0.5 sm:mb-1">Trial - Miembro</p>
-              <p className="text-lg sm:text-xl font-bold text-fitzone-emerald">55.0%</p>
-              <p className="text-xs text-fitzone-textGray">Excelente retencion</p>
+            <div className="bg-sifrah-emerald/10 rounded-lg p-3 border border-sifrah-emerald/20">
+              <p className="text-xs text-sifrah-textMedium mb-0.5 sm:mb-1">Carrito → Compra</p>
+              <p className="text-lg sm:text-xl font-bold text-sifrah-emerald">42.0%</p>
+              <p className="text-xs text-sifrah-textMedium">Excelente conversión</p>
             </div>
-            <div className="bg-fitzone-cyan/10 rounded-lg p-3 border border-fitzone-cyan/20">
-              <p className="text-xs text-fitzone-textGray mb-0.5 sm:mb-1">Tasa Conversion Web</p>
-              <p className="text-lg sm:text-xl font-bold text-fitzone-cyan">2.7%</p>
-              <p className="text-xs text-fitzone-textGray">Landing - Trial</p>
+            <div className="bg-sifrah-cyan/10 rounded-lg p-3 border border-sifrah-cyan/20">
+              <p className="text-xs text-sifrah-textMedium mb-0.5 sm:mb-1">Tráfico → Carrito</p>
+              <p className="text-lg sm:text-xl font-bold text-sifrah-cyan">3.8%</p>
+              <p className="text-xs text-sifrah-textMedium">Tasa add-to-cart</p>
             </div>
           </div>
         </div>
       </div>
 
-      {/* CRM Monitoring - CPL Alerts */}
-      <div className="bg-fitzone-purple text-white rounded-xl sm:rounded-2xl shadow-lg p-3 sm:p-4 lg:p-6">
+      {/* CRM Monitoring - CPA Alerts */}
+      <div className="bg-sifrah-pink text-white rounded-xl sm:rounded-2xl shadow-lg p-3 sm:p-4 lg:p-6">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 mb-4 sm:mb-6">
           <div className="flex items-center gap-2 sm:gap-3">
             <Bell className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8" />
             <div>
-              <h3 className="text-sm sm:text-base lg:text-lg font-bold">CRM - Monitoreo CPL por Audiencia</h3>
-              <p className="text-xs sm:text-sm text-white/90">Alertas automaticas de costo por lead</p>
+              <h3 className="text-sm sm:text-base lg:text-lg font-bold">CRM - Monitoreo CPA por Audiencia</h3>
+              <p className="text-xs sm:text-sm text-white/90">Alertas automáticas de costo por adquisición</p>
             </div>
           </div>
           <span className="px-2 sm:px-3 py-1 bg-white/20 rounded-full text-xs font-bold self-start sm:self-auto">
@@ -328,16 +327,16 @@ export default function OptimizationLayer() {
           </span>
         </div>
 
-        {/* CPL Thresholds by Audience */}
+        {/* CPA Thresholds by Audience */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 mb-4 sm:mb-6">
           <div className="bg-white/10 rounded-lg sm:rounded-xl p-3 sm:p-4">
             <h4 className="font-bold text-sm sm:text-base mb-2 sm:mb-3 flex items-center gap-1.5 sm:gap-2">
               <Zap className="w-4 h-4 sm:w-5 sm:h-5" />
-              Jovenes Activos
+              Mujeres 25-35
             </h4>
             <div className="space-y-1.5 sm:space-y-2">
               <div className="flex justify-between text-xs sm:text-sm">
-                <span>CPL Target</span>
+                <span>CPA Target</span>
                 <span className="font-bold">${CRM_CONFIG.cpl_thresholds.jovenes_activos.cpl_target}</span>
               </div>
               <div className="flex justify-between text-xs sm:text-sm">
@@ -354,11 +353,11 @@ export default function OptimizationLayer() {
           <div className="bg-white/10 rounded-lg sm:rounded-xl p-3 sm:p-4">
             <h4 className="font-bold text-sm sm:text-base mb-2 sm:mb-3 flex items-center gap-1.5 sm:gap-2">
               <Target className="w-4 h-4 sm:w-5 sm:h-5" />
-              Profesionales Wellness
+              Profesionales Fashion
             </h4>
             <div className="space-y-1.5 sm:space-y-2">
               <div className="flex justify-between text-xs sm:text-sm">
-                <span>CPL Target</span>
+                <span>CPA Target</span>
                 <span className="font-bold">${CRM_CONFIG.cpl_thresholds.profesionales_wellness.cpl_target}</span>
               </div>
               <div className="flex justify-between text-xs sm:text-sm">
@@ -375,11 +374,11 @@ export default function OptimizationLayer() {
           <div className="bg-white/10 rounded-lg sm:rounded-xl p-3 sm:p-4 sm:col-span-2 lg:col-span-1">
             <h4 className="font-bold text-sm sm:text-base mb-2 sm:mb-3 flex items-center gap-1.5 sm:gap-2">
               <Users className="w-4 h-4 sm:w-5 sm:h-5" />
-              Familias Activas
+              Gift Shoppers
             </h4>
             <div className="space-y-1.5 sm:space-y-2">
               <div className="flex justify-between text-xs sm:text-sm">
-                <span>CPL Target</span>
+                <span>CPA Target</span>
                 <span className="font-bold">${CRM_CONFIG.cpl_thresholds.familias_activas.cpl_target}</span>
               </div>
               <div className="flex justify-between text-xs sm:text-sm">
@@ -413,36 +412,36 @@ export default function OptimizationLayer() {
         <div className="mt-3 sm:mt-4 p-2 sm:p-3 bg-white/20 rounded-lg">
           <p className="text-xs flex items-start sm:items-center gap-1">
             <Lightbulb className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0 mt-0.5 sm:mt-0" />
-            <span><strong>Nota:</strong> Sistema de alertas automaticas configurado para notificacion en tiempo real cuando CPL supera umbrales.</span>
+            <span><strong>Nota:</strong> Sistema de alertas automáticas configurado para notificación en tiempo real cuando CPA supera umbrales.</span>
           </p>
         </div>
       </div>
 
       {/* Alertas Automaticas */}
-      <div className="bg-fitzone-slate rounded-xl sm:rounded-2xl shadow-lg p-3 sm:p-4 lg:p-6 border border-fitzone-purple/20">
+      <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg p-3 sm:p-4 lg:p-6 border border-sifrah-border">
         <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
-          <AlertCircle className="w-5 h-5 sm:w-6 sm:h-6 text-fitzone-purple" />
-          <h3 className="text-sm sm:text-base font-bold text-white">Alertas del Mercado Fitness</h3>
+          <AlertCircle className="w-5 h-5 sm:w-6 sm:h-6 text-sifrah-pink" />
+          <h3 className="text-sm sm:text-base font-bold text-sifrah-textDark">Alertas del Mercado de Accesorios</h3>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3">
           {ALERTS.slice(0, 3).map((alert) => (
             <div key={alert.id} className={`p-3 sm:p-4 rounded-lg border-l-4 ${
               alert.severity === 'high' ? 'bg-red-500/10 border-red-500' :
               alert.severity === 'medium' ? 'bg-yellow-500/10 border-yellow-500' :
-              'bg-fitzone-cyan/10 border-fitzone-cyan'
+              'bg-sifrah-cyan/10 border-sifrah-cyan'
             }`}>
               <div className="flex items-start justify-between gap-2 mb-1.5 sm:mb-2">
-                <h4 className="font-bold text-white text-xs sm:text-sm">{alert.title}</h4>
+                <h4 className="font-bold text-sifrah-textDark text-xs sm:text-sm">{alert.title}</h4>
                 <span className={`px-1.5 sm:px-2 py-0.5 sm:py-1 rounded text-xs font-bold flex-shrink-0 ${
-                  alert.severity === 'high' ? 'bg-red-500/30 text-red-300' :
-                  alert.severity === 'medium' ? 'bg-yellow-500/30 text-yellow-300' :
-                  'bg-fitzone-cyan/30 text-fitzone-cyan'
+                  alert.severity === 'high' ? 'bg-red-500/30 text-red-600' :
+                  alert.severity === 'medium' ? 'bg-yellow-500/30 text-yellow-600' :
+                  'bg-sifrah-cyan/30 text-sifrah-cyan'
                 }`}>
                   {alert.severity === 'high' ? 'ALTA' : alert.severity === 'medium' ? 'MEDIA' : 'BAJA'}
                 </span>
               </div>
-              <p className="text-xs text-fitzone-textGray mb-1.5 sm:mb-2">{alert.message}</p>
-              <p className="text-xs font-semibold text-fitzone-purple">
+              <p className="text-xs text-sifrah-textMedium mb-1.5 sm:mb-2">{alert.message}</p>
+              <p className="text-xs font-semibold text-sifrah-pink">
                 Accion: {alert.action}
               </p>
             </div>
@@ -451,43 +450,43 @@ export default function OptimizationLayer() {
       </div>
 
       {/* Competitor Analysis */}
-      <div className="bg-fitzone-slate rounded-xl sm:rounded-2xl shadow-lg p-3 sm:p-4 lg:p-6 border border-fitzone-purple/20">
-        <h3 className="text-sm sm:text-base font-bold text-white mb-3 sm:mb-4">Analisis de Competencia Fitness</h3>
+      <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg p-3 sm:p-4 lg:p-6 border border-sifrah-border">
+        <h3 className="text-sm sm:text-base font-bold text-sifrah-textDark mb-3 sm:mb-4">Análisis de Competencia Accesorios</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
-          {COMPETITOR_INSIGHTS.filter(c => c.brand !== 'FitZone').map((comp, idx) => (
-            <div key={idx} className="p-3 sm:p-4 bg-fitzone-charcoal border-2 border-fitzone-slate rounded-lg hover:border-fitzone-purple/50 transition-colors">
+          {COMPETITOR_INSIGHTS.filter(c => c.brand !== 'Sifrah').map((comp, idx) => (
+            <div key={idx} className="p-3 sm:p-4 bg-sifrah-snow border-2 border-sifrah-border rounded-lg hover:border-sifrah-pink/50 transition-colors">
               <div className="flex items-start justify-between gap-2 mb-2">
                 <div className="min-w-0">
-                  <h4 className="font-bold text-white text-sm sm:text-base truncate">{comp.brand}</h4>
-                  <p className="text-xs text-fitzone-textGray">{comp.location}</p>
+                  <h4 className="font-bold text-sifrah-textDark text-sm sm:text-base truncate">{comp.brand}</h4>
+                  <p className="text-xs text-sifrah-textMedium">{comp.location}</p>
                 </div>
                 <span className={`px-1.5 sm:px-2 py-0.5 sm:py-1 rounded text-xs font-bold flex-shrink-0 ${
-                  comp.threat_level === 'high' ? 'bg-red-500/30 text-red-300' :
-                  comp.threat_level === 'medium' ? 'bg-yellow-500/30 text-yellow-300' :
-                  'bg-green-500/30 text-green-300'
+                  comp.threat_level === 'high' ? 'bg-red-500/30 text-red-600' :
+                  comp.threat_level === 'medium' ? 'bg-yellow-500/30 text-yellow-600' :
+                  'bg-green-500/30 text-green-600'
                 }`}>
                   {comp.threat_level === 'high' ? 'Alta' : comp.threat_level === 'medium' ? 'Media' : 'Baja'}
                 </span>
               </div>
 
-              <p className="text-xs text-fitzone-textGray mb-2 sm:mb-3 leading-relaxed line-clamp-2">{comp.description}</p>
+              <p className="text-xs text-sifrah-textMedium mb-2 sm:mb-3 leading-relaxed line-clamp-2">{comp.description}</p>
 
               <div className="grid grid-cols-2 gap-2 sm:gap-3 mb-2 sm:mb-3">
                 <div>
-                  <p className="text-xs text-fitzone-textGray">Share of Voice</p>
-                  <p className="text-sm sm:text-base font-bold text-white">{comp.share_of_voice}%</p>
+                  <p className="text-xs text-sifrah-textMedium">Share of Voice</p>
+                  <p className="text-sm sm:text-base font-bold text-sifrah-textDark">{comp.share_of_voice}%</p>
                 </div>
                 <div>
-                  <p className="text-xs text-fitzone-textGray">Sentimiento</p>
-                  <p className="text-sm sm:text-base font-bold text-fitzone-cyan">{comp.sentiment}%</p>
+                  <p className="text-xs text-sifrah-textMedium">Sentimiento</p>
+                  <p className="text-sm sm:text-base font-bold text-sifrah-cyan">{comp.sentiment}%</p>
                 </div>
               </div>
 
               <div>
-                <p className="text-xs text-fitzone-textGray mb-1">Temas Trending</p>
+                <p className="text-xs text-sifrah-textMedium mb-1">Temas Trending</p>
                 <div className="flex flex-wrap gap-1">
                   {comp.trending_topics.slice(0, 3).map((topic, topicIdx) => (
-                    <span key={topicIdx} className="px-1.5 sm:px-2 py-0.5 sm:py-1 bg-fitzone-slate rounded text-xs text-fitzone-textGray">
+                    <span key={topicIdx} className="px-1.5 sm:px-2 py-0.5 sm:py-1 bg-sifrah-lightGray rounded text-xs text-sifrah-textMedium">
                       {topic}
                     </span>
                   ))}
@@ -497,15 +496,15 @@ export default function OptimizationLayer() {
           ))}
         </div>
 
-        {/* FitZone Comparison */}
-        <div className="mt-3 sm:mt-4 p-3 sm:p-4 lg:p-5 bg-fitzone-purple text-white rounded-lg sm:rounded-xl">
+        {/* Sifrah Comparison */}
+        <div className="mt-3 sm:mt-4 p-3 sm:p-4 lg:p-5 bg-sifrah-pink text-white rounded-lg sm:rounded-xl">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
             <div className="flex-1">
               <h4 className="font-bold text-sm sm:text-base mb-1 flex items-center gap-1.5 sm:gap-2">
-                <Dumbbell className="w-4 h-4 sm:w-5 sm:h-5" />
-                FitZone Peru
+                <ShoppingBag className="w-4 h-4 sm:w-5 sm:h-5" />
+                Sifrah Peru
               </h4>
-              <p className="text-xs text-white/70 mb-2">Cadena mid-premium con mejor relacion precio-valor y tecnologia</p>
+              <p className="text-xs text-white/70 mb-2">Marca de accesorios y joyería con presencia ecommerce y retail en Perú</p>
               <div className="flex flex-wrap gap-4 sm:gap-6">
                 <div>
                   <p className="text-xs text-white/70">Share of Voice</p>
@@ -516,7 +515,7 @@ export default function OptimizationLayer() {
                   <p className="text-lg sm:text-xl font-bold">80%</p>
                 </div>
                 <div>
-                  <p className="text-xs text-white/70">Sedes</p>
+                  <p className="text-xs text-white/70">Tiendas</p>
                   <p className="text-lg sm:text-xl font-bold">12</p>
                 </div>
               </div>

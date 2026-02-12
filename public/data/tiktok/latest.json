@@ -1,170 +1,170 @@
 {
-  "timestamp": "2026-01-21T08:30:00.000Z",
+  "timestamp": "2026-02-12T08:30:00.000Z",
   "source": "TikTok Trends via Apify",
   "region": "PE",
-  "category": "Fitness & Wellness",
-  "client": "FitZone Peru - Cadena de Gimnasios",
+  "category": "Fashion & Accessories",
+  "client": "Sifrah Peru - Bisuteria y Accesorios",
   "trends": {
     "hashtags": [
       {
-        "hashtag": "#gymtok",
+        "hashtag": "#grwm",
+        "usage": "12.5M",
+        "growth": "+95%",
+        "category": "Fashion",
+        "relevance": "high"
+      },
+      {
+        "hashtag": "#bisuteria",
         "usage": "2.8M",
         "growth": "+125%",
-        "category": "Fitness",
+        "category": "Accessories",
         "relevance": "high"
       },
       {
-        "hashtag": "#transformacion",
+        "hashtag": "#accesoriosdemoda",
         "usage": "1.5M",
         "growth": "+85%",
-        "category": "Fitness",
+        "category": "Fashion",
         "relevance": "high"
       },
       {
-        "hashtag": "#gymperu",
-        "usage": "450K",
-        "growth": "+62%",
-        "category": "Local",
+        "hashtag": "#sifrah",
+        "usage": "180K",
+        "growth": "+145%",
+        "category": "Brand",
         "relevance": "high"
       },
       {
-        "hashtag": "#fitnessperu",
-        "usage": "380K",
-        "growth": "+48%",
-        "category": "Local",
-        "relevance": "high"
-      },
-      {
-        "hashtag": "#proposito2026",
-        "usage": "920K",
+        "hashtag": "#sanvalentin",
+        "usage": "5.2M",
         "growth": "+320%",
         "category": "Seasonal",
         "relevance": "high"
       },
       {
-        "hashtag": "#legday",
-        "usage": "5.2M",
-        "growth": "+45%",
-        "category": "Training",
+        "hashtag": "#aretestendencia",
+        "usage": "850K",
+        "growth": "+68%",
+        "category": "Product",
+        "relevance": "high"
+      },
+      {
+        "hashtag": "#outfitinspo",
+        "usage": "8.5M",
+        "growth": "+55%",
+        "category": "Fashion",
         "relevance": "medium"
       },
       {
-        "hashtag": "#personaltrainer",
-        "usage": "1.8M",
-        "growth": "+38%",
-        "category": "Service",
-        "relevance": "medium"
-      },
-      {
-        "hashtag": "#healthylifestyle",
-        "usage": "4.5M",
-        "growth": "+28%",
-        "category": "Lifestyle",
+        "hashtag": "#regalosoriginales",
+        "usage": "1.2M",
+        "growth": "+180%",
+        "category": "Seasonal",
         "relevance": "medium"
       }
     ],
     "sounds": [
       {
-        "soundName": "NEFFEX - Grateful",
-        "author": "NEFFEX",
-        "usage": "2.5M",
+        "soundName": "Sabrina Carpenter - Espresso",
+        "author": "Sabrina Carpenter",
+        "usage": "8.5M",
         "growth": "+180%",
         "duration": 30,
-        "category": "Motivation"
+        "category": "Pop"
       },
       {
-        "soundName": "Tevvez - Legend",
-        "author": "Tevvez",
-        "usage": "1.8M",
+        "soundName": "Dua Lipa - Illusion",
+        "author": "Dua Lipa",
+        "usage": "5.2M",
         "growth": "+145%",
         "duration": 28,
-        "category": "Epic"
+        "category": "Pop"
+      },
+      {
+        "soundName": "Sonido Original - GRWM Aesthetic",
+        "author": "Various",
+        "usage": "3.8M",
+        "growth": "+220%",
+        "duration": 32,
+        "category": "Aesthetic"
       },
       {
         "soundName": "Bad Bunny - Monaco",
         "author": "Bad Bunny",
-        "usage": "8.5M",
+        "usage": "6.2M",
         "growth": "+95%",
-        "duration": 32,
+        "duration": 30,
         "category": "Reggaeton"
       },
       {
-        "soundName": "Eminem - Lose Yourself Remix",
-        "author": "Eminem",
-        "usage": "3.2M",
-        "growth": "+72%",
-        "duration": 30,
-        "category": "Hip Hop"
-      },
-      {
-        "soundName": "Phonk - Murder in My Mind",
-        "author": "Kordhell",
-        "usage": "4.8M",
-        "growth": "+220%",
+        "soundName": "Chappell Roan - HOT TO GO!",
+        "author": "Chappell Roan",
+        "usage": "4.5M",
+        "growth": "+165%",
         "duration": 25,
-        "category": "Phonk"
-      },
-      {
-        "soundName": "Grupo 5 - Mix Energetico",
-        "author": "Grupo 5",
-        "usage": "1.2M",
-        "growth": "+85%",
-        "duration": 35,
-        "category": "Cumbia"
-      },
-      {
-        "soundName": "Eye of the Tiger - Remix",
-        "author": "Survivor",
-        "usage": "2.1M",
-        "growth": "+55%",
-        "duration": 30,
-        "category": "Classic"
-      },
-      {
-        "soundName": "Dua Lipa - Physical",
-        "author": "Dua Lipa",
-        "usage": "5.5M",
-        "growth": "+42%",
-        "duration": 28,
         "category": "Pop"
+      },
+      {
+        "soundName": "Sonido Original - Unboxing",
+        "author": "Various",
+        "usage": "2.8M",
+        "growth": "+135%",
+        "duration": 35,
+        "category": "Review"
+      },
+      {
+        "soundName": "Lana Del Rey - Say Yes To Heaven",
+        "author": "Lana Del Rey",
+        "usage": "3.2M",
+        "growth": "+88%",
+        "duration": 30,
+        "category": "Aesthetic"
+      },
+      {
+        "soundName": "Cumbia Peruana Mix - Corazon Serrano",
+        "author": "Corazon Serrano",
+        "usage": "1.8M",
+        "growth": "+72%",
+        "duration": 28,
+        "category": "Cumbia"
       }
     ],
     "creators": [
       {
-        "username": "@fitcoachperu",
-        "followers": "285K",
-        "engagement": "12.5%",
-        "niche": "Personal Training",
+        "username": "@fashionperu",
+        "followers": "320K",
+        "engagement": "11.8%",
+        "niche": "Fashion & Accessories",
         "location": "Lima"
       },
       {
-        "username": "@nutritionlima",
-        "followers": "156K",
-        "engagement": "9.8%",
-        "niche": "Nutrition",
+        "username": "@styletipsperu",
+        "followers": "185K",
+        "engagement": "13.2%",
+        "niche": "Style Tips",
         "location": "Lima"
       },
       {
-        "username": "@transformacionperu",
-        "followers": "420K",
-        "engagement": "15.2%",
-        "niche": "Transformations",
+        "username": "@bisuterialover",
+        "followers": "245K",
+        "engagement": "15.5%",
+        "niche": "Jewelry & Accessories",
         "location": "Lima"
       },
       {
-        "username": "@crossfitlima",
-        "followers": "98K",
-        "engagement": "18.5%",
-        "niche": "CrossFit",
-        "location": "Miraflores"
+        "username": "@grwmperu",
+        "followers": "128K",
+        "engagement": "18.2%",
+        "niche": "GRWM Content",
+        "location": "Arequipa"
       }
     ]
   },
   "metadata": {
     "method": "Apify clockworks/tiktok-trends-scraper",
-    "note": "Datos curados de TikTok Creative Center para fitness Peru",
+    "note": "Datos curados de TikTok Creative Center para moda y accesorios Peru",
     "timeframe": "Last 30 days",
-    "industry": "Fitness & Wellness",
+    "industry": "Fashion & Accessories",
     "items_fetched": 24
   }
 }

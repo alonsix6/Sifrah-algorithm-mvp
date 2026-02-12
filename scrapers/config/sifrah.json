@@ -1,0 +1,124 @@
+{
+  "client": "Sifrah",
+  "clientFullName": "Sifrah Peru - Bisuteria y Accesorios",
+  "region": "PE",
+  "geo": "PE",
+  "category": "Fashion & Accessories",
+  "timeRange": "today 1-m",
+  "outputDir": "sifrah",
+
+  "keywords": [
+    "bisuteria peru",
+    "aretes tendencia",
+    "accesorios regalo mujer",
+    "carteras mujer peru",
+    "collares de moda",
+    "tiendas sifrah",
+    "bisuteria lima",
+    "pulseras de moda",
+    "accesorios mujer peru"
+  ],
+
+  "tiktok": {
+    "industry": "Fashion & Accessories",
+    "timeRange": "30",
+    "resultsPerPage": 20,
+    "hashtags": [
+      "#grwm",
+      "#bisuteria",
+      "#accesoriosdemoda",
+      "#sifrah",
+      "#sanvalentin"
+    ]
+  },
+
+  "facebook_pages": [
+    "https://www.facebook.com/saborysifrah",
+    "https://www.instagram.com/sifrah_oficial"
+  ],
+
+  "social_listening_topics": [
+    {
+      "name": "Tendencias Accesorios 2026",
+      "keywords": ["tendencia", "moda", "accesorios", "bisuteria", "nuevo", "coleccion", "estilo", "outfit"],
+      "brands": ["Sifrah", "Isadora", "Do it!", "Amphora"]
+    },
+    {
+      "name": "Bisuteria y Precios",
+      "keywords": ["precio", "cuanto cuesta", "oferta", "descuento", "promocion", "barato", "economico", "calidad"],
+      "brands": ["Sifrah", "Isadora", "Waba Shopping", "Do it!"]
+    },
+    {
+      "name": "Nuevas Colecciones Sifrah",
+      "keywords": ["nueva coleccion", "nuevos ingresos", "recien llegado", "novedad", "lanzamiento", "temporada"],
+      "brands": ["Sifrah", "Isadora"]
+    },
+    {
+      "name": "Regalos San Valentin",
+      "keywords": ["regalo", "san valentin", "14 febrero", "amor", "pareja", "detalle", "sorpresa", "especial"],
+      "brands": ["Sifrah", "Isadora", "Do it!", "Roxana Pardo"]
+    },
+    {
+      "name": "Ecommerce y Envios",
+      "keywords": ["envio", "delivery", "compra online", "ecommerce", "pedido", "tienda virtual", "web"],
+      "brands": ["Sifrah", "Isadora", "Waba Shopping"]
+    }
+  ],
+
+  "meta": {
+    "maxPostsPerPage": 50,
+    "includeComments": true,
+    "maxCommentsPerPost": 20,
+    "timeframeDays": 30,
+    "language": "es"
+  },
+
+  "competitors": [
+    {
+      "name": "Isadora",
+      "facebook": "https://www.facebook.com/IsadoraPeru",
+      "instagram": "https://www.instagram.com/isadoraperu"
+    },
+    {
+      "name": "Do it!",
+      "facebook": "https://www.facebook.com/DoItPeru",
+      "instagram": "https://www.instagram.com/doitperu"
+    },
+    {
+      "name": "Waba Shopping",
+      "facebook": "https://www.facebook.com/WabaShoppingPeru",
+      "instagram": "https://www.instagram.com/wabashopping"
+    },
+    {
+      "name": "Amphora",
+      "facebook": "https://www.facebook.com/AmphoraPeru",
+      "instagram": "https://www.instagram.com/amphoraperu"
+    },
+    {
+      "name": "Roxana Pardo",
+      "facebook": "https://www.facebook.com/RoxanaPardoJoyeria",
+      "instagram": "https://www.instagram.com/roxanapardo"
+    }
+  ],
+
+  "tiendas": [
+    { "name": "Jockey Plaza", "geo": "Surco, Lima, Peru" },
+    { "name": "Mega Plaza", "geo": "Independencia, Lima, Peru" },
+    { "name": "Plaza Norte", "geo": "Independencia, Lima, Peru" },
+    { "name": "Mall del Sur", "geo": "San Juan de Miraflores, Lima, Peru" },
+    { "name": "Real Plaza Salaverry", "geo": "Jesus Maria, Lima, Peru" },
+    { "name": "Plaza San Miguel", "geo": "San Miguel, Lima, Peru" },
+    { "name": "Mall Aventura Arequipa", "geo": "Arequipa, Peru" },
+    { "name": "Real Plaza Trujillo", "geo": "Trujillo, Peru" },
+    { "name": "Real Plaza Chiclayo", "geo": "Chiclayo, Peru" },
+    { "name": "Mall Aventura Cusco", "geo": "Cusco, Peru" },
+    { "name": "Real Plaza Piura", "geo": "Piura, Peru" },
+    { "name": "Real Plaza Huancayo", "geo": "Huancayo, Peru" }
+  ],
+
+  "metadata": {
+    "market": "Peru Nacional (+90 tiendas)",
+    "product": "Bisuteria y Accesorios Femeninos 2026",
+    "slogan": "Brilla con Luz Propia"
+  }
+}

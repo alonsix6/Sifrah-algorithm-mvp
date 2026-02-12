@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-01-21T08:30:00.000Z",
+  "generated_at": "2026-02-12T08:30:00.000Z",
   "model_versions": {
     "sentiment_analyzer": "1.0.0",
     "budget_optimizer": "1.0.0",
@@ -7,67 +7,67 @@
   },
   "sentiment_analysis": {
     "overall": {
-      "score": 0.78,
+      "score": 0.82,
       "category": "positive",
       "topics_analyzed": 5
     },
     "by_topic": {
-      "Propositos Fitness 2026": {
-        "score": 0.92,
-        "category": "positive",
-        "mentions": 2850,
-        "engagement": 92
-      },
-      "Membresias y Precios": {
-        "score": 0.55,
-        "category": "neutral",
-        "mentions": 1650,
-        "engagement": 78
-      },
-      "Transformaciones y Resultados": {
-        "score": 0.95,
+      "Tendencias Accesorios 2026": {
+        "score": 0.90,
         "category": "positive",
         "mentions": 3200,
-        "engagement": 95
+        "engagement": 94
       },
-      "Clases Grupales": {
-        "score": 0.82,
+      "Bisuteria y Precios": {
+        "score": 0.72,
         "category": "positive",
-        "mentions": 980,
-        "engagement": 82
+        "mentions": 1850,
+        "engagement": 80
       },
-      "Nutricion y Suplementos": {
-        "score": 0.68,
+      "Nuevas Colecciones Sifrah": {
+        "score": 0.95,
+        "category": "positive",
+        "mentions": 2800,
+        "engagement": 96
+      },
+      "Regalos San Valentin": {
+        "score": 0.88,
+        "category": "positive",
+        "mentions": 2400,
+        "engagement": 88
+      },
+      "Ecommerce y Envios": {
+        "score": 0.65,
         "category": "neutral",
-        "mentions": 1420,
-        "engagement": 75
+        "mentions": 1200,
+        "engagement": 72
       }
     },
-    "timestamp": "2026-01-21T08:30:00.000Z"
+    "timestamp": "2026-02-12T08:30:00.000Z"
   },
   "scores": {
-    "timestamp": "2026-01-21T08:30:00.000Z",
+    "timestamp": "2026-02-12T08:30:00.000Z",
     "individual": {
       "search": {
-        "base": 8.2,
-        "momentum": 0.83,
-        "final": 9.03
+        "base": 8.5,
+        "momentum": 0.85,
+        "final": 9.35
       },
       "trend": {
-        "base": 7.5,
-        "final": 7.5
+        "base": 8.0,
+        "final": 8.0
       },
       "social": {
-        "sentiment": 7.8,
-        "engagement": 8.5,
-        "final": 8.15
+        "sentiment": 8.2,
+        "engagement": 8.8,
+        "final": 8.5
       },
       "intent": {
-        "conversion_rate": 0.027,
-        "final": 6.5
+        "conversion_rate": 0.013,
+        "final": 7.0
       }
     },
-    "overall": 7.8,
+    "overall": 8.2,
     "weights": {
       "search": 0.25,
       "trend": 0.20,
@@ -78,40 +78,40 @@
   "budget_optimization": {
     "current": {
       "meta_ads": 40,
-      "google_search": 30,
-      "tiktok_ads": 15,
+      "tiktok_ads": 25,
+      "google_search": 15,
       "google_display": 10,
-      "influencers": 5
+      "influencers": 10
     },
     "recommended": {
       "meta_ads": {
-        "percentage": 38,
-        "amount": 9500,
-        "expected_roi": "48.2%",
-        "confidence": "high"
-      },
-      "google_search": {
-        "percentage": 28,
-        "amount": 7000,
-        "expected_roi": "42.5%",
+        "percentage": 40,
+        "amount": 4000,
+        "expected_roi": "52.0%",
         "confidence": "high"
       },
       "tiktok_ads": {
-        "percentage": 20,
-        "amount": 5000,
-        "expected_roi": "55.8%",
+        "percentage": 30,
+        "amount": 3000,
+        "expected_roi": "58.5%",
+        "confidence": "high"
+      },
+      "google_search": {
+        "percentage": 15,
+        "amount": 1500,
+        "expected_roi": "45.2%",
         "confidence": "high"
       },
       "google_display": {
-        "percentage": 7,
-        "amount": 1750,
-        "expected_roi": "28.5%",
+        "percentage": 5,
+        "amount": 500,
+        "expected_roi": "30.0%",
         "confidence": "medium"
       },
       "influencers": {
-        "percentage": 7,
-        "amount": 1750,
-        "expected_roi": "62.0%",
+        "percentage": 10,
+        "amount": 1000,
+        "expected_roi": "65.0%",
         "confidence": "medium"
       }
     },
@@ -119,44 +119,44 @@
       {
         "channel": "tiktok_ads",
         "type": "increase",
-        "from": 15,
-        "to": 20,
+        "from": 25,
+        "to": 30,
         "change": "+5.0%",
-        "impact": 1250,
+        "impact": 500,
         "confidence": "high",
-        "reason": "TikTok muestra CPL 12% inferior al target en audiencia joven"
+        "reason": "TikTok muestra engagement 45% superior al objetivo en contenido GRWM"
       },
       {
         "channel": "influencers",
-        "type": "increase",
-        "from": 5,
-        "to": 7,
-        "change": "+2.0%",
-        "impact": 500,
+        "type": "maintain",
+        "from": 10,
+        "to": 10,
+        "change": "0%",
+        "impact": 0,
         "confidence": "medium",
-        "reason": "Alto engagement rate (12.5%) con influencers fitness locales"
+        "reason": "Alto engagement rate (11.8%) con influencers de moda locales"
       },
       {
         "channel": "google_display",
         "type": "decrease",
         "from": 10,
-        "to": 7,
-        "change": "-3.0%",
-        "impact": 750,
+        "to": 5,
+        "change": "-5.0%",
+        "impact": 500,
         "confidence": "high",
-        "reason": "Display muestra menor conversion rate vs otros canales"
+        "reason": "Display muestra menor impacto en awareness vs TikTok"
       }
     ],
     "simulation": {
       "allocations": [],
       "best_channel_wins": {
-        "meta_ads": "42.5%",
-        "google_search": "28.2%",
-        "tiktok_ads": "18.5%",
-        "influencers": "6.8%",
-        "google_display": "4.0%"
+        "meta_ads": "38.5%",
+        "tiktok_ads": "30.2%",
+        "google_search": "16.8%",
+        "influencers": "9.5%",
+        "google_display": "5.0%"
       }
     },
-    "timestamp": "2026-01-21T08:30:00.000Z"
+    "timestamp": "2026-02-12T08:30:00.000Z"
   }
 }
